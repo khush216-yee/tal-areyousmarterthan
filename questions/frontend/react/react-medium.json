@@ -1,0 +1,352 @@
+[
+  {
+    "id": "react-m-001",
+    "difficulty": "medium",
+    "q": "You use useEffect with a dependency but it runs more than expected. The dependency is an object created inline. Why?",
+    "options": [
+      "Objects are not valid useEffect dependencies",
+      "A new object is created on every render so React sees it as always changed",
+      "useEffect only works with primitive dependencies",
+      "You need to JSON.stringify the object first"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Objects are compared by reference not value. An inline object literal creates a new reference on every render so useEffect thinks the dependency changed every time. Memoize it with useMemo."
+  },
+  {
+    "id": "react-m-002",
+    "difficulty": "medium",
+    "q": "You wrap a child in React.memo but it still re-renders when the parent renders. The parent passes a function as a prop. Why?",
+    "options": [
+      "React.memo does not work with function props",
+      "A new function reference is created on every parent render breaking memo's shallow comparison",
+      "The child needs to be wrapped in useCallback too",
+      "React.memo only prevents re-renders caused by state changes"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "React.memo uses shallow prop comparison. A function created inline gets a new reference every render so memo sees it as a changed prop. Wrap the function in useCallback to stabilize the reference."
+  },
+  {
+    "id": "react-m-003",
+    "difficulty": "medium",
+    "q": "What is the difference between useMemo and useCallback?",
+    "options": [
+      "useMemo is for components, useCallback is for hooks",
+      "useMemo memoizes a computed value, useCallback memoizes a function reference",
+      "They are identical — useCallback is just shorthand for useMemo",
+      "useCallback runs after render, useMemo runs before"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "useMemo caches the result of an expensive computation. useCallback caches the function itself. useCallback(fn, deps) is equivalent to useMemo(() => fn, deps)."
+  },
+  {
+    "id": "react-m-004",
+    "difficulty": "medium",
+    "q": "Your Context value changes frequently and causes all consumers to re-render even when they don't use the changed part. What is the fix?",
+    "options": [
+      "Use useReducer instead of useState in the provider",
+      "Split the context into separate contexts by concern",
+      "Wrap all consumers in React.memo",
+      "Move the context provider closer to the consuming components"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Every consumer re-renders when any part of the context value changes. Splitting into separate contexts means components only re-render when the specific context they consume changes."
+  },
+  {
+    "id": "react-m-005",
+    "difficulty": "medium",
+    "q": "You use useReducer instead of useState. When is useReducer the better choice?",
+    "options": [
+      "When you need to persist state to localStorage",
+      "When state logic is complex with multiple sub-values or actions",
+      "When you have more than 3 useState hooks in a component",
+      "When state needs to be shared across components"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "useReducer is better when state updates involve multiple values that change together or when next state depends on complex logic. It centralizes update logic making it easier to test and reason about."
+  },
+  {
+    "id": "react-m-006",
+    "difficulty": "medium",
+    "q": "You have an expensive calculation in a component that runs on every render. How do you fix it?",
+    "options": [
+      "Move the calculation outside the component",
+      "Wrap the calculation in useMemo with the relevant dependencies",
+      "Use useEffect to run the calculation after render",
+      "Use useCallback to cache the calculation function"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "useMemo caches the result of a calculation and only recomputes when its dependencies change. useCallback would cache the function not the result."
+  },
+  {
+    "id": "react-m-007",
+    "difficulty": "medium",
+    "q": "What is reconciliation in React?",
+    "options": [
+      "The process of syncing state between parent and child components",
+      "React's algorithm for comparing the old and new virtual DOM to find minimal DOM updates",
+      "The process of merging context values from multiple providers",
+      "React's way of handling errors in the component tree"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Reconciliation is React's diffing algorithm. It compares the previous virtual DOM with the new one and computes the minimum number of real DOM operations needed to update the UI."
+  },
+  {
+    "id": "react-m-008",
+    "difficulty": "medium",
+    "q": "You change a key prop on a component. What does React do?",
+    "options": [
+      "Updates only the changed props on the existing component instance",
+      "Completely unmounts the old component and mounts a fresh one",
+      "Triggers a forced re-render without resetting state",
+      "Nothing — key only affects list rendering"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Changing a key tells React this is a different element. It destroys the old component instance including all its state and creates a fresh one. This is a useful trick to reset a component."
+  },
+  {
+    "id": "react-m-009",
+    "difficulty": "medium",
+    "q": "You read a state value inside a useEffect but always get the initial value even after updates. What is wrong?",
+    "options": [
+      "State values cannot be read inside effects",
+      "The state variable is missing from the dependency array causing a stale closure",
+      "You need to use useRef to read state inside effects",
+      "useEffect always runs with the initial render values"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "When a state variable is not in the dependency array the effect closes over its initial value and never updates. Adding it to the array ensures the effect always uses the latest value."
+  },
+  {
+    "id": "react-m-010",
+    "difficulty": "medium",
+    "q": "What is a custom hook and when should you create one?",
+    "options": [
+      "A hook that overrides built-in React hooks",
+      "A function starting with use that extracts reusable stateful logic from components",
+      "A hook that only works inside class components",
+      "A performance optimization that replaces useState"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Custom hooks let you extract and reuse stateful logic across multiple components. They must start with use and can call other hooks. They are the main way to share logic in modern React."
+  },
+  {
+    "id": "react-m-011",
+    "difficulty": "medium",
+    "q": "You call useState with an expensive initial value computation. It runs on every render. How do you fix it?",
+    "options": [
+      "Move the computation outside the component",
+      "Pass a function to useState instead of the value directly",
+      "Use useMemo to wrap the useState call",
+      "Use useRef to store the initial value"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Passing a function to useState as lazy initialization means React only calls it on the first render. Passing the value directly executes the computation every render even though it's only used once."
+  },
+  {
+    "id": "react-m-012",
+    "difficulty": "medium",
+    "q": "You need to render a component outside its parent DOM hierarchy like a modal. What do you use?",
+    "options": [
+      "React.Fragment",
+      "React.createPortal",
+      "useRef with document.body.appendChild",
+      "React.lazy with Suspense"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "createPortal renders children into a different DOM node than the parent component. The component still lives in the React tree so context and events work normally."
+  },
+  {
+    "id": "react-m-013",
+    "difficulty": "medium",
+    "q": "What is an error boundary in React?",
+    "options": [
+      "A try/catch block inside a React component",
+      "A class component that catches JavaScript errors in its child tree and shows a fallback UI",
+      "A hook that prevents components from throwing errors",
+      "A React context that propagates errors up the tree"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Error boundaries are class components that implement componentDidCatch or getDerivedStateFromError. They catch rendering errors in their subtree and display a fallback instead of crashing the whole app."
+  },
+  {
+    "id": "react-m-014",
+    "difficulty": "medium",
+    "q": "You batch multiple state updates in React 18. How does this differ from React 17?",
+    "options": [
+      "React 18 removed batching entirely",
+      "React 18 automatically batches all updates including those in setTimeout and promises, React 17 only batched event handlers",
+      "React 17 batched more updates than React 18",
+      "Batching in React 18 requires opt-in with a special API"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "React 17 only batched state updates inside React event handlers. React 18 introduced automatic batching everywhere — setTimeout, promises, native events — reducing unnecessary re-renders."
+  },
+  {
+    "id": "react-m-015",
+    "difficulty": "medium",
+    "q": "Your component re-renders too often and you suspect an inline object in JSX is the cause. How do you verify?",
+    "options": [
+      "Add console.log to every prop",
+      "Use React DevTools Profiler to see what triggered the render",
+      "Wrap every prop in useMemo",
+      "Move all objects to a database"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "React DevTools Profiler shows exactly which components rendered, how long they took, and what caused them to render. It is the right first step before optimizing."
+  },
+  {
+    "id": "react-m-016",
+    "difficulty": "medium",
+    "q": "You need to forward a ref from a parent to a child component's DOM element. What do you use?",
+    "options": [
+      "Pass ref as a regular prop",
+      "React.forwardRef to wrap the child component",
+      "useImperativeHandle in the parent",
+      "Attach the ref directly to the child component tag"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Refs are not regular props — they cannot be passed directly. React.forwardRef creates a component that receives the ref as a second argument and can attach it to an inner DOM element."
+  },
+  {
+    "id": "react-m-017",
+    "difficulty": "medium",
+    "q": "What is useImperativeHandle used for?",
+    "options": [
+      "To access the parent component's methods from a child",
+      "To customize what a parent sees when it accesses a child's ref",
+      "To imperatively trigger re-renders without state",
+      "To replace useEffect for imperative side effects"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "useImperativeHandle lets a child component expose a custom API through its ref instead of the raw DOM node. Useful when a parent needs to call specific methods on a child."
+  },
+  {
+    "id": "react-m-018",
+    "difficulty": "medium",
+    "q": "You see a warning about each child in a list needing a unique key. You use the array index as the key. Why is this problematic?",
+    "options": [
+      "Index keys are not valid in React",
+      "When items reorder or are removed the index shifts causing React to map state to the wrong element",
+      "Index keys cause infinite re-render loops",
+      "Array indices are too large for React to process"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Index as key breaks when items are reordered or removed. React maps the key to a component instance so shifting indices cause state from one item to bleed into another."
+  },
+  {
+    "id": "react-m-019",
+    "difficulty": "medium",
+    "q": "What is the purpose of the dependency array in useCallback?",
+    "options": [
+      "It lists the arguments the callback accepts",
+      "It tells React when to create a new function reference",
+      "It prevents the callback from running more than once",
+      "It defines which components can call the function"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "useCallback returns the same function reference as long as dependencies haven't changed. When a dependency changes React creates a new function. This prevents unnecessary re-renders in memoized children."
+  },
+  {
+    "id": "react-m-020",
+    "difficulty": "medium",
+    "q": "You want to show a loading spinner while a lazy loaded component loads. What wraps it?",
+    "options": [
+      "React.memo with a loading prop",
+      "Suspense with a fallback prop",
+      "ErrorBoundary with a loading state",
+      "useEffect that sets isLoading to false when done"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Suspense catches the loading state thrown by React.lazy and renders the fallback UI until the component bundle is ready."
+  },
+  {
+    "id": "react-m-021",
+    "difficulty": "medium",
+    "q": "What is the problem with defining a component inside another component's render?",
+    "options": [
+      "It causes a syntax error",
+      "React creates a new component type on every render causing the inner component to always remount",
+      "Inner components cannot access the outer component's props",
+      "It only works with class components"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Defining a component inside render creates a new component type reference every render. React sees it as a completely different component and unmounts then remounts it losing all state."
+  },
+  {
+    "id": "react-m-022",
+    "difficulty": "medium",
+    "q": "You need to trigger an animation after a state update but the DOM hasn't updated yet when you read it. What hook fixes this?",
+    "options": [
+      "useEffect — it always runs after DOM updates",
+      "useLayoutEffect — it runs synchronously after DOM mutations before paint",
+      "useMemo — it precomputes values before render",
+      "useRef — it gives direct DOM access"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "useLayoutEffect fires synchronously after React updates the DOM but before the browser paints. This is the right place to read layout or trigger animations that depend on DOM measurements."
+  },
+  {
+    "id": "react-m-023",
+    "difficulty": "medium",
+    "q": "What happens when you return a function from useEffect?",
+    "options": [
+      "It becomes the new effect for the next render",
+      "React calls it as cleanup before the next effect runs and on unmount",
+      "It prevents the effect from running again",
+      "It is called with the previous dependency values"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The function returned from useEffect is the cleanup function. React runs it before the effect re-runs on dependency change and when the component unmounts."
+  },
+  {
+    "id": "react-m-024",
+    "difficulty": "medium",
+    "q": "You have deeply nested state and updating it requires spreading every level. What is the recommended solution?",
+    "options": [
+      "Use a global variable for deep state",
+      "Use Immer to write mutating-style updates that produce immutable state",
+      "Flatten all state to avoid nesting",
+      "Use useRef for nested state to avoid immutability rules"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Immer lets you write state updates as if you're mutating directly but produces immutable results. Redux Toolkit uses Immer internally. It eliminates deep spread chains."
+  },
+  {
+    "id": "react-m-025",
+    "difficulty": "medium",
+    "q": "What is the difference between controlled and uncontrolled components in forms?",
+    "options": [
+      "Controlled components use refs, uncontrolled components use state",
+      "Controlled components have their value driven by React state, uncontrolled components manage their own DOM state",
+      "Uncontrolled components cannot be validated",
+      "There is no practical difference in React 18"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Controlled components store form values in React state making React the source of truth. Uncontrolled components let the DOM manage the value accessed via ref only when needed."
+  }
+]
