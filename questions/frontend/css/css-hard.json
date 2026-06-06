@@ -1,0 +1,352 @@
+[
+  {
+    "id": "css-h-001",
+    "difficulty": "hard",
+    "q": "You apply z-index: 999 to a modal but it still appears behind another element with z-index: 1. Why?",
+    "options": [
+      "z-index: 999 is not high enough",
+      "The modal is inside a stacking context with a lower z-index than the other element's context",
+      "z-index only works on position: absolute elements",
+      "The other element has !important on its z-index"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "z-index values are compared within the same stacking context. If the modal's parent has a lower stacking context than the other element even z-index: 9999 won't help. Fix by moving the modal outside the restricting context."
+  },
+  {
+    "id": "css-h-002",
+    "difficulty": "hard",
+    "q": "What is the difference between reflow and repaint in browser rendering?",
+    "options": [
+      "They are identical — just different browser terminology",
+      "Reflow recalculates layout geometry and is expensive, repaint updates visual appearance without layout changes and is cheaper",
+      "Repaint recalculates layout, reflow updates colors",
+      "Reflow only happens on page load, repaint happens on every interaction"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Reflow recalculates the positions and dimensions of elements — it is expensive and cascades to child elements. Repaint updates visual properties like color without changing layout. Triggering reflow in a loop causes layout thrashing."
+  },
+  {
+    "id": "css-h-003",
+    "difficulty": "hard",
+    "q": "You use container queries instead of media queries. What is the key difference?",
+    "options": [
+      "Container queries are faster than media queries",
+      "Container queries respond to the size of a parent container, media queries respond to the viewport",
+      "Media queries are deprecated in favor of container queries",
+      "Container queries only work inside CSS Grid"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Media queries respond to the viewport size. Container queries respond to the size of a containing element. This enables truly component-based responsive design where a component adapts to its available space."
+  },
+  {
+    "id": "css-h-004",
+    "difficulty": "hard",
+    "q": "What does the CSS property contain: layout do?",
+    "options": [
+      "It prevents child elements from overflowing the container",
+      "It isolates the element's layout so internal changes don't trigger layout recalculation outside it",
+      "It contains all CSS variables within the element's scope",
+      "It enables container queries on the element"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "CSS containment tells the browser that an element's subtree is independent. contain: layout means changes inside won't affect outside layout — the browser can skip recalculating the rest of the page."
+  },
+  {
+    "id": "css-h-005",
+    "difficulty": "hard",
+    "q": "You use CSS Grid with auto-fill and auto-fit. What is the difference when there are fewer items than columns?",
+    "options": [
+      "They are identical — auto-fill is just an alias for auto-fit",
+      "auto-fill creates empty column tracks, auto-fit collapses them so items stretch to fill the space",
+      "auto-fit creates empty tracks, auto-fill collapses them",
+      "auto-fill only works with fixed column widths"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "auto-fill keeps empty column tracks taking up space. auto-fit collapses empty tracks to zero width so existing items can expand to fill the container. The difference is only visible when items don't fill all columns."
+  },
+  {
+    "id": "css-h-006",
+    "difficulty": "hard",
+    "q": "What is the purpose of the CSS @layer rule?",
+    "options": [
+      "It creates visual depth layers like z-index but for backgrounds",
+      "It lets you explicitly control the cascade order of style groups preventing specificity conflicts",
+      "It lazy loads CSS files in layers for performance",
+      "It groups media queries together for organization"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "@layer lets you define cascade layers with an explicit priority order. Styles in a higher layer win regardless of specificity. This solves specificity wars in large codebases and third-party CSS conflicts."
+  },
+  {
+    "id": "css-h-007",
+    "difficulty": "hard",
+    "q": "You use subgrid on a nested grid item. What does this do?",
+    "options": [
+      "Creates a smaller grid inside the item with independent tracks",
+      "Inherits the parent grid's tracks so nested items align with the outer grid",
+      "Scales the grid down proportionally inside the item",
+      "Subgrid is not a valid CSS property"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "subgrid lets a nested grid item participate in its parent's grid tracks. Instead of creating new tracks the nested grid aligns its children to the outer grid's columns or rows. Essential for consistent alignment in card layouts."
+  },
+  {
+    "id": "css-h-008",
+    "difficulty": "hard",
+    "q": "What is the difference between logical properties like margin-inline-start and physical properties like margin-left?",
+    "options": [
+      "They are identical in left-to-right languages",
+      "Logical properties are relative to writing direction so margin-inline-start becomes margin-right in RTL languages",
+      "Physical properties are deprecated in favor of logical properties",
+      "Logical properties only affect text not layout"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Physical properties like margin-left always refer to the left side. Logical properties like margin-inline-start refer to the start of the inline direction — left in LTR, right in RTL. Use logical properties for internationalized layouts."
+  },
+  {
+    "id": "css-h-009",
+    "difficulty": "hard",
+    "q": "You use dvh instead of vh for a full-height mobile layout. Why?",
+    "options": [
+      "dvh has better browser support than vh",
+      "dvh dynamically updates as mobile browser UI like the address bar shows or hides preventing layout jumps",
+      "dvh is more performant than vh on mobile",
+      "vh does not work on iOS devices"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "vh is based on the large viewport and doesn't account for mobile browser UI. When the address bar hides or shows vh causes layout jumps. dvh dynamically updates to the actual visible viewport height."
+  },
+  {
+    "id": "css-h-010",
+    "difficulty": "hard",
+    "q": "What does the CSS property isolation: isolate do?",
+    "options": [
+      "Isolates CSS variables so they don't inherit from parent",
+      "Forces a new stacking context without requiring position or z-index",
+      "Prevents the element from being affected by parent transforms",
+      "Isolates the element from the CSS cascade"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "isolation: isolate creates a new stacking context without needing position or z-index. Useful when you need to contain z-index behavior inside a component without side effects from positioning."
+  },
+  {
+    "id": "css-h-011",
+    "difficulty": "hard",
+    "q": "You use the :has() selector. What was previously impossible without it?",
+    "options": [
+      "Selecting elements by their class name",
+      "Selecting a parent or ancestor element based on its children or descendants",
+      "Selecting the last child of an element",
+      "Chaining multiple pseudo-classes"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": ":has() is the relational pseudo-class that enables parent selection in CSS. Previously you could only select descendants not ancestors. .card:has(img) selects cards that contain an image — impossible before :has()."
+  },
+  {
+    "id": "css-h-012",
+    "difficulty": "hard",
+    "q": "What causes layout thrashing in the browser and how do you prevent it?",
+    "options": [
+      "Using too many CSS variables in one file",
+      "Interleaving DOM reads and writes in a loop forcing the browser to recalculate layout on every read",
+      "Applying transitions to too many elements simultaneously",
+      "Using flexbox and grid together on the same element"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Layout thrashing happens when you read a layout property like offsetWidth then write a style then read again in a loop. Each read after a write forces a synchronous layout recalculation. Batch all reads first then all writes."
+  },
+  {
+    "id": "css-h-013",
+    "difficulty": "hard",
+    "q": "You use CSS scroll-snap. What does scroll-snap-type: x mandatory do?",
+    "options": [
+      "Prevents horizontal scrolling entirely",
+      "Forces the scroll to always land on a snap point — it cannot rest between items",
+      "Snaps only when the user scrolls slowly",
+      "mandatory means snapping is disabled until enabled with JavaScript"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "scroll-snap-type: x mandatory makes horizontal scrolling always snap to a snap point. The browser cannot leave the scroll position between items. Use proximity for softer snapping that only activates when near a snap point."
+  },
+  {
+    "id": "css-h-014",
+    "difficulty": "hard",
+    "q": "What is the CSS paint API and what problem does it solve?",
+    "options": [
+      "An API for animating SVG paths in CSS",
+      "A Houdini API that lets you draw custom backgrounds and borders using Canvas-like JavaScript",
+      "A browser API for measuring paint performance",
+      "A CSS feature for applying image filters programmatically"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The CSS Paint API (Houdini) lets you define custom CSS image values using a JavaScript worklet. You can create complex programmatic backgrounds, borders, and masks that were previously impossible in pure CSS."
+  },
+  {
+    "id": "css-h-015",
+    "difficulty": "hard",
+    "q": "You use @property to register a custom CSS property. What does this enable over regular CSS variables?",
+    "options": [
+      "It makes the variable available in JavaScript",
+      "The browser understands the type and can animate it smoothly in transitions and keyframe animations",
+      "It prevents the variable from being overridden by child elements",
+      "It allows the variable to be used in media queries"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Regular CSS variables are just text substitutions — the browser can't interpolate between two values. @property registers the type, initial value, and inheritance so the browser can smoothly animate the variable."
+  },
+  {
+    "id": "css-h-016",
+    "difficulty": "hard",
+    "q": "What is the difference between transform-origin and the transform itself?",
+    "options": [
+      "transform-origin sets the starting position of the element",
+      "transform-origin sets the point around which transformations like rotate and scale are applied",
+      "They are the same — transform-origin is shorthand for transform",
+      "transform-origin only works with 3D transforms"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "transform-origin defines the fixed point around which transformations occur. By default it is the center (50% 50%). A rotation with transform-origin: top left rotates around the top-left corner instead of the center."
+  },
+  {
+    "id": "css-h-017",
+    "difficulty": "hard",
+    "q": "You want to animate a gradient background. A regular CSS transition on background doesn't work. Why and what is the fix?",
+    "options": [
+      "Gradients cannot be animated in CSS at all",
+      "Browsers cannot interpolate between gradient values — use @property to register the color stops as animatable custom properties",
+      "You need to use JavaScript to animate gradients",
+      "Use background-size animation instead of background"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "CSS transitions require the browser to interpolate between two values. Gradient syntax is too complex for the browser to parse into interpolatable values. @property lets you register individual color stops as typed custom properties that can be transitioned."
+  },
+  {
+    "id": "css-h-018",
+    "difficulty": "hard",
+    "q": "What does content-visibility: auto do and when should you use it?",
+    "options": [
+      "It hides content until the user scrolls to it",
+      "It skips rendering offscreen content until it enters the viewport improving initial page load",
+      "It automatically resizes content to fit its container",
+      "It makes content visible only to screen readers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "content-visibility: auto tells the browser to skip layout and paint for offscreen elements. When they scroll into view they render normally. It can dramatically improve initial render performance for long pages."
+  },
+  {
+    "id": "css-h-019",
+    "difficulty": "hard",
+    "q": "You use mix-blend-mode on an element. What does it do?",
+    "options": [
+      "It blends multiple CSS animations together",
+      "It defines how an element's content blends with what is behind it using compositing modes like multiply or screen",
+      "It mixes multiple background images on one element",
+      "It blends the element's colors with its parent's colors"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "mix-blend-mode applies Photoshop-like compositing to how an element renders over its background. Modes like multiply, screen, and overlay create visual effects by combining pixel colors mathematically."
+  },
+  {
+    "id": "css-h-020",
+    "difficulty": "hard",
+    "q": "What is the CSS aspect-ratio property and why does it help with CLS?",
+    "options": [
+      "It sets a maximum width to height ratio for the element",
+      "It reserves space for the element before content loads preventing layout shift when the content appears",
+      "It scales the element proportionally when the window resizes",
+      "It only works on images and videos"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "aspect-ratio reserves the correct amount of space before content like images loads. Without it the page jumps when images appear because the browser didn't know how much space to allocate — causing Cumulative Layout Shift."
+  },
+  {
+    "id": "css-h-021",
+    "difficulty": "hard",
+    "q": "You use CSS Grid's minmax(200px, 1fr) in auto-fill. What does minmax do here?",
+    "options": [
+      "Sets minimum and maximum number of columns",
+      "Each column is at least 200px wide but grows to fill available space up to 1 fraction unit",
+      "Limits the grid to between 200px and the full width",
+      "Sets the gap between grid items"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "minmax defines a size range for grid tracks. minmax(200px, 1fr) means each column is at minimum 200px but can grow to fill available space. Combined with auto-fill this creates responsive columns without media queries."
+  },
+  {
+    "id": "css-h-022",
+    "difficulty": "hard",
+    "q": "What is the difference between :nth-child() and :nth-of-type()?",
+    "options": [
+      "They are identical with different syntax",
+      ":nth-child counts all siblings regardless of type, :nth-of-type counts only siblings of the same element type",
+      ":nth-of-type counts all siblings, :nth-child counts only matching types",
+      ":nth-child only works on direct children"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": ":nth-child(2) selects an element only if it is the second child of its parent regardless of type. :nth-of-type(2) selects the second element of that specific type. They differ when siblings are mixed element types."
+  },
+  {
+    "id": "css-h-023",
+    "difficulty": "hard",
+    "q": "You use backdrop-filter on a modal overlay. What does it do?",
+    "options": [
+      "Filters the modal's own background color",
+      "Applies filter effects like blur to whatever is rendered behind the element",
+      "Creates a drop shadow behind the element",
+      "It filters out background images from the element"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "backdrop-filter applies CSS filter effects to the area behind an element. backdrop-filter: blur(10px) creates a frosted glass effect by blurring the content underneath the element."
+  },
+  {
+    "id": "css-h-024",
+    "difficulty": "hard",
+    "q": "What is the CSS cascade layers priority order when you declare @layer base, components, utilities?",
+    "options": [
+      "base wins over components and utilities",
+      "utilities wins — layers declared last have highest priority",
+      "All layers have equal priority — specificity still decides",
+      "The order reverses — base becomes the highest priority layer"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "In @layer declarations the last layer has the highest priority. So utilities overrides components which overrides base regardless of specificity within each layer. Unlayered styles always beat layered styles."
+  },
+  {
+    "id": "css-h-025",
+    "difficulty": "hard",
+    "q": "You apply overflow: hidden to a parent to clear floated children. Why does this work?",
+    "options": [
+      "overflow: hidden removes float behavior from children",
+      "overflow: hidden creates a new Block Formatting Context which contains floated children",
+      "It is a browser bug that was never fixed",
+      "overflow: hidden makes the parent expand to the height of its children"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "A Block Formatting Context contains its floated children so the parent grows to wrap them. overflow: hidden is one of several ways to create a BFC. Modern layouts use display: flow-root which creates a BFC without the overflow side effects."
+  }
+]
