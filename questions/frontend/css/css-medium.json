@@ -1,0 +1,352 @@
+[
+  {
+    "id": "css-m-001",
+    "difficulty": "medium",
+    "q": "Two sibling elements have margin-bottom: 30px and margin-top: 20px. What is the actual space between them?",
+    "options": [
+      "50px — margins add together",
+      "30px — the larger margin wins due to margin collapsing",
+      "20px — the smaller margin wins",
+      "25px — the average of both margins"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Vertical margins between adjacent block elements collapse into a single margin equal to the larger of the two. This is called margin collapsing and only happens vertically not horizontally."
+  },
+  {
+    "id": "css-m-002",
+    "difficulty": "medium",
+    "q": "You use flexbox and items are stretching to fill the container height. You don't want this. What do you set?",
+    "options": [
+      "flex-shrink: 0 on each item",
+      "align-items: flex-start on the container",
+      "justify-content: flex-start on the container",
+      "flex-wrap: nowrap on the container"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The default align-items value is stretch which makes items fill the container's cross axis. Setting align-items: flex-start makes items only as tall as their content."
+  },
+  {
+    "id": "css-m-003",
+    "difficulty": "medium",
+    "q": "What is the difference between justify-content and align-items in flexbox?",
+    "options": [
+      "justify-content aligns vertically, align-items aligns horizontally",
+      "justify-content aligns along the main axis, align-items aligns along the cross axis",
+      "They are identical but justify-content is for grid and align-items is for flexbox",
+      "align-items only works when flex-wrap is enabled"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "justify-content distributes items along the main axis (row direction by default). align-items aligns items along the cross axis (column direction by default)."
+  },
+  {
+    "id": "css-m-004",
+    "difficulty": "medium",
+    "q": "You want a grid with 3 equal columns that adapt to the container width. What is the cleanest way?",
+    "options": [
+      "grid-template-columns: 33% 33% 33%",
+      "grid-template-columns: repeat(3, 1fr)",
+      "grid-template-columns: auto auto auto",
+      "columns: 3"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "1fr means one fraction of available space. repeat(3, 1fr) creates 3 equal columns that share all available space. Using percentages can cause overflow due to gaps."
+  },
+  {
+    "id": "css-m-005",
+    "difficulty": "medium",
+    "q": "What is the difference between Flexbox and Grid?",
+    "options": [
+      "Flexbox is for older browsers, Grid is modern",
+      "Flexbox is one-dimensional for rows or columns, Grid is two-dimensional for rows and columns simultaneously",
+      "Grid only works for page layouts, Flexbox works for components",
+      "They are identical with different syntax"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Flexbox controls layout in one direction at a time — either row or column. Grid controls both dimensions simultaneously making it better for complex two-dimensional layouts."
+  },
+  {
+    "id": "css-m-006",
+    "difficulty": "medium",
+    "q": "You want a sticky header that stays at the top while scrolling but only within its parent container. What position do you use?",
+    "options": [
+      "position: fixed",
+      "position: sticky with top: 0",
+      "position: absolute with top: 0",
+      "position: relative with overflow: hidden"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "position: sticky behaves like relative until the element reaches the threshold then sticks like fixed — but only within its parent container. position: fixed sticks to the viewport regardless of parent."
+  },
+  {
+    "id": "css-m-007",
+    "difficulty": "medium",
+    "q": "You define a CSS variable as --brand-color: #FE5C01. How do you use it?",
+    "options": [
+      "color: var(brand-color)",
+      "color: var(--brand-color)",
+      "color: $brand-color",
+      "color: @brand-color"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "CSS custom properties are accessed with the var() function. The property name must include the double dash prefix. This is different from Sass variables which use $."
+  },
+  {
+    "id": "css-m-008",
+    "difficulty": "medium",
+    "q": "You want a transition when a button changes color on hover. What CSS do you add to the button?",
+    "options": [
+      "animation: color 0.3s ease on :hover",
+      "transition: background-color 0.3s ease on the base button style",
+      "transform: color 0.3s on the button",
+      "hover-transition: 0.3s on the button"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "transition is added to the element's base style not the :hover state. It tells the browser to animate changes to the specified property over time when any state change occurs."
+  },
+  {
+    "id": "css-m-009",
+    "difficulty": "medium",
+    "q": "You use transform: translateX(100px). Does this affect surrounding elements?",
+    "options": [
+      "Yes it pushes neighboring elements to the right",
+      "No transform moves the element visually but does not affect document flow",
+      "Only if the element is position: relative",
+      "Yes it updates the element's margin"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "CSS transforms move elements visually but do not affect layout. The element's original space is preserved in the document flow so neighbors are not pushed around."
+  },
+  {
+    "id": "css-m-010",
+    "difficulty": "medium",
+    "q": "You want to perfectly center a div both horizontally and vertically inside its parent. What is the modern one-liner?",
+    "options": [
+      "margin: auto on the child",
+      "display: flex; align-items: center; justify-content: center on the parent",
+      "position: absolute; top: 50%; left: 50% on the child",
+      "text-align: center; vertical-align: middle on the parent"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Flexbox centering is the cleanest modern approach. Setting both align-items and justify-content to center on the parent centers the child in both dimensions."
+  },
+  {
+    "id": "css-m-011",
+    "difficulty": "medium",
+    "q": "What is a pseudo-element and how does it differ from a pseudo-class?",
+    "options": [
+      "They are the same thing with different syntax",
+      "Pseudo-elements style a specific part of an element, pseudo-classes style elements based on state",
+      "Pseudo-classes use :: and pseudo-elements use :",
+      "Pseudo-elements only work on block elements"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Pseudo-elements like ::before and ::after target parts of an element or create virtual content. Pseudo-classes like :hover and :focus target elements based on state or position."
+  },
+  {
+    "id": "css-m-012",
+    "difficulty": "medium",
+    "q": "You use ::before to add content before an element. The content does not appear. What is likely missing?",
+    "options": [
+      "The element needs position: relative",
+      "The content property must be set even if empty",
+      "::before only works on block elements",
+      "You need to set display: block on the pseudo-element"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The content property is required for ::before and ::after to render. Even if you want no text you must set content: '' for the pseudo-element to appear."
+  },
+  {
+    "id": "css-m-013",
+    "difficulty": "medium",
+    "q": "You want a layout where items wrap to the next line when there is not enough space. What flexbox property enables this?",
+    "options": [
+      "flex-direction: wrap",
+      "flex-wrap: wrap",
+      "flex-flow: wrap",
+      "overflow: wrap"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "flex-wrap: wrap allows flex items to wrap onto multiple lines. By default flex-wrap is nowrap which forces all items onto one line even if they overflow."
+  },
+  {
+    "id": "css-m-014",
+    "difficulty": "medium",
+    "q": "What does the CSS property will-change do?",
+    "options": [
+      "It tells the browser which CSS properties will change soon so it can optimize rendering",
+      "It prevents CSS properties from changing",
+      "It schedules a CSS animation to run later",
+      "It marks an element for JavaScript manipulation"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "will-change hints to the browser that specific properties will animate so it can promote the element to its own compositor layer. Overusing it wastes memory — only apply it when needed."
+  },
+  {
+    "id": "css-m-015",
+    "difficulty": "medium",
+    "q": "You want a grid item to span 2 columns. What property do you set on the item?",
+    "options": [
+      "grid-column-span: 2",
+      "grid-column: span 2",
+      "column-span: 2",
+      "flex-span: 2"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "grid-column: span 2 tells a grid item to span 2 column tracks. You can also use grid-column: 1 / 3 to specify start and end lines explicitly."
+  },
+  {
+    "id": "css-m-016",
+    "difficulty": "medium",
+    "q": "What is the difference between min-width and max-width in responsive design?",
+    "options": [
+      "min-width targets large screens, max-width targets small screens",
+      "min-width applies styles from that breakpoint up, max-width applies styles up to that breakpoint",
+      "They are identical — just mobile-first vs desktop-first naming",
+      "max-width is deprecated in favor of min-width"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "min-width is mobile-first — styles apply from that width upward. max-width is desktop-first — styles apply up to that width. min-width is the modern recommended approach."
+  },
+  {
+    "id": "css-m-017",
+    "difficulty": "medium",
+    "q": "You notice a layout shift when a web font loads. What CSS property helps prevent this?",
+    "options": [
+      "font-display: swap",
+      "font-loading: prevent-shift",
+      "text-rendering: stable",
+      "font-delay: none"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "font-display: swap tells the browser to show a fallback font immediately and swap to the web font when it loads. Other values like optional can prevent layout shift entirely by not swapping if the font loads too slowly."
+  },
+  {
+    "id": "css-m-018",
+    "difficulty": "medium",
+    "q": "What does the clip-path property do?",
+    "options": [
+      "Clips the element's overflow content",
+      "Defines a visible region and hides everything outside that shape",
+      "Clips the element's border radius",
+      "Prevents the element from being selected"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "clip-path creates a clipping region using shapes like circle, polygon, or SVG paths. Everything outside the region is hidden. Useful for creative shapes and image masks."
+  },
+  {
+    "id": "css-m-019",
+    "difficulty": "medium",
+    "q": "You want CSS styles to only apply inside a specific component without affecting global styles. What approach do you use?",
+    "options": [
+      "Use !important on all component styles",
+      "CSS Modules or scoped styles that auto-generate unique class names",
+      "Prefix all selectors with the component name manually",
+      "Use inline styles for everything"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "CSS Modules automatically scope styles to the component by generating unique class names at build time. This prevents style leakage without manual prefixing or specificity hacks."
+  },
+  {
+    "id": "css-m-020",
+    "difficulty": "medium",
+    "q": "You set opacity: 0 on an element. Can the user still interact with it?",
+    "options": [
+      "No — opacity: 0 removes all interactivity",
+      "Yes — the element is invisible but still occupies space and receives events",
+      "Only if pointer-events: auto is set",
+      "It depends on the browser"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "opacity: 0 makes an element invisible but it still exists in the layout and receives mouse events. Use pointer-events: none to also disable interactions, or visibility: hidden."
+  },
+  {
+    "id": "css-m-021",
+    "difficulty": "medium",
+    "q": "What is a stacking context and when is one created?",
+    "options": [
+      "A CSS feature that stacks multiple backgrounds on one element",
+      "An isolated layer where z-index values are compared — created by position with z-index, opacity less than 1, or transform",
+      "The order in which CSS files are loaded",
+      "A flexbox feature for ordering items"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A stacking context is a self-contained layer. z-index only competes within the same stacking context. New ones are created by position + z-index, opacity < 1, transform, filter and others."
+  },
+  {
+    "id": "css-m-022",
+    "difficulty": "medium",
+    "q": "You want an element to grow and fill available space in a flex container. What property do you set on the item?",
+    "options": [
+      "flex-grow: 0",
+      "flex: 1 or flex-grow: 1",
+      "width: 100%",
+      "align-self: stretch"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "flex-grow: 1 tells the item to take up any available space in the container. flex: 1 is shorthand for flex-grow: 1, flex-shrink: 1, flex-basis: 0."
+  },
+  {
+    "id": "css-m-023",
+    "difficulty": "medium",
+    "q": "What does the gap property do in CSS Grid and Flexbox?",
+    "options": [
+      "Adds space between the container and its children",
+      "Adds space between items without needing margins on each item",
+      "Sets the minimum space items need before wrapping",
+      "gap only works in Grid not Flexbox"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "gap adds consistent space between grid or flex items. It is cleaner than adding margins to each item because it doesn't add space on the outer edges."
+  },
+  {
+    "id": "css-m-024",
+    "difficulty": "medium",
+    "q": "You want to animate an element smoothly. Which properties should you animate for best performance?",
+    "options": [
+      "width and height — they are the most common",
+      "transform and opacity — they are GPU accelerated and don't trigger layout",
+      "margin and padding — they affect spacing directly",
+      "color and background-color — they are lightweight"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "transform and opacity are handled by the GPU compositor and do not trigger layout or paint. Animating width, height, margin or padding causes expensive layout recalculations on every frame."
+  },
+  {
+    "id": "css-m-025",
+    "difficulty": "medium",
+    "q": "You use position: absolute on a child but it positions relative to the page not the parent. What is wrong?",
+    "options": [
+      "Absolute positioning always uses the page as reference",
+      "The parent needs a position other than static set on it",
+      "You need to set overflow: hidden on the parent",
+      "Absolute positioning only works inside flex containers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Absolutely positioned elements look for the nearest positioned ancestor. If no ancestor has position set they use the initial containing block. Add position: relative to the parent to contain the child."
+  }
+]
