@@ -1,0 +1,352 @@
+[
+  {
+    "id": "js-e-001",
+    "difficulty": "easy",
+    "q": "You declare a variable with var inside an if block and access it outside. It works. Why?",
+    "options": [
+      "var is global by default",
+      "var is function-scoped, not block-scoped",
+      "if blocks don't create scope in JS",
+      "var hoists to the file level"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "var ignores block boundaries like if and for. It only respects function scope. Use let or const for block-scoped behavior."
+  },
+  {
+    "id": "js-e-002",
+    "difficulty": "easy",
+    "q": "Your function logs undefined before a var variable is assigned. What is happening?",
+    "options": [
+      "The variable name is reserved",
+      "var is hoisted but not its value",
+      "You need let for logging to work",
+      "JS executes bottom to top"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "var declarations are hoisted to the top of their scope but initialized as undefined. The value only exists after the assignment line runs."
+  },
+  {
+    "id": "js-e-003",
+    "difficulty": "easy",
+    "q": "0 == false returns true but 0 === false returns false. Why?",
+    "options": [
+      "== is broken and should never be used",
+      "== checks value and type, === checks value only",
+      "== coerces types before comparing, === does not",
+      "false is stored as 0 so they are always equal"
+    ],
+    "correct": 2,
+    "wrongPick": 3,
+    "explain": "== converts both values to the same type before comparing. === never coerces — it checks value and type strictly."
+  },
+  {
+    "id": "js-e-004",
+    "difficulty": "easy",
+    "q": "typeof null returns 'object'. Your teammate says your code has a bug. Do they?",
+    "options": [
+      "Yes — null must be reassigned first",
+      "Yes — use instanceof null instead",
+      "No — it's a known historical JS bug",
+      "No — null is an object by design"
+    ],
+    "correct": 2,
+    "wrongPick": 3,
+    "explain": "typeof null returning 'object' is a preserved bug from JS's original implementation. To check for null use strict equality: value === null."
+  },
+  {
+    "id": "js-e-005",
+    "difficulty": "easy",
+    "q": "You sort an array of numbers and 10 appears before 2. What went wrong?",
+    "options": [
+      "Arrays over 9 items need a different method",
+      "sort() converts to strings and sorts alphabetically",
+      "You need to reverse before sorting",
+      "sort() only works on strings"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "sort() converts elements to strings by default. '10' comes before '2' alphabetically. Pass a comparator to sort numerically: array.sort((a, b) => a - b)."
+  },
+  {
+    "id": "js-e-006",
+    "difficulty": "easy",
+    "q": "You copy an object to a new variable, change a property, and the original changes too. Why?",
+    "options": [
+      "Objects are immutable so something else is wrong",
+      "Use const to prevent this",
+      "Both variables point to the same object in memory",
+      "JS automatically syncs objects with matching properties"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "Objects are assigned by reference not by value. Both variables point to the same memory location so changes through either variable affect the same object."
+  },
+  {
+    "id": "js-e-007",
+    "difficulty": "easy",
+    "q": "Your arrow function with curly braces returns undefined despite having a return statement. Why?",
+    "options": [
+      "Arrow functions cannot use return",
+      "Curly braces require an explicit return keyword",
+      "The return value needs parentheses",
+      "Arrow functions only work with implicit returns"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Curly braces create a block body that requires an explicit return. Without curly braces the expression is returned implicitly."
+  },
+  {
+    "id": "js-e-008",
+    "difficulty": "easy",
+    "q": "You refactor an object method from a regular function to an arrow function and this breaks. Why?",
+    "options": [
+      "Arrow functions don't support this at all",
+      "Arrow functions inherit this from their lexical scope",
+      "You need to call .bind(this) on arrow functions",
+      "this only works inside class methods"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Arrow functions don't have their own this — they inherit it from the surrounding scope. As object methods they pick up this from outside the object."
+  },
+  {
+    "id": "js-e-009",
+    "difficulty": "easy",
+    "q": "What is the cleanest way to combine two arrays in modern JavaScript?",
+    "options": [
+      "Array.from() on both arrays",
+      "Use the spread operator: [...arr1, ...arr2]",
+      "arr1.push(arr2)",
+      "Object.assign() on both arrays"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The spread operator creates a new array with all elements from both. arr1.push(arr2) adds the second array as a nested element not merged."
+  },
+  {
+    "id": "js-e-010",
+    "difficulty": "easy",
+    "q": "Accessing a let variable before its declaration throws a ReferenceError. var just logs undefined. Why?",
+    "options": [
+      "let is not hoisted, var is fully hoisted",
+      "let stays in a Temporal Dead Zone until its declaration",
+      "ReferenceError means let doesn't exist in older JS",
+      "var is the only declaration that works before its line"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Both are hoisted but differently. var initializes as undefined. let sits in a Temporal Dead Zone and throws if accessed before its declaration line."
+  },
+  {
+    "id": "js-e-011",
+    "difficulty": "easy",
+    "q": "You need to check if a value is NaN. value === NaN always returns false. Why?",
+    "options": [
+      "NaN requires double equals to compare",
+      "NaN is not equal to anything including itself",
+      "You need to convert to string first",
+      "=== doesn't work with special values"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "NaN is the only value in JS not equal to itself. Use Number.isNaN(value) to check for NaN correctly."
+  },
+  {
+    "id": "js-e-012",
+    "difficulty": "easy",
+    "q": "What is the difference between null and undefined in JavaScript?",
+    "options": [
+      "They are identical, just different syntax",
+      "null means no value assigned, undefined means intentionally empty",
+      "undefined is uninitialized, null is intentionally set to no value",
+      "null is for objects, undefined is for primitives"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "undefined means a variable was declared but never assigned. null is explicitly assigned by the developer to represent the absence of a value."
+  },
+  {
+    "id": "js-e-013",
+    "difficulty": "easy",
+    "q": "You want to extract name and age from a user object into separate variables. What is the cleanest way?",
+    "options": [
+      "const name = user['name'], age = user['age']",
+      "const name = user.name; const age = user.age",
+      "const { name, age } = user",
+      "Object.assign({ name, age }, user)"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "Destructuring lets you extract multiple properties in one line. const { name, age } = user is the modern idiomatic approach."
+  },
+  {
+    "id": "js-e-014",
+    "difficulty": "easy",
+    "q": "You want the first item of an array without knowing its name. What is the cleanest approach?",
+    "options": [
+      "const first = array.first()",
+      "const [first] = array",
+      "const first = array.get(0)",
+      "const first = array.shift()"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Array destructuring lets you extract items by position. shift() also works but mutates the original array."
+  },
+  {
+    "id": "js-e-015",
+    "difficulty": "easy",
+    "q": "Your colleague uses var inside a for loop and the variable leaks outside. What should they use?",
+    "options": [
+      "const — it prevents all reassignment",
+      "let — it is block-scoped and stays inside the loop",
+      "function — wrap the loop in a function",
+      "Nothing — this is expected behavior"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "let is block-scoped and stays within the for loop. var leaks out because it is function-scoped."
+  },
+  {
+    "id": "js-e-016",
+    "difficulty": "easy",
+    "q": "You use .map() on an array but forget to return inside the callback. Every element becomes undefined. Why?",
+    "options": [
+      "map() doesn't support arrow functions",
+      "map() requires a separate return array",
+      "The callback returned undefined so map used that as the value",
+      "map() only works on string arrays"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "map() builds a new array from whatever each callback returns. If the callback has no return statement it returns undefined."
+  },
+  {
+    "id": "js-e-017",
+    "difficulty": "easy",
+    "q": "What does the spread operator do when used with an object?",
+    "options": [
+      "Converts the object to an array",
+      "Creates a deep clone of the object",
+      "Copies the object's own enumerable properties into a new object",
+      "Merges nested objects recursively"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "The spread operator does a shallow copy — it copies top-level properties. Nested objects are still referenced not cloned."
+  },
+  {
+    "id": "js-e-018",
+    "difficulty": "easy",
+    "q": "You want to run code after a 2 second delay. Which method do you use?",
+    "options": [
+      "setInterval(fn, 2000)",
+      "delay(fn, 2000)",
+      "setTimeout(fn, 2000)",
+      "wait(fn, 2000)"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "setTimeout runs a function once after a delay in milliseconds. setInterval would run it repeatedly every 2 seconds."
+  },
+  {
+    "id": "js-e-019",
+    "difficulty": "easy",
+    "q": "You need to check if an array includes a specific value. What is the cleanest way?",
+    "options": [
+      "array.contains(value)",
+      "array.includes(value)",
+      "array.has(value)",
+      "array.find(value)"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "array.includes() returns true or false. contains() and has() don't exist on arrays. find() returns the element itself not a boolean."
+  },
+  {
+    "id": "js-e-020",
+    "difficulty": "easy",
+    "q": "You want to convert a string '42' to a number. What are valid ways?",
+    "options": [
+      "Number('42') or +'42'",
+      "int('42') or parse('42')",
+      "String.toNumber('42')",
+      "'42'.convert()"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Number() and the unary plus operator both convert strings to numbers. parseInt and parseFloat also work but Number() is cleanest for simple cases."
+  },
+  {
+    "id": "js-e-021",
+    "difficulty": "easy",
+    "q": "You want to loop over an array and run a function for each item without creating a new array. Which method?",
+    "options": [
+      "array.map()",
+      "array.filter()",
+      "array.forEach()",
+      "array.reduce()"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "forEach runs a function for each item and returns nothing. map creates a new array. Use forEach when you only need the side effect."
+  },
+  {
+    "id": "js-e-022",
+    "difficulty": "easy",
+    "q": "You want to remove duplicate values from an array. What is the quickest modern approach?",
+    "options": [
+      "[...new Set(array)]",
+      "array.unique()",
+      "array.filter().distinct()",
+      "Array.dedupe(array)"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Set only stores unique values. Spreading it back into an array gives you a deduplicated version in one line. The other options don't exist in JS."
+  },
+  {
+    "id": "js-e-023",
+    "difficulty": "easy",
+    "q": "You want to get the last item of an array without knowing its length. What is the cleanest way?",
+    "options": [
+      "array.last()",
+      "array[array.length]",
+      "array[array.length - 1]",
+      "array.end()"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "Arrays are zero-indexed so the last item is at length minus 1. array[array.length] would be undefined. array.last() doesn't exist natively."
+  },
+  {
+    "id": "js-e-024",
+    "difficulty": "easy",
+    "q": "You want to check if a variable is an array. What is the reliable way?",
+    "options": [
+      "typeof value === 'array'",
+      "value instanceof Object",
+      "Array.isArray(value)",
+      "value.isArray()"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "typeof returns 'object' for arrays so it's useless here. Array.isArray() is the correct and reliable method."
+  },
+  {
+    "id": "js-e-025",
+    "difficulty": "easy",
+    "q": "You need to add a property to an existing object. What is the correct way?",
+    "options": [
+      "object.addProperty('key', value)",
+      "object.key = value or object['key'] = value",
+      "object.push({ key: value })",
+      "Object.add(object, 'key', value)"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "You can add properties directly using dot notation or bracket notation. push() is for arrays. addProperty() and Object.add() don't exist."
+  }
+]
