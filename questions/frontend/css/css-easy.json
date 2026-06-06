@@ -1,0 +1,352 @@
+[
+  {
+    "id": "css-e-001",
+    "difficulty": "easy",
+    "q": "You set width and padding on a box but the total width is larger than expected. Why?",
+    "options": [
+      "Padding is ignored by default in CSS",
+      "By default width only applies to content — padding is added on top",
+      "You need to set margin to 0 first",
+      "Width and padding cannot be used together"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The default box model adds padding on top of the declared width. Use box-sizing: border-box to include padding and border inside the declared width."
+  },
+  {
+    "id": "css-e-002",
+    "difficulty": "easy",
+    "q": "You want padding and border included in an element's width. What CSS property do you set?",
+    "options": [
+      "box-model: border-box",
+      "box-sizing: border-box",
+      "width: include-padding",
+      "padding-box: true"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "box-sizing: border-box makes the declared width include padding and border. This is now standard practice and most resets apply it to all elements."
+  },
+  {
+    "id": "css-e-003",
+    "difficulty": "easy",
+    "q": "What is the difference between margin and padding?",
+    "options": [
+      "Margin is inside the element, padding is outside",
+      "Padding is space inside the element, margin is space outside",
+      "They are identical — just different names",
+      "Margin affects background color, padding does not"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Padding is the space between the content and the border. Margin is the space outside the border between the element and its neighbors."
+  },
+  {
+    "id": "css-e-004",
+    "difficulty": "easy",
+    "q": "You want to center a block element horizontally inside its parent. What is the classic way?",
+    "options": [
+      "text-align: center on the element",
+      "margin: 0 auto on the element with a defined width",
+      "padding: auto on the parent",
+      "position: center on the element"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "margin: 0 auto distributes available horizontal space equally on both sides. The element must have a defined width for this to work."
+  },
+  {
+    "id": "css-e-005",
+    "difficulty": "easy",
+    "q": "What does display: none do compared to visibility: hidden?",
+    "options": [
+      "They are identical",
+      "display: none removes the element from layout, visibility: hidden hides it but keeps the space",
+      "visibility: hidden removes the element from layout, display: none keeps the space",
+      "display: none only works on block elements"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "display: none removes the element entirely from the document flow. visibility: hidden makes it invisible but it still occupies space in the layout."
+  },
+  {
+    "id": "css-e-006",
+    "difficulty": "easy",
+    "q": "You apply a color to a parent element. The children inherit it without you setting it. Why?",
+    "options": [
+      "All CSS properties are inherited by default",
+      "color is an inherited property — children use the parent value unless they set their own",
+      "You accidentally set color on the children too",
+      "Inheritance only works with class selectors"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Some CSS properties like color and font-size are inherited by default. Children use the parent's value unless they explicitly override it."
+  },
+  {
+    "id": "css-e-007",
+    "difficulty": "easy",
+    "q": "You want an element to sit next to another element on the same line. What display value do you use?",
+    "options": [
+      "display: block",
+      "display: inline or display: inline-block",
+      "display: flex on the element itself",
+      "float: inline"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Block elements start on a new line. Inline and inline-block elements sit alongside other inline elements on the same line."
+  },
+  {
+    "id": "css-e-008",
+    "difficulty": "easy",
+    "q": "What is the difference between inline and inline-block?",
+    "options": [
+      "inline-block allows setting width and height, inline does not",
+      "inline allows setting width and height, inline-block does not",
+      "They are identical",
+      "inline-block starts on a new line, inline does not"
+    ],
+    "correct": 0,
+    "wrongPick": 2,
+    "explain": "Inline elements cannot have width or height set. Inline-block sits inline with other elements but respects width, height, padding and margin like a block element."
+  },
+  {
+    "id": "css-e-009",
+    "difficulty": "easy",
+    "q": "You set position: absolute on an element. What does it position relative to?",
+    "options": [
+      "Always the viewport",
+      "The nearest ancestor with a position other than static",
+      "The body element always",
+      "The element's natural position in the flow"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Absolutely positioned elements are placed relative to their nearest positioned ancestor. If no ancestor has a position set they fall back to the initial containing block."
+  },
+  {
+    "id": "css-e-010",
+    "difficulty": "easy",
+    "q": "You want an element to stay visible in the same position as the user scrolls. What position value do you use?",
+    "options": [
+      "position: absolute",
+      "position: static",
+      "position: fixed",
+      "position: sticky"
+    ],
+    "correct": 2,
+    "wrongPick": 3,
+    "explain": "position: fixed anchors an element to the viewport so it stays in place during scrolling. position: sticky stays fixed only within its parent container."
+  },
+  {
+    "id": "css-e-011",
+    "difficulty": "easy",
+    "q": "What does z-index control?",
+    "options": [
+      "The zoom level of an element",
+      "The stacking order of positioned elements along the z-axis",
+      "The horizontal position of an element",
+      "The number of layers in a CSS animation"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "z-index controls which element appears in front when elements overlap. Higher values appear on top. It only works on elements with a position other than static."
+  },
+  {
+    "id": "css-e-012",
+    "difficulty": "easy",
+    "q": "You use em for font size. What is it relative to?",
+    "options": [
+      "The root html element font size",
+      "The font size of the element's parent",
+      "The viewport width",
+      "The browser default font size always"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "em is relative to the font size of the parent element. This means it compounds through nested elements. Use rem to always be relative to the root font size instead."
+  },
+  {
+    "id": "css-e-013",
+    "difficulty": "easy",
+    "q": "What does rem stand for and what is it relative to?",
+    "options": [
+      "Relative em — relative to the parent element",
+      "Root em — relative to the font size of the html element",
+      "Responsive em — relative to the viewport",
+      "Reset em — resets to browser default"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "rem stands for root em. It is always relative to the font size of the html element regardless of nesting. This makes it more predictable than em for sizing."
+  },
+  {
+    "id": "css-e-014",
+    "difficulty": "easy",
+    "q": "You want a CSS rule to apply only on screens narrower than 768px. What do you use?",
+    "options": [
+      "screen-size: max(768px)",
+      "@media (max-width: 768px)",
+      "@responsive max-width: 768px",
+      "viewport: 768px"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Media queries let you apply CSS rules based on screen conditions. max-width: 768px targets screens up to 768px wide — typically mobile devices."
+  },
+  {
+    "id": "css-e-015",
+    "difficulty": "easy",
+    "q": "What is the specificity order from lowest to highest?",
+    "options": [
+      "IDs, classes, elements, inline styles",
+      "Elements, classes, IDs, inline styles",
+      "Classes, elements, IDs, inline styles",
+      "Inline styles, IDs, classes, elements"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Specificity order from lowest to highest is element selectors, class selectors, ID selectors, then inline styles. Higher specificity wins when rules conflict."
+  },
+  {
+    "id": "css-e-016",
+    "difficulty": "easy",
+    "q": "You add a class and an ID selector for the same element with conflicting styles. Which wins?",
+    "options": [
+      "The class selector — it is more commonly used",
+      "The ID selector — it has higher specificity",
+      "Whichever comes last in the stylesheet",
+      "They cancel each other out"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "ID selectors have higher specificity than class selectors. The ID style wins regardless of source order. Use classes for reusable styles and avoid IDs for styling."
+  },
+  {
+    "id": "css-e-017",
+    "difficulty": "easy",
+    "q": "You set color: red on an element but another rule overrides it with color: blue. How do you force red to apply?",
+    "options": [
+      "Add !important after the value",
+      "Move the rule to the bottom of the stylesheet",
+      "Use an ID selector instead of a class",
+      "Add priority: high to the rule"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "!important overrides all other declarations regardless of specificity. Use it sparingly — it makes styles hard to debug and override later."
+  },
+  {
+    "id": "css-e-018",
+    "difficulty": "easy",
+    "q": "What is a CSS pseudo-class?",
+    "options": [
+      "A fake class used for testing",
+      "A keyword added to a selector to style elements based on their state or position",
+      "A class that only applies on hover",
+      "A CSS variable that holds a class name"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Pseudo-classes like :hover, :focus, :first-child target elements based on state or position without adding extra HTML classes. They start with a single colon."
+  },
+  {
+    "id": "css-e-019",
+    "difficulty": "easy",
+    "q": "What is the difference between :hover and :focus?",
+    "options": [
+      "They are identical",
+      ":hover triggers on mouse over, :focus triggers when an element receives keyboard or click focus",
+      ":focus only works on input elements",
+      ":hover works on mobile, :focus only works on desktop"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": ":hover applies when the mouse is over an element. :focus applies when an element is focused via keyboard tab or click. Both are important for accessibility."
+  },
+  {
+    "id": "css-e-020",
+    "difficulty": "easy",
+    "q": "You want to add a style to an element only when it is the first child of its parent. What pseudo-class do you use?",
+    "options": [
+      ":first-element",
+      ":first-child",
+      ":first-of-type",
+      ":nth-child(0)"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": ":first-child selects an element only if it is the first child of its parent. :first-of-type selects the first element of that type regardless of position."
+  },
+  {
+    "id": "css-e-021",
+    "difficulty": "easy",
+    "q": "What does the CSS cascade mean?",
+    "options": [
+      "CSS files load from top to bottom",
+      "The browser resolves conflicting styles using origin, specificity, and source order",
+      "Styles cascade from parent to child automatically",
+      "CSS animations play in a cascading sequence"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The cascade is the algorithm that determines which CSS rule wins when multiple rules target the same element. It considers origin, importance, specificity, and source order."
+  },
+  {
+    "id": "css-e-022",
+    "difficulty": "easy",
+    "q": "You want to make text bold in CSS. What property do you use?",
+    "options": [
+      "text-weight: bold",
+      "font-weight: bold",
+      "font-style: bold",
+      "text-style: bold"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "font-weight controls the thickness of text. Common values are normal, bold, or numeric values like 400 (normal) and 700 (bold)."
+  },
+  {
+    "id": "css-e-023",
+    "difficulty": "easy",
+    "q": "What is the default position value for HTML elements?",
+    "options": [
+      "position: relative",
+      "position: static",
+      "position: auto",
+      "position: normal"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "All elements default to position: static which means they follow normal document flow. Top, right, bottom, left and z-index have no effect on static elements."
+  },
+  {
+    "id": "css-e-024",
+    "difficulty": "easy",
+    "q": "You want to make an image fill its container without stretching. What CSS do you use?",
+    "options": [
+      "width: 100%; height: 100%",
+      "object-fit: cover with width: 100% and height: 100%",
+      "background-size: cover",
+      "image-fit: contain"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "object-fit: cover scales the image to fill the container while maintaining aspect ratio, cropping if necessary. Without it the image would stretch and distort."
+  },
+  {
+    "id": "css-e-025",
+    "difficulty": "easy",
+    "q": "What does overflow: hidden do?",
+    "options": [
+      "Hides the element from the page",
+      "Clips any content that extends beyond the element's boundaries",
+      "Prevents the element from receiving clicks",
+      "Hides the element's border"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "overflow: hidden clips content that goes beyond the element's box. It also creates a new block formatting context which can be useful for containing floats."
+  }
+]
