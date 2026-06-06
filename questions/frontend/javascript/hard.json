@@ -1,0 +1,352 @@
+[
+  {
+    "id": "js-h-001",
+    "difficulty": "hard",
+    "q": "Your setInterval callback always reads the initial state value even after it changes. What is happening?",
+    "options": [
+      "setInterval runs in a separate thread",
+      "The callback closed over the initial value and never updates",
+      "State updates are async so they arrive too late",
+      "setInterval blocks the event loop"
+    ],
+    "correct": 1,
+    "explain": "The callback forms a closure over the value at creation time. When state updates the closure still holds the old reference. Use a ref or functional update pattern to always read the latest value.",
+    "botAnswers": { "fresher": 2, "arjun": 3, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-002",
+    "difficulty": "hard",
+    "q": "You have a Promise chain where one .then() throws. Which .catch() handles it?",
+    "options": [
+      "The .catch() before the throwing .then()",
+      "The next .catch() after the throwing .then()",
+      "All .catch() handlers in the chain",
+      "None — thrown errors in .then() are unhandled"
+    ],
+    "correct": 1,
+    "explain": "Errors propagate down the chain and are caught by the next .catch() after the point of failure. A .catch() before it never sees the error. After catching, the chain continues normally.",
+    "botAnswers": { "fresher": 3, "arjun": 3, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-003",
+    "difficulty": "hard",
+    "q": "You run Promise.all() with 5 promises and the third one rejects. What happens to the other 4?",
+    "options": [
+      "They are all cancelled immediately",
+      "They continue running but their results are ignored",
+      "They are paused until you handle the rejection",
+      "The first two results are returned, the rest cancelled"
+    ],
+    "correct": 1,
+    "explain": "Promises are not cancellable in native JS. Promise.all() rejects immediately on the first failure but the other promises keep running — you just never get their results. Use Promise.allSettled() if you need all outcomes.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-004",
+    "difficulty": "hard",
+    "q": "You see a microtask queue and a macrotask queue mentioned. Which runs first after the call stack empties?",
+    "options": [
+      "Macrotask queue — it has higher priority",
+      "Microtask queue — it fully drains before any macrotask runs",
+      "They alternate — one microtask then one macrotask",
+      "Whichever was queued first"
+    ],
+    "correct": 1,
+    "explain": "After the call stack empties the microtask queue drains completely before any macrotask runs. Promise callbacks are microtasks. setTimeout callbacks are macrotasks. This is why Promise.resolve().then() runs before setTimeout(fn, 0).",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-005",
+    "difficulty": "hard",
+    "q": "You create two objects with identical properties and store one in a WeakMap. The object goes out of scope. What happens?",
+    "options": [
+      "The WeakMap throws an error",
+      "The WeakMap entry is garbage collected automatically",
+      "The object stays alive because WeakMap holds a reference",
+      "WeakMap converts it to a regular key"
+    ],
+    "correct": 1,
+    "explain": "WeakMap holds weak references. If no other reference to the key object exists it becomes eligible for garbage collection and the WeakMap entry disappears. This is why WeakMap is not iterable — entries can vanish at any time.",
+    "botAnswers": { "fresher": 2, "arjun": 2, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-006",
+    "difficulty": "hard",
+    "q": "Your generator function yields 3 values. You call .next() a 4th time. What do you get?",
+    "options": [
+      "It throws a StopIteration error",
+      "It returns the first value again",
+      "It returns { value: undefined, done: true }",
+      "It returns null"
+    ],
+    "correct": 2,
+    "explain": "Once a generator is exhausted every subsequent .next() call returns { value: undefined, done: true }. There is no error. The generator simply signals it has no more values to yield.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-h-007",
+    "difficulty": "hard",
+    "q": "You use Object.defineProperty to make a property non-writable. Someone tries to change it in strict mode. What happens?",
+    "options": [
+      "The change silently fails",
+      "It throws a TypeError",
+      "The property is deleted instead",
+      "It creates a new property with the same name"
+    ],
+    "correct": 1,
+    "explain": "In strict mode writing to a non-writable property throws a TypeError. In non-strict mode it silently fails. This is one of the key reasons to always use strict mode.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-008",
+    "difficulty": "hard",
+    "q": "You use a Proxy to intercept property access on an object. What trap do you define?",
+    "options": [
+      "set trap",
+      "intercept trap",
+      "get trap",
+      "access trap"
+    ],
+    "correct": 2,
+    "explain": "The get trap intercepts property reads. The set trap intercepts property writes. has intercepts the in operator. deleteProperty intercepts delete. These are the core Proxy traps.",
+    "botAnswers": { "fresher": 0, "arjun": 2, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-h-009",
+    "difficulty": "hard",
+    "q": "You need to make an object iterable with a for...of loop. What must you implement?",
+    "options": [
+      "A .forEach() method",
+      "The Symbol.iterator method returning an iterator",
+      "A .next() method directly on the object",
+      "Extend the Array class"
+    ],
+    "correct": 1,
+    "explain": "An object is iterable if it has a Symbol.iterator method that returns an iterator object with a .next() method. for...of calls Symbol.iterator automatically to get the iterator.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-010",
+    "difficulty": "hard",
+    "q": "You call an async function without await and it throws. Where does the error go?",
+    "options": [
+      "It crashes the application",
+      "It is logged to console automatically",
+      "It becomes an unhandled Promise rejection",
+      "It is silently ignored"
+    ],
+    "correct": 2,
+    "explain": "Without await or .catch() the rejected Promise has no handler. This becomes an unhandledRejection event. In Node.js recent versions this crashes the process. In browsers it shows a console warning.",
+    "botAnswers": { "fresher": 3, "arjun": 2, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-h-011",
+    "difficulty": "hard",
+    "q": "You add properties to an object inside a loop in different orders each time. V8 slows down over time. Why?",
+    "options": [
+      "V8 has a property limit per object",
+      "Inconsistent property order breaks V8's hidden class optimization",
+      "Loop-created objects are stored differently in memory",
+      "V8 only optimizes objects with fewer than 10 properties"
+    ],
+    "correct": 1,
+    "explain": "V8 creates hidden classes for objects with the same shape. Adding properties in different orders creates different hidden classes, breaking inline cache optimization. Always initialize objects with the same property order.",
+    "botAnswers": { "fresher": 0, "arjun": 3, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-012",
+    "difficulty": "hard",
+    "q": "You use structuredClone() to deep clone an object with a function property. What happens to the function?",
+    "options": [
+      "The function is cloned perfectly",
+      "The function is converted to a string",
+      "structuredClone throws a DataCloneError",
+      "The function property is set to null"
+    ],
+    "correct": 2,
+    "explain": "structuredClone uses the structured clone algorithm which does not support functions, Symbols, or DOM nodes. It throws a DataCloneError if it encounters them. For objects with functions you need a custom clone solution.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-h-013",
+    "difficulty": "hard",
+    "q": "Your memory usage grows every time a user opens a modal. The modal uses event listeners. What is likely wrong?",
+    "options": [
+      "Modals are too large for the DOM",
+      "Event listeners are added on open but never removed on close",
+      "The modal component is not using const",
+      "addEventListener has a memory leak by design"
+    ],
+    "correct": 1,
+    "explain": "Event listeners hold references to their callbacks and the elements they are attached to. If you never call removeEventListener the listener and everything it references stays in memory even after the modal is removed from the DOM.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-014",
+    "difficulty": "hard",
+    "q": "You call Promise.race() with 3 promises. The first resolves, then the second rejects. What is the final result?",
+    "options": [
+      "The rejection overrides the resolution",
+      "Both results are returned as an array",
+      "The resolved value — first settled wins permanently",
+      "It depends on timing"
+    ],
+    "correct": 2,
+    "explain": "Promise.race() resolves or rejects with the first settled promise. Once settled the result is final. Subsequent resolutions or rejections from other promises are completely ignored.",
+    "botAnswers": { "fresher": 0, "arjun": 3, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-h-015",
+    "difficulty": "hard",
+    "q": "You use Symbol as an object key. Can JSON.stringify serialize it?",
+    "options": [
+      "Yes Symbols are serialized as strings",
+      "No Symbol keys are silently omitted",
+      "Only if you use Symbol.for()",
+      "It throws a TypeError"
+    ],
+    "correct": 1,
+    "explain": "JSON.stringify silently drops Symbol-keyed properties. It also drops functions and undefined values. Symbol keys are completely invisible to JSON serialization.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-016",
+    "difficulty": "hard",
+    "q": "You use tagged template literals. What does the tag function receive as its first argument?",
+    "options": [
+      "The full template string as one string",
+      "An array of the static string parts",
+      "An array of the interpolated values",
+      "The template string split by spaces"
+    ],
+    "correct": 1,
+    "explain": "The tag function receives an array of static string segments as the first argument and the interpolated values as remaining arguments. This lets you process and transform the template before it becomes a string.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-017",
+    "difficulty": "hard",
+    "q": "You need to flatten a deeply nested array of unknown depth. What is the cleanest one-liner?",
+    "options": [
+      "array.flat()",
+      "array.reduce((a, b) => a.concat(b))",
+      "array.flat(Infinity)",
+      "JSON.parse(JSON.stringify(array)).flat()"
+    ],
+    "correct": 2,
+    "explain": "flat() with no argument only flattens one level deep. Passing Infinity recursively flattens all levels regardless of depth. This is the cleanest solution for unknown nesting depth.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-h-018",
+    "difficulty": "hard",
+    "q": "You use for...in on an array and get unexpected keys. Why?",
+    "options": [
+      "for...in only works on objects not arrays",
+      "for...in iterates enumerable properties including inherited ones",
+      "Arrays need for...of to access indices",
+      "for...in skips numeric keys by design"
+    ],
+    "correct": 1,
+    "explain": "for...in iterates all enumerable properties including prototype chain properties. If anything has been added to Array.prototype you will see those too. Use for...of or forEach for arrays.",
+    "botAnswers": { "fresher": 0, "arjun": 2, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-019",
+    "difficulty": "hard",
+    "q": "You implement memoization but memory usage keeps growing. What is missing?",
+    "options": [
+      "The cache needs a size limit or expiry strategy",
+      "Memoization only works with pure functions",
+      "You need to use WeakMap instead of Map",
+      "The function is not returning the cached value correctly"
+    ],
+    "correct": 0,
+    "explain": "A naive memoization cache grows forever. In production you need an eviction strategy — either a max size with LRU eviction, a TTL expiry, or using WeakMap so entries are garbage collected when keys go out of scope.",
+    "botAnswers": { "fresher": 2, "arjun": 2, "meera": 0, "ghost": 0 }
+  },
+  {
+    "id": "js-h-020",
+    "difficulty": "hard",
+    "q": "You write a curried function. add(2)(3) works but add(2, 3) does not. How do you support both calling styles?",
+    "options": [
+      "You cannot — currying and regular calls are mutually exclusive",
+      "Use default parameters to handle the second argument",
+      "Check arguments.length and return a function or result accordingly",
+      "Use the rest operator to collect all arguments"
+    ],
+    "correct": 2,
+    "explain": "Auto-currying checks if enough arguments were provided. If yes execute immediately. If not return a function waiting for the rest. This is how libraries like Ramda implement curry.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-h-021",
+    "difficulty": "hard",
+    "q": "You use async/await inside a forEach loop but the awaits don't actually pause execution. Why?",
+    "options": [
+      "forEach does not support async callbacks",
+      "forEach ignores the returned Promise from async callbacks",
+      "await only works in the outermost async function",
+      "You need to use await forEach() instead"
+    ],
+    "correct": 1,
+    "explain": "forEach calls your callback and ignores whatever it returns including Promises. Each iteration fires without waiting for the previous to finish. Use for...of with await or Promise.all with map instead.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-022",
+    "difficulty": "hard",
+    "q": "You use Proxy to validate object property writes. A deeply nested property is set directly. Does your trap fire?",
+    "options": [
+      "Yes Proxy intercepts all nested writes automatically",
+      "No the set trap only fires for direct property writes on the proxied object",
+      "Only if you set deep: true in the Proxy options",
+      "Only for the first level of nesting"
+    ],
+    "correct": 1,
+    "explain": "A Proxy only intercepts operations on the object it directly wraps. Nested objects are plain objects not proxies. To intercept nested writes you need to wrap nested objects in their own Proxies recursively.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-023",
+    "difficulty": "hard",
+    "q": "You need to execute 10 API calls but limit concurrency to 3 at a time. What approach do you use?",
+    "options": [
+      "Promise.all() with all 10 promises",
+      "Sequential await in a for loop",
+      "A custom queue that batches into groups of 3",
+      "setTimeout to stagger the calls"
+    ],
+    "correct": 2,
+    "explain": "Promise.all() fires all 10 at once. Sequential await is too slow. A concurrency-limited queue processes a batch and only starts new calls as slots free up. Libraries like p-limit implement this cleanly.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-h-024",
+    "difficulty": "hard",
+    "q": "You use Object.freeze() on an object with a nested object. Can the nested object's properties be changed?",
+    "options": [
+      "No freeze is recursive by default",
+      "Yes freeze is shallow — nested objects are not frozen",
+      "Only if the nested object was created after freeze was called",
+      "No but you will get a warning not an error"
+    ],
+    "correct": 1,
+    "explain": "Object.freeze() is shallow. It freezes the top-level properties of the object but nested objects remain mutable. For deep immutability you need to recursively freeze all nested objects.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-h-025",
+    "difficulty": "hard",
+    "q": "You use the module pattern to create private variables. A junior asks why not just use a class with private fields. What is the real difference?",
+    "options": [
+      "There is no difference — they are functionally identical",
+      "Class private fields use # syntax and are enforced by the engine, closures rely on scope",
+      "Module pattern is faster than class private fields",
+      "Class private fields are not truly private — they can be accessed with reflection"
+    ],
+    "correct": 1,
+    "explain": "Both achieve privacy but differently. Closure-based privacy relies on scope rules. Class private fields using # are enforced at the language level — even reflection tools cannot access them. # fields are the modern standard.",
+    "botAnswers": { "fresher": 0, "arjun": 0, "meera": 1, "ghost": 1 }
+  }
+]
