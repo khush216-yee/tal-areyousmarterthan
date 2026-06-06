@@ -1,0 +1,351 @@
+[
+  {
+    "id": "react-h-001",
+    "difficulty": "hard",
+    "q": "You use useTransition to mark a state update as non-urgent. What does React do differently with it?",
+    "options": [
+      "It delays the update by a fixed 500ms timeout",
+      "React can interrupt and abandon the transition render if a more urgent update arrives",
+      "It runs the update in a web worker off the main thread",
+      "It batches the update with the next scheduled render"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "useTransition marks updates as interruptible. If a higher priority update like a keypress arrives React abandons the in-progress transition render and processes the urgent update first then restarts the transition."
+  },
+  {
+    "id": "react-h-002",
+    "difficulty": "hard",
+    "q": "What is React Fiber and what problem did it solve over the original reconciler?",
+    "options": [
+      "Fiber is a new JSX compiler that replaced Babel",
+      "Fiber made rendering interruptible allowing React to pause work and prioritize urgent updates",
+      "Fiber added support for async components in React",
+      "Fiber replaced the virtual DOM with a direct DOM diffing approach"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The old reconciler was synchronous and couldn't be interrupted. Fiber rewrote it as a linked list of work units that can be paused, resumed, and prioritized. This enabled Concurrent Mode features."
+  },
+  {
+    "id": "react-h-003",
+    "difficulty": "hard",
+    "q": "You use React Server Components. A colleague tries to add useState inside one. What happens?",
+    "options": [
+      "useState works normally in server components",
+      "It throws an error — server components cannot use hooks or manage client-side state",
+      "The state is persisted to the server session",
+      "useState is automatically converted to a server-side variable"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Server Components run only on the server. They cannot use hooks, event handlers, or any browser APIs. For interactivity you need a Client Component marked with 'use client'."
+  },
+  {
+    "id": "react-h-004",
+    "difficulty": "hard",
+    "q": "What is hydration in React SSR and what causes a hydration mismatch?",
+    "options": [
+      "Hydration is fetching data on the client after SSR",
+      "Hydration attaches event listeners to server-rendered HTML — mismatches happen when server and client render different output",
+      "Hydration is the process of converting JSX to HTML on the server",
+      "Hydration only applies to static site generation not SSR"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Hydration makes server-rendered HTML interactive by attaching React's event system. A mismatch occurs when the server HTML differs from what React renders on the client — often caused by browser-only APIs or non-deterministic values like Date.now()."
+  },
+  {
+    "id": "react-h-005",
+    "difficulty": "hard",
+    "q": "You use useDeferredValue on a prop. How does this differ from debouncing?",
+    "options": [
+      "useDeferredValue always adds a 300ms delay like debounce",
+      "useDeferredValue is adaptive — it only defers when React is busy, on fast devices it updates immediately",
+      "useDeferredValue prevents the value from updating more than once per second",
+      "They are identical — useDeferredValue is React's built-in debounce"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Debounce always waits a fixed time. useDeferredValue is adaptive — it shows the old value while rendering the new one in the background and only defers when there is rendering contention."
+  },
+  {
+    "id": "react-h-006",
+    "difficulty": "hard",
+    "q": "You notice React calls your component function twice in development. Why?",
+    "options": [
+      "There is a bug in your component causing an infinite render loop",
+      "React StrictMode intentionally double-invokes functions to help detect side effects",
+      "React renders twice to compare performance between renders",
+      "This only happens when the component has more than one useEffect"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "StrictMode double-invokes render functions, state initializers, and reducers in development to expose side effects in functions that should be pure. This only happens in development."
+  },
+  {
+    "id": "react-h-007",
+    "difficulty": "hard",
+    "q": "What is the difference between React's commit phase and render phase?",
+    "options": [
+      "Render phase writes to the DOM, commit phase computes changes",
+      "Render phase computes changes and is interruptible, commit phase applies DOM mutations and is synchronous",
+      "They are the same phase split for performance monitoring",
+      "Commit phase runs on the server, render phase runs on the client"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The render phase calls component functions and computes what changed — it can be interrupted in Concurrent Mode. The commit phase applies DOM mutations synchronously and cannot be interrupted."
+  },
+  {
+    "id": "react-h-008",
+    "difficulty": "hard",
+    "q": "You have a context with a value object. Every consumer re-renders even when unrelated state changes. What is the root cause?",
+    "options": [
+      "Context is not designed for performance-sensitive data",
+      "A new object reference is created on every provider render triggering all consumers",
+      "Consumers always re-render when the provider re-renders regardless of value",
+      "You need to use Redux instead of Context for this use case"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Context consumers re-render when the value reference changes. If the value is an inline object it gets a new reference every render. Wrap it in useMemo to stabilize the reference."
+  },
+  {
+    "id": "react-h-009",
+    "difficulty": "hard",
+    "q": "What is the purpose of the use() hook in React 19?",
+    "options": [
+      "It replaces all other hooks with a single unified API",
+      "It lets you read the value of a Promise or Context inside a component including conditionally",
+      "It is a new way to create custom hooks without the use prefix",
+      "It enables two-way data binding between components"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "use() can unwrap a Promise or read a Context and unlike other hooks it can be called conditionally. If the Promise is pending the component suspends automatically."
+  },
+  {
+    "id": "react-h-010",
+    "difficulty": "hard",
+    "q": "You use React.memo but the component still re-renders. The parent passes an onClick handler. What is happening?",
+    "options": [
+      "React.memo does not work when handlers are passed as props",
+      "The handler is a new function reference on every parent render breaking memo's shallow comparison",
+      "onClick handlers bypass React.memo by design",
+      "You need to use PureComponent instead for function prop comparison"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "React.memo compares props shallowly. An inline function creates a new reference every render so memo sees it as a new prop. Wrap the handler in useCallback to preserve the reference."
+  },
+  {
+    "id": "react-h-011",
+    "difficulty": "hard",
+    "q": "What is selective hydration in React 18 and why does it matter?",
+    "options": [
+      "It allows only certain props to be hydrated on the client",
+      "React can hydrate parts of the page independently and prioritize sections the user interacts with first",
+      "It prevents hydration of components that don't need interactivity",
+      "It is a performance technique for reducing JavaScript bundle size"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Selective hydration lets React hydrate different parts of the page independently. If a user clicks an area before it hydrates React prioritizes hydrating that section first improving time to interactive."
+  },
+  {
+    "id": "react-h-012",
+    "difficulty": "hard",
+    "q": "You use useOptimistic in React 19. What problem does it solve?",
+    "options": [
+      "It prevents unnecessary re-renders by optimizing state updates",
+      "It shows an optimistic UI update immediately while the real async operation is in flight",
+      "It automatically retries failed network requests",
+      "It replaces useState for all server-related state"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "useOptimistic lets you show an expected result immediately before the server confirms it. If the operation fails React rolls back to the previous state automatically
+  {
+    "id": "react-h-013",
+    "difficulty": "hard",
+    "q": "You have a large list that renders slowly. You add virtualization. What does virtualization actually do?",
+    "options": [
+      "It compresses the DOM nodes to use less memory",
+      "It only renders the items currently visible in the viewport",
+      "It moves list rendering to a web worker",
+      "It pre-renders all items but hides them with CSS"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Virtualization renders only the items in the visible viewport plus a small buffer. As the user scrolls items outside the view are unmounted and new ones mount. Libraries like react-window implement this."
+  },
+  {
+    "id": "react-h-014",
+    "difficulty": "hard",
+    "q": "What is the difference between useEffect and an event handler for data mutations?",
+    "options": [
+      "useEffect is faster than event handlers for mutations",
+      "Event handlers are the right place for mutations — useEffect is for synchronizing with external systems",
+      "useEffect runs before the user interaction, event handlers run after",
+      "There is no difference — both are valid for any side effect"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "useEffect is for synchronizing a component with something external like a subscription or document title. Mutations triggered by user actions belong in event handlers not effects."
+  },
+  {
+    "id": "react-h-015",
+    "difficulty": "hard",
+    "q": "You use flushSync in React 18. What does it do and when would you need it?",
+    "options": [
+      "It flushes the browser cache for faster re-renders",
+      "It forces React to flush state updates synchronously before returning — bypassing automatic batching",
+      "It syncs state across multiple React roots on the same page",
+      "It is used to manually trigger the commit phase"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "flushSync forces React to process state updates synchronously and commit them immediately. Needed when you must read updated DOM values right after a state change before React would normally batch them."
+  },
+  {
+    "id": "react-h-016",
+    "difficulty": "hard",
+    "q": "Your app uses code splitting with React.lazy. A user has slow internet and the chunk fails to load. What should you do?",
+    "options": [
+      "Increase the timeout in React.lazy config",
+      "Wrap the lazy component in an ErrorBoundary to catch the failed import and show a retry UI",
+      "Use a try/catch inside the Suspense fallback",
+      "Switch to dynamic import without React.lazy"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "When a lazy import fails it throws an error that ErrorBoundary catches. Without one the whole page crashes. Pair every React.lazy component with both Suspense for loading and ErrorBoundary for failures."
+  },
+  {
+    "id": "react-h-017",
+    "difficulty": "hard",
+    "q": "What is the purpose of startTransition in React 18?",
+    "options": [
+      "It starts a CSS transition tied to a state change",
+      "It marks a state update as non-urgent so React can keep the UI responsive during the update",
+      "It defers a state update until the next animation frame",
+      "It batches multiple state updates into a single render"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "startTransition tells React a state update is non-urgent. React can interrupt it if higher priority work like user input arrives. The UI stays responsive during expensive renders."
+  },
+  {
+    "id": "react-h-018",
+    "difficulty": "hard",
+    "q": "You implement an infinite scroll list. New items load as the user scrolls. What is the most efficient way to detect when to load more?",
+    "options": [
+      "Listen to the window scroll event and check scrollTop",
+      "Use an IntersectionObserver on a sentinel element at the bottom of the list",
+      "Use a setInterval to check scroll position every 100ms",
+      "Use onMouseMove to detect when the user reaches the bottom"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "IntersectionObserver fires a callback when a target element enters or exits the viewport. It is more performant than scroll listeners because it runs off the main thread and doesn't require polling."
+  },
+  {
+    "id": "react-h-019",
+    "difficulty": "hard",
+    "q": "What is the difference between a React Server Component and a Client Component marked with 'use client'?",
+    "options": [
+      "Server components are faster, client components are interactive",
+      "Server components run only on the server with zero JS sent to the client, client components run on both and are included in the bundle",
+      "Client components cannot fetch data, server components cannot render UI",
+      "They are identical except server components are cached automatically"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Server components render on the server only — their code never ships to the browser. Client components are included in the JS bundle and can be interactive. Server components can pass serializable props to client components."
+  },
+  {
+    "id": "react-h-020",
+    "difficulty": "hard",
+    "q": "You have a component that subscribes to an external store. What hook should you use to avoid tearing in Concurrent Mode?",
+    "options": [
+      "useEffect with a state update on subscription change",
+      "useSyncExternalStore — it is designed specifically for external store subscriptions",
+      "useRef to hold the latest store value",
+      "useContext with the store as the context value"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "useSyncExternalStore safely subscribes to external stores in Concurrent Mode. Without it React might read inconsistent snapshots of the store during interrupted renders causing UI tearing."
+  },
+  {
+    "id": "react-h-021",
+    "difficulty": "hard",
+    "q": "You use React.memo with a custom comparison function. The function returns true. What does React do?",
+    "options": [
+      "React re-renders the component because true means props changed",
+      "React skips the re-render because true means props are equal",
+      "React throws an error — comparison functions must return false",
+      "React ignores the return value and always re-renders"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The second argument to React.memo is an areEqual function. Returning true means the props are considered equal so React skips the re-render. Returning false means they differ and React re-renders."
+  },
+  {
+    "id": "react-h-022",
+    "difficulty": "hard",
+    "q": "What causes the 'cannot update a component while rendering a different component' warning?",
+    "options": [
+      "Using setState inside a useEffect",
+      "Calling a state setter of one component during the render phase of another component",
+      "Updating state in a child component from a parent",
+      "Using useState and useReducer in the same component"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "During the render phase React expects components to be pure. Calling another component's setState during render causes React's update cycle to become unpredictable. Move the update to an effect or event handler."
+  },
+  {
+    "id": "react-h-023",
+    "difficulty": "hard",
+    "q": "You profile your React app and see many components rendering with 'parent rendered' as the reason. What is the most effective fix?",
+    "options": [
+      "Add useCallback to every function in the parent",
+      "Colocate state closer to where it is used so fewer components re-render on change",
+      "Wrap every component in React.memo",
+      "Move all state to a global store"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "State colocation is the most effective optimization. If state lives higher than needed every update re-renders more of the tree than necessary. Moving state down limits re-renders to just the components that need it."
+  },
+  {
+    "id": "react-h-024",
+    "difficulty": "hard",
+    "q": "What is the purpose of useId in React 18?",
+    "options": [
+      "To generate unique IDs for database records",
+      "To generate stable unique IDs that are consistent between server and client renders avoiding hydration mismatches",
+      "To create unique keys for list items",
+      "To assign IDs to useRef instances"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "useId generates a unique ID that is stable across server and client renders. Using Math.random() or a counter for accessibility attributes like htmlFor would cause hydration mismatches."
+  },
+  {
+    "id": "react-h-025",
+    "difficulty": "hard",
+    "q": "You use Suspense for data fetching. A component suspends. What does React render while waiting?",
+    "options": [
+      "An empty div until data arrives",
+      "The nearest Suspense boundary's fallback prop",
+      "The previous render of the suspended component",
+      "Nothing — the whole page is blank until data loads"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "When a component suspends React walks up the tree to find the nearest Suspense boundary and renders its fallback. Nested Suspense boundaries give you granular control over which parts show loading states."
+  }
+]
