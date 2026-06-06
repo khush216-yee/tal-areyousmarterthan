@@ -1,1 +1,352 @@
-
+[
+  {
+    "id": "js-m-001",
+    "difficulty": "medium",
+    "q": "You call setState twice in a row and expect two re-renders but only get one. Why?",
+    "options": [
+      "setState is broken for multiple calls",
+      "React batches state updates in event handlers",
+      "The second call overwrites the first",
+      "You need to use useReducer for multiple updates"
+    ],
+    "correct": 1,
+    "explain": "React batches multiple setState calls in the same event handler into one re-render for performance. Use functional updates if each update depends on the previous value.",
+    "botAnswers": { "fresher": 2, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-002",
+    "difficulty": "medium",
+    "q": "Your closure inside a loop always logs the last value instead of each iteration's value. What is the fix?",
+    "options": [
+      "Use var instead of let",
+      "Use let in the loop — it creates a new binding per iteration",
+      "Wrap the loop in a setTimeout",
+      "Use forEach instead of for"
+    ],
+    "correct": 1,
+    "explain": "var is function-scoped so all iterations share the same variable. let creates a new binding for each iteration so each closure captures its own value.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-003",
+    "difficulty": "medium",
+    "q": "You chain .then() on a Promise but errors are silently swallowed. What are you missing?",
+    "options": [
+      "A second argument to .then()",
+      "A .catch() at the end of the chain",
+      "A try/catch around the Promise",
+      "Both A and B are valid"
+    ],
+    "correct": 3,
+    "explain": "Both work. .then(onSuccess, onError) handles errors inline. .catch() at the end catches any error in the chain. Missing both means errors disappear silently.",
+    "botAnswers": { "fresher": 1, "arjun": 1, "meera": 3, "ghost": 3 }
+  },
+  {
+    "id": "js-m-004",
+    "difficulty": "medium",
+    "q": "You use async/await but your function still returns a Promise instead of the value. Why?",
+    "options": [
+      "await is not supported in all browsers",
+      "async functions always return a Promise — await only unwraps inside the function",
+      "You need to return await instead of just return",
+      "async only works with fetch not custom Promises"
+    ],
+    "correct": 1,
+    "explain": "async functions always return a Promise. await unwraps the value inside the function but the caller still receives a Promise. The caller must also await it or use .then().",
+    "botAnswers": { "fresher": 2, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-005",
+    "difficulty": "medium",
+    "q": "You use JSON.parse(JSON.stringify(obj)) to deep clone. A colleague says this is dangerous. When are they right?",
+    "options": [
+      "When the object has more than 10 properties",
+      "When the object contains functions, undefined, or Date objects",
+      "When the object is nested more than 3 levels deep",
+      "They are wrong — it is always safe"
+    ],
+    "correct": 1,
+    "explain": "JSON.stringify drops functions and undefined silently. It converts Dates to strings. Use structuredClone() for a safer native deep clone.",
+    "botAnswers": { "fresher": 3, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-006",
+    "difficulty": "medium",
+    "q": "You need to run 3 API calls simultaneously and wait for all to finish. What do you use?",
+    "options": [
+      "await each call one by one",
+      "Promise.race()",
+      "Promise.all()",
+      "Promise.allSettled()"
+    ],
+    "correct": 2,
+    "explain": "Promise.all() runs all promises in parallel and resolves when all succeed. It rejects immediately if any one fails. Use Promise.allSettled() if you want all results regardless of failures.",
+    "botAnswers": { "fresher": 0, "arjun": 2, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-m-007",
+    "difficulty": "medium",
+    "q": "Your event listener fires multiple times per second on scroll. The page feels slow. What is the fix?",
+    "options": [
+      "Remove the event listener after first fire",
+      "Throttle or debounce the handler",
+      "Use setTimeout inside the handler",
+      "Switch from scroll to wheel event"
+    ],
+    "correct": 1,
+    "explain": "Throttle limits how often the function runs. Debounce waits until events stop before firing. Both prevent performance issues from high-frequency events like scroll.",
+    "botAnswers": { "fresher": 2, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-008",
+    "difficulty": "medium",
+    "q": "You attach a click listener to 500 list items. A senior says this is a performance problem. What should you do instead?",
+    "options": [
+      "Use querySelectorAll and loop faster",
+      "Attach one listener to the parent and use event delegation",
+      "Use addEventListener with the capture option",
+      "Batch the listeners using requestAnimationFrame"
+    ],
+    "correct": 1,
+    "explain": "Event delegation attaches one listener to a parent element. Events bubble up from children so you can handle all child clicks in one place. Much cheaper than 500 individual listeners.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-009",
+    "difficulty": "medium",
+    "q": "You need to store a large dataset in a Map. What advantage does Map have over a plain object?",
+    "options": [
+      "Map is faster for all operations",
+      "Map preserves insertion order and allows any type as a key",
+      "Map automatically deduplicates values",
+      "Map uses less memory than objects"
+    ],
+    "correct": 1,
+    "explain": "Map keys can be any type including objects and functions. Plain object keys are always strings or symbols. Map also guarantees insertion order iteration.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-010",
+    "difficulty": "medium",
+    "q": "You use setInterval to poll an API every second. The page gets slower over time. What is likely wrong?",
+    "options": [
+      "setInterval is not designed for API calls",
+      "The interval is not being cleared when the component unmounts",
+      "You should use setTimeout instead of setInterval",
+      "The API responses are too large"
+    ],
+    "correct": 1,
+    "explain": "If the interval is never cleared it keeps running even after the component or page that created it is gone. Always store the interval ID and call clearInterval when done.",
+    "botAnswers": { "fresher": 2, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-011",
+    "difficulty": "medium",
+    "q": "You need to find one specific item in an array. Which method is most appropriate?",
+    "options": [
+      "array.filter()[0]",
+      "array.find()",
+      "array.forEach() with a break",
+      "array.includes()"
+    ],
+    "correct": 1,
+    "explain": "find() returns the first matching element and stops immediately. filter() continues through the whole array and returns all matches. find() is more efficient for single item lookups.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-012",
+    "difficulty": "medium",
+    "q": "You want to sum all numbers in an array in one line. Which method fits best?",
+    "options": [
+      "array.forEach()",
+      "array.map()",
+      "array.reduce()",
+      "array.filter()"
+    ],
+    "correct": 2,
+    "explain": "reduce() accumulates values into a single result. It's the right tool for turning an array into one value like a sum, product, or object.",
+    "botAnswers": { "fresher": 0, "arjun": 2, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-m-013",
+    "difficulty": "medium",
+    "q": "Your async function throws an error but nothing happens. No error in the console. Why?",
+    "options": [
+      "Async functions suppress all errors by default",
+      "The returned Promise was never awaited or caught",
+      "You need to use throw new Error() not throw",
+      "Errors only show in async functions if you use callbacks"
+    ],
+    "correct": 1,
+    "explain": "Unhandled Promise rejections are silent in many environments. If you don't await the async function or attach .catch() the error disappears. Always handle Promise rejections.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-014",
+    "difficulty": "medium",
+    "q": "You shallow copy an object with spread and modify a nested array. The original also changes. Why?",
+    "options": [
+      "Spread creates a deep copy so something else is wrong",
+      "Spread only copies top-level properties — nested objects are still referenced",
+      "Arrays cannot be spread into objects",
+      "You need to use Object.assign() instead"
+    ],
+    "correct": 1,
+    "explain": "Spread is a shallow copy. Top-level primitive values are copied but nested objects and arrays are still the same reference. Changes to them affect both copies.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-015",
+    "difficulty": "medium",
+    "q": "You use console.log inside a for loop with var and every log shows the same final value. What is the fix?",
+    "options": [
+      "Use console.warn instead",
+      "Replace var with let",
+      "Wrap the loop in an async function",
+      "Use a while loop instead"
+    ],
+    "correct": 1,
+    "explain": "var is function-scoped so all iterations share one variable. By the time the logs run the loop has finished and the variable holds its final value. let creates a new binding per iteration.",
+    "botAnswers": { "fresher": 2, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-016",
+    "difficulty": "medium",
+    "q": "What is the difference between Promise.all() and Promise.allSettled()?",
+    "options": [
+      "all() is faster, allSettled() is more accurate",
+      "all() rejects if any Promise fails, allSettled() waits for all regardless",
+      "allSettled() only works with async functions",
+      "They are identical but allSettled() has better browser support"
+    ],
+    "correct": 1,
+    "explain": "Promise.all() short-circuits on the first rejection. Promise.allSettled() always waits for every Promise and gives you each result whether fulfilled or rejected.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-017",
+    "difficulty": "medium",
+    "q": "You need a function that remembers how many times it has been called. What concept makes this possible?",
+    "options": [
+      "Prototypal inheritance",
+      "Closure",
+      "Hoisting",
+      "Event delegation"
+    ],
+    "correct": 1,
+    "explain": "A closure lets an inner function access variables from its outer function even after the outer function has finished. The count variable persists between calls because the inner function closes over it.",
+    "botAnswers": { "fresher": 2, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-018",
+    "difficulty": "medium",
+    "q": "You need to debounce a search input. What does debounce actually do?",
+    "options": [
+      "Runs the function immediately then blocks for a delay",
+      "Delays execution until the user stops triggering the event",
+      "Limits how many times per second the function can run",
+      "Cancels the previous call before making a new one"
+    ],
+    "correct": 1,
+    "explain": "Debounce waits until events stop firing for a set delay before executing. Throttle limits frequency. Debounce is ideal for search inputs where you want to wait until typing pauses.",
+    "botAnswers": { "fresher": 2, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-019",
+    "difficulty": "medium",
+    "q": "You call a function with call() passing a different object as this. What does this achieve?",
+    "options": [
+      "It creates a copy of the function",
+      "It lets you borrow a function and run it with a different context",
+      "It permanently changes the function's this binding",
+      "It only works with class methods"
+    ],
+    "correct": 1,
+    "explain": "call() invokes a function immediately with a specified this value. bind() returns a new function with this permanently set. apply() is the same as call() but takes arguments as an array.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-020",
+    "difficulty": "medium",
+    "q": "You log Start, then setTimeout with 0ms delay, then End. What is the output order?",
+    "options": [
+      "Start, Timeout, End",
+      "Timeout, Start, End",
+      "Start, End, Timeout",
+      "It depends on the browser"
+    ],
+    "correct": 2,
+    "explain": "setTimeout is asynchronous. Even with 0ms delay it goes to the callback queue. The call stack must finish executing Start and End first before the event loop picks up the timeout callback.",
+    "botAnswers": { "fresher": 0, "arjun": 2, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-m-021",
+    "difficulty": "medium",
+    "q": "You need to make an object's properties unmodifiable. Which method do you use?",
+    "options": [
+      "Object.lock()",
+      "Object.freeze()",
+      "Object.seal()",
+      "const obj = {}"
+    ],
+    "correct": 1,
+    "explain": "Object.freeze() prevents adding, removing, or modifying properties. Object.seal() prevents adding or removing but allows modifying existing values. const only prevents reassigning the variable.",
+    "botAnswers": { "fresher": 3, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-022",
+    "difficulty": "medium",
+    "q": "Your code throws 'Cannot read properties of undefined'. What is the safest way to access deeply nested object properties?",
+    "options": [
+      "Wrap every access in a try/catch",
+      "Use optional chaining: obj?.a?.b?.c",
+      "Check typeof before every access",
+      "Use Object.keys() to verify properties exist"
+    ],
+    "correct": 1,
+    "explain": "Optional chaining short-circuits and returns undefined instead of throwing if any part of the chain is null or undefined. It's the cleanest solution for deep property access.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-023",
+    "difficulty": "medium",
+    "q": "You want a default value when a variable is null or undefined but not when it is 0 or empty string. What operator do you use?",
+    "options": [
+      "|| (logical OR)",
+      "?? (nullish coalescing)",
+      "&& (logical AND)",
+      "?: (ternary)"
+    ],
+    "correct": 1,
+    "explain": "The nullish coalescing operator ?? only falls back when the value is null or undefined. The || operator falls back for any falsy value including 0 and empty string which is often not what you want.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  },
+  {
+    "id": "js-m-024",
+    "difficulty": "medium",
+    "q": "You need to run cleanup code whether a function succeeds or throws. Where do you put it?",
+    "options": [
+      "After the try block",
+      "In the catch block",
+      "In the finally block",
+      "In a separate function called after"
+    ],
+    "correct": 2,
+    "explain": "finally always runs regardless of whether try succeeded or catch handled an error. It's the right place for cleanup like closing connections or hiding loaders.",
+    "botAnswers": { "fresher": 0, "arjun": 2, "meera": 2, "ghost": 2 }
+  },
+  {
+    "id": "js-m-025",
+    "difficulty": "medium",
+    "q": "You need to check if two objects have the same properties and values. Will === work?",
+    "options": [
+      "Yes === compares object contents",
+      "No === compares references not contents",
+      "Only if both objects were created the same way",
+      "Yes if you use Object.is() instead"
+    ],
+    "correct": 1,
+    "explain": "=== on objects checks if they point to the same memory location not whether they have the same contents. Two separate objects with identical properties are not === equal. Use JSON.stringify or a deep equality library to compare contents.",
+    "botAnswers": { "fresher": 0, "arjun": 1, "meera": 1, "ghost": 1 }
+  }
+]
