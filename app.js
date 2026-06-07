@@ -296,14 +296,11 @@ function renderQuestion() {
     ? q.correct
     : (q.wrongPick !== undefined ? q.wrongPick : wrongFallback);
 
-  // Schedule bot's visible response
+  // Pre-mark when the bot has "decided" — indicator hidden until player acts
   const { min, max } = botCfg.responseTime;
   const delay = (min + Math.random() * (max - min)) * 1000;
   state.botTimeout = setTimeout(() => {
-    if (!state.playerAnswered) {
-      state.botAnswered = true;
-      showBotIndicator(state.botAnswerIndex);
-    }
+    state.botAnswered = true;
   }, delay);
 
   // Start countdown timer
@@ -348,10 +345,8 @@ function onTimeOut() {
   clearTimeout(state.botTimeout);
   state.playerAnswered = true;
 
-  if (!state.botAnswered) {
-    state.botAnswered = true;
-    showBotIndicator(state.botAnswerIndex);
-  }
+  state.botAnswered = true;
+  showBotIndicator(state.botAnswerIndex);
 
   revealAnswers(-1);
   setDot(state.currentQ, 'timeout');
@@ -397,10 +392,8 @@ function onPlayerAnswer(index) {
     setDot(state.currentQ, 'wrong');
   }
 
-  if (!state.botAnswered) {
-    state.botAnswered = true;
-    showBotIndicator(state.botAnswerIndex);
-  }
+  state.botAnswered = true;
+  showBotIndicator(state.botAnswerIndex);
 
   revealAnswers(index);
 
