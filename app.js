@@ -5,34 +5,30 @@
 
 'use strict';
 
-// ─── DOM helper ────────────────────────────────────
 const $ = id => document.getElementById(id);
 
 // ─── Game State ────────────────────────────────────
 const state = {
-  // Navigation
   screen: 'landing',
   category: null,
+  track: null,
   difficulty: null,
   botKey: null,
 
-  // Config (loaded from game.json)
   gameConfig: null,
 
-  // Questions
   allQuestions: [],
-  questions: [],      // 7 selected for this match
-  currentQ: 0,        // index 0–6
+  questions: [],
+  currentQ: 0,
 
-  // Scores
   playerScore: 0,
   botScore: 0,
-  wrongStreak: 0,     // consecutive wrong / timeout answers by player
+  wrongStreak: 0,
 
-  // Per-question volatile state
   timerValue: 0,
   timerInterval: null,
   botTimeout: null,
+  autoAdvanceTimeout: null,
 
   botAnswerIndex: -1,
   botCorrect: false,
@@ -41,15 +37,26 @@ const state = {
   playerAnswered: false,
   playerAnswerIndex: -1,
 
-  tickBubbleShown: false,  // so we only trigger "Tick" bubble once per question
+  tickBubbleShown: false,
 };
 
 // ─── Question file map ──────────────────────────────
-// Actual filenames on disk (spaces encoded for fetch)
 const QUESTION_FILES = {
-  easy:   'questions/frontend/javascript/java-easy%20v2.json',
-  medium: 'questions/frontend/javascript/java-medium%20v2.json',
-  hard:   'questions/frontend/javascript/java-hard%20v2.json',
+  javascript: {
+    easy:   'questions/frontend/javascript/java-easy%20v2.json',
+    medium: 'questions/frontend/javascript/java-medium%20v2.json',
+    hard:   'questions/frontend/javascript/java-hard%20v2.json',
+  },
+  react: {
+    easy:   'questions/frontend/react/react-easy.json',
+    medium: 'questions/frontend/react/react-medium.json',
+    hard:   'questions/frontend/react/react-hard.json',
+  },
+  css: {
+    easy:   'questions/frontend/css/css-easy.json',
+    medium: 'questions/frontend/css/css-medium.json',
+    hard:   'questions/frontend/css/css-hard.json',
+  },
 };
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D'];
@@ -78,6 +85,21 @@ function bindEvents() {
       const cat = card.dataset.category;
       if (cat === 'frontend') {
         state.category = cat;
+        showScreen('track');
+      } else {
+        showToast('Questions coming soon');
+      }
+    });
+  });
+
+  // --- Track cards ---
+  $('back-from-track').addEventListener('click', () => showScreen('landing'));
+
+  document.querySelectorAll('.track-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const track = card.dataset.track;
+      if (['javascript', 'react', 'css', 'all'].includes(track)) {
+        state.track = track;
         showScreen('difficulty');
       } else {
         showToast('Questions coming soon');
@@ -86,7 +108,7 @@ function bindEvents() {
   });
 
   // --- Difficulty ---
-  $('back-from-difficulty').addEventListener('click', () => showScreen('landing'));
+  $('back-from-difficulty').addEventListener('click', () => showScreen('track'));
 
   document.querySelectorAll('.difficulty-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -120,7 +142,6 @@ function showScreen(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   const el = $(`screen-${name}`);
   if (el) {
-    // Restart animation
     el.style.animation = 'none';
     void el.offsetWidth;
     el.style.animation = '';
@@ -142,10 +163,34 @@ function showToast(msg) {
 }
 
 // ═══════════════════════════════════════════════════
+//  LOAD QUESTIONS
+// ═══════════════════════════════════════════════════
+async function loadQuestions() {
+  if (state.track === 'all') {
+    const tracks = ['javascript', 'react', 'css'];
+    const combined = [];
+    for (const t of tracks) {
+      try {
+        const res  = await fetch(QUESTION_FILES[t][state.difficulty]);
+        const data = await res.json();
+        const qs   = Array.isArray(data) ? data : (data.questions || []);
+        combined.push(...qs);
+      } catch (e) {
+        console.error(`Failed to load ${t} questions`, e);
+      }
+    }
+    return combined;
+  }
+  const url  = QUESTION_FILES[state.track][state.difficulty];
+  const res  = await fetch(url);
+  const data = await res.json();
+  return Array.isArray(data) ? data : (data.questions || []);
+}
+
+// ═══════════════════════════════════════════════════
 //  START GAME
 // ═══════════════════════════════════════════════════
 async function startGame() {
-  // Reset scores
   state.playerScore = 0;
   state.botScore    = 0;
   state.wrongStreak = 0;
@@ -153,22 +198,33 @@ async function startGame() {
   state.questions   = [];
 
   try {
-    const res  = await fetch(QUESTION_FILES[state.difficulty]);
-    const data = await res.json();
-    state.allQuestions = Array.isArray(data) ? data : (data.questions || []);
+    state.allQuestions = await loadQuestions();
   } catch (e) {
     console.error('Failed to load questions', e);
     showToast('Failed to load questions. Please try again.');
     return;
   }
 
-  // Pick 7 random questions
+  if (!state.allQuestions.length) {
+    showToast('No questions available for this selection.');
+    return;
+  }
+
   const pool = [...state.allQuestions].sort(() => Math.random() - 0.5);
-  state.questions = pool.slice(0, 7);
+  state.questions = pool.slice(0, Math.min(7, pool.length));
 
   showScreen('game');
+  updateScoreDisplay();
   buildProgressDots();
   renderQuestion();
+}
+
+// ═══════════════════════════════════════════════════
+//  SCORE DISPLAY
+// ═══════════════════════════════════════════════════
+function updateScoreDisplay() {
+  $('player-score-display').textContent = `${state.playerScore} / 7`;
+  $('bot-score-display').textContent    = `${state.botScore} / 7`;
 }
 
 // ═══════════════════════════════════════════════════
@@ -177,7 +233,8 @@ async function startGame() {
 function buildProgressDots() {
   const container = $('progress-dots');
   container.innerHTML = '';
-  for (let i = 0; i < 7; i++) {
+  const total = state.questions.length;
+  for (let i = 0; i < total; i++) {
     const dot = document.createElement('div');
     dot.className = 'dot' + (i === 0 ? ' active' : '');
     dot.id = `dot-${i}`;
@@ -197,7 +254,7 @@ function renderQuestion() {
   const q = state.questions[state.currentQ];
   if (!q) return;
 
-  // ── Reset per-question state ──
+  // Reset per-question state
   state.botAnswerIndex  = -1;
   state.botCorrect      = false;
   state.botAnswered     = false;
@@ -205,17 +262,13 @@ function renderQuestion() {
   state.playerAnswerIndex = -1;
   state.tickBubbleShown = false;
 
-  // ── Header ──
-  $('q-counter').textContent = `${state.currentQ + 1} / 7`;
+  $('q-counter').textContent = `${state.currentQ + 1} / ${state.questions.length}`;
   $('game-timer').classList.remove('urgent');
 
-  // ── Active dot ──
   setDot(state.currentQ, 'active');
 
-  // ── Question text ──
   $('question-text').textContent = q.q;
 
-  // ── Options ──
   const list = $('options-list');
   list.innerHTML = '';
   q.options.forEach((opt, i) => {
@@ -230,30 +283,30 @@ function renderQuestion() {
     list.appendChild(card);
   });
 
-  // ── Hide explanation and next ──
   $('explanation-box').style.display = 'none';
   $('next-btn').style.display = 'none';
-
-  // ── Hide speech bubble ──
   hideSpeechBubble();
 
-  // ── Pre-calculate bot answer ──
+  // Pre-calculate bot answer
   const botCfg  = state.gameConfig.bots[state.botKey];
   const accuracy = botCfg.accuracy[state.difficulty];
   state.botCorrect     = Math.random() < accuracy;
-  state.botAnswerIndex = state.botCorrect ? q.correct : q.wrongPick;
+  const wrongFallback  = (q.correct + 1) % q.options.length;
+  state.botAnswerIndex = state.botCorrect
+    ? q.correct
+    : (q.wrongPick !== undefined ? q.wrongPick : wrongFallback);
 
-  // ── Schedule bot's visible response ──
+  // Schedule bot's visible response
   const { min, max } = botCfg.responseTime;
   const delay = (min + Math.random() * (max - min)) * 1000;
   state.botTimeout = setTimeout(() => {
-    if (!state.playerAnswered) {        // only show indicator if still unanswered
+    if (!state.playerAnswered) {
       state.botAnswered = true;
       showBotIndicator(state.botAnswerIndex);
     }
   }, delay);
 
-  // ── Start countdown timer ──
+  // Start countdown timer
   const timerMap = { easy: 30, medium: 40, hard: 45 };
   state.timerValue = timerMap[state.difficulty];
   renderTimer();
@@ -276,7 +329,6 @@ function tickTimer() {
   state.timerValue--;
   renderTimer();
 
-  // Urgent styling + "Tick" bubble when ≤ 10 s
   if (state.timerValue <= 10 && !state.playerAnswered) {
     $('game-timer').classList.add('urgent');
     if (!state.tickBubbleShown) {
@@ -296,22 +348,27 @@ function onTimeOut() {
   clearTimeout(state.botTimeout);
   state.playerAnswered = true;
 
-  // Show bot answer immediately if not yet shown
   if (!state.botAnswered) {
     state.botAnswered = true;
     showBotIndicator(state.botAnswerIndex);
   }
 
-  revealAnswers(-1);            // -1 = no player selection
+  revealAnswers(-1);
   setDot(state.currentQ, 'timeout');
+  state.wrongStreak++;
 
-  state.wrongStreak++;          // time-out counts as wrong
+  // Always show explanation on timeout
+  const q = state.questions[state.currentQ];
+  if (q && q.explain) {
+    $('explanation-text').textContent = q.explain;
+    $('explanation-box').style.display = 'block';
+  }
 
-  // Show next button
-  showNext();
-
-  // Speech bubble (after short delay for polish)
   setTimeout(chooseSpeechBubble, 380);
+
+  // Auto-advance after 2 seconds (no Next button on timeout)
+  clearTimeout(state.autoAdvanceTimeout);
+  state.autoAdvanceTimeout = setTimeout(advanceQuestion, 2000);
 }
 
 // ═══════════════════════════════════════════════════
@@ -322,6 +379,7 @@ function onPlayerAnswer(index) {
 
   clearInterval(state.timerInterval);
   clearTimeout(state.botTimeout);
+  clearTimeout(state.autoAdvanceTimeout);
   $('game-timer').classList.remove('urgent');
 
   state.playerAnswered    = true;
@@ -339,7 +397,6 @@ function onPlayerAnswer(index) {
     setDot(state.currentQ, 'wrong');
   }
 
-  // Show bot indicator immediately if bot hadn't responded yet
   if (!state.botAnswered) {
     state.botAnswered = true;
     showBotIndicator(state.botAnswerIndex);
@@ -347,12 +404,12 @@ function onPlayerAnswer(index) {
 
   revealAnswers(index);
 
-  // Explanation only on wrong answer
   if (!isCorrect && q.explain) {
     $('explanation-text').textContent = q.explain;
     $('explanation-box').style.display = 'block';
   }
 
+  updateScoreDisplay();
   showNext();
   setTimeout(chooseSpeechBubble, 380);
 }
@@ -396,7 +453,6 @@ function showBotIndicator(answerIndex) {
 function showNext() {
   const btn = $('next-btn');
   btn.style.display = 'block';
-  // Reset animation
   btn.style.animation = 'none';
   void btn.offsetWidth;
   btn.style.animation = '';
@@ -406,12 +462,14 @@ function showNext() {
 //  ADVANCE TO NEXT QUESTION
 // ═══════════════════════════════════════════════════
 function advanceQuestion() {
-  // Track bot score before moving on
+  clearTimeout(state.autoAdvanceTimeout);
+
   if (state.botCorrect) state.botScore++;
+  updateScoreDisplay();
 
   state.currentQ++;
 
-  if (state.currentQ >= 7) {
+  if (state.currentQ >= state.questions.length) {
     endGame();
   } else {
     renderQuestion();
@@ -424,7 +482,34 @@ function advanceQuestion() {
 function endGame() {
   clearInterval(state.timerInterval);
   clearTimeout(state.botTimeout);
-  showScreen('results');
+  clearTimeout(state.autoAdvanceTimeout);
+
+  const playerWins = state.playerScore > state.botScore;
+  showSpeechBubble(playerWins ? 'I will remember this.' : 'Was this supposed to be hard?');
+
+  setTimeout(() => {
+    populateResults();
+    showScreen('results');
+  }, 1500);
+}
+
+// ─── Populate results screen ────────────────────────
+function populateResults() {
+  $('result-player-score').textContent = `${state.playerScore}/${state.questions.length}`;
+  $('result-bot-score').textContent    = `${state.botScore}/${state.questions.length}`;
+
+  const botName = state.gameConfig?.bots[state.botKey]?.name || 'TAL';
+  $('result-bot-name').textContent = botName;
+
+  let verdict;
+  if (state.playerScore > state.botScore) {
+    verdict = 'You beat the AI. Don\'t get used to it.';
+  } else if (state.playerScore < state.botScore) {
+    verdict = 'The AI wins this round. Try harder.';
+  } else {
+    verdict = 'A tie. The AI is almost impressed.';
+  }
+  $('result-verdict').textContent = verdict;
 }
 
 // ═══════════════════════════════════════════════════
@@ -433,11 +518,12 @@ function endGame() {
 function resetGame() {
   clearInterval(state.timerInterval);
   clearTimeout(state.botTimeout);
+  clearTimeout(state.autoAdvanceTimeout);
   Object.assign(state, {
-    category: null, difficulty: null, botKey: null,
+    category: null, track: null, difficulty: null, botKey: null,
     allQuestions: [], questions: [],
     currentQ: 0, playerScore: 0, botScore: 0, wrongStreak: 0,
-    timerValue: 0, timerInterval: null, botTimeout: null,
+    timerValue: 0, timerInterval: null, botTimeout: null, autoAdvanceTimeout: null,
     botAnswerIndex: -1, botCorrect: false, botAnswered: false,
     playerAnswered: false, playerAnswerIndex: -1, tickBubbleShown: false,
   });
@@ -447,8 +533,6 @@ function resetGame() {
 //  SPEECH BUBBLE
 // ═══════════════════════════════════════════════════
 function chooseSpeechBubble() {
-  // Priority: wrong streak ≥ 2 → streak message
-  //           else: react to bot's result
   if (state.wrongStreak >= 2) {
     showSpeechBubble('As expected.');
   } else if (state.botCorrect) {
@@ -464,10 +548,9 @@ function showSpeechBubble(text) {
 
   textEl.textContent = text;
 
-  // Reset CSS animation by toggling display
   bubble.style.display = 'none';
   bubble.style.animation = 'none';
-  void bubble.offsetWidth;           // force reflow
+  void bubble.offsetWidth;
   bubble.style.animation = '';
   bubble.style.display = 'block';
 }

@@ -165,7 +165,8 @@
     ],
     "correct": 1,
     "wrongPick": 0,
-    "explain": "useOptimistic lets you show an expected result immediately before the server confirms it. If the operation fails React rolls back to the previous state automatically
+    "explain": "useOptimistic lets you show an expected result immediately before the server confirms it. If the operation fails React rolls back to the previous state automatically."
+  },
   {
     "id": "react-h-013",
     "difficulty": "hard",

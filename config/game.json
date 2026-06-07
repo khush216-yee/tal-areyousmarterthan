@@ -1,0 +1,73 @@
+{
+  "bots": {
+    "fresher": {
+      "name": "The Fresher",
+      "tier": "bronze",
+      "accuracy": {
+        "easy": 0.60,
+        "medium": 0.50,
+        "hard": 0.40
+      },
+      "responseTime": {
+        "min": 3,
+        "max": 8
+      }
+    },
+    "arjun": {
+      "name": "Arjun",
+      "tier": "silver",
+      "accuracy": {
+        "easy": 0.85,
+        "medium": 0.75,
+        "hard": 0.65
+      },
+      "responseTime": {
+        "min": 8,
+        "max": 18
+      }
+    },
+    "meera": {
+      "name": "Meera",
+      "tier": "gold",
+      "accuracy": {
+        "easy": 0.95,
+        "medium": 0.90,
+        "hard": 0.80
+      },
+      "responseTime": {
+        "min": 15,
+        "max": 20
+      }
+    },
+    "ghost": {
+      "name": "The Ghost",
+      "tier": "leaderboard",
+      "accuracy": {
+        "easy": 1.00,
+        "medium": 1.00,
+        "hard": 0.93
+      },
+      "responseTime": {
+        "min": 2,
+        "max": 7
+      }
+    }
+  },
+  "modes": {
+    "easy": {
+      "timer": 30,
+      "questionsPerMatch": 7
+    },
+    "medium": {
+      "timer": 40,
+      "questionsPerMatch": 7
+    },
+    "hard": {
+      "timer": 45,
+      "questionsPerMatch": 7
+    }
+  },
+  "match": {
+    "questionsPerMatch": 7
+  }
+}
