@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Are You Smarter Than — TAL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- ==================== SCREEN 1: LANDING / CATEGORY ==================== -->
+    <div class="screen active" id="screen-landing">
+      <div class="landing-inner">
+        <div class="landing-header">
+          <img src="assets/tal.png" alt="TAL" class="tal-logo">
+          <h1 class="game-title">Are You Smarter Than...</h1>
+          <p class="tagline">Test your skills against TAL's AI.<br>See where you really stand.</p>
+        </div>
+        <div class="category-grid">
+          <div class="category-card" data-category="frontend">
+            <span class="cat-icon">&#9889;</span>
+            <span class="cat-name">Frontend</span>
+          </div>
+          <div class="category-card" data-category="backend">
+            <span class="cat-icon">&#128421;</span>
+            <span class="cat-name">Backend</span>
+          </div>
+          <div class="category-card" data-category="mobile">
+            <span class="cat-icon">&#128241;</span>
+            <span class="cat-name">Mobile</span>
+          </div>
+          <div class="category-card" data-category="ml">
+            <span class="cat-icon">&#129302;</span>
+            <span class="cat-name">ML / AI</span>
+          </div>
+          <div class="category-card" data-category="fullstack">
+            <span class="cat-icon">&#128279;</span>
+            <span class="cat-name">Full Stack</span>
+          </div>
+          <div class="category-card" data-category="devops">
+            <span class="cat-icon">&#9881;</span>
+            <span class="cat-name">DevOps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SCREEN 2: DIFFICULTY ==================== -->
+    <div class="screen" id="screen-difficulty">
+      <div class="screen-nav">
+        <button class="back-btn" id="back-from-difficulty">&#8592; Back</button>
+      </div>
+      <div class="screen-title-block">
+        <h2>Choose Difficulty</h2>
+        <p>How hard do you want it?</p>
+      </div>
+      <div class="difficulty-list">
+        <div class="difficulty-card" data-difficulty="easy">
+          <div class="diff-left">
+            <div class="diff-name">Easy</div>
+            <div class="diff-timer">30s per question</div>
+          </div>
+          <div class="diff-arrow">&#8250;</div>
+        </div>
+        <div class="difficulty-card" data-difficulty="medium">
+          <div class="diff-left">
+            <div class="diff-name">Medium</div>
+            <div class="diff-timer">40s per question</div>
+          </div>
+          <div class="diff-arrow">&#8250;</div>
+        </div>
+        <div class="difficulty-card" data-difficulty="hard">
+          <div class="diff-left">
+            <div class="diff-name">Hard</div>
+            <div class="diff-timer">45s per question</div>
+          </div>
+          <div class="diff-arrow">&#8250;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SCREEN 3: OPPONENT ==================== -->
+    <div class="screen" id="screen-opponent">
+      <div class="screen-nav">
+        <button class="back-btn" id="back-from-opponent">&#8592; Back</button>
+      </div>
+      <div class="screen-title-block">
+        <h2>Choose Your Opponent</h2>
+        <p>Pick who you're up against</p>
+      </div>
+      <div class="bot-grid">
+        <div class="bot-card" data-bot="fresher">
+          <span class="tier-badge bronze">Bronze</span>
+          <div class="bot-name">The Fresher</div>
+          <div class="bot-desc">Overconfident. Great at basics, falls apart on real questions.</div>
+        </div>
+        <div class="bot-card" data-bot="arjun">
+          <span class="tier-badge silver">Silver</span>
+          <div class="bot-name">Arjun, SDE2</div>
+          <div class="bot-desc">Textbook correct. Picks the safe answer every time.</div>
+        </div>
+        <div class="bot-card" data-bot="meera">
+          <span class="tier-badge gold">Gold</span>
+          <div class="bot-name">Meera, Staff</div>
+          <div class="bot-desc">Efficient and brutal. Rarely wrong.</div>
+        </div>
+        <div class="bot-card" data-bot="ghost">
+          <span class="tier-badge leaderboard">Leaderboard</span>
+          <div class="bot-name">The Ghost</div>
+          <div class="bot-desc">No name. No face. Beats 94% of players.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SCREEN 4: GAME ==================== -->
+    <div class="screen" id="screen-game">
+      <div class="game-header">
+        <span class="q-counter" id="q-counter">1 / 7</span>
+        <img src="assets/tal-sm.png" alt="TAL" class="game-logo">
+        <span class="game-timer" id="game-timer">0:30</span>
+      </div>
+      <div class="progress-dots" id="progress-dots"></div>
+      <div class="question-card">
+        <p id="question-text">Loading...</p>
+      </div>
+      <div class="options-list" id="options-list"></div>
+      <div class="explanation-box" id="explanation-box">
+        <p id="explanation-text"></p>
+      </div>
+      <div class="game-bottom">
+        <button class="next-btn" id="next-btn">Next &#8594;</button>
+      </div>
+      <!-- Mascot pinned bottom-right of game screen -->
+      <div class="mascot-area" id="mascot-area">
+        <div class="speech-bubble" id="speech-bubble">
+          <span id="speech-text"></span>
+        </div>
+        <img src="assets/talpng 2.png" alt="TAL Mascot" class="mascot-img">
+      </div>
+    </div>
+
+    <!-- ==================== SCREEN 5: RESULTS ==================== -->
+    <div class="screen" id="screen-results">
+      <div class="results-placeholder">
+        <img src="assets/tal.png" alt="TAL" class="tal-logo">
+        <h2>Results coming soon</h2>
+        <p class="results-sub">Great effort! Check back soon for your full score breakdown.</p>
+        <button class="primary-btn" id="play-again-btn">Play Again</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
