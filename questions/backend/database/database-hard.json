@@ -1,0 +1,352 @@
+[
+  {
+    "id": "db-h-001",
+    "difficulty": "hard",
+    "q": "You are executing a high-offset query against a massive production database table: `SELECT * FROM articles ORDER BY title LIMIT 10 OFFSET 1000000`. Assuming `title` is an indexed string column, why does this query become incredibly slow, and how should you optimize it?",
+    "options": [
+      "The query is slow because string columns cannot be ordered; optimize it by converting titles into integers",
+      "The engine must read, sort, and discard the first 1,000,000 records before returning 10 rows; optimize it using keyset pagination (e.g., WHERE title > 'last_seen_title')",
+      "The database optimizer drops indexes when an OFFSET is used; optimize it by turning off the query planner cache",
+      "The B+ Tree structure cannot process limits; optimize it by breaking the table into vertical shards"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "High OFFSET queries are slow because the database engine must scan and discard all preceding rows up to the offset value before returning the target subset. Keyset pagination (the seek method) avoids this overhead by filtering against the last known index value, turning the scan into an efficient range lookup."
+  },
+  {
+    "id": "db-h-002",
+    "difficulty": "hard",
+    "q": "You are configuring an application that runs concurrent transactions on an enterprise database cluster. Transaction A updates Row 1, then attempts to update Row 2. Simultaneously, Transaction B updates Row 2, then attempts to update Row 1. Both transactions freeze indefinitely. What is this state, and how does the engine handle it?",
+    "options": [
+      "A backpressure anomaly; resolved by allocating additional memory to the transaction log buffers",
+      "A deadlock; resolved when the database engine's deadlock detector spots the dependency cycle and aborts one of the transactions",
+      "A write skew conflict; resolved by switching the database tables from SQL to an eventually consistent NoSQL architecture",
+      "A phantom read condition; resolved by changing the database isolation level to Read Uncommitted"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "This circular dependency is a deadlock. Relational database engines use internal deadlock detection algorithms to look for cycles in the lock dependency graph. When a cycle is found, the engine breaks the freeze by aborting one transaction and allowing the other to proceed."
+  },
+  {
+    "id": "db-h-003",
+    "difficulty": "hard",
+    "q": "You are load-testing a financial application under serializable isolation. Transaction A checks if a user's total balance across two separate savings accounts remains above $0, then withdraws $100 from Account 1. Simultaneously, Transaction B performs the same check and withdraws $100 from Account 2. Both transactions commit, leaving the combined balance negative. What is this anomaly?",
+    "options": [
+      "Dirty Read anomaly",
+      "Lost Update anomaly",
+      "Write Skew anomaly",
+      "Read Skew anomaly"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "Write skew is a concurrency anomaly that can occur under Snapshot Isolation. It happens when two concurrent transactions read overlapping data sets, notice that their updates satisfy all system constraints, and write changes to separate records—unknowingly violating the overall business logic."
+  },
+  {
+    "id": "db-h-004",
+    "difficulty": "hard",
+    "q": "A production database with a single primary master node and three read replicas is experiencing replication lag. If a user writes an update to the primary master and immediately refreshes their page—hitting a read replica—they see stale data. What specific optimization pattern fixes this read-your-own-writes consistency issue?",
+    "options": [
+      "Switching all replicas to use synchronous sharding modules",
+      "Routing reads for a user to the primary master for a short window after they perform a write operation",
+      "Enforcing a Read Uncommitted isolation level across all available replica nodes",
+      "Increasing the thread pool capacity allocations of the client-side prepared statement buffers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "To guarantee read-your-own-writes consistency in an asynchronously replicated system, the application routing layer should direct reads to the primary master node for a brief period immediately following a write by that same user."
+  },
+  {
+    "id": "db-h-005",
+    "difficulty": "hard",
+    "q": "You need to evaluate the query execution cost of a highly nested multi-table JOIN statement. Which metric factors most heavily into how a relational query optimizer chooses between a Hash Join, a Merge Join, or a Nested Loop Join?",
+    "options": [
+      "The character collation settings of the primary key columns",
+      "The cardinality estimates and statistical distribution of values across the targeted tables",
+      "The total number of uncommitted prepared statements stored in client memory",
+      "The horizontal sharding rules configured in the database's binary log files"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Cost-based query optimizers rely on table statistics, data cardinality estimates, and column histograms to predict the resource cost of different join strategies, choosing the optimal approach for the dataset size."
+  },
+  {
+    "id": "db-h-006",
+    "difficulty": "hard",
+    "q": "A distributed relational cluster uses a Two-Phase Commit (2PC) protocol to manage global transactions. If the coordinator node crashes permanently *after* all participant nodes have voted 'Yes' in Phase 1 but *before* broadcasting the Phase 2 decision, what is the operational impact?",
+    "options": [
+      "The participants automatically roll back immediately, avoiding any blocking states",
+      "The participants are left in a blocking state, holding locks indefinitely until the coordinator recovers or an administrator intervenes",
+      "The database cluster converts its tables to an eventually consistent NoSQL model",
+      "The transactions are cleanly committed by the replica nodes using a round-robin voting algorithm"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A major drawback of the classic Two-Phase Commit protocol is that it is a blocking protocol. If the coordinator node crashes during the commit phase, participants cannot safely resolve the transaction independently and must hold locks until the coordinator is restored."
+  },
+  {
+    "id": "db-h-007",
+    "difficulty": "hard",
+    "q": "You are optimizing database performance for an application that issues frequent `SELECT COUNT(*)` lookups. Under Multi-Version Concurrency Control (MVCC) engines like PostgreSQL, why is a naive `COUNT(*)` query inherently slow on large tables?",
+    "options": [
+      "MVCC disables index lookups for all queries that use aggregation functions",
+      "Because row visibility varies by transaction, the engine cannot rely on a single global counter and must scan the table to count rows visible to the active transaction",
+      "The engine locks the entire database cluster synchronously to update the internal primary key tables",
+      "The write-ahead log blocks mathematical operations to protect transactional data integrity"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Under MVCC architectures, different transactions see different subsets of data depending on their active isolation snapshots. Because row visibility varies, the database engine cannot maintain a single global row counter and must scan rows to determine the correct count for that transaction."
+  },
+  {
+    "id": "db-h-008",
+    "difficulty": "hard",
+    "q": "You are designing a high-concurrency database system and need to decide between using Optimistic Concurrency Control (OCC) or Pessimistic Locking. Under what operational conditions does Optimistic Concurrency Control perform best?",
+    "options": [
+      "When write data conflicts are frequent and transactions regularly target the exact same records",
+      "When data contention is low and read operations heavily outnumber write operations, minimizing the need for expensive transaction locks",
+      "When the database cluster is distributed across multiple shards using modulus routing",
+      "When transactions require a strict Read Uncommitted isolation level to prevent dirty reads"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Optimistic Concurrency Control performs best when data contention is low. It allows transactions to execute without acquiring locks, running a quick check for conflicts before committing. This avoids lock overhead when conflicts are rare."
+  },
+  {
+    "id": "db-h-009",
+    "difficulty": "hard",
+    "q": "You are examining the query execution plan for a query that joins two large tables sorted on their join keys. The optimizer selects a Merge Join instead of a Hash Join. What advantage does a Merge Join offer in this scenario?",
+    "options": [
+      "It avoids full table scans by converting all text columns to integers",
+      "It executes in O(1) time by building a temporary hash ring in memory",
+      "It processes data with a highly efficient O(N + M) scan because both datasets are already sorted on the join key",
+      "It bypasses the undo log segment entirely to protect against deadlock conditions"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "When both datasets are already sorted on the join key, a Merge Join is highly efficient. It can step through both sets in a single linear pass with a time complexity of O(N + M), avoiding the overhead of building an in-memory hash table."
+  },
+  {
+    "id": "db-h-010",
+    "difficulty": "hard",
+    "q": "A banking database requires strict Serializable isolation. The database engine uses Serializable Snapshot Isolation (SSI) instead of classic two-phase locking (2PL). How does SSI achieve serializable integrity without heavy lock overhead?",
+    "options": [
+      "It executes all transactions sequentially on a single thread within the V8 engine context",
+      "It tracks read-write dependencies at runtime to detect and abort transactions that could form serialization anomalies",
+      "It relaxes data integrity constraints by switching the cluster to an eventually consistent model",
+      "It requires developers to manually declare all target shards inside a prepared statement template"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Serializable Snapshot Isolation (SSI) is a non-blocking approach. It allows transactions to run concurrently using data snapshots while tracking read-write dependencies to detect and abort potential serialization anomalies before they commit."
+  },
+  {
+    "id": "db-h-011",
+    "difficulty": "hard",
+    "q": "You are designing a distributed data layer that shards a high-volume transactional table across multiple database engines. If a query filters data using a column *other* than the defined sharding key, how must the system process the lookup?",
+    "options": [
+      "The query fails immediately because lookups on non-sharding keys are forbidden",
+      "The router must broadcast the query to every individual shard node, merge the results, and return the combined dataset to the client",
+      "The cluster uses its binary log file to spin up a transient master server node",
+      "The system runs a synchronous full table scan across the primary key cache"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "When a query does not include the sharding key, the routing layer cannot determine which shard holds the requested data. It must execute a scatter-gather operation, broadcasting the query to all shards and aggregating the results."
+  },
+  {
+    "id": "db-h-012",
+    "difficulty": "hard",
+    "q": "You are optimizing an index on a table that handles millions of rows. You discover that a query filtering on a low-cardinality column (such as a boolean `is_processed` flag) is ignoring the index and falling back on a full table scan. Why does the optimizer make this choice?",
+    "options": [
+      "Boolean attributes cannot be indexed by standard B+ Tree structures",
+      "The optimizer determines that reading the index tree alongside random table disk lookups costs more than simply scanning the table sequentially",
+      "Low-cardinality index paths alter the database isolation level to Read Uncommitted",
+      "The engine requires a composite index prefix to evaluate boolean data values"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "When filtering on a low-cardinality column, a large percentage of rows match the criteria. The cost-based optimizer will skip the index and choose a sequential scan because scanning the table directly is faster than bouncing between index leaves and random disk blocks."
+  },
+  {
+    "id": "db-h-013",
+    "difficulty": "hard",
+    "q": "You are designing a relational database infrastructure. You want to implement a Multi-Master replication architecture where all database nodes can accept write operations concurrently. What is the primary technical challenge with this setup?",
+    "options": [
+      "Multi-master nodes are unable to store data in standard B+ Tree indexes",
+      "Resolving write conflicts and handling out-of-order transaction updates across independent nodes",
+      "The system cannot parse parameterized statements without a single primary node",
+      "Multi-master architectures disable the use of foreign key constraints across tables"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "The main challenge with multi-master replication is conflict resolution. Since any node can accept writes, the system needs robust strategies (like CRDTs or Paxos consensus) to handle concurrent updates to the same row without corrupting data."
+  },
+  {
+    "id": "db-h-014",
+    "difficulty": "hard",
+    "q": "You are refactoring a database transaction block and want to implement an application-level retry loop. Why is a built-in retry mechanism necessary when building applications that interact with relational databases using Snapshot Isolation?",
+    "options": [
+      "Snapshot Isolation disables the use of prepared statements after a write operation",
+      "Transactions can fail to commit due to serialization conflicts when concurrent data modifications overlap, requiring the application to retry the block",
+      "The retry loop clears out uncommitted binary logs from the client's memory buffer",
+      "It prevents the database engine from changing the table schema during full table scans"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Under optimistic isolation models like Snapshot Isolation, the database does not block conflicting writes using locks. Instead, if two transactions attempt to modify the same record, one will fail to commit due to a write conflict, meaning the application must be ready to retry the operation."
+  },
+  {
+    "id": "db-h-015",
+    "difficulty": "hard",
+    "q": "A database administrator notices that a high-volume relational table has significant storage bloat, causing queries to run slowly. The table handles frequent UPDATE and DELETE operations under an MVCC storage architecture. What causes this bloat?",
+    "options": [
+      "The database engine duplicates the entire table whenever an index scan runs",
+      "Deletes and updates leave old row versions (dead tuples) in storage to maintain visibility for older, active transactions",
+      "The table's primary key auto-increment function allocates excess memory blocks",
+      "The prepared statement execution pipeline buffers compiled query steps in the main table space"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "MVCC engines do not overwrite records in place during updates or deletes. Instead, they write a new row version or flag the existing row as a dead tuple. These dead tuples remain on disk to provide consistent views for older active transactions, causing storage bloat until they are cleaned up by processes like VACUUM."
+  },
+  {
+    "id": "db-h-016",
+    "difficulty": "hard",
+    "q": "You are optimizing a query that uses a hash join to merge two tables: Table A (10,000 rows) and Table B (5,000,000 rows). How does a cost-based query optimizer minimize memory usage when setting up this hash join?",
+    "options": [
+      "It builds an in-memory hash table using the smaller dataset (Table A) and then streams through the larger dataset (Table B) to find matches",
+      "It combines both tables into an unindexed document collection on disk",
+      "It forces Table B to be sharded across multiple replica nodes based on a modulus hash",
+      "It processes both tables using a nested loop scan to clear the undo log segment"
+    ],
+    "correct": 0,
+    "wrongPick": 3,
+    "explain": "To optimize hash joins, the database engine uses the smaller dataset (the build input) to build an in-memory hash table. It then iterates through the larger dataset (the probe input) to find matching rows, minimizing the join's memory footprint."
+  },
+  {
+    "id": "db-h-017",
+    "difficulty": "hard",
+    "q": "You are evaluating the data storage layer of an application. The database architecture needs to write updates to disk as fast as possible while handling high-throughput write streams. Which storage architecture pattern should you choose over standard B+ Trees?",
+    "options": [
+      "A normalized relational table hierarchy using 3NF",
+      "A Log-Structured Merge-tree (LSM Tree) engine, because it converts random writes into fast sequential disk operations",
+      "An unindexed directory collection that reads text logs sequentially",
+      "A clustered replication layout using round-robin socket distribution"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "LSM Trees are optimized for write-heavy workloads. They buffer incoming writes in memory before flushing them to disk as sorted sequential files, avoiding the random disk I/O overhead associated with updating traditional B+ Tree nodes in place."
+  },
+  {
+    "id": "db-h-018",
+    "difficulty": "hard",
+    "q": "You are auditing a critical financial ledger database. You need to ensure that database transactions remain completely isolated from concurrent modifications, preventing any possibility of data race anomalies. Which technique offers the highest data isolation safety?",
+    "options": [
+      "Setting the transaction isolation level to Read Committed",
+      "Using Serializable isolation combined with pessimistic locks or strong validation checks",
+      "Switching the database cluster to an eventually consistent NoSQL architecture",
+      "Offloading transaction processing to asynchronous background worker nodes"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Serializable isolation provides the highest level of isolation safety. It ensures that concurrent transactions execute with the same consistency as if they were running sequentially, eliminating data anomalies."
+  },
+  {
+    "id": "db-h-019",
+    "difficulty": "hard",
+    "q": "You are configuring a database shard router layer. The application needs to dynamically re-shard a table from 10 nodes to 20 nodes as data volume grows. Which hashing algorithm minimizes data movement between nodes during re-sharding?",
+    "options": [
+      "A naive Modulus hashing calculation (key % N)",
+      "Consistent Hashing using a distributed hash ring structure",
+      "An append-only binary log indexing method",
+      "A composite index prefix optimization routine"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Consistent hashing is ideal for dynamic scaling. It maps both data keys and server nodes to a shared hash ring, ensuring that adding or removing a node only requires moving a small fraction of keys rather than re-mapping the entire dataset."
+  },
+  {
+    "id": "db-h-020",
+    "difficulty": "hard",
+    "q": "You are optimizing a query that combines data from two tables. You notice that the query planner is using a nested loop join with an index scan instead of a hash join. Under what conditions is this choice most efficient?",
+    "options": [
+      "When both tables contain millions of records and lack sorted columns",
+      "When the outer dataset is small and the inner dataset has an index on the join column, allowing fast targeted lookups",
+      "When the database is running under a Read Uncommitted isolation level",
+      "When the query bypasses the primary key and filters by string characters"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A nested loop join with an index scan is highly efficient when the outer table is small and the inner table is indexed on the join column. The engine iterates through the small outer loop and performs rapid, targeted index lookups on the inner table, avoiding the overhead of a full table scan."
+  },
+  {
+    "id": "db-h-021",
+    "difficulty": "hard",
+    "q": "You are analyzing a database error log and discover frequent errors related to 'lock escalation'. What is lock escalation, and why does a relational database engine perform it?",
+    "options": [
+      "Converting synchronous transactions into eventually consistent operations",
+      "Converting many fine-grained locks (like row locks) into a single coarse lock (like a table lock) to save system memory",
+      "Moving data blocks from memory to the write-ahead log files",
+      "Upgrading an optimistic concurrency check into a pessimistic transaction block"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Lock escalation occurs when a transaction holds too many individual row locks, threatening to exhaust system memory. To free up resources, the database engine escalates those fine-grained locks into a single table or page lock."
+  },
+  {
+    "id": "db-h-022",
+    "difficulty": "hard",
+    "q": "You are designing a distributed relational database and need to resolve a distributed deadlock across separate servers. Why are distributed deadlocks harder to detect than local deadlocks?",
+    "options": [
+      "Distributed transactions do not use the write-ahead log pipeline",
+      "No single database machine has visibility into the entire global lock dependency graph, requiring a distributed detection algorithm to spot cycles",
+      "Distributed nodes are required to run on a single thread context",
+      "The system handles all data modifications using consistent hashing loops"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Distributed deadlocks are complex because lock dependencies span multiple isolated servers. Since no single node sees the full global lock graph, detecting cycles requires nodes to exchange lock status messages or rely on timeout mechanisms."
+  },
+  {
+    "id": "db-h-023",
+    "difficulty": "hard",
+    "q": "You are building a real-time tracking application that records GPS coordinates. The application issues high-frequency write operations to a table with multiple indexes. What impact do these indexes have on write performance?",
+    "options": [
+      "Indexes speed up write operations by sorting data in memory first",
+      "Indexes slow down writes because the database engine must update the corresponding B+ Tree structures along with the main data block",
+      "Indexes have no impact on write speed because they only apply to SELECT operations",
+      "Indexes convert write operations into synchronous full table scans"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "While indexes speed up lookups, they introduce a write penalty. Every time a row is inserted, updated, or deleted, the database engine must also modify the corresponding B+ Tree index structures to keep them accurate and sorted."
+  },
+  {
+    "id": "db-h-024",
+    "difficulty": "hard",
+    "q": "You are designing a high-availability database cluster and need to choose a data replication mode. If your application demands zero data loss tolerances (RPO = 0) even if a primary node suffers a catastrophic failure, which replication mode must you use?",
+    "options": [
+      "Asynchronous replication",
+      "Synchronous replication",
+      "Chained replication",
+      "Directory-based sharding replication"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "To guarantee zero data loss (Recovery Point Objective = 0), you must use synchronous replication. This mode ensures that a transaction is only confirmed to the client after it has been written to both the primary master and the replica nodes, preventing data loss if the primary crashes."
+  },
+  {
+    "id": "db-h-025",
+    "difficulty": "hard",
+    "q": "You are designing a database infrastructure and need to ensure your application can handle network partitions without corrupting data state. According to the CAP theorem, if you choose Consistency (C) and Partition Tolerance (P) during a network split, how must your nodes handle incoming writes?",
+    "options": [
+      "The isolated nodes must accept all writes and reconcile conflicts later using consistent hashing rings",
+      "The isolated nodes must reject incoming write operations and return an error to preserve strong data consistency",
+      "The database cluster must drop all indexes and fall back on full table scans",
+      "The system must switch tables from a relational structure to an eventually consistent model"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Choosing Consistency and Partition Tolerance (CP) means that if a network partition occurs, isolated nodes cannot safely coordinate. To avoid data divergence, they must stop accepting write operations and return an error until the network partition heals."
+  }
+]
