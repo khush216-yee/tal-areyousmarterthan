@@ -1,0 +1,352 @@
+[
+  {
+    "id": "db-m-001",
+    "difficulty": "medium",
+    "q": "You are managing a highly distributed global system. A network partition occurs, completely isolating your database nodes. According to the CAP Theorem, if your architecture chooses to prioritize Partition Tolerance (P) and Availability (A), what must your system sacrifice?",
+    "options": [
+      "Consistency (Strong Consistency)",
+      "Network Throughput",
+      "Durability guarantees",
+      "Horizontal Scale capacity"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "The CAP theorem states that a distributed system can guarantee at most two out of three properties: Consistency, Availability, and Partition Tolerance. If a network partition occurs (P) and the system remains available to accept writes on any node (A), consistency is sacrificed because isolated nodes cannot synchronize data in real time."
+  },
+  {
+    "id": "db-m-002",
+    "difficulty": "medium",
+    "q": "When implementing a prepared statement (parameterized query) in an application, how many distinct network round-trips are typically made to the database engine to execute the query for the first time?",
+    "options": [
+      "Exactly one round-trip containing both template structure and parameters",
+      "Two round-trips: one to compile the query template, and one to send parameters for execution",
+      "Three round-trips: compile schema validation, acquire explicit locks, and transfer parameters",
+      "Zero round-trips because compilation happens entirely on the local application client drivers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Prepared statements use a two-step network dance: First, the application sends the SQL query template (without data) to the database to be parsed and compiled. Second, the application sends the runtime parameter values to be safely bound and executed."
+  },
+  {
+    "id": "db-m-003",
+    "difficulty": "medium",
+    "q": "You are designing a high-performance relational database index on a column containing sequential integers. Which data structure and underlying tree balanced algorithm do modern relational database indexes predominantly use?",
+    "options": [
+      "Singly Linked Lists with O(N) search steps",
+      "B+ Trees, because their high fan-out minimizes disk I/O and keeps leaf nodes linked sequentially for range scans",
+      "Binary Search Trees (BST), because they guarantee a strict maximum of two child nodes per element",
+      "Hash Maps, because they provide optimal range scanning operations across ordered conditions"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "B+ Trees are the preferred choice for relational indexing because their wide layout (high fan-out) reduces tree depth and minimizes disk I/O. Furthermore, their leaf nodes are linked sequentially, which makes range queries extremely efficient."
+  },
+  {
+    "id": "db-m-004",
+    "difficulty": "medium",
+    "q": "You create a composite index on a relational table covering three columns in this exact sequence: (company_id, department_id, employee_id). Which of the following WHERE clause filters will fail to leverage this index effectively?",
+    "options": [
+      "WHERE company_id = 10 AND department_id = 5",
+      "WHERE company_id = 10",
+      "WHERE department_id = 5 AND employee_id = 120",
+      "WHERE company_id = 10 AND department_id = 5 AND employee_id = 120"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "Composite indexes rely on the left-to-right prefix rule. The database engine can only use the index if the query filters include the leftmost column (`company_id`). Queries filtering only by trailing columns cannot match the index structure."
+  },
+  {
+    "id": "db-m-005",
+    "difficulty": "medium",
+    "q": "You need to bring a legacy relational database table into compliance with Third Normal Form (3NF). What structural validation criteria must the table satisfy?",
+    "options": [
+      "It must be in 2NF, and all non-key columns must be completely independent, eliminating transitive dependencies",
+      "It must use a composite primary key and contain at least one XML document column mapping",
+      "It must be in 1NF and ensure that every column data type is converted to variable-length characters",
+      "It must eliminate multi-valued attributes by duplicating the table layout across multiple physical disks"
+    ],
+    "correct": 0,
+    "wrongPick": 2,
+    "explain": "For a table to achieve Third Normal Form (3NF), it must first satisfy Second Normal Form (2NF), and all non-prime (non-key) attributes must depend directly on the primary key, removing any transitive functional dependencies."
+  },
+  {
+    "id": "db-m-006",
+    "difficulty": "medium",
+    "q": "A transaction executes a query to count rows matching a condition. Concurrently, another transaction inserts a brand-new row that fits the criteria and commits. The first transaction repeats its count and discovers an unexpected extra row. What is this anomaly?",
+    "options": [
+      "Dirty Read",
+      "Non-repeatable Read",
+      "Phantom Read",
+      "Write Skew"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "A phantom read occurs when a transaction runs a range query twice, but finds that a concurrent transaction has inserted or deleted rows in that range in the meantime, causing the second execution to return a different set of records."
+  },
+  {
+    "id": "db-m-007",
+    "difficulty": "medium",
+    "q": "You want to completely eliminate non-repeatable reads and phantom reads within your transaction pipeline. Which standard isolation level must you configure your database to use?",
+    "options": [
+      "Read Uncommitted",
+      "Read Committed",
+      "Repeatable Read (if using MVCC/range locks) or Serializable",
+      "None of the above can prevent phantom reads"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "The Serializable isolation level prevents all read anomalies by executing transactions sequentially or simulating serial execution via strict locks. Many modern engines also prevent phantom reads at the Repeatable Read level using Multi-Version Concurrency Control (MVCC) or next-key locking."
+  },
+  {
+    "id": "db-m-008",
+    "difficulty": "medium",
+    "q": "You are designing a primary data master database that synchronizes data changes to replica nodes by capturing all transactional modifications, structural alterations, and state updates in an append-only transaction file. What is this file called?",
+    "options": [
+      "The Index Definition Schema",
+      "The Binary Log (Binlog) or Write-Ahead Log (WAL)",
+      "The Parameterized Statement Buffer",
+      "The Shard Mapping Routing Configuration Table"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "The Binary Log (binlog) or Write-Ahead Log (WAL) is an append-only record of all database modifications. Replicas read this log sequentially to replay actions and stay synchronized with the primary node."
+  },
+  {
+    "id": "db-m-009",
+    "difficulty": "medium",
+    "q": "You are scaling out a global social media platform database using horizontal sharding. You want to route incoming user records evenly across 4 separate database shards based on a numeric user_id column. Which sharding strategy is best suited for this?",
+    "options": [
+      "Range-based sharding on user_id values",
+      "Hash/Modulus sharding (e.g., user_id % 4)",
+      "Directory-based routing using static configurations",
+      "Vertical table splitting across separate storage networks"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Hash or Modulus sharding applies a hash function or remainder calculation to a routing key (like `user_id % 4`), which distributes data uniformly across shards and prevents hotspots."
+  },
+  {
+    "id": "db-m-0010",
+    "difficulty": "medium",
+    "q": "You have configured an index on an integer column named `age`. Consider two queries: `WHERE age = 5` and `WHERE age > 5`. How does the database navigate the index leaves for these lookups?",
+    "options": [
+      "Both queries perform full table scans regardless of index pointers",
+      "Both lookups resolve in O(1) time using static hash mapping buckets",
+      "The equality filter points directly to a leaf node; the range filter lands on a leaf node and traverses the linked leaf pointers sequentially",
+      "The range filter forces the tree structure to re-index all contents dynamically"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "In a B+ Tree index, leaf nodes form a sorted, doubly linked list. An equality search travels down the tree branch to a single leaf. A range query (`> 5`) finds the starting leaf node and then simply walks along the linked list to collect subsequent records efficiently."
+  },
+  {
+    "id": "db-m-011",
+    "difficulty": "medium",
+    "q": "You are building a horizontally sharded database cluster. Because rows are distributed across independent servers, auto-incrementing integer columns can cause primary key collisions. How can you ensure primary keys remain globally unique?",
+    "options": [
+      "Rely on standard local table auto-increments on every shard server",
+      "Generate Universally Unique Identifiers (UUIDs) or use a distributed ID generator like Snowflake",
+      "Enforce a unique database constraint on the shard's binary log metadata",
+      "Convert all data columns to use a shared transactional hash cache"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Distributed systems use UUIDs or centralized ID generation algorithms (like Twitter's Snowflake) to produce keys that are guaranteed to be unique across independent, unlinked database nodes."
+  },
+  {
+    "id": "db-m-012",
+    "difficulty": "medium",
+    "q": "You are optimizing performance for two query variants: Variant A uses `WHERE id = 'a' OR id = 'b' OR id = 'c'`, while Variant B uses `WHERE id IN ('a', 'b', 'c')`. Assuming an index exists on `id`, how do modern SQL query optimizers treat these choices?",
+    "options": [
+      "Variant B is exponentially faster because it completely avoids the index structure",
+      "Variant A forces a full table scan while Variant B uses an index only scan",
+      "The optimizer internally normalizes both variants into the same execution path, utilizing the index identically",
+      "Both variants fail because textual strings cannot be evaluated using primary key indexes"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "Modern query optimizers parse `IN` clauses and chains of `OR` statements on the same indexed column into equivalent logical execution representations, resulting in identical performance."
+  },
+  {
+    "id": "db-m-013",
+    "difficulty": "medium",
+    "q": "A senior engineer advises your team to avoid writing SQL queries that lead to a full table scan on large production environments. Which of the following query conditions is most likely to trigger an inefficient full table scan?",
+    "options": [
+      "WHERE unique_id = 450",
+      "WHERE status_code LIKE '%active%'",
+      "WHERE created_at >= '2026-01-01'",
+      "WHERE primary_key_id IN (10, 20, 30)"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Using a leading wildcard (e.g., `LIKE '%active%'`) prevents standard B+ Tree indexes from performing a targeted lookup, forcing the query engine to fall back on a full table scan to evaluate every record."
+  },
+  {
+    "id": "db-m-014",
+    "difficulty": "medium",
+    "q": "You are designing a database replication tree layout for an enterprise analytics system. You want to configure a multi-tier replication hierarchy where a secondary replica acts as a replication source for tertiary replicas. Is this architecture possible?",
+    "options": [
+      "No, replica nodes can only fetch data logs directly from the primary master database node",
+      "Yes, this is called chained replication, and it offloads log distribution work from the primary master node",
+      "No, replication systems require all servers to share the same physical hard drive controllers",
+      "Yes, but it disables all write capabilities across the entire system permanently"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Chained replication allows a replica node to read modifications from a primary master and then stream those updates down to other replicas, protecting the primary node from log-streaming overhead."
+  },
+  {
+    "id": "db-m-015",
+    "difficulty": "medium",
+    "q": "You execute a complex SQL JOIN statement merging three large tables. What is the standard theoretical time complexity that the database engine handles when evaluating a naive Nested Loop Join over two tables of sizes N and M?",
+    "options": [
+      "O(1)",
+      "O(N + M)",
+      "O(N * M)",
+      "O(log(N + M))"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "A naive Nested Loop Join compares every row of the first table against every row of the second table, resulting in a worst-case time complexity of O(N * M)."
+  },
+  {
+    "id": "db-m-016",
+    "difficulty": "medium",
+    "q": "You are optimizing data writes and want to trace how a database transaction performs a rollback operation internally. Which database structure stores historical data states to undo uncommitted transaction modifications?",
+    "options": [
+      "The compound index mapping array",
+      "The Undo Log / Rollback Segment",
+      "The parameterized memory cache",
+      "The client statement execution buffer"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Database engines use an Undo Log or Rollback Segment to record the original values of data modified during a transaction. If the transaction aborts, the engine reads these logs to restore the original state."
+  },
+  {
+    "id": "db-m-017",
+    "difficulty": "medium",
+    "q": "You are evaluating data inconsistencies during concurrent execution. Two transactions read the same bank account balance ($100). Transaction A subtracts $20 and saves ($80). Transaction B simultaneously subtracts $30 and saves ($70), overwriting Transaction A's update. What is this anomaly?",
+    "options": [
+      "Dirty Read",
+      "Lost Update",
+      "Read Skew",
+      "Phantom Read"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "A lost update anomaly occurs when two concurrent transactions read the same record, modify its value, and write it back sequentially. The second write overwrites the first update without incorporating its changes."
+  },
+  {
+    "id": "db-m-018",
+    "difficulty": "medium",
+    "q": "To prevent concurrent race conditions and avoid data corruptions without setting global isolation modes to slow lock steps, you decide to execute a specific selective write query lock explicit syntax: `SELECT * FROM accounts WHERE id = 1 FOR UPDATE`. What strategy is this?",
+    "options": [
+      "Optimistic Concurrency Control",
+      "Pessimistic Locking",
+      "Eventual Consistency Validation",
+      "Asynchronous Shard Routing"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Using the `FOR UPDATE` modifier applies a pessimistic lock to the target rows, blocking other concurrent queries from acquiring exclusive locks or modifying that data until your transaction completes."
+  },
+  {
+    "id": "db-m-019",
+    "difficulty": "medium",
+    "q": "You are designing a distributed banking service where a single logical user transaction must update a balances table located on Database Server A and a logs table on Database Server B. What atomic consensus protocol handles this distributed transaction?",
+    "options": [
+      "Single-phase asynchronous streaming",
+      "Two-Phase Commit (2PC) protocol",
+      "Hash modulus routing optimization",
+      "Optimistic index validation locks"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Two-Phase Commit (2PC) protocol coordinates distributed transactions across multiple independent node databases using a Prepare phase and a Commit phase to guarantee atomic consensus."
+  },
+  {
+    "id": "db-m-020",
+    "difficulty": "medium",
+    "q": "You want to design an index on a text column named `last_name` that stores string text data values. Which indexing consideration applies when building a B+ Tree index over string character types?",
+    "options": [
+      "Character values cannot be sorted or stored inside B+ Tree nodes",
+      "The index evaluates character string collation rules for sorting, and can leverage prefix lengths to optimize space usage",
+      "String columns force the index tree to transform permanently into an un-ordered hash ring",
+      "Character elements bypass the write-ahead logging pipeline completely"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "String indexing evaluates character collation definitions to sort nodes alphabetically. To optimize index size, you can specify a prefix length to avoid indexing massive string text blocks entirely."
+  },
+  {
+    "id": "db-m-021",
+    "difficulty": "medium",
+    "q": "You are analyzing a data report anomaly. Transaction A reads balance rows from User 1 and User 2. Simultaneously, Transaction B transfers money between those users and commits. Transaction A views an inconsistent state where money has left User 1 but not yet arrived at User 2. What is this anomaly?",
+    "options": [
+      "Dirty Write",
+      "Read Skew",
+      "Lost Update",
+      "Phantom Read"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Read skew occurs when a transaction reads a subset of records, and a concurrent transaction commits updates across those same rows, causing the first transaction to read an inconsistent snapshot of the system."
+  },
+  {
+    "id": "db-m-022",
+    "difficulty": "medium",
+    "q": "A financial transaction pipeline implements a distributed workflow orchestration pattern using a 'Try-Confirm-Cancel' (TCC) design pattern. What is the fundamental mechanism of this architecture?",
+    "options": [
+      "It locks global operating system tables synchronously across network networks",
+      "It is an application-level compensation pattern that explicitly reserves resources during 'Try', commits them during 'Confirm', or runs cleanups via 'Cancel'",
+      "It shifts all relational processing to unbuffered NoSQL database engines",
+      "It automatically enforces database normalization rules up to fifth normal form (5NF)"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "TCC is an application-level compensation pattern for managing distributed transactions. It operates in three phases: 'Try' reserves necessary resources, 'Confirm' completes the operation, and 'Cancel' executes rollback logic if an error occurs."
+  },
+  {
+    "id": "db-m-023",
+    "difficulty": "medium",
+    "q": "You run a relational table query containing an expression: `WHERE account_id = 5`. The `account_id` field is the table's primary key. What is the search complexity for finding this record inside a balanced B+ Tree index?",
+    "options": [
+      "O(1)",
+      "O(log N)",
+      "O(N)",
+      "O(N log N)"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Searching for a specific key value within a balanced B+ Tree index scales logarithmically with the total number of records, yielding a time complexity of O(log N)."
+  },
+  {
+    "id": "db-m-024",
+    "difficulty": "medium",
+    "q": "Your application performance dashboard shows a sudden spike in database CPU utilization. You trace the root cause to a series of queries using unindexed string columns inside complex `OR` filter clauses. What approach should you take to identify the exact bottleneck?",
+    "options": [
+      "Run an EXPLAIN statement to view the query plan and verify if it's falling back on a full table scan",
+      "Add more database replicas to handle write traffic",
+      "Increase the isolation level to Serializable",
+      "De-normalize the entire database structure into a single table"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Running an EXPLAIN statement allows you to inspect the query plan generated by the database optimizer, revealing whether the database is using an index or performing an expensive full table scan."
+  },
+  {
+    "id": "db-m-025",
+    "difficulty": "medium",
+    "q": "You are implementing database replication. What is the key functional difference between synchronous and asynchronous replication modes?",
+    "options": [
+      "Synchronous replication writes to memory only, while asynchronous writes directly to the disk filesystem",
+      "Synchronous replication blocks the client write until all replicas acknowledge the update; asynchronous replication returns success immediately after the primary commits",
+      "Synchronous replication requires NoSQL engines, while asynchronous replication requires SQL databases",
+      "Synchronous replication forces all tables to be sharded horizontally across server machines"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Synchronous replication waits for replica nodes to confirm they have written the transaction before responding to the client, ensuring strong data consistency. Asynchronous replication responds immediately after the primary node writes the data, completing the replica sync in the background."
+  }
+]
