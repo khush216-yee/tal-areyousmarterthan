@@ -1,0 +1,352 @@
+[
+{
+"id": "vue-h-001",
+"difficulty": "hard",
+"q": "Your watcher callback executes a DOM node height query after a state shift, but receives old measurements because the DOM hasn't updated yet. What option fixes this?",
+"options": [
+"Change the flush configuration option to post",
+"Switch execution to alternative watchSyncEffect hooks",
+"Isolate rendering components with shallowReactive",
+"Force immediate re-evaluation using deep options"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Setting flush to post delays the watcher callback execution until after the rendering framework completes its component updates and flushes real DOM adjustments."
+},
+{
+"id": "vue-h-002",
+"difficulty": "hard",
+"q": "An engineer initializes an open collection of asynchronous web socket handlers inside a custom search tool that can be closed manually using a single action. What utility manages this cleanup?",
+"options": [
+"The customRef definition constructor helper",
+"The effectScope reactivity collection primitive",
+"The watchSyncEffect dependency array macro",
+"The markRaw instance assignment interface"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "An effectScope instance collects reactive side effects like computed properties and watchers created within its scope. Calling scope.stop() dismantles all collected dependencies simultaneously."
+},
+{
+"id": "vue-h-003",
+"difficulty": "hard",
+"q": "You are binding a search query state to a network fetch inside a watchEffect and must prevent duplicate overlapping requests from creating race conditions. How do you handle this?",
+"options": [
+"Wrap fetch promises within explicit nextTick functions",
+"Utilize the onCleanup callback parameter in watchEffect",
+"Migrate reactive inputs to separate shallowRef wrappers",
+"Configure your watcher instance using flush sync properties"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The watchEffect callback provides an onCleanup function argument. It executes right before the watcher re-evaluates or unmounts, letting you cancel active operations like in-flight network requests."
+},
+{
+"id": "vue-h-004",
+"difficulty": "hard",
+"q": "You are initializing a third-party charting library inside an onMounted hook and want to store its instance in state while ensuring it is never wrapped in a Proxy layer. What utility applies?",
+"options": [
+"toRaw",
+"markRaw",
+"shallowRef",
+"readonly"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "The markRaw utility stamps an object with a permanent flag that prevents it from ever being transformed into a reactive proxy, avoiding performance overhead and third-party reference mutations."
+},
+{
+"id": "vue-h-005",
+"difficulty": "hard",
+"q": "You need to create an input text binding ref that applies a custom debounce delay to prevent processing updates until a user stops typing for 300ms. How do you build this low-level primitive?",
+"options": [
+"Construct a custom ref using the customRef factory",
+"Throttle state values using explicit watchSyncEffect parameters",
+"Wrap inputs with standard reactive proxy objects",
+"Defer modifications using asynchronous nextTick promises"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "The customRef factory gives you explicit control over reactivity. It takes a factory function with track and trigger arguments to manually schedule dependency tracking and update notifications."
+},
+{
+"id": "vue-h-006",
+"difficulty": "hard",
+"q": "You are creating a highly optimized grid layout component containing thousands of items where rows should skip re-rendering unless their selected state flags shift. What directive applies?",
+"options": [
+"v-once",
+"v-memo",
+"v-pre",
+"v-show"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The v-memo directive accepts an array of dependency values. The virtual DOM diffing engine skips re-rendering and diffing the entire template subtree if those dependency values match their previous values."
+},
+{
+"id": "vue-h-007",
+"difficulty": "hard",
+"q": "You are configuring a server-side rendered application where an asynchronous fetch request must run exclusively on the server before serializing HTML content. Which hook handles this?",
+"options": [
+"onBeforeMount",
+"onServerPrefetch",
+"onMounted",
+"onActivated"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The onServerPrefetch lifecycle hook runs exclusively on the node server during server-side rendering. The framework waits for its returned promise to resolve before serializing the final component HTML markup."
+},
+{
+"id": "vue-h-008",
+"difficulty": "hard",
+"q": "Your server-side rendered application logs hydration mismatch warnings on client load because an element outputs a random number generated in template views. How do you fix this?",
+"options": [
+"Isolate the non-deterministic layout inside ClientOnly tags",
+"Enforce synchronous render configurations within defineOptions",
+"Wrap data processing functions within watchSyncEffect loops",
+"Isolate property tracking blocks using customRef utilities"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Hydration mismatches occur when server-rendered HTML doesn't match client expectations. Wrapping browser-specific or non-deterministic elements inside a ClientOnly container defers rendering until the client script executes."
+},
+{
+"id": "vue-h-009",
+"difficulty": "hard",
+"q": "You are designing an optimization strategy for an application landing view to stream rendering chunks to edge workers incrementally using the Web Streams API. What function do you use?",
+"options": [
+"renderToString",
+"renderToWebStream",
+"renderToNodeStream",
+"pipeToWebWritable"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "The renderToWebStream function from vue/server-renderer converts an application instance into a readable web stream, allowing edge environments to stream HTML to browsers incrementally."
+},
+{
+"id": "vue-h-0010",
+"difficulty": "hard",
+"q": "You are embedding a design system component inside an enterprise application and want it to compile into a native standalone Web Component. Which framework function handles this?",
+"options": [
+"defineComponent",
+"defineCustomElement",
+"createApp",
+"defineOptions"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The defineCustomElement method converts a standard single file component into a native Web Component class, packaging styles securely within a true Shadow DOM layer."
+},
+{
+"id": "vue-h-011",
+"difficulty": "hard",
+"q": "You are writing a low-level telemetry plug-in that needs to generate unique layout IDs by fetching the private numeric component ID from the active lifecycle setup. What tool resolves this?",
+"options": [
+"instance.proxy.$uid",
+"getCurrentInstance",
+"useTemplateRef",
+"useAttrs"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The getCurrentInstance function exposes internal component instance structures. It serves as an escape hatch for library developers to inspect internal parameters like unique instance IDs during setup execution."
+},
+{
+"id": "vue-h-012",
+"difficulty": "hard",
+"q": "You are optimizing a server-side rendered page to defer the client-side hydration of a heavy comments component until it actually enters the user's viewport. What strategy applies?",
+"options": [
+"hydrateOnIdle()",
+"hydrateOnVisible()",
+"hydrateOnInteraction()",
+"hydrateWithCustomStrategy()"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The hydrateOnVisible strategy enables lazy hydration under defineAsyncComponent. It uses an internal IntersectionObserver to delay client hydration until the component scrolls into view."
+},
+{
+"id": "vue-h-013",
+"difficulty": "hard",
+"q": "You are investigating the internal tracking engine of Vue 3 and need to identify the core map structure used to hold dependency keys for reactive proxy objects. What structure is it?",
+"options": [
+"ReactiveMap",
+"targetMap",
+"depsMap",
+"effectSet"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "The reactivity layer organizes dependencies inside a global WeakMap called targetMap. It links target reactive objects to their specific property maps and execution effect subscribers."
+},
+{
+"id": "vue-h-014",
+"difficulty": "hard",
+"q": "You notice that a watcher callback processing deep array modifications skips executing when individual array indexes are directly overwritten in state. Why does this happen?",
+"options": [
+"Overwriting array indexes is not trackable via proxies",
+"The array reference must be watched with deep configuration",
+"Array modifications require tracking via watchSyncEffect",
+"Index adjustments are omitted from the task queue updates"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "While proxies intercept array index mutations natively, watching a ref array only monitors top-level reference changes unless you explicitly pass the deep option."
+},
+{
+"id": "vue-h-015",
+"difficulty": "hard",
+"q": "You want to create a bidirectional mapping interface for an input field component using a custom object getter/setter layout. Which reactivity pattern accommodates this?",
+"options": [
+"A custom customRef proxy hook block",
+"A writable computed property with get and set definitions",
+"A reactive proxy structure tracking deep modifications",
+"An asynchronous nextTick promise callback structure"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Computed properties can accept an options object containing get and set methods. This lets you intercept write assignments to transform data before updating your state."
+},
+{
+"id": "vue-h-016",
+"difficulty": "hard",
+"q": "You are writing a complex compiler integration tool and need to read the explicit bitwise flag assigned by the template compiler to mark dynamic text nodes. What is this marker called?",
+"options": [
+"StaticFlag",
+"PatchFlag",
+"BlockNode",
+"VNodeModifier"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "The compiler embeds explicit numeric integers called Patch Flags directly into virtual nodes. The runtime uses these bitwise markers to skip unchanged static elements during patch operations."
+},
+{
+"id": "vue-h-017",
+"difficulty": "hard",
+"q": "You want to declare a secure global type extension for route meta parameters across your codebase. How do you declare this using TypeScript?",
+"options": [
+"Export custom route interfaces using defineOptions declarations",
+"Augment the RouteMeta interface inside the vue-router module",
+"Cast parameters using explicit computed types within components",
+"Extend your properties directly inside generic defineProps calls"
+],
+"correct": 1,
+"wrongPick": 3,
+"explain": "You can extend router types by augmenting the RouteMeta interface within the vue-router module declaration. This ensures full type checking for meta parameters across your app."
+},
+{
+"id": "vue-h-018",
+"difficulty": "hard",
+"q": "You are developing a dynamic template structure where style rules use hashed class names generated at compile time instead of data attribute styling scope flags. What attribute should you use?",
+"options": [
+"scoped",
+"module",
+"isolated",
+"local"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The module attribute activates CSS Modules within single file components. It compiles internal classes into dynamic, hashed class name strings exposed via the reactive $style object."
+},
+{
+"id": "vue-h-019",
+"difficulty": "hard",
+"q": "You want to design a robust global application logger that intercept and processes errors specifically captured inside child layout lifecycles. Which configuration hook manages this?",
+"options": [
+"onErrorCaptured",
+"app.config.errorHandler",
+"app.config.warnHandler",
+"window.onerror"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The app.config.errorHandler hook captures unhandled application errors globally. It receives the error instance, the component reference, and location details for monitoring."
+},
+{
+"id": "vue-h-020",
+"difficulty": "hard",
+"q": "You notice brief flashes of loading spinners when fast-loading asynchronous components render in your application. What property on defineAsyncComponent addresses this?",
+"options": [
+"timeout",
+"delay",
+"loadingComponent",
+"onError"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The delay option configuration inside defineAsyncComponent sets a grace period threshold. The loading component is skipped if your network loader resolves within that timeframe, preventing layout flickering."
+},
+{
+"id": "vue-h-021",
+"difficulty": "hard",
+"q": "You are developing an intricate list component where elements are rearranged, added, and deleted dynamically. What class modifier helps animate these item repositioning movements?",
+"options": [
+"v-enter-active",
+"v-move",
+"v-leave-active",
+"v-animating"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The TransitionGroup tag automatically applies the v-move class during list reorder operations. It uses FLIP animation techniques to calculate position shifts and smoothly slide items."
+},
+{
+"id": "vue-h-022",
+"difficulty": "hard",
+"q": "You are managing a highly complex rendering pipeline containing deeply nested loops and want to manually track dependency collection steps during code execution. What hook gives you this visibility?",
+"options": [
+"onUpdated",
+"onRenderTracked",
+"onRenderTriggered",
+"onBeforeUpdate"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "The onRenderTracked debugging hook fires when a component render function accesses a reactive dependency. This lets you inspect exactly which state keys are being tracked for layout updates."
+},
+{
+"id": "vue-h-023",
+"difficulty": "hard",
+"q": "You are profiling a performance issue where multiple synchronous state changes cause consecutive component re-render operations. What mechanism prevents this?",
+"options": [
+"The reactivity proxy layer intercepts setter execution loops",
+"The internal scheduler queues and deduplicates jobs in a microtask",
+"The compiler hoists static structures outside render functions",
+"The virtual DOM patch flag framework separates static text nodes"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The framework scheduler queues component render jobs inside a microtask pipeline. It deduplicates multiple identical job entries, ensuring your components re-render only once per event loop cycle."
+},
+{
+"id": "vue-h-024",
+"difficulty": "hard",
+"q": "You want to create an explicit template ref binding using the modern Vue 3.5 API that eliminates implicit name-matching vulnerabilities. What utility should you declare?",
+"options": [
+"ref",
+"useTemplateRef",
+"getCurrentInstance",
+"customRef"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The useTemplateRef utility accepts a clear string argument to target elements. This creates a strongly-typed reference that decouples the javascript variable name from the template attribute string."
+},
+{
+"id": "vue-h-025",
+"difficulty": "hard",
+"q": "You want to prevent child updates from propagating up to parent layouts when structural parameters are modified. Which reactive utility extracts a non-reactive reference copy?",
+"options": [
+"unref",
+"toRaw",
+"toValue",
+"markRaw"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The toRaw utility unwraps a reactive proxy to return its underlying plain javascript object, providing a raw reference copy that completely unhooks dependency tracking loops."
+}
+]
