@@ -1,0 +1,352 @@
+[
+  {
+    "id": "api-m-001",
+    "difficulty": "medium",
+    "q": "An authenticated user logs in successfully but receives a '403 Forbidden' error when trying to access administrative reporting panels. What does this mean?",
+    "options": [
+      "The user provided an invalid password credential block",
+      "The user identity is authenticated, but their account level lacks the required authorization privileges",
+      "The server has completely dropped its active database connection mapping",
+      "The API gateway did not attach a matching cross-origin header token"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A 403 Forbidden error indicates that the server recognized the client's identity (authentication), but the client does not have the necessary access permissions (authorization) to view or modify the resource."
+  },
+  {
+    "id": "api-m-002",
+    "difficulty": "medium",
+    "q": "What are the three cryptographic components that make up a JSON Web Token (JWT), separated by dots?",
+    "options": [
+      "Username, Domain, and Encryption Level",
+      "Header, Payload, and Signature",
+      "Public Key, Private Key, and Access Token",
+      "Protocol, Host Address, and Parameters Routing"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "A JWT is composed of three distinct parts separated by dots: the Header (metadata about token type/signing algorithm), the Payload (user claims and data attributes), and the Signature (used to verify token integrity)."
+  },
+  {
+    "id": "api-m-003",
+    "difficulty": "medium",
+    "q": "What is the core difference between the HTTP PUT and PATCH methods?",
+    "options": [
+      "PUT creates an entirely new table; PATCH only alters routing structures",
+      "PUT replaces the targeted resource with the complete request payload; PATCH applies partial updates to the resource",
+      "PUT runs over insecure channels; PATCH requires advanced token encryption blocks",
+      "PUT is used strictly for binary file transfers; PATCH only handles JSON data keys"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "PUT replaces the entire resource configuration with the provided payload (if a field is missing, it may be cleared or reset). PATCH applies partial changes to an existing resource, modifying only the specified attributes."
+  },
+  {
+    "id": "api-m-004",
+    "difficulty": "medium",
+    "q": "What happens when an API operation is designed to be 'idempotent'?",
+    "options": [
+      "The endpoint automatically compresses its response payloads into a binary zip architecture",
+      "Making multiple identical requests leaves the system state exactly the same as the first successful call",
+      "The transaction requires multi-factor authentication steps to complete",
+      "The execution speed increases exponentially with each sequential call loop"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Idempotency ensures that an operation can be performed multiple times with the exact same outcome as a single execution. This prevents duplicate actions if a client retries a request due to a network timeout."
+  },
+  {
+    "id": "api-m-005",
+    "difficulty": "medium",
+    "q": "Which HTTP header is passed by a client application to specify the data format it explicitly wants to receive back from the server?",
+    "options": [
+      "Content-Type",
+      "Accept",
+      "User-Agent",
+      "Cache-Control"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Accept header is used by clients to tell the server which content types or media formats (e.g., application/json or text/html) it can accept and process in the response."
+  },
+  {
+    "id": "api-m-006",
+    "difficulty": "medium",
+    "q": "An automated web API rate-limiting subsystem triggers and blocks an IP address after 5,000 rapid requests. What HTTP status code should the server return?",
+    "options": [
+      "400 Bad Request",
+      "403 Forbidden",
+      "429 Too Many Requests",
+      "503 Service Unavailable"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "The HTTP 429 Too Many Requests status code indicates that the user or client application has exhausted their allowed rate limit within a given timeframe."
+  },
+  {
+    "id": "api-m-007",
+    "difficulty": "medium",
+    "q": "What major QA advantage does an API Mocking framework provide during software development sprints?",
+    "options": [
+      "It automatically runs structural code compilation checks against the database core layers",
+      "It simulates the expected behavior, routing, and payloads of an API before its backend code is finished, enabling parallel frontend development and test automation design",
+      "It prevents external attackers from conducting SQL injection loops against production instances",
+      "It completely converts SOAP architectures into lightweight REST entities automatically"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "API Mocking provides simulated responses based on a target interface contract. This allows QA automation engineers and frontend developers to build and test features without waiting for backend development to finish."
+  },
+  {
+    "id": "api-m-008",
+    "difficulty": "medium",
+    "q": "A browser-based client application hosted at 'https://app-interface.com' is blocked when making an API call to 'https://backend-service.com' due to a CORS violation. What is missing?",
+    "options": [
+      "The client omitted a valid JSON Web Token from its request parameter body payload",
+      "The backend service needs to include an 'Access-Control-Allow-Origin: https://app-interface.com' response header to grant explicit access permissions",
+      "The domain router needs to enforce an explicit HTTPS protocol structure exclusively",
+      "The client application needs to rewrite its parameters to use XML models instead of JSON structures"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Cross-Origin Resource Sharing (CORS) is an essential browser security mechanism. A web browser will block a cross-origin resource read unless the destination API explicitly allows the origin domain via the Access-Control-Allow-Origin response header."
+  },
+  {
+    "id": "api-m-009",
+    "difficulty": "medium",
+    "q": "What is the primary focus when creating test cases for API Contract Testing?",
+    "options": [
+      "Measuring peak server resource use and network request latency thresholds under load",
+      "Verifying that the request and response structures match a predefined structural schema of keys, data types, and required fields",
+      "Confirming that complex SQL transaction statements execute inside acceptable performance limits",
+      "Validating the visual rendering of the frontend user interface across mobile devices"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Contract testing focuses on verifying that the interface matches a defined schema layout (the contract), confirming that payload keys, structure formatting, and data types remain consistent across versions."
+  },
+  {
+    "id": "api-m-010",
+    "difficulty": "medium",
+    "q": "How should a QA engineer approach writing automated assertion scripts for an API field that returns a dynamic runtime value, such as a changing timestamp?",
+    "options": [
+      "Hardcode the exact expected date-time string value into the test suite mapping files",
+      "Use regular expressions or JSON Schema validation assertions to check the data type format and structure pattern rather than a literal string value",
+      "Disable server logging options to force the API to return a fixed date value string",
+      "Change the HTTP method to GET to ensure the response remains static across validation cycles"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Dynamic data elements (like unique identifiers or timestamps) cannot be validated using literal assertions. Testers must evaluate their structural schema or check validation rules using regular expressions to confirm the formatting is correct."
+  },
+  {
+    "id": "api-m-011",
+    "difficulty": "medium",
+    "q": "What is a core architectural difference between REST and SOAP APIs?",
+    "options": [
+      "REST requires advanced microservices; SOAP can only run within single physical computers",
+      "REST is a lightweight, flexible architectural style that can use multiple payload structures (like JSON or text); SOAP is a highly structured protocol restricted to XML payloads",
+      "REST only runs over secure HTTPS lines; SOAP is restricted to open HTTP networks",
+      "REST uses binary tracking logs; SOAP uses plain text files to manage active sessions"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "REST is an architectural style that supports multiple message formats (JSON, XML, plain text) over HTTP. SOAP is a strict, specification-driven protocol that enforces XML for all request and response payloads."
+  },
+  {
+    "id": "api-m-012",
+    "difficulty": "medium",
+    "q": "What is the primary role of an API Gateway within a distributed microservices cloud infrastructure?",
+    "options": [
+      "To save transactional application database tables onto hard drive partitions",
+      "To serve as a single entry point that manages routing, authentication, rate limiting, and request processing across backend microservices",
+      "To compile development code blocks into executable binary files",
+      "To translate user interface layouts across client devices automatically"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "An API Gateway handles inbound client requests and routes them to the appropriate downstream microservices, centralizing key concerns like security enforcement, logging, policy management, and rate limiting."
+  },
+  {
+    "id": "api-m-013",
+    "difficulty": "medium",
+    "q": "What mechanism does an API leverage if an endpoint returns a huge dataset of 100,000 product rows and needs to break them down into digestible, numbered batches?",
+    "options": [
+      "Throttling",
+      "Pagination",
+      "Schema validation",
+      "Distributed tracing"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Pagination divides large data blocks into smaller chunks (pages) using query parameters like `?page=2&limit=20`, which optimizes performance and reduces server payload overhead."
+  },
+  {
+    "id": "api-m-014",
+    "difficulty": "medium",
+    "q": "Why is a Refresh Token provided alongside an Access Token in modern OAuth 2.0 implementation workflows?",
+    "options": [
+      "To allow developers to modify endpoint URL strings on runtime environments",
+      "To obtain a new short-lived access token without requiring the end user to re-enter their password credentials when the old token expires",
+      "To convert plain JSON payloads into encrypted XML structures automatically",
+      "To bypass cross-origin browser validation checks across external cloud domains"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Access tokens are typically short-lived to limit the window of opportunity for an attacker if compromised. Long-lived refresh tokens allow the client application to request a new access token seamlessly behind the scenes."
+  },
+  {
+    "id": "api-m-015",
+    "difficulty": "medium",
+    "q": "What structural issue arises if an API testing suite uncovers an instance of 'Over-fetching' data?",
+    "options": [
+      "The endpoint crashes because the request body payload contains missing required keys",
+      "The client application receives a massive payload containing far more data fields than are required to perform the intended operation",
+      "The system gateway blocks the incoming request because the source IP address ran too many parallel query strings",
+      "The server maps structural request schemas onto incompatible database models"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Over-fetching happens when an endpoint returns a complete resource object with dozens of fields when the client application only needed a few parameters (e.g., fetching a full user object just to render a username)."
+  },
+  {
+    "id": "api-m-016",
+    "difficulty": "medium",
+    "q": "When configuring an automated data-driven API test, where should a QA engineer store the parameter variations to maximize maintainability?",
+    "options": [
+      "Hardcode the parameter options directly into separate duplicate test methods inside the source files",
+      "Extract parameters into an external data repository, such as a CSV, JSON, or Excel spreadsheet file",
+      "Inject values directly into the terminal command line call parameters dynamically during each manual code execution",
+      "Append variations into the response body header metadata configuration parameters"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Data-driven testing abstracts test input variations out of the core test logic and places them into an external file. This allows the same automated test to cycle through multiple data values without duplicating code."
+  },
+  {
+    "id": "api-m-017",
+    "difficulty": "medium",
+    "q": "What is the primary role of Middleware within modern web framework architectures like Express or Spring Boot?",
+    "options": [
+      "To design frontend buttons and interface styles",
+      "To execute common logic—such as logging, authentication checks, or body parsing—intercepting the request before it reaches the final endpoint controller",
+      "To manage database backup synchronization across secondary infrastructure servers",
+      "To convert compiled assembly languages into human-readable text blocks"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Middleware acts as a functional pipeline that sits between the incoming request and the final business logic handler, allowing standard cross-cutting routines (like authentication verification or input checking) to run sequentially."
+  },
+  {
+    "id": "api-m-018",
+    "difficulty": "medium",
+    "q": "What security issue could occur if an API relies on a Bearer Token model but fails to enforce HTTPS transport layers?",
+    "options": [
+      "The database drops its structural primary key associations",
+      "The token can be easily intercepted in transit as plain text, allowing an attacker to impersonate the user completely",
+      "The API gateway stops accepting valid query parameter strings",
+      "The client browser enforces strict same-origin blocking policies instantly"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "A bearer token operates on the principle that whoever holds the token is granted access. If transport layers are unencrypted (HTTP), the token travels in plain text and can be intercepted via a man-in-the-middle attack."
+  },
+  {
+    "id": "api-m-019",
+    "difficulty": "medium",
+    "q": "Which specification standard allows developers to systematically describe REST APIs using a formal JSON or YAML structure, making it highly interactive with Swagger UI?",
+    "options": [
+      "WSDL specification mapping",
+      "OpenAPI Specification",
+      "SOAP architectural design",
+      "JSON Web Signature protocol"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The OpenAPI Specification (OAS) is a widely adopted API description standard for REST APIs. It defines endpoints, parameters, and payloads in a structured JSON/YAML format that tooling can interpret to generate interactive documentation."
+  },
+  {
+    "id": "api-m-020",
+    "difficulty": "medium",
+    "q": "What is the primary purpose of executing API Fuzz Testing?",
+    "options": [
+      "To optimize database indexing logic and check response processing latency under massive user strain",
+      "To feed a stream of random, unexpected, or malformed data inputs into an endpoint to uncover security vulnerabilities, edge-case crashes, or memory leaks",
+      "To verify that response parameters strictly adhere to localization requirements across user devices",
+      "To review authorization constraints across individual human resource roles within corporate boundaries"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Fuzz testing is a negative testing technique that inputs unexpected data strings or malformed payloads into an API to see if the error handling can handle invalid data without exposing stack traces, leaking memory, or crashing the server."
+  },
+  {
+    "id": "api-m-021",
+    "difficulty": "medium",
+    "q": "What does a '502 Bad Gateway' HTTP status code mean to a quality assurance professional?",
+    "options": [
+      "The client app passed malformed JSON string payload schemas",
+      "An upstream server, edge proxy, or API gateway received an invalid or unhandled response from a backend microservice worker node",
+      "The authorization token parameters lack adequate permission flags to process actions",
+      "The requested database row target does not exist inside system memory stores"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A 502 status code is an infrastructure network issue indicating that a proxy or gateway server could not get a valid response from an upstream backend service to fulfill the client request."
+  },
+  {
+    "id": "api-m-022",
+    "difficulty": "medium",
+    "q": "When a server updates an API schema but wants to guarantee 'Backward Compatibility', what must it ensure?",
+    "options": [
+      "The API forces all historical client software installations to cease operations instantly",
+      "Existing client applications can continue consuming the interface without breaking, even if internal features or new fields are introduced",
+      "The system converts its data transport logic from JSON properties to XML architectures automatically",
+      "The endpoint requires all input parameter values to be converted to binary blocks"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Backward compatibility means that when an API service receives an upgrade, it does not change its existing interface contract in a way that causes older client integrations to break or fail validation checks."
+  },
+  {
+    "id": "api-m-023",
+    "difficulty": "medium",
+    "q": "What feature distinguishes GraphQL query architectures from traditional RESTful API endpoints?",
+    "options": [
+      "GraphQL requires binary files to pass parameters safely across domain routers",
+      "GraphQL enables the client to specify exactly which fields it wants to receive in a single query, eliminating over-fetching and under-fetching issues",
+      "GraphQL completely deletes the requirement to enforce authentication tokens over network calls",
+      "GraphQL operates exclusively using read-only HTTP GET actions across infrastructure clusters"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Unlike REST, where endpoints return a fixed data payload structure, GraphQL provides a single endpoint where clients pass a query payload defining the exact fields and relationships they need."
+  },
+  {
+    "id": "api-m-024",
+    "difficulty": "medium",
+    "q": "What role does the 'idempotency-key' parameter header play in modern financial transaction APIs?",
+    "options": [
+      "It compresses payment payloads to optimize transmission rates across networks",
+      "It allows the server to identify duplicate request attempts, ensuring a charge is processed exactly once even if a client retries the request",
+      "It converts text currency symbols into international digital formats dynamically",
+      "It overrides cross-origin browser validation checks across separate host environments"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "An idempotency key is a unique identifier attached by the client. If the server receives an identical request with the same key (due to a connection retry), it returns the original cached result instead of executing a duplicate transaction."
+  },
+  {
+    "id": "api-m-025",
+    "difficulty": "medium",
+    "q": "Which tool would be the best architectural choice for a QA engineer who needs to run API automated collections as part of a command-line CI/CD pipeline build script?",
+    "options": [
+      "Postman Desktop GUI",
+      "Newman",
+      "Notepad++ with JSON plugin",
+      "Swagger UI interactive browser panel"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Newman is the official Node.js command-line runner built explicitly to execute Postman collections directly within automated terminal builds and CI/CD orchestration loops."
+  }
+]
