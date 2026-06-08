@@ -1,0 +1,212 @@
+[
+  {
+    "id": "api-e-001",
+    "difficulty": "easy",
+    "q": "What does the abbreviation API stand for?",
+    "options": [
+      "Automated Processing Integration",
+      "Application Programming Interface",
+      "Asynchronous Protocol Infrastructure",
+      "Application Performance Indicator"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "API stands for Application Programming Interface. It defines a set of rules and protocols that allow different software applications to communicate and exchange data with one another."
+  },
+  {
+    "id": "api-e-002",
+    "difficulty": "easy",
+    "q": "Which HTTP method is specifically designed to retrieve data from a server without modifying its state?",
+    "options": [
+      "POST",
+      "PUT",
+      "GET",
+      "DELETE"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "The GET method is used strictly to read or retrieve data from a resource. It must be safe and idempotent, meaning it should not alter the data on the server."
+  },
+  {
+    "id": "api-e-003",
+    "difficulty": "easy",
+    "q": "Which HTTP method should be used when you want to submit data to a server to create a brand-new resource?",
+    "options": [
+      "GET",
+      "POST",
+      "OPTIONS",
+      "HEAD"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The POST method submits data to the specified resource, frequently resulting in the creation of a new resource or a change in state on the server."
+  },
+  {
+    "id": "api-e-004",
+    "difficulty": "easy",
+    "q": "What is the specific name given to a URL address where an API can be accessed to perform operations?",
+    "options": [
+      "Payload",
+      "Endpoint",
+      "Header",
+      "Query string"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "An endpoint is a specific location (URL/URI) where an API receives requests about a specific resource on its server."
+  },
+  {
+    "id": "api-e-005",
+    "difficulty": "easy",
+    "q": "What format is the text structure '{ \"name\": \"John\", \"age\": 30 }' written in?",
+    "options": [
+      "XML",
+      "HTML",
+      "JSON",
+      "YAML"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "This structure represents JSON (JavaScript Object Notation), a lightweight data-interchange format built on key-value pairs."
+  },
+  {
+    "id": "api-e-006",
+    "difficulty": "easy",
+    "q": "Which HTTP status code category indicates a completely successful transaction?",
+    "options": [
+      "2xx codes",
+      "3xx codes",
+      "4xx codes",
+      "5xx codes"
+    ],
+    "correct": 0,
+    "wrongPick": 2,
+    "explain": "Status codes in the 2xx range (e.g., 200 OK, 201 Created) indicate that the client's request was successfully received, understood, and accepted."
+  },
+  {
+    "id": "api-e-007",
+    "difficulty": "easy",
+    "q": "What does an HTTP status code of '404 Not Found' mean to an API tester?",
+    "options": [
+      "The server has crashed completely",
+      "The client is missing an authentication token",
+      "The requested URL path or targeted resource does not exist on the server",
+      "The server is undergoing scheduled maintenance updates"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "A 404 status code means that the server was reached, but it could not find the specific resource or endpoint requested by the client URL path."
+  },
+  {
+    "id": "api-e-008",
+    "difficulty": "easy",
+    "q": "Where are the parameters located in a standard GET request configuration?",
+    "options": [
+      "Hidden inside the binary request body payload",
+      "Appended directly onto the end of the URL string as a query parameter",
+      "Encrypted within cookie variables exclusively",
+      "Inside the HTTP status line phrase"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "GET requests do not have a request body payload. Any parameters passed must be attached directly to the URL as query parameters or path parameters."
+  },
+  {
+    "id": "api-e-009",
+    "difficulty": "easy",
+    "q": "What data structure does CRUD stand for in database and REST API design?",
+    "options": [
+      "Compile, Run, Update, Deploy",
+      "Create, Read, Update, Delete",
+      "Call, Receive, Upload, Disconnect",
+      "Cache, Route, Unlink, Destroy"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "CRUD stands for Create, Read, Update, and Delete. These are the four foundational operations used to manage data across systems."
+  },
+  {
+    "id": "api-e-010",
+    "difficulty": "easy",
+    "q": "Which tool is most widely celebrated for offering a friendly user interface to test APIs manually and build automated collections?",
+    "options": [
+      "Wireshark",
+      "Postman",
+      "Eclipse",
+      "Notepad++"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Postman is an industry-standard GUI application that allows users to easily craft requests, inspect responses, and automate API verification suites."
+  },
+  {
+    "id": "api-e-011",
+    "difficulty": "easy",
+    "q": "What name is given to the actual data sent inside the request or response body block, excluding headers?",
+    "options": [
+      "Metadata",
+      "Payload",
+      "Query parameters",
+      "Routing cookie"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The payload refers to the essential core transactional data carried within the body of an HTTP request or response packet."
+  },
+  {
+    "id": "api-e-012",
+    "difficulty": "easy",
+    "q": "What type of information do HTTP Headers typically hold?",
+    "options": [
+      "The exact database row values to delete",
+      "Metadata about the request or response, such as content formatting and authentication tokens",
+      "The graphical components of the frontend website",
+      "Compiled machine code instructions"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "HTTP Headers convey contextual metadata about the request or response, such as content length, data format (Content-Type), or credentials."
+  },
+  {
+    "id": "api-e-013",
+    "difficulty": "easy",
+    "q": "If an API returns an HTTP status code of '201 Created', what type of request was most likely sent?",
+    "options": [
+      "A read-only GET request",
+      "A resource deletion request via DELETE",
+      "A resource generation request via POST",
+      "A structural inspection request via OPTIONS"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "The 201 Created status code explicitly confirms that the request succeeded and led to the creation of a new resource, which is standard behavior for POST actions."
+  },
+  {
+    "id": "api-e-014",
+    "difficulty": "easy",
+    "q": "Which header must be configured so an API server understands that the incoming request body payload is formatted as JSON text?",
+    "options": [
+      "Accept: application/json",
+      "Content-Type: application/json",
+      "Authorization: Bearer application/json",
+      "Cache-Control: no-cache"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Content-Type header tells the recipient the exact media type of the transmitted body data, allowing the server to parse it correctly as JSON."
+  },
+  {
+    "id": "api-e-015",
+    "difficulty": "easy",
+    "q": "What character acts as the separating delimiter that marks the start of query parameters within an API URL string?",
+    "options": [
+      "The slash symbol (/)",
+      "The question mark symbol (?)",
+      "The ampersand symbol (&)",
+      "The hash symbol (#)"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The question mark (?) separates the core resource path of a URL from the appended query parameters configuration."
+  }
+]
