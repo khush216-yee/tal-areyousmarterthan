@@ -1,0 +1,352 @@
+[
+{
+"id": "html-h-001",
+"difficulty": "hard",
+"q": "Your application script executes before its dependent utility library finishes downloading, throwing reference exceptions.",
+"options": [
+"Use the async attribute",
+"Place script inside body",
+"Use the defer attribute",
+"Remove the script module"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The defer attribute guarantees scripts execute sequentially in the exact order they appear in the HTML document. Async executes items instantly upon download completion, risking broken dependencies."
+},
+{
+"id": "html-h-002",
+"difficulty": "hard",
+"q": "You attempt to enforce framing rules using a meta tag, but external malicious sites can still embed your page.",
+"options": [
+"Configure server HTTP headers",
+"Update the viewport properties",
+"Add an iframe sandbox",
+"Use rigid semantic containers"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "Certain security parameters like frame-ancestors must be delivered via network HTTP headers to take effect. Meta tags are parsed too late to govern framing security."
+},
+{
+"id": "html-h-003",
+"difficulty": "hard",
+"q": "A custom div component mimicking a button with role button cannot be activated via a standard keyboard press.",
+"options": [
+"Include an aria-label property",
+"Add a tabindex attribute",
+"Change display to block",
+"Nest a span inside"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Setting an ARIA role modifies screen reader announcements but does not implement keyboard focus loops or native event handlers. A tabindex and key listeners are required manually."
+},
+{
+"id": "html-h-004",
+"difficulty": "hard",
+"q": "Your page content dramatically shifts positions downwards as high-resolution images finish loading over slow connections.",
+"options": [
+"Specify explicit dimension attributes",
+"Apply lazy loading parameters",
+"Wrap graphics in templates",
+"Preload all graphical assets"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Providing native width and height attributes allows browsers to pre-allocate aspect ratio layout boxes before image files download. This completely eliminates Cumulative Layout Shifts."
+},
+{
+"id": "html-h-005",
+"difficulty": "hard",
+"q": "An external testing script completely fails to access or manipulate internal elements of your custom Web Component.",
+"options": [
+"Set shadow root open",
+"Set shadow root closed",
+"Remove the component template",
+"Use native custom elements"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Attaching a shadow root with mode open keeps the shadow root tree accessible via the shadowRoot JavaScript parameter property. Closed prevents all external runtime script interactions."
+},
+{
+"id": "html-h-006",
+"difficulty": "hard",
+"q": "An embedded third-party widget breaks completely because its script calls a domain form submission routine.",
+"options": [
+"Remove sandbox attribute completely",
+"Enable standard origin rules",
+"Add allow-forms script parameters",
+"Inject cross-origin framing configurations"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "An empty sandbox attribute enforces maximum security restrictions that block forms and scripts. Specific permission values must be declared sequentially to restore targeted capabilities."
+},
+{
+"id": "html-h-007",
+"difficulty": "hard",
+"q": "A mobile browser wastes bandwidth by downloading a massive desktop image option despite matching your breakpoint conditions.",
+"options": [
+"Correct pixel density descriptors",
+"Add a media query",
+"Remove the sizes attribute",
+"Change image file formats"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Browsers multiply viewport widths by device pixel ratios when picking candidates from a srcset. High-density screens require accurate width descriptors to evaluate asset economy."
+},
+{
+"id": "html-h-008",
+"difficulty": "hard",
+"q": "A text field displays an validation error indefinitely even after the user rectifies their input content error.",
+"options": [
+"Clear custom validation strings",
+"Call the reportValidity method",
+"Remove the pattern parameter",
+"Reset the input value"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The setCustomValidity API locks inputs into an invalid state until it is explicitly cleared by passing an empty string parameter. Validations will block forms until cleared."
+},
+{
+"id": "html-h-009",
+"difficulty": "hard",
+"q": "Google Rich Results validator rejects your schema block because your structured data states mismatched product parameters.",
+"options": [
+"Convert script to microdata",
+"Align schema with text",
+"Remove JSON structural nodes",
+"Change metadata script location"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Structured data representations must perfectly mirror the visible human-readable text content displayed on the layout. Mismatched attributes trigger structural spam validation failures."
+},
+{
+"id": "html-h-010",
+"difficulty": "hard",
+"q": "A rich text editable container exposes your application to malicious cross-site scripting inputs during simple text pasting.",
+"options": [
+"Disable the interactive context",
+"Apply strict ARIA configurations",
+"Convert block to textarea",
+"Sanitize innerHTML runtime strings"
+],
+"correct": 3,
+"wrongPick": 2,
+"explain": "Contenteditable inputs handle raw markup insertions directly, meaning un-sanitized layout inputs can execute injected scripts. Runtime script cleaning filters malicious payloads securely."
+},
+{
+"id": "html-h-011",
+"difficulty": "hard",
+"q": "A preloaded critical asset triggers a browser console warning and downloads a second time during runtime execution.",
+"options": [
+"Include the matching as attribute",
+"Remove cross-origin resource access",
+"Change link to prefetch",
+"Modify asset file permissions"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "The as attribute specifies resource types so browsers can prioritize cache matching correctly. Omitting it leads to sorting confusion and duplicate network requests."
+},
+{
+"id": "html-h-012",
+"difficulty": "hard",
+"q": "You want to establish pre-emptive secure socket handshakes with an asset CDN domain without executing full file downloads.",
+"options": [
+"Use dns-prefetch link options",
+"Use a preconnect link",
+"Apply script preload tags",
+"Implement resource caching policies"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Preconnect initiates DNS lookups, TCP connections, and cryptographic TLS handshakes ahead of time. Dns-prefetch handles the domain name translation step exclusively."
+},
+{
+"id": "html-h-013",
+"difficulty": "hard",
+"q": "Your main processing thread hitches significantly while processing massive image painting operations during page scrolling animations.",
+"options": [
+"Add decoding async properties",
+"Apply lazy loading parameters",
+"Preload high priority graphics",
+"Convert images to pictures"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The decoding async attribute instructs the browser engine to decode raster graphics off-thread, preventing layout scrolling freezes on heavy media-rich pages."
+},
+{
+"id": "html-h-014",
+"difficulty": "hard",
+"q": "A preloaded custom web font file gets ignored by your style engine and fetches twice across network timelines.",
+"options": [
+"Modify style definition hierarchies",
+"Change link to prefetch",
+"Add the crossorigin attribute",
+"Provide alternative font formats"
+],
+"correct": 2,
+"wrongPick": 1,
+"explain": "Web fonts are fetched via anonymous CORS requests by default specification rules. Preload hints require matching crossorigin parameters to avoid fetching duplicated font streams."
+},
+{
+"id": "html-h-015",
+"difficulty": "hard",
+"q": "Styles intended specifically for structured Web Component children leak inward and override shadow boundary styling rules unexpectedly.",
+"options": [
+"Refine slotted selector definitions",
+"Isolate component layout layers",
+"Switch shadow root modes",
+"Remove structural component templates"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The ::slotted pseudo-element targets layout nodes passed into slots from light DOM contexts. These elements remain styled by global external documents due to inheritance properties."
+},
+{
+"id": "html-h-016",
+"difficulty": "hard",
+"q": "Your backend framework handles incoming binary payloads completely empty when uploading avatar images via a standard web form.",
+"options": [
+"Change request method type",
+"Include file size boundaries",
+"Add form name attributes",
+"Set multipart form enctype"
+],
+"correct": 3,
+"wrongPick": 0,
+"explain": "Forms require an explicit enctype of multipart/form-data to parcel binary files into streamable request payloads. Standard settings encode form fields as strings exclusively."
+},
+{
+"id": "html-h-017",
+"difficulty": "hard",
+"q": "A native popover container element fails to automatically dismiss itself when a user clicks outside its presentation boundary.",
+"options": [
+"Remove manual toggle interceptions",
+"Change component display settings",
+"Adjust z-index layering options",
+"Define explicit button tracking"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The popover attribute manages light-dismiss interactions natively. Overriding event loops or intercepting clicks with custom stopPropagation scripts disrupts this native lifecycle behavior."
+},
+{
+"id": "html-h-018",
+"difficulty": "hard",
+"q": "Your primary Largest Contentful Paint header graphic finishes downloading far too late despite being discovered early in parsing.",
+"options": [
+"Add loading lazy properties",
+"Apply fetchpriority high attribute",
+"Wrap source in pictures",
+"Preconnect the site directory"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Setting fetchpriority to high elevates a resource's fetch ranking inside the browser network scheduler queue. This forces immediate resource allocation over competing connections."
+},
+{
+"id": "html-h-019",
+"difficulty": "hard",
+"q": "A template fragment executes its embedded image source downloads immediately when the document parsing cycle hits its declaration.",
+"options": [
+"Verify template structural bounds",
+"Change source link schemes",
+"Use absolute server paths",
+"Remove inner script variables"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The template element is completely inert by design specification rules. If nested image assets download instantly, the template tag boundaries are malformed or missing closure tokens."
+},
+{
+"id": "html-h-020",
+"difficulty": "hard",
+"q": "An external secure portal receives full tracking URLs from your internal administrative dashboard links, breaching private user logs.",
+"options": [
+"Use secure target parameters",
+"Convert navigation to buttons",
+"Apply strict noreferrer definitions",
+"Isolate frame embedding contexts"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The noreferrer attribute instructs browser engines to omit the Referer layout header entirely during tab transitions. This completely prevents sensitive path strings from leaking across origins."
+},
+{
+"id": "html-h-021",
+"difficulty": "hard",
+"q": "Users can still focus and modify background field elements hidden underneath an active modal window layout via keyboard tabs.",
+"options": [
+"Set dialog display parameters",
+"Apply global inert attributes",
+"Increase backdrop overlay depth",
+"Disable internal field elements"
+],
+"correct": 1,
+"wrongPick": 3,
+"explain": "The inert attribute fully paralyzes entire layout branches, ignoring hit testing, click behaviors, and keyboard selection flows. Manually overriding fields is tedious and error-prone."
+},
+{
+"id": "html-h-022",
+"difficulty": "hard",
+"q": "A mobile web interface should open the device camera instantly for profile uploads but loads filesystem folders instead.",
+"options": [
+"Add the capture attribute",
+"Specify file accept extensions",
+"Change type to image",
+"Include unique required flags"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The capture attribute directs mobile hardware browsers to launch native media capture devices directly. Accept filters file selection variations but defaults to file system exploration catalogs."
+},
+{
+"id": "html-h-023",
+"difficulty": "hard",
+"q": "You want to attach customized framework functionality to native table structures without breaking standard screen reader markup compliance.",
+"options": [
+"Define custom element parameters",
+"Wrap rows in components",
+"Use the is attribute",
+"Modify internal slot allocations"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The is attribute allows custom elements to extend native HTML tags via customized built-in specification criteria. This retains native element behaviors and full accessibility functionality intact."
+},
+{
+"id": "html-h-024",
+"difficulty": "hard",
+"q": "You need to access powerful SharedArrayBuffer features, but the browser blocks execution due to missing origin containment environments.",
+"options": [
+"Deliver COOP server headers",
+"Add meta isolation configurations",
+"Sandbox execution environment contexts",
+"Implement script module properties"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Enabling advanced features requires explicit Cross-Origin Opener and Embedder policies. These policies must be served as authoritative server network responses for true runtime isolation enforcement."
+},
+{
+"id": "html-h-025",
+"difficulty": "hard",
+"q": "An art-directed banner fails to switch layout graphics accurately during dynamic desktop window scaling transitions.",
+"options": [
+"Verify source media parameters",
+"Correct image width properties",
+"Modify viewport meta configurations",
+"Update container display sizes"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The picture tag checks source media attributes dynamically to swap image artwork. Misconfiguring media queries or leaving out required fallback elements causes display state matching errors."
+}
+]
