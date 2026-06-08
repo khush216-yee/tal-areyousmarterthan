@@ -1,0 +1,352 @@
+[
+{
+"id": "vue-m-001",
+"difficulty": "medium",
+"q": "You update a text variable and immediately try to extract the innerText value of its DOM node on the next line, but receive old content. How do you resolve this?",
+"options": [
+"Trigger an internal component update manually",
+"Wrap your DOM inspection code in nextTick",
+"Convert your state structure to reactive proxies",
+"Change the lifecycle implementation to onUpdated"
+],
+"correct": 1,
+"wrongPick": 3,
+"explain": "The framework batches reactive updates asynchronously. Calling nextTick returns a promise that resolves immediately after the microtask queue finishes flushing accumulated DOM adjustments."
+},
+{
+"id": "vue-m-002",
+"difficulty": "medium",
+"q": "You are writing automated unit tests for an input form component using script setup. How do you expose a local validation method to your wrapper test tool?",
+"options": [
+"Export the method from a secondary script tag",
+"Declare the method using the defineExpose macro",
+"Attach your method directly onto instance proxies",
+"Pass the validation handler using defined emits"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "Components using script setup are fully closed by default. You must invoke the defineExpose compiler macro to explicitly declare which state or properties are accessible from outside."
+},
+{
+"id": "vue-m-003",
+"difficulty": "medium",
+"q": "You are building an online map component that receives an expensive dataset object as a prop which should never have its internal parameters observed. What should you do?",
+"options": [
+"Store your dataset inside a shallowRef variable",
+"Wrap the incoming data with standard reactive",
+"Observe mutations using deep watch structures",
+"Extract object values using the toRaw helper"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "A shallowRef observes changes restricted to its base value property pointer. Properties hidden inside deep sub-objects avoid heavy recursive reactivity proxy wrapping."
+},
+{
+"id": "vue-m-004",
+"difficulty": "medium",
+"q": "You need to invoke an asynchronous data search method instantly when a search field component renders, and also on all subsequent user keystrokes. Which setup is ideal?",
+"options": [
+"Run your fetch inside standard onBeforeMount hooks",
+"Configure a watch callback with immediate true",
+"Structure your call inside computed getter blocks",
+"Execute the query method inside nextTick loops"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Setting the immediate option to true instructs a watcher to fire its callback immediately upon creation, satisfying initial data fetching and subsequent update tracking simultaneously."
+},
+{
+"id": "vue-m-005",
+"difficulty": "medium",
+"q": "You have a deep state object containing multiple form steps and need to trigger a parent validation rule when any nested child parameter shifts. How do you observe this?",
+"options": [
+"Re-evaluate data using active watchSyncEffect utilities",
+"Configure your watch property with deep true",
+"Bind all properties using separate multi-model components",
+"Map individual data elements using unref macros"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Standard watchers skip nested object mutations for efficiency. Enforcing the deep option instructs the engine to recursively traverse all internal sub-properties to register reactive tracking loops."
+},
+{
+"id": "vue-m-006",
+"difficulty": "medium",
+"q": "You are building an overlay modal component that is nested deep inside a multi-layered layouts grid but must be rendered directly under the document body element. What resolves this?",
+"options": [
+"Portal the content using custom styles definitions",
+"Wrap the target block inside Teleport tags",
+"Mount an external component instance using refs",
+"Extract the layout tree via nextTick commands"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The Teleport component relocates its nested slot nodes to a target DOM destination container while perfectly maintaining logical connectivity and component lifecycle hooks."
+},
+{
+"id": "vue-m-007",
+"difficulty": "medium",
+"q": "You want to abstract and export an isolated browser geolocation tracker feature to share across multiple dashboard components. Which architectural pattern should you use?",
+"options": [
+"Mixins structures",
+"Composables functions",
+"Plugins declarations",
+"Provide abstractions"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Composables harness the Composition API to package and export stateful business logic. They provide clean code reuse without the naming clashes and scope confusion of legacy mixins."
+},
+{
+"id": "vue-m-008",
+"difficulty": "medium",
+"q": "You are designing a custom text component and need to modify the input text to uppercase before syncing it back to the parent data state. How do you handle this?",
+"options": [
+"Transform properties inside a watchSyncEffect block",
+"Create a custom modifier on defineModel variables",
+"Overwrite properties inside onBeforeUpdate lifecycle hooks",
+"Reconstruct inputs using standard defineEmits tracking array"
+],
+"correct": 1,
+"wrongPick": 3,
+"explain": "The defineModel macro lets you access custom v-model modifiers. It reads the parent flags and processes updates to filter, format, or transform string states smoothly."
+},
+{
+"id": "vue-m-009",
+"difficulty": "medium",
+"q": "You are creating a flexible custom card element that must capture class names and placeholder parameters from parents without registering them as official props. Where do they go?",
+"options": [
+"They are automatically mapped onto the $attrs reference",
+"They are injected downstream via specific slots references",
+"They are collected inside the global customRef array",
+"They are dropped completely unless mapped via defineProps"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "Attributes omitted from explicit prop validation lists are grouped into the component fallthrough attributes object. These are accessed in templates via the $attrs property."
+},
+{
+"id": "vue-m-010",
+"difficulty": "medium",
+"q": "You need to manipulate an HTML5 video canvas node directly to play and pause media clips from your setup function. How do you fetch its reference?",
+"options": [
+"Query the DOM using browser querySelector commands",
+"Declare a template ref matching the ref string",
+"Extract elements via the customRef utility method",
+"Bind an inline custom event handler onUpdate"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Declaring a reactive variable whose name matches the template element ref attribute populates it with the underlying native DOM node instance after layout mounting finishes."
+},
+{
+"id": "vue-m-011",
+"difficulty": "medium",
+"q": "You are migrating a component to script setup and want to override its development display name and turn off default attribute inheritance. Which macro handles this?",
+"options": [
+"defineModel",
+"defineOptions",
+"defineProps",
+"defineExpose"
+],
+"correct": 1,
+"wrongPick": 3,
+"explain": "The defineOptions macro lets you declare traditional component options like name and inheritAttrs directly inside script setup blocks without using auxiliary script tags."
+},
+{
+"id": "vue-m-012",
+"difficulty": "medium",
+"q": "You have an asynchronous dashboard layout containing slow third-party user graphs that takes seconds to initialize. What element helps manage the fallback layout UI?",
+"options": [
+"",
+"",
+"",
+""
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The Suspense built-in element coordinates async dependencies down its component tree. It displays a #fallback slot template while nested components resolve their async setups."
+},
+{
+"id": "vue-m-013",
+"difficulty": "medium",
+"q": "You are refactoring an app view containing an input wizard where users lose entered text when jumping back and forth across separate step tabs. What solves this?",
+"options": [
+"Wrap the dynamic component inside KeepAlive tags",
+"Isolate components using distinct watchPostEffect loops",
+"Inject states using alternative shallowReactive setups",
+"Enforce unique random key attributes on templates"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The KeepAlive component preserves inactive element states within an memory cache. It bypasses destruction lifecycles to re-insert components with their data states intact."
+},
+{
+"id": "vue-m-014",
+"difficulty": "medium",
+"q": "You are implementing type annotations for an explicit emit dictionary using modern TypeScript features in a script setup component. Which approach is valid?",
+"options": [
+"Pass functional interface properties directly into defineEmits",
+"Use labeled tuple syntax within defineEmits generic arguments",
+"Export method type definitions via defineOptions macros",
+"Annotate returned references using standard computed types"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Modern Vue type checking processes generic arguments in defineEmits using labeled tuples. This models signature properties directly for enhanced IDE auto-completion."
+},
+{
+"id": "vue-m-015",
+"difficulty": "medium",
+"q": "You want to create a reusable input component that supports dual bindings for both a primary text entry string and an secondary validation boolean. How do you implement this?",
+"options": [
+"Declare multiple named defineModel properties inside setup",
+"Combine properties inside a single watchSyncEffect hook",
+"Expose parameters via the default defineExpose macro",
+"Inject variables downstream using global provide states"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "You can declare multiple custom v-model bindings on one component by assigning distinct string names as arguments inside your defineModel macro calls."
+},
+{
+"id": "vue-m-016",
+"difficulty": "medium",
+"q": "You are maintaining a shared form state inside a core parent shell but want to prevent child elements from accidentally changing values via inject slots. How do you protect it?",
+"options": [
+"Provide the value wrapped inside the readonly helper",
+"Isolate parameters using a local shallowReactive proxy",
+"Cast variables using the raw toValue extractor",
+"Enforce execution through the watchSyncEffect loop"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The readonly function maps a deep non-reactive proxy barrier over state objects. Any modification attempts by child targets fail with clear console warning logs."
+},
+{
+"id": "vue-m-017",
+"difficulty": "medium",
+"q": "You want to develop an enterprise localization feature that injects translation helpers globally across all components in your application. What mechanism should you write?",
+"options": [
+"A custom composable function",
+"A custom Vue plugin with an install method",
+"An asynchronous provide config provider",
+"A global navigation router guard"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Vue plugins use an install method to configure app instances. They can register global directives, update properties, or provide global variables."
+},
+{
+"id": "vue-m-018",
+"difficulty": "medium",
+"q": "You need to access style properties inside a scoped CSS block using a reactive numeric variable called cardHeight computed in setup. Which tool implements this?",
+"options": [
+"The CSS Modules layout mixin",
+"The native CSS v-bind functional property",
+"The global :global modifier expression",
+"The scoped data-v data attribute selector"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The v-bind syntax in style tags maps dynamic javascript variables to CSS custom variables, keeping component styles reactive without writing inline style bindings."
+},
+{
+"id": "vue-m-019",
+"difficulty": "medium",
+"q": "You are writing a composable helper and want it to accept an argument that could be a plain string, a reactive ref, or a dynamic getter function. Which utility unwraps it safely?",
+"options": [
+"unref",
+"toValue",
+"isRef",
+"toRaw"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The toValue utility normalized flexible inputs. It unwraps standard ref wrappers and executes getter functions to safely return the resolved raw value."
+},
+{
+"id": "vue-m-020",
+"difficulty": "medium",
+"q": "You want to monitor store mutations globally to sync them with browser localStorage fields on every mutation step. Which Pinia utility should you track?",
+"options": [
+"store.$onAction",
+"store.$subscribe",
+"store.$patch",
+"store.$reset"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The store.$subscribe method attaches a listener callback to state changes. It tracks all updates and identifies patch types for easy persistence."
+},
+{
+"id": "vue-m-021",
+"difficulty": "medium",
+"q": "You are setting up multi-step forms using routing structures and want to store distinct access permissions configuration right on your route definitions. Where should this live?",
+"options": [
+"Inside the query string parameters template",
+"Inside the route custom meta fields dictionary",
+"Inside the global app configuration handler",
+"Inside separate component-level provide definitions"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Route meta configurations attach arbitrary data blocks to paths. This metadata can be read inside navigation guards to implement route access validation safely."
+},
+{
+"id": "vue-m-022",
+"difficulty": "medium",
+"q": "You notice that navigating between identical profile paths like /user/1 and /user/2 skips unmounting hooks, keeping your data stale on screen. How do you intercept this parameter shift?",
+"options": [
+"Re-trigger lifecycle execution with onUpdated hooks",
+"Watch the route params object for changes",
+"Re-route applications using alternative router.replace",
+"Isolate components using explicit defineOptions configuration"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Vue Router reuses mounted component structures when navigating identical patterns for speed. Watching the route.params dictionary allows you to re-fetch data on parameter updates."
+},
+{
+"id": "vue-m-023",
+"difficulty": "medium",
+"q": "You want to override standard navigation flow to verify authentication cookies before a browser starts rendering a target page. Which mechanism do you write?",
+"options": [
+"An onServerPrefetch tracking block",
+"A global router beforeEach navigation guard",
+"An app config error handling callback",
+"A reactive watchSyncEffect state hook"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The router.beforeEach guard intercepts navigation pipelines sequentially. It pauses routing steps to evaluate validation rules before passing execution forward."
+},
+{
+"id": "vue-m-024",
+"difficulty": "medium",
+"q": "You are style-customizing an imported third-party calendar item and need your scoped style block to match an internal child selector class named calendar-day. What do you use?",
+"options": [
+"The :global() helper function element",
+"The :deep() selector modifier function",
+"The :slotted() style definition wrapper",
+"The module style custom hash attribute"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The :deep() functional pseudo-selector forces compiled scoped rules to bypass the current data attribute scope restriction, targeting child layout nodes safely."
+},
+{
+"id": "vue-m-025",
+"difficulty": "medium",
+"q": "You are designing an expansive dropdown selection item that opens with custom animations. What lifecycle hook signals a child component inside KeepAlive is toggled back into view?",
+"options": [
+"onMounted",
+"onActivated",
+"onUpdated",
+"onBeforeMount"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Components preserved within KeepAlive bypass normal mounting cycles on return visits. They trigger the specialized onActivated lifecycle hook instead when toggled into active layout views."
+}
+]
