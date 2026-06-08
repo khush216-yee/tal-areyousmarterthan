@@ -1,0 +1,352 @@
+[
+  {
+    "id": "api-h-001",
+    "difficulty": "hard",
+    "q": "During an API security evaluation, a tester intercepts a user profile payload at 'PUT /api/v1/profile'. They add the undocumented parameter '\"role\": \"admin\"' to the JSON payload. The server processes the request and updates the user's role flag in the database. What vulnerability does this expose?",
+    "options": [
+      "Broken Function Level Authorization (BFLA)",
+      "Mass Assignment Vulnerability",
+      "Insecure Deserialization Processing",
+      "Server-Side Request Forgery (SSRF)"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Mass Assignment occurs when software frameworks automatically bind incoming client JSON input parameters directly to internal domain database models without explicit parameter whitelisting. This allows attackers to guess and manipulate sensitive model properties."
+  },
+  {
+    "id": "api-h-002",
+    "difficulty": "hard",
+    "q": "An attacker captures an operational endpoint path: 'GET /api/accounts/v1/statement/10091' belonging to User A. They change the trailing ID parameter to '10092' (User B) and submit the request. If the server returns User B's statements without checking if User A owns that asset, what vulnerability is present?",
+    "options": [
+      "Broken Object Level Authorization (BOLA) / Insecure Direct Object Reference (IDOR)",
+      "Cross-Site Scripting Injection (XSS)",
+      "Security Misconfiguration of Server Defaults",
+      "Mass Assignment Mapping Error"
+    ],
+    "correct": 0,
+    "wrongPick": 3,
+    "explain": "BOLA (historically classified as IDOR) happens when an API exposes data row unique keys in a path, but the backend lacks authorization checks to ensure that the current authenticated session account actually owns or has permission to access that specific record ID."
+  },
+  {
+    "id": "api-h-003",
+    "difficulty": "hard",
+    "q": "An online bank user is logged in. They visit a malicious website in another browser tab, which runs a hidden script that submits a 'POST /api/transfer' form payload to the bank. The browser automatically appends the user's active session cookies, and the bank processes the transfer. How should this be mitigated?",
+    "options": [
+      "Switch payload format rules from JSON structures to enterprise XML architectures",
+      "Implement cryptographically secure anti-CSRF tokens, mandate custom HTTP headers, and enforce 'SameSite=Strict' cookie attributes",
+      "Increase the API gateway rate limiting thresholds to drop high-frequency concurrent traffic strings",
+      "Implement Content Security Policy response headers to sanitize data body objects completely"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "This scenario describes a Cross-Site Request Forgery (CSRF) attack, which tricks a browser into dispatching unauthorized commands using the user's active session cookie state. Mitigations require generating unique anti-CSRF tokens per session, requiring custom headers that cross-domain scripts cannot easily forge, or using SameSite cookie attributes."
+  },
+  {
+    "id": "api-h-004",
+    "difficulty": "hard",
+    "q": "A core address-verification API goes down, causing connections to hang for 30 seconds per call. This backs up application request threads and triggers a cascading system crash. Which architectural design pattern prevents this failure, and how does it function?",
+    "options": [
+      "The Proxy Routing Pattern, which replicates server instances dynamically",
+      "The Circuit Breaker Pattern, which monitors error rates and immediately 'opens' to fail-fast and return a fallback response once an error threshold is reached",
+      "A Synchronous Thread Queue, which safely locks downstream user request loops until the target microservice recovers",
+      "An OpenAPI Schema Engine, which converts payloads between JSON and XML dynamically"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The Circuit Breaker pattern wraps calls to external systems. When the target service experiences consecutive failures or long timeouts, the breaker trips (opens), preventing further connection attempts and routing subsequent requests to a safe fallback option until the downstream service recovers."
+  },
+  {
+    "id": "api-h-005",
+    "difficulty": "hard",
+    "q": "A request travels through an API Gateway, an Auth service, an Order Processor microservice, and an Inventory database worker node. To profile latencies and find bottlenecks across these decoupled boundaries, what technique should QA implement?",
+    "options": [
+      "Fuzz parameter strings against the user interface tier components",
+      "Leverage Distributed Tracing by injecting a unique Trace ID at the gateway to monitor span processing latencies across container nodes",
+      "Map database schemas across local configuration environments",
+      "Re-version the API paths from v1 to v2 to clear cached server memories"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Distributed tracing profiles and tracks requests as they travel across complex, decoupled cloud microservice systems. By generating and passing a unified Trace ID through down-stream call layers, monitoring systems can visualize exactly which node introduced latency or encountered an operational bottleneck."
+  },
+  {
+    "id": "api-h-006",
+    "difficulty": "hard",
+    "q": "How does adopting an 'API-First' product development methodology transform the traditional quality assurance lifecycle?",
+    "options": [
+      "QA must wait for the frontend UI components to be deployed before starting automation test case design",
+      "API endpoints, contract fields, and validation schemas are designed first via OpenAPI specifications, allowing QA to build automated test suites and mock behaviors in parallel with development",
+      "Manual exploratory testing of user interfaces replaces automated integration validation check loops entirely",
+      "The development squad completely skips security verification testing requirements to speed up releases"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "In an API-First approach, the API contract is established before coding any user interfaces or database models. This shifts testing left, allowing QA teams to use OpenAPI specifications to write automated integration tests, design edge cases, and run mock scenarios alongside the active development cycles."
+  },
+  {
+    "id": "api-h-007",
+    "difficulty": "hard",
+    "q": "What security value do the HTTP response headers 'Strict-Transport-Security (HSTS)' and 'Content-Security-Policy (CSP)' add to an API?",
+    "options": [
+      "They compress outbound JSON payloads to optimize proxy processing latency thresholds",
+      "They instruct browser engines to enforce encrypted connections exclusively, control trusted executable script origins, and mitigate cross-site scripting (XSS) risks",
+      "They dynamically validate client-side data variables before they strike backend validation layers",
+      "They save session log histories directly onto public cloud storage clusters"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "These security headers harden communication by telling the browser how to handle and isolate web content. HSTS forces HTTPS use, CSP locks down script injection roots to block XSS, X-Content-Type blocks executable file masquerading, and X-Frame-Options blocks clickjacking."
+  },
+  {
+    "id": "api-h-008",
+    "difficulty": "hard",
+    "q": "Your subscription application uses a Webhook architecture to push real-time transaction notifications out to client handler endpoints. How should QA verify the security and reliability of this feature?",
+    "options": [
+      "Force requests to use plain text encodings and enforce HTTP basic authentication parameters",
+      "Verify cryptographic payload signature headers (such as HMAC SHA256 hashes) and test connectivity loss recovery using exponential backoff retry logic",
+      "Ensure that webhook data payloads exclude unique identifier values or dynamic timestamp variables",
+      "Route transactions exclusively using legacy enterprise SOAP XML web service configurations"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Webhooks reverse the standard client-server flow by pushing data downstream. To secure them, the server must compute an operational signature hash using a shared secret key so the recipient can verify authenticity. Reliability testing also requires validating that the engine retries the delivery gracefully with backoff intervals if the recipient server faces a transient network drop."
+  },
+  {
+    "id": "api-h-009",
+    "difficulty": "hard",
+    "q": "When preparing automated infrastructure test plans for a new Canary Release deployment of a core payment routing API, how should the initial live traffic be managed?",
+    "options": [
+      "The entire production traffic pool is shifted onto the new deployment node at once",
+      "The API gateway directs a small percentage (e.g., 2% to 5%) of production traffic to the new version while isolating telemetry logs, enabling rollbacks if errors or latency spike",
+      "Production traffic is blocked entirely until internal unit testing runs are executed on local systems",
+      "The microservices infrastructure replicates validation tokens straight to public staging server logs"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A Canary Release minimizes production deployment risks by exposing changes to a small, isolated subset of real users. Performance, latency, and error logs are monitored by QA and operations before rolling out the update to the remaining environment."
+  },
+  {
+    "id": "api-h-010",
+    "difficulty": "hard",
+    "q": "An API testing tool allows you to manipulate a JSON Web Token payload without updating its signature. When you submit this altered token, the server accepts it and parses the altered payload fields without error. What flaw did you discover?",
+    "options": [
+      "A Broken Object Level Authorization vulnerability across data assets",
+      "The server is decoding payload parameters but failing to execute token cryptographic signature validation checks",
+      "A Cross-Origin Resource Sharing policy structural misconfiguration",
+      "An explicit payload data model over-fetching structural limitation"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "If a server reads and acts upon data inside a modified JWT payload without verifying its signature component against its secret key, it means token authentication checks are broken, allowing anyone to elevate permissions by altering token text."
+  },
+  {
+    "id": "api-h-011",
+    "difficulty": "hard",
+    "q": "What security risk occurs if an engineering team fails to sanitize or validate incoming payload inputs before appending them directly to SQL queries within an API?",
+    "options": [
+      "Cross-Site Request Forgery (CSRF) across client web components",
+      "SQL Injection, allowing attackers to bypass authentication checks and query, modify, or delete database values",
+      "Broken Function Level Authorization errors across internal corporate profiles",
+      "Mass Assignment parameter mapping overrides"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "SQL Injection happens when untrusted user inputs are mixed with SQL command lines without proper parameterization. This allows an attacker to manipulate the structure of the query and execute arbitrary commands on the database."
+  },
+  {
+    "id": "api-h-012",
+    "difficulty": "hard",
+    "q": "Your team needs to design an asynchronous file processing API that drops data onto a Message Queue (like RabbitMQ or Kafka) for worker nodes to pull later. How should QA test for data loss edge cases?",
+    "options": [
+      "Force all client calls to run using synchronous blocking loops",
+      "Kill consumer worker nodes during active traffic bursts to verify that messages remain safely in the queue and process correctly when workers recover",
+      "Remove all validation schemas and timeout limits from the gateway layers",
+      "Verify that the message payload is formatted as XML instead of a JSON data model"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Testing asynchronous event-driven architectures requires simulating consumer node crashes. This verifies that the message queue handles acknowledgments correctly, maintains message state without dropping data, and avoids duplicate processing when nodes come back online."
+  },
+  {
+    "id": "api-h-013",
+    "difficulty": "hard",
+    "q": "An attacker sends an array of 5,000 deep nested objects `[ { \"a\": { \"b\": { ... } } } ]` into a REST endpoint. The server consumes all CPU resources attempting to parse the payload and crashes. What vulnerability category does this structural threat fall under?",
+    "options": [
+      "Broken Object Level Authorization (BOLA)",
+      "Denial of Service (DoS) via Unrestricted Resource Consumption",
+      "Mass Assignment Model Overwrite",
+      "Insecure Direct Object Reference (IDOR)"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Failing to validate or limit the depth and size of incoming request payloads leaves an API vulnerable to Denial of Service (DoS) attacks. Malformed JSON inputs can exhaust server memory and CPU resources during the parsing phase, crashing the application."
+  },
+  {
+    "id": "api-h-014",
+    "difficulty": "hard",
+    "q": "What risk arises if a developer disables the signature verification algorithm check by allowing the '\"alg\": \"none\"' parameter inside the header of inbound JWT tokens?",
+    "options": [
+      "The server stops compressing response body payloads over proxies",
+      "Attackers can create valid-looking tokens with modified payloads simply by setting the header algorithm flag to 'none' and removing the signature",
+      "The browser will block the API data reads due to CORS policy constraints",
+      "The endpoint will convert JSON parameters to XML configurations automatically"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The JWT standard includes a 'none' algorithm option intended for debugging. If this is allowed in production, a malicious actor can craft a token, change the payload data (e.g., changing a user ID or role flag), set the algorithm header to 'none', and bypass signature validation checks entirely."
+  },
+  {
+    "id": "api-h-015",
+    "difficulty": "hard",
+    "q": "An API testing framework encounters a security flaw where an endpoint path 'DELETE /api/v1/company/10/users/5' deletes user 5. However, changing the company ID path parameter to 'company/12' deletes user 5 from company 12 instead. What specific security flaw is exposed?",
+    "options": [
+      "Mass Assignment vulnerability mapping",
+      "Broken Object Level Authorization (BOLA) / Insecure Direct Object Reference (IDOR)",
+      "Cross-Site Request Forgery (CSRF) session tracking bypass",
+      "SQL Input Injection configuration fault"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "This is a classic BOLA/IDOR flaw. The endpoint processes the action based on the ID parameters in the path, but fails to validate that the resource (User 5) actually belongs to the scope of the parent resource context (Company 10 vs Company 12)."
+  },
+  {
+    "id": "api-h-016",
+    "difficulty": "hard",
+    "q": "What problem does implementing 'Optimistic Concurrency Control' via the 'ETag' header solve within a REST API ecosystem?",
+    "options": [
+      "It secures application bearer token values from cross-origin browser reads",
+      "It prevents lost updates by ensuring a client cannot overwrite changes made by another user if the resource updated since the client last fetched it",
+      "It compresses file payload lengths to save bandwidth costs over host nodes",
+      "It converts text responses into alternate localized language structures on runtime"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "ETags serve as version fingerprints for resources. When a client modifies data using PUT, it sends the ETag value inside an If-Match header. If another process updated that record in the meantime, the ETags won't match, and the server rejects the request with a 412 Precondition Failed code instead of overwriting the data."
+  },
+  {
+    "id": "api-h-017",
+    "difficulty": "hard",
+    "q": "An automation script loops through thousands of numeric resource IDs sequentially against an unthrottled API endpoint to harvest private user profiles. What strategy should be deployed to prevent this scraping risk?",
+    "options": [
+      "Switch payload format conventions from JSON properties to XML formatting",
+      "Replace predictable sequential integer IDs with non-guessable Universally Unique Identifiers (UUIDs) and enforce strict rate limits",
+      "Add Content-Security-Policy headers onto every outbound response model",
+      "Bypass the API gateway proxy configurations to direct requests straight to microservices"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Using auto-incrementing integer values (e.g., `1, 2, 3`) as resource identifiers makes it easy for attackers to enumerate and scrape data. Transitioning to random, complex UUID structures makes guessing IDs practically impossible, while rate limiting blocks brute-force enumeration tools."
+  },
+  {
+    "id": "api-h-018",
+    "difficulty": "hard",
+    "q": "A QA tester isolates an unhandled exception trace dump returned inside a '500 Internal Server Error' JSON body response. What security concern does this raise?",
+    "options": [
+      "An explicit violation of Cross-Origin Resource Sharing policy rules",
+      "Information Disclosure, which leaks internal details about backend file frameworks, database models, or structural logic that an attacker can exploit",
+      "A Mass Assignment data mapping architecture exception",
+      "A Denial of Service (DoS) vulnerability triggered by high-frequency request rates"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Exposing raw code trace stacks, system folder frameworks, or database queries in production error responses leaks operational details to potential attackers, helping them map out target structures for deeper exploits."
+  },
+  {
+    "id": "api-h-019",
+    "difficulty": "hard",
+    "q": "What security flaw is introduced if an API gateway enforces robust authorization rules across all routes, but backend microservice worker nodes communicate with each other over unencrypted networks without performing any validation check loops?",
+    "options": [
+      "A Cross-Site Request Forgery vulnerability cross-site tracking error",
+      "An Infrastructure Security Misconfiguration / Permissive Internal Trust architecture, allowing an attacker who breaches the network perimeter to pivot and compromise internal systems",
+      "A structural data format parsing conversion limitation",
+      "An explicit payload data structure over-fetching limitation rule"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Relying strictly on perimeter security (the gateway) while leaving internal microservice communication completely open and unencrypted creates a single point of failure. If an attacker bypasses the gateway or accesses the inner network, they can query backend microservices directly without authentication."
+  },
+  {
+    "id": "api-h-020",
+    "difficulty": "hard",
+    "q": "When verifying compliance with a strict JSON Schema validation design, what behavior should an endpoint exhibit if an inbound request payload appends a valid parameter key containing an unexpected null data type value where a string was required?",
+    "options": [
+      "Convert the null value into an empty string value text block automatically",
+      "Reject the request with an HTTP 400 Bad Request status code and provide an error message outlining the validation failure",
+      "Process the transaction anyway and pass the null value directly to backend tables",
+      "Divert the transaction request to a fallback service node via a circuit breaker link"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Strict schema validation requires incoming payloads to match the defined property types exactly. If a required data value type mismatches (e.g., passing a null value instead of a string), the schema validation layer should intercept the request and reject it with a 400 Bad Request error."
+  },
+  {
+    "id": "api-h-021",
+    "difficulty": "hard",
+    "q": "What is the primary security goal of implementing SSDE (Server-Side Data Encryption) for API values at rest inside databases?",
+    "options": [
+      "To accelerate the execution speed of internal search index queries",
+      "To protect sensitive data from unauthorized exposure if physical hard drives or data storage volumes are stolen or accessed via an infrastructure compromise",
+      "To translate outbound text payloads into alternate localized language structures dynamically",
+      "To automatically validate that JSON inputs match target contract schemas"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Encrypting data at rest ensures that if an attacker gains physical or low-level access to the storage disks, database backups, or snapshot files, the sensitive data remains unreadable without the corresponding cryptographic decryption keys."
+  },
+  {
+    "id": "api-h-022",
+    "difficulty": "hard",
+    "q": "An attacker crafts a request containing an automated script that calls an endpoint path: 'POST /api/v1/analytics' with an 'X-Forwarded-For' header set to a spoofed IP address on each loop, bypassing basic IP-based rate limiting. How should this risk be resolved?",
+    "options": [
+      "Disable the API gateway's logging and analytics capture mechanisms entirely",
+      "Configure the rate limiter to rely on authenticated user tokens (e.g., JWT sub claims) or cryptographic signatures instead of relying solely on client-reported IP headers",
+      "Convert the API transport protocols from REST structures to SOAP XML definitions",
+      "Enforce SameSite browser cookie validation policies across the gateway"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "HTTP headers like `X-Forwarded-For` are client-controlled and can be easily spoofed by automated scripts. Relying on them for security allows attackers to evade rate limits. APIs should track identity using authenticated session claims (like verified token parameters) instead."
+  },
+  {
+    "id": "api-h-023",
+    "difficulty": "hard",
+    "q": "During an automation test run, an API endpoint encounters a major thread block crash because two parallel requests try to update the exact same account balance record simultaneously. What concurrency flaw was uncovered?",
+    "options": [
+      "A Mass Assignment data mapping architecture exception",
+      "A Race Condition vulnerability / Lack of Distributed Locking mechanics",
+      "An explicit payload data model over-fetching structural limitation",
+      "A Cross-Site Request Forgery verification tracking exception"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "This scenario describes a race condition, where multiple threads attempt to mutate the same shared data state simultaneously. Without appropriate database locking mechanics (like pessimistic/optimistic locking) or distributed locks, data can be corrupted or threads can lock up."
+  },
+  {
+    "id": "api-h-024",
+    "difficulty": "hard",
+    "q": "What architectural problem can occur if a team configures an API monitoring system to generate comprehensive verbose logs that record the complete plaintext headers and bodies of all inbound transactions?",
+    "options": [
+      "The system will fail to process incoming JSON query parameters correctly",
+      "It creates a major security flaw by logging sensitive information—such as user passwords, credit card numbers, or authentication tokens—in plaintext within log servers",
+      "The application deployment pipeline will break due to a CORS policy violation",
+      "The endpoint will convert JSON schemas to XML configurations automatically"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "While comprehensive logging is essential for monitoring and diagnostics, logging raw request bodies and headers can accidentally save sensitive info (passwords, tokens, personally identifiable information) to log files. This creates a compliance risk if log access is not strictly managed."
+  },
+  {
+    "id": "api-h-025",
+    "difficulty": "hard",
+    "q": "An attacker discovers an enterprise API route path 'POST /api/v1/subscribe' that accepts a parameter URL string: '\"webhook_url\": \"http://localhost:8080/admin/shutdown\"'. The server processes this request and calls the internal URL path, causing an internal system shutdown. What vulnerability category was exploited?",
+    "options": [
+      "Broken Object Level Authorization (BOLA)",
+      "Server-Side Request Forgery (SSRF)",
+      "Mass Assignment / Parameter Binding Error",
+      "Cross-Site Scripting Script Injection (XSS)"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Server-Side Request Forgery (SSRF) happens when an API accepts a user-supplied URL parameter and attempts to load it using the server's own network permissions. This allows attackers to trick the server into making unauthorized calls to internal endpoints, loopback addresses, or private cloud infrastructure networks."
+  }
+]
