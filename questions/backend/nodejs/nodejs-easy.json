@@ -1,0 +1,352 @@
+[
+{
+"id": "vue-e-001",
+"difficulty": "easy",
+"q": "You want to dynamically update a text element whenever a reactive title string changes. Which directive should you use?",
+"options": [
+"v-bind",
+"v-model",
+"v-text",
+"v-html"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The v-text directive sets the textContent of an element to the reactive value. This updates automatically while automatically escaping HTML characters for safety."
+},
+{
+"id": "vue-e-002",
+"difficulty": "easy",
+"q": "You are building a toggle switch that should completely remove or re-insert a heavy sidebar container in the DOM. Which directive achieves this?",
+"options": [
+"v-show",
+"v-if",
+"v-cloak",
+"v-pre"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The v-if directive performs real conditional rendering by destroying and recreating the target elements in the DOM structure during toggles."
+},
+{
+"id": "vue-e-003",
+"difficulty": "easy",
+"q": "You need to attach a standard browser submit event listener to a form element and invoke a submitForm method. Which syntax is valid?",
+"options": [
+"v-bind:submit="submitForm"",
+"v-on:submit="submitForm"",
+"v-model:submit="submitForm"",
+"v-route:submit="submitForm""
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The v-on directive binds native event listeners to DOM elements. It intercepts events and maps them directly to your specified methods or functions."
+},
+{
+"id": "vue-e-004",
+"difficulty": "easy",
+"q": "You are passing a live variable named themeColor down to a child component as an HTML attribute. Which shorthand syntax binds it?",
+"options": [
+"@themeColor="themeColor"",
+"#themeColor="themeColor"",
+":themeColor="themeColor"",
+".themeColor="themeColor""
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The colon symbol is the standard framework shorthand for v-bind. It lets you pass dynamic attributes and reactive javascript values directly to tags."
+},
+{
+"id": "vue-e-005",
+"difficulty": "easy",
+"q": "You need to intercept a click event on an anchor tag and prevent the browser from executing its default page refresh. Which modifier works?",
+"options": [
+"@click.stop",
+"@click.prevent",
+"@click.capture",
+"@click.self"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The prevent event modifier automatically invokes event.preventDefault() under the hood. This cancels the native browser behavior like navigating anchor tags."
+},
+{
+"id": "vue-e-006",
+"difficulty": "easy",
+"q": "You are creating a text input element that needs to continuously synchronize its value with a local text variable. Which directive handles this?",
+"options": [
+"v-text",
+"v-bind",
+"v-html",
+"v-model"
+],
+"correct": 3,
+"wrongPick": 1,
+"explain": "The v-model directive provides automated two-way data binding. It updates the state on element inputs and updates the element value on state changes."
+},
+{
+"id": "vue-e-007",
+"difficulty": "easy",
+"q": "You want to render a recurring list of blog items on screen based on an items array in your state. Which loop directive handles this?",
+"options": [
+"v-repeat",
+"v-for",
+"v-each",
+"v-loop"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The v-for directive loops through arrays or iterable objects. It uses a specific alias syntax to dynamically render blocks of HTML markup."
+},
+{
+"id": "vue-e-008",
+"difficulty": "easy",
+"q": "Your product list template uses v-for but your compiler produces warnings about missing tracked elements during list mutations. What attribute fixes this?",
+"options": [
+"id",
+"index",
+"key",
+"ref"
+],
+"correct": 2,
+"wrongPick": 1,
+"explain": "The key attribute provides unique identity hints to the rendering engine. This allows the internal virtual DOM diffing engine to track and optimize item movements safely."
+},
+{
+"id": "vue-e-009",
+"difficulty": "easy",
+"q": "You need to reference an raw HTML string safely inside an empty span tag without displaying raw code to users. Which directive is used?",
+"options": [
+"v-text",
+"v-content",
+"v-html",
+"v-safe"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The v-html directive modifies the element innerHTML property with your raw string contents. Use it cautiously to avoid malicious cross-site scripting vulnerabilities."
+},
+{
+"id": "vue-e-010",
+"difficulty": "easy",
+"q": "You are updating a numeric value inside a script setup block and want to log a message whenever that state changes. Which native utility handles this?",
+"options": [
+"watch",
+"computed",
+"ref",
+"reactive"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The watch primitive observes specific reactive dependencies. When changes occur, it triggers an isolated callback function where custom logging or logic can run."
+},
+{
+"id": "vue-e-011",
+"difficulty": "easy",
+"q": "You are declaring a primitive string variable called username inside script setup and need it to maintain reactivity. Which function should wrap it?",
+"options": [
+"reactive",
+"computed",
+"ref",
+"state"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The ref function creates an observable reference holding primitive values or complex objects. It wraps your value in a reactive wrapper accessible via value properties."
+},
+{
+"id": "vue-e-012",
+"difficulty": "easy",
+"q": "You need to access a ref variable named count inside the javascript setup function to increment its value. How do you target its inner content?",
+"options": [
+"count",
+"count.value",
+"count.data",
+"count.$val"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "In javascript blocks, variables created with ref are reactive objects. You must use the value property to explicitly read or overwrite their wrapped data values."
+},
+{
+"id": "vue-e-013",
+"difficulty": "easy",
+"q": "You are initializing a structured object representing a form state and prefer not to deal with value properties in javascript. Which utility should wrap it?",
+"options": [
+"ref",
+"computed",
+"readonly",
+"reactive"
+],
+"correct": 3,
+"wrongPick": 0,
+"explain": "The reactive utility maps proxies onto complex javascript objects directly. This enables tracking property modifications transparently without using an intermediate value wrapper object."
+},
+{
+"id": "vue-e-014",
+"difficulty": "easy",
+"q": "You have a derived product value calculated from a base price and tax percentage that must be cached automatically. Which function should calculate it?",
+"options": [
+"watch",
+"computed",
+"ref",
+"reactive"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Computed values create read-only reactive properties. They analyze their internal dependencies and cache the result, re-running only when referenced values are modified."
+},
+{
+"id": "vue-e-015",
+"difficulty": "easy",
+"q": "You need to execute an initial analytics fetch request as soon as your component has completed its real DOM mounting. Which hook handles this?",
+"options": [
+"onCreated",
+"onMounted",
+"onBeforeMount",
+"onUpdated"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The onMounted hook runs immediately after the component template nodes are instantiated and appended into the real web browser DOM tree."
+},
+{
+"id": "vue-e-016",
+"difficulty": "easy",
+"q": "You need to clean up an active browser interval timer before a component gets completely unmounted and destroyed. Which lifecycle hook is appropriate?",
+"options": [
+"onBeforeUnmount",
+"onUnmounted",
+"onDeactivated",
+"onBeforeUpdate"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The onUnmounted lifecycle hook fires after a component instance is entirely dismantled, making it the secure location to clean up side effects."
+},
+{
+"id": "vue-e-017",
+"difficulty": "easy",
+"q": "You want to transmit a read-only configuration string from a parent down to a nested child element. What component attribute type implements this?",
+"options": [
+"emits",
+"provide",
+"props",
+"slots"
+],
+"correct": 2,
+"wrongPick": 1,
+"explain": "Props are custom attributes explicitly declared on components. They allow parents to feed one-way data downstream to children consistently."
+},
+{
+"id": "vue-e-018",
+"difficulty": "easy",
+"q": "Your child modal element needs to notify its immediate parent container that its close button was clicked. Which system handles this?",
+"options": [
+"props",
+"inject",
+"emits",
+"refs"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The emit method allows child components to fire custom events. Parent elements listen to these events in templates to trigger local callback logic."
+},
+{
+"id": "vue-e-019",
+"difficulty": "easy",
+"q": "You want to declare a slot fallback element inside a custom button layout that shows up only if a parent component leaves the slot empty. How do you design this?",
+"options": [
+"<slot name="fallback" />",
+"Submit",
+"",
+"Submit"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Placing child nodes directly inside the slot tags creates default content. The browser displays this default text only if the parent component skips injecting dynamic templates."
+},
+{
+"id": "vue-e-020",
+"difficulty": "easy",
+"q": "You want to ensure that style rules inside your single file component do not bleed out and accidentally color elements in other views. What tag configuration guarantees this?",
+"options": [
+"",
+"",
+"",
+""
+],
+"correct": 2,
+"wrongPick": 1,
+"explain": "The scoped attribute on style blocks instructs the compiler to append unique dataset attributes to internal markup, keeping rules safely confined to the current element."
+},
+{
+"id": "vue-e-021",
+"difficulty": "easy",
+"q": "You are setting up multi-page view paths within an application dashboard using modern routing libraries. Which component acts as the placeholder container?",
+"options": [
+"",
+"",
+"",
+""
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The RouterView element acts as a dynamic structural placeholder. The routing engine swap-renders matching route path components into this specific section on navigation."
+},
+{
+"id": "vue-e-022",
+"difficulty": "easy",
+"q": "You are creating navigation items in an application head element and need an alternative to standard anchor tags that prevents browser reloads. What should you use?",
+"options": [
+"",
+"",
+"",
+""
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "The RouterLink component handles user navigation smoothly. It renders a valid anchor tag under the hood but blocks native reloads to swap views locally."
+},
+{
+"id": "vue-e-023",
+"difficulty": "easy",
+"q": "You want to create a global single source of truth store using Pinia for authentication metrics. Which initialization function defines this container?",
+"options": [
+"createStore",
+"defineStore",
+"registerStore",
+"makeStore"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Pinia structures store definitions via the defineStore method. It takes a distinct unique key string along with an configuration object or setup function."
+},
+{
+"id": "vue-e-024",
+"difficulty": "easy",
+"q": "You are designing an interactive list where elements must appear or fade out using custom animations when structural toggles occur. What built-in tag wraps them?",
+"options": [
+"",
+"",
+"",
+""
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The built-in Transition element applies automated class sequences onto a wrapped element during entering and leaving state shifts."
+},
+{
+"id": "vue-e-025",
+"difficulty": "easy",
+"q": "You have thousands of users viewing a flat marketing page that renders static copy which never changes after initial mount. What directive halts updates here?",
+"options": [
+"v-memo",
+"v-pre",
+"v-once",
+"v-static"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The v-once directive tells the compiler to render an element block exactly once and skip all future reactive tracking updates entirely to save processing power."
+}
+]
