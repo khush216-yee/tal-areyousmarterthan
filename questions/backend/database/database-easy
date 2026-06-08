@@ -1,0 +1,352 @@
+[
+  {
+    "id": "db-e-001",
+    "difficulty": "easy",
+    "q": "An e-commerce order system requires that either all items in a cart are successfully processed, or none are. Which specific property of the ACID model guarantees this all-or-nothing execution?",
+    "options": [
+      "Atomicity",
+      "Consistency",
+      "Isolation",
+      "Durability"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Atomicity ensures that a database transaction is treated as a single, indivisible unit of work. Either all operations within the transaction succeed, or the entire transaction is aborted and rolled back, leaving the database unchanged."
+  },
+  {
+    "id": "db-e-002",
+    "difficulty": "easy",
+    "q": "Your application server unexpectedly crashes due to a sudden power failure immediately after confirming a successful banking transaction. Which ACID property ensures the committed data is not lost upon reboot?",
+    "options": [
+      "Atomicity",
+      "Consistency",
+      "Isolation",
+      "Durability"
+    ],
+    "correct": 3,
+    "wrongPick": 1,
+    "explain": "Durability guarantees that once a transaction has been committed, its effects are permanently recorded in non-volatile storage (such as disk or solid-state memory) and will survive any subsequent system crash or power outage."
+  },
+  {
+    "id": "db-e-003",
+    "difficulty": "easy",
+    "q": "You are querying a high-throughput NoSQL database cluster and notice that a read operation occasionally returns stale data right after a write, but eventually shows the correct state. What is this behavior called?",
+    "options": [
+      "Immediate Consistency",
+      "Eventual Consistency",
+      "Strong Consistency",
+      "Serializable Consistency"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Eventual consistency is a consistency model used in distributed computing where, if no new updates are made to a given data item, all replicas across the distributed network will eventually converge and return the latest updated value."
+  },
+  {
+    "id": "db-e-004",
+    "difficulty": "easy",
+    "q": "A junior developer is struggling with slow SELECT queries on a large users table. They want to speed up lookups on the email column without scanning every single row. Which database feature should they implement?",
+    "options": [
+      "A database view",
+      "A foreign key constraint",
+      "An index",
+      "A stored procedure"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "An index is a database structure that stores pointers to rows in a highly organized format (typically a tree structure). This allows the database engine to find specific records rapidly without performing a slow full table scan."
+  },
+  {
+    "id": "db-e-005",
+    "difficulty": "easy",
+    "q": "You are building a basic blog system using a traditional relational database (SQL). What type of database scaling involves upgrading your single server hardware with more RAM, a faster network card, and better CPU cores?",
+    "options": [
+      "Horizontal Scaling (Scaling out)",
+      "Vertical Scaling (Scaling up)",
+      "Database Sharding",
+      "Asynchronous Replication"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Vertical scaling (scaling up) means adding more power (CPU, RAM, storage) to an existing single machine, whereas horizontal scaling (scaling out) involves adding more individual server nodes to your database pool."
+  },
+  {
+    "id": "db-e-006",
+    "difficulty": "easy",
+    "q": "An analyst runs an expensive query against a production table containing millions of records. The query planner is forced to read every single page on the disk to find matching data because no index is available. What is this operation called?",
+    "options": [
+      "Index Only Scan",
+      "Full Table Scan",
+      "Index Range Scan",
+      "Bitmap Index Scan"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A full table scan occurs when the database engine has to sequentially read every single row in a table to evaluate a query condition, which is highly inefficient for large datasets."
+  },
+  {
+    "id": "db-e-007",
+    "difficulty": "easy",
+    "q": "You need to store unstructured, rapidly changing user profile data consisting of varying key-value attributes and nested arrays. Which type of database engine is generally best suited for this flexible schema pattern?",
+    "options": [
+      "Relational Database (SQL)",
+      "NoSQL Database",
+      "NewSQL Database",
+      "Time-Series SQL Database"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "NoSQL databases (such as document stores) are designed with a schema-less or flexible schema architecture, allowing individual records to have completely different structures, fields, and nested properties without requiring strict migrations."
+  },
+  {
+    "id": "db-e-008",
+    "difficulty": "easy",
+    "q": "A data engineer wants to split a massive customer database across three physically distinct server machines based on geographic regions to distribute storage load. What is this architectural pattern called?",
+    "options": [
+      "Normalization",
+      "Vertical Partitioning",
+      "Database Sharding",
+      "Prepared Statements"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "Database sharding is a horizontal partitioning technique that breaks up a large database into smaller, faster, more easily managed pieces called shards, with each shard hosted on a separate database server instance."
+  },
+  {
+    "id": "db-e-009",
+    "difficulty": "easy",
+    "q": "You are writing raw backend database queries and want to completely defend your application against malicious SQL Injection vulnerabilities. Which coding technique should you use uniformly?",
+    "options": [
+      "String concatenation of inputs",
+      "Client-side regular expression filtering",
+      "Parameterized statements (Prepared statements)",
+      "Converting input strings to upper case"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "Parameterized statements (prepared statements) separate the executable query code from the user-provided data parameters. The database treats parameters strictly as data literals, rendering SQL injection payloads completely harmless."
+  },
+  {
+    "id": "db-e-010",
+    "difficulty": "easy",
+    "q": "You need to determine if an existing query is leveraging an index or executing a slow full table scan. Which command-line prefix or graphical visualization tool do SQL databases provide to expose this execution path?",
+    "options": [
+      "OPTIMIZE QUERY",
+      "ANALYZE STRUCTURE",
+      "EXPLAIN",
+      "SHOW INDEXES"
+    ],
+    "correct": 2,
+    "wrongPick": 3,
+    "explain": "The EXPLAIN statement (e.g., EXPLAIN SELECT...) prompts the query optimizer to output its planned execution steps, revealing details such as the specific indexes used, row estimates, and scan strategies."
+  },
+  {
+    "id": "db-e-011",
+    "difficulty": "easy",
+    "q": "A high-volume streaming service relies on a NoSQL database architecture that favors high availability and partition tolerance over strict transactional ACID guarantees. Which acronym describes this decentralized model?",
+    "options": [
+      "ACID",
+      "BASE",
+      "CRUD",
+      "OLAP"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The BASE acronym stands for Basically Available, Soft state, Eventual consistency. It represents a relaxed consistency philosophy commonly chosen by distributed NoSQL systems to optimize for horizontal scaling and fault tolerance."
+  },
+  {
+    "id": "db-e-012",
+    "difficulty": "easy",
+    "q": "You are establishing a data architecture where a single central database handles all transactional writes, and automatically sends copy updates to multiple auxiliary read-only databases. What is this concept?",
+    "options": [
+      "Database Sharding",
+      "Database Replication",
+      "Database Normalization",
+      "Distributed Two-Phase Commit"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Database replication involves copying data from one database server (the Master/Primary) to one or more auxiliary servers (Slaves/Replicas) to provide redundancy, backup capabilities, and offload read workloads."
+  },
+  {
+    "id": "db-e-013",
+    "difficulty": "easy",
+    "q": "You are optimizing a relational schema to remove redundant data columns, minimize null values, and enforce strict table relationships. What is this design optimization process called?",
+    "options": [
+      "Sharding",
+      "Replication",
+      "Normalization",
+      "Indexing"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "Normalization is the systematic process of structuring a relational database schema into specific normal forms to eliminate data redundancy, reduce structural anomalies, and preserve data integrity."
+  },
+  {
+    "id": "db-e-014",
+    "difficulty": "easy",
+    "q": "A software engineer executes a database script containing multiple SQL adjustments inside a single block, but an error occurs halfway through. The engineer runs a command to wipe out all partial edits completely. Which keyword achieves this?",
+    "options": [
+      "COMMIT",
+      "ROLLBACK",
+      "SAVEPOINT",
+      "DROP"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The ROLLBACK command ends a database transaction by discarding all uncommitted data modifications made during the active transaction window, cleanly reverting the data back to its original state."
+  },
+  {
+    "id": "db-e-015",
+    "difficulty": "easy",
+    "q": "You are building a reporting app and notice that a specific lookup strategy is able to pull its complete answer exclusively from the index tree structure itself without navigating to the main heap memory table. What is this optimal scan strategy?",
+    "options": [
+      "Full Table Scan",
+      "Index Only Scan",
+      "Bitmap Heap Scan",
+      "Clustered Pointer Scan"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "An Index Only Scan occurs when all the columns requested by a query are contained within the index itself. The database engine returns the data directly from the index nodes, skipping the expensive step of looking up rows in the main table."
+  },
+  {
+    "id": "db-e-016",
+    "difficulty": "easy",
+    "q": "You run a command to safely commit an update to a database. Internally, the transaction must adhere to strict operational constraints, ensuring it leaves the database with all primary keys, unique checks, and foreign keys valid. Which ACID property does this enforce?",
+    "options": [
+      "Atomicity",
+      "Consistency",
+      "Isolation",
+      "Durability"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Consistency ensures that a transaction can only transition the database from one valid state to another, maintaining all predefined schema rules, constraints, and data invariants."
+  },
+  {
+    "id": "db-e-017",
+    "difficulty": "easy",
+    "q": "You are evaluating database transaction anomalies. A transaction reads a database row that has been updated by a concurrent transaction but *not yet committed*. If that concurrent transaction rolls back, the data read was completely invalid. What is this anomaly?",
+    "options": [
+      "Non-repeatable Read",
+      "Phantom Read",
+      "Dirty Read",
+      "Write Skew"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "A dirty read occurs when a transaction reads uncommitted modifications made by another concurrent transaction. If the modifying transaction aborts, the data read becomes completely unhistorical and incorrect."
+  },
+  {
+    "id": "db-e-018",
+    "difficulty": "easy",
+    "q": "Which Isolation level is the lowest, most permissive level possible where transactions can view uncommitted data changes from concurrent transactions, risking dirty reads?",
+    "options": [
+      "Read Uncommitted",
+      "Read Committed",
+      "Repeatable Read",
+      "Serializable"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Read Uncommitted is the lowest isolation level. It offers no protection against dirty reads, allowing one transaction to read uncommitted data modifications currently being modified by other concurrent transactions."
+  },
+  {
+    "id": "db-e-019",
+    "difficulty": "easy",
+    "q": "You are using a standard relational database with default isolation settings. This setting guarantees that any data read by a query is fully committed at the exact millisecond the read operation executes. Which isolation level is this?",
+    "options": [
+      "Read Uncommitted",
+      "Read Committed",
+      "Repeatable Read",
+      "Serializable"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The Read Committed isolation level guarantees that any data read by a transaction has been officially committed before the moment of reading, successfully preventing dirty reads."
+  },
+  {
+    "id": "db-e-020",
+    "difficulty": "easy",
+    "q": "You want to implement a modern database type that scales out horizontally across multiple servers like NoSQL, but explicitly preserves ACID transactional integrity and supports standard SQL queries. What category of database is this?",
+    "options": [
+      "Key-Value Store",
+      "Graph Database",
+      "NewSQL Database",
+      "Document Store"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "NewSQL is a class of modern relational database management systems that seek to provide the same horizontal scalability of NoSQL systems for online transaction processing (OLTP) workloads while maintaining ACID guarantees and standard SQL support."
+  },
+  {
+    "id": "db-e-021",
+    "difficulty": "easy",
+    "q": "A security analyst is auditing an application code snippet: `SELECT * FROM users WHERE name = '` + userInput + `'`. What exact vulnerability does this raw string concatenation create?",
+    "options": [
+      "Cross-Site Scripting (XSS)",
+      "SQL Injection (SQLi)",
+      "Remote Code Execution (RCE)",
+      "Broken Object Level Authorization"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Directly concatenating untrusted user inputs into raw SQL query strings allows malicious input characters to alter the structural logic of the SQL statement, causing a SQL Injection vulnerability."
+  },
+  {
+    "id": "db-e-022",
+    "difficulty": "easy",
+    "q": "A backend service wants to issue a single database query multiple times sequentially with different lookup arguments. Instead of forcing the engine to compile the query string every single time, which mechanism compiles it once for reuse?",
+    "options": [
+      "Ad-hoc Text Statements",
+      "Prepared Statements / Parameterized Statements",
+      "Full Table Scans",
+      "View Constraints"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Prepared statements allow the database engine to parse, compile, and optimize the query execution plan exactly once. The compiled template can then be reused efficiently by simply passing different parameters."
+  },
+  {
+    "id": "db-e-023",
+    "difficulty": "easy",
+    "q": "You are reading about database design basics. A relationship model describes that a user can have exactly one profile, and a profile belongs to exactly one user. What type of mapping relationship is this?",
+    "options": [
+      "One-to-Many",
+      "Many-to-Many",
+      "One-to-One",
+      "Polymorphic Association"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "A One-to-One relationship indicates that a single record in one table corresponds to exactly one matching record in another linked table."
+  },
+  {
+    "id": "db-e-024",
+    "difficulty": "easy",
+    "q": "You execute a `SELECT COUNT(*) FROM inventory` query on a standard relational table that lacks pre-computed cache structures. If the database engine has no optimized index helper, how does it determine the count?",
+    "options": [
+      "By returning a metadata variable instantly in O(1) time",
+      "By conducting a full table scan to count every valid record",
+      "By tracking the active replication binary log size",
+      "By checking the primary key hash map length"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Without an index or a specialized storage engine cache, a COUNT(*) query forces the database engine to scan the entire table or index tree sequentially to count the total records, resulting in an O(N) operation."
+  },
+  {
+    "id": "db-e-025",
+    "difficulty": "easy",
+    "q": "A transaction reads a numeric value from a row. A second concurrent transaction immediately updates that row and commits. When the first transaction reads the exact same row again, it receives a different value. What read phenomenon is this?",
+    "options": [
+      "Dirty Read",
+      "Non-repeatable Read",
+      "Phantom Read",
+      "Write Skew"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "A non-repeatable read occurs when a transaction retrieves the same row multiple times within its execution block, but discovers that the data values inside that row have been modified by a concurrent transaction that committed in the interim."
+  }
+]
