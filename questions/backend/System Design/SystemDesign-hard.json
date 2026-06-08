@@ -1,0 +1,352 @@
+[
+  {
+    "id": "sd-h-001",
+    "difficulty": "hard",
+    "q": "You are building a high-frequency payment processing engine. During testing under concurrent load, you discover a race condition where multiple concurrent requests modify account balances simultaneously, leading to inconsistent balances. Which LLD mitigation strategy resolves this concurrency issue at the database layer?",
+    "options": [
+      "Refactoring the calculation methods to leverage the Strategy Design Pattern dynamically",
+      "Enforcing Optimistic Concurrency Control using a version column, or applying Pessimistic Locking (`SELECT ... FOR UPDATE`) to isolate transaction rows during mutation",
+      "Extracting column configurations into split vertical tables to minimize row sizes",
+      "Converting data properties from standard integer fields to text blocks"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "To prevent data updates from overwriting each other, systems use isolation mechanisms. Pessimistic locking locks rows until a transaction finishes, while Optimistic Concurrency Control checks version tokens at execution time to abort conflicting changes."
+  },
+  {
+    "id": "sd-h-002",
+    "difficulty": "hard",
+    "q": "When applying the SOLID principles to a complex notifications infrastructure, a developer splits a massive `NotificationInterface` containing twenty abstract methods into five distinct, specialized interfaces like `EmailNotification` and `SMSNotification`. Which explicit design principle did they follow?",
+    "options": [
+      "Single Responsibility Principle (SRP)",
+      "Interface Segregation Principle (ISP)",
+      "Liskov Substitution Principle (LSP)",
+      "Open-Closed Principle (OCP)"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Interface Segregation Principle (ISP) states that clients should not be forced to depend on interfaces they do not use. Splitting bloated interfaces into smaller, targeted contracts prevents implementations from needing to provide empty dummy methods."
+  },
+  {
+    "id": "sd-h-003",
+    "difficulty": "hard",
+    "q": "A high-traffic e-commerce portal experiences flash sales that overload its core inventory database with read requests. You decide to integrate a Redis caching tier. To prevent a 'Cache Stampede' (Thundering Herd problem) when a popular product cache key expires simultaneously under heavy load, what mitigation should you implement?",
+    "options": [
+      "Increase the cluster's horizontal instance count to replicate data tables across cloud nodes",
+      "Implement mutual exclusion locks (mutexes) around cache misses so only one background thread fetches the update from the database, or use background ahead-of-time key renewal",
+      "Convert the cache payload structures from JSON representations into encrypted XML files",
+      "Configure the load balancer to switch to sticky session persistence modes permanently"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "Cache stampede occurs when a high-traffic key expires, causing thousands of concurrent requests to experience a cache miss and hit the database at once. Restricting database reads to a single thread via locking or pre-calculating cache renewals mitigates this issue."
+  },
+  {
+    "id": "sd-h-004",
+    "difficulty": "hard",
+    "q": "A distributed system uses asynchronous worker queues to handle billing processes. Network transient blips mean tasks are occasionally pushed multiple times. How must the low-level data access layer be designed to process these requests safely without charging users twice?",
+    "options": [
+      "By migrating the background architecture to single-threaded local execution loops",
+      "By designing idempotent request handlers that record a unique transaction deduplication key in the database within a single atomic commit, checking for its existence before processing payments",
+      "By running the processing logic over open HTTP connections without tracking headers",
+      "By ensuring the message payload format utilizes text properties exclusively"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Distributed queues often guarantee 'at-least-once' delivery, meaning messages can be duplicated. Idempotent design handles this by using unique transaction tokens and unique constraints to ensure duplicate runs are safely ignored or rejected."
+  },
+  {
+    "id": "sd-h-005",
+    "difficulty": "hard",
+    "q": "An engineer designs an analytical engine that uses complex object configurations. They create a massive class containing deeply nested `if-else` blocks to evaluate conditional behaviors. The architecture is highly brittle because adding a new rule requires editing this class file directly. Which SOLID principle is violated, and how should it be refactored?",
+    "options": [
+      "Liskov Substitution Principle; refactor using static sub-class variables",
+      "Open-Closed Principle; refactor the conditional logic by extracting behaviors into separate strategy classes implementing a unified interface",
+      "Interface Segregation Principle; split the class into distinct decoupled functional tables",
+      "Dependency Inversion Principle; configure the core properties using global session configurations"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "The Open-Closed Principle (OCP) dictates that classes should be open for extension but closed for modification. Replacing hardcoded `if-else` conditionals with the Strategy or Command pattern allows adding new rules without changing existing, tested code."
+  },
+  {
+    "id": "sd-h-006",
+    "difficulty": "hard",
+    "q": "A critical downstream authentication service becomes sluggish and begins returning timeout errors. This causes upstream API endpoints to exhaust their thread pools while waiting for responses, bringing down the user gateway. Which architectural pattern should be applied to isolate this failure?",
+    "options": [
+      "The Proxy Routing Pattern, which mirrors traffic requests across available container hosts",
+      "The Circuit Breaker Pattern, which monitors service failures and rapidly trips to fail-fast and return a fallback response once an error threshold is crossed",
+      "A Synchronous Thread Queue that locks incoming requests until the service responds",
+      "An OpenAPI Validation Contract that strips header elements from payloads"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The Circuit Breaker pattern wraps downstream network calls. When errors cross a threshold, the breaker trips to 'open' state, failing fast to return cached or fallback data immediately, which saves upstream resources and gives the downstream service room to recover."
+  },
+  {
+    "id": "sd-h-007",
+    "difficulty": "hard",
+    "q": "When architecting a social media newsfeed system like Twitter, what are the technical tradeoffs between a 'Fan-out-on-Write' (Push model) and a 'Fan-out-on-Read' (Pull model) architecture?",
+    "options": [
+      "Push models require massive network bandwidth during lookups; Pull models require local memory caching structures exclusively",
+      "Push models pre-compute user feeds during post creation, optimizing read speeds but slowing down writes for high-following celebrities; Pull models construct feeds on-demand during read requests, saving write overhead but increasing database read latencies",
+      "Push models require relational SQL servers; Pull models operate exclusively over non-relational NoSQL key stores",
+      "Push models operate over single-threaded routines; Pull models run multi-threaded background clusters"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Fan-out-on-write computes timelines ahead of time when a user posts, which makes reads fast but bottlenecks when a celebrity with millions of followers posts. Fan-out-on-read fetches timelines on-demand, which saves write overhead but can strain databases during read spikes."
+  },
+  {
+    "id": "sd-h-008",
+    "difficulty": "hard",
+    "q": "A financial system must log all user account ledger balance events. It adopts an Event Sourcing architectural model instead of storing simple status rows. What does this design look like in practice?",
+    "options": [
+      "The system logs only the most recent user balance state onto an in-memory Redis cluster cache layer",
+      "The database avoids mutation changes by storing state as an immutable sequence of historical delta events, reconstructing current balances by replaying these events from scratch",
+      "The system encrypts data tables using custom single-use hardware security keys",
+      "The engine splits data metrics into separate columns depending on user access credentials"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Event Sourcing captures every state modification as an immutable event in a ledger. Instead of overwriting a database row balance value directly, the current state is calculated by pulling and executing the entire timeline of events sequentially."
+  },
+  {
+    "id": "sd-h-009",
+    "difficulty": "hard",
+    "q": "An engineer designs an online seat allocation system for a major ticketing platform. To ensure high availability and prevent a 'Double Booking' race condition when thousands of users try to purchase the exact same seat simultaneously, which mechanism is best?",
+    "options": [
+      "Relying on frontend user interface disabling rules to intercept rapid double clicks",
+      "Implementing Distributed Locking using a fast in-memory cluster (e.g., Redis Redlock) with a short lease duration, or using strict database transactional constraints",
+      "Enforcing an auto-scaling routing protocol to duplicate the backend tables into separate hosts",
+      "Converting all request parameters into plain text format layouts across the application routers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Preventing double-booking across multiple application instances requires a shared distributed lock or database constraint. An in-memory lock ensures only one worker process can acquire the lock to modify a seat's purchase status at a time."
+  },
+  {
+    "id": "sd-h-010",
+    "difficulty": "hard",
+    "q": "Your enterprise distributed network requires a system to implement strict global Exactly-Once processing semantics across a messaging pipeline from Kafka to a database. How do you guarantee this?",
+    "options": [
+      "By implementing high-frequency rate limiting thresholds across the cloud API gateway layers",
+      "By combining idempotent message processing with a Transactional Outbox pattern or two-phase commits to ensure message consumption and database updates succeed or fail as a single atomic unit",
+      "By using plain text data formats instead of compressed binary object schemas",
+      "By forcing the application nodes to use sticky session routing paths exclusively"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "True exactly-once processing requires coordinating message consumption and state writes. Combining unique message deduplication keys with atomic database transactions ensures that if a step fails mid-execution, the entire sequence rolls back cleanly."
+  },
+  {
+    "id": "sd-h-011",
+    "difficulty": "hard",
+    "q": "A global ride-sharing application needs to match users with drivers based on real-time location coordinate updates. Which spatial index structure should be used to support fast geospatial range queries?",
+    "options": [
+      "Standard B-Tree Index",
+      "Quadtree or Geohash Indexing",
+      "In-Memory Singly Linked List",
+      "Inverted Bitmap Index"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Standard indexes look up data linearly. Geospatial queries require multi-dimensional indexing. Quadtrees break 2D space down into recursive quadrants, while Geohashes encode coordinates into strings, allowing efficient spatial range lookups."
+  },
+  {
+    "id": "sd-h-012",
+    "difficulty": "hard",
+    "q": "Your team needs to implement a global distributed database cluster across data centers in New York, London, and Tokyo. According to PACELC theorem, if the system experiences a network partition, what trade-off must you manage?",
+    "options": [
+      "The trade-off between Encryption processing performance and public Data Format readability patterns",
+      "If there is a partition (P), trade off Consistency (C) vs Availability (A); Else (E), when the system is running normally, trade off Latency (L) vs Consistency (C)",
+      "The trade-off between Multi-threaded thread safety metrics and horizontal Server Node counts",
+      "The trade-off between local Auto-scaling thresholds and relational database Table Schema normalization"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The PACELC theorem extends the CAP theorem. It states that even when the network is running normally without partitions (E), an engine must still trade off whether to wait for data replication to complete (Consistency) or return data immediately (Latency)."
+  },
+  {
+    "id": "sd-h-013",
+    "difficulty": "hard",
+    "q": "An engineer implements Consistent Hashing within a distributed caching ring containing 10 nodes. When one node unexpectedly crashes, what happens to the cached keys in the cluster?",
+    "options": [
+      "All keys across all 10 nodes must be re-hashed and remapped to new server nodes, rendering the cache empty",
+      "Only the keys mapped explicitly to the failed node are invalidated and redistributed to its immediate neighbor on the hash ring, leaving the remaining keys untouched",
+      "The caching system shifts all transactional reads directly to master SQL databases permanently",
+      "The hash ring converts all key elements into sequential auto-incrementing integer strings"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Consistent hashing maps both keys and servers to a circular hash ring. When a node leaves or joins the ring, it only affects a fraction of keys ($\frac{1}{N}$), preventing the massive cache misses that occur with a standard modulo ($K \\pmod N$) hashing strategy."
+  },
+  {
+    "id": "sd-h-014",
+    "difficulty": "hard",
+    "q": "A massive media network uses a write-back (write-behind) caching model. What architectural failure risk must engineers mitigate when using this approach?",
+    "options": [
+      "High read latency spikes during standard validation operations",
+      "Data loss if the cache node crashes before its queued updates can be written out to the primary database store",
+      "A complete breakdown of browser CORS cross-origin security rules",
+      "An unexpected change in application schema class variables from compilation bugs"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "In a write-back cache configuration, writes complete instantly in-memory, and are batched to be written to the database later. This improves write performance but risks data loss if the cache node loses power or crashes before syncing its dirty data back to disk."
+  },
+  {
+    "id": "sd-h-015",
+    "difficulty": "hard",
+    "q": "A video streaming platform uses a Microservices architecture. During peak traffic, a failure cascade occurs: Service A times out waiting for Service B, which is blocked waiting for Service C. How should this cascading dependency failure be prevented?",
+    "options": [
+      "By increasing global container thread count allocations to hold open hanging request links",
+      "By implementing strict communication timeouts, adding dead-letter queues, and integrating decoupling circuit breakers with fallback options",
+      "By removing API gateway proxy routes to let apps speak straight to underlying databases",
+      "By standardizing all microservice data body payloads onto XML schemas exclusively"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Cascading failures occur when a slowdown in one service exhausts resource pools across upstream systems. Isolating calls with explicit timeouts and applying circuit breakers bounds resource consumption and maintains system stability."
+  },
+  {
+    "id": "sd-h-016",
+    "difficulty": "hard",
+    "q": "When implementing a high-throughput Leaderless Replication database cluster (e.g., Cassandra architecture), how are write conflicts resolved when multiple nodes receive conflicting updates for the same record?",
+    "options": [
+      "The cluster halts all subsequent transactions until an operator selects the true record manually",
+      "Using Last-Write-Wins (LWW) based on timestamps, or using vector clocks to track causal history and detect concurrent changes",
+      "Converting the data properties into read-only files dynamically across cloud container hosts",
+      "Routing the conflict through an alternate proxy gateway to rewrite the record identifier"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Leaderless systems allow any node to accept updates. To resolve concurrent conflicts, engines either pick Last-Write-Wins (which can discard updates due to clock drift) or leverage Vector Clocks to track causal histories and flag conflicts for the application to merge."
+  },
+  {
+    "id": "sd-h-017",
+    "difficulty": "hard",
+    "q": "A streaming ingestion pipeline processes millions of user telemetry metrics per second. To aggregate these events into 5-minute windows based on the exact moment the user performed the action, which stream processing concept should be implemented?",
+    "options": [
+      "Processing-time sliding windows",
+      "Event-time tumbling windows with watermark allowances to account for late-arriving network data",
+      "Static database batch sharding schemas",
+      "Consistent hash ring caching partitions"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Processing time reflects when an event arrives at the server, which can be thrown off by network delays. Event-time tracking uses timestamps embedded within the data payload, combined with watermarks to give late-arriving packets time to join their correct processing windows."
+  },
+  {
+    "id": "sd-h-018",
+    "difficulty": "hard",
+    "q": "What problem does the Long Polling technique solve when building real-time notification applications, and what is its architectural limitation compared to WebSockets?",
+    "options": [
+      "It converts text responses into binary file encodings; its limitation is high memory usage",
+      "It allows the server to hold a client request open until new data arrives, reducing empty polling loops, but introduces overhead because every message cycle requires a new HTTP handshake",
+      "It encrypts payload routing paths; its limitation is a complete loss of database index accuracy",
+      "It scales database connections horizontally; its limitation is strict single-threaded operation constraints"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Long polling emulates a push system over HTTP by keeping a connection open until new data is ready. However, it still incurs HTTP header overhead and connection handshake latency for each cycle, unlike WebSockets, which establish a full-duplex TCP tunnel."
+  },
+  {
+    "id": "sd-h-019",
+    "difficulty": "hard",
+    "q": "When constructing a global chat system like WhatsApp, why is a separate distributed Session Store (such as Redis) preferred over standard local host memory configurations?",
+    "options": [
+      "Local memory forces database schemas to drop column indexes completely",
+      "Local memory isolates user session data on a single machine, meaning if a load balancer shifts a user's request to a different server instance, their session state is lost",
+      "Local memory changes text formats into binary blocks automatically",
+      "Local memory causes security systems to block outbound browser CORS validation scripts"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Stateless application servers scale horizontally. Storing user sessions inside local host memory binds a user to one physical server instance. Centralizing session state within an external cache cluster lets any backend node handle any incoming user request seamlessly."
+  },
+  {
+    "id": "sd-h-020",
+    "difficulty": "hard",
+    "q": "An engineer implements the CQRS (Command Query Responsibility Segregation) pattern for an enterprise system. What is the fundamental goal of this design model?",
+    "options": [
+      "To compress network payload streams before they hit cloud data storage endpoints",
+      "To separate read paths from write paths into completely distinct models and data tables, maximizing performance by tuning each path independently",
+      "To enforce strict single-threaded transaction checks across application data modules",
+      "To automatically validate that all inbound variables adhere to JSON schema layouts"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "CQRS segregates modification operations (Commands) from lookup operations (Queries). This allows systems to optimize separate data models or even separate databases (e.g., SQL for writes, Elasticsearch for reads) to scale workloads independently."
+  },
+  {
+    "id": "sd-h-021",
+    "difficulty": "hard",
+    "q": "A cloud architecture needs to process high-throughput files by applying multiple independent filters and conversions. Which structural design pattern should be applied to chain these sequential steps cleanly?",
+    "options": [
+      "Flyweight Pattern",
+      "Pipes and Filters Pattern",
+      "Singleton Pattern",
+      "State Pattern"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Pipes and Filters pattern divides a larger data processing task into a sequence of discrete processing steps (Filters) connected by communication buffers (Pipes). This clean separation improves reusability and allows filters to execute in parallel."
+  },
+  {
+    "id": "sd-h-022",
+    "difficulty": "hard",
+    "q": "Your distributed system needs to maintain metadata coordinates. You select Apache ZooKeeper, which prioritizes Consistency over Availability during network partitions. According to the CAP theorem, what happens to ZooKeeper if a majority of its nodes lose network connectivity?",
+    "options": [
+      "It continues to accept all writes by storing data in an isolated local file system fallback",
+      "It rejects write operations and stops serving requests to protect data correctness until a quorum of nodes re-establishes connectivity",
+      "It converts all internal data entries into random unique identifiers automatically",
+      "It passes incoming traffic requests directly to downstream relational databases"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "ZooKeeper is a CP (Consistent/Partition-Tolerant) system. If a network partition splits the cluster and destroys the majority quorum, ZooKeeper sacrifices availability, blocking client writes to ensure no split-brain or stale data state occurs."
+  },
+  {
+    "id": "sd-h-023",
+    "difficulty": "hard",
+    "q": "An engineer observes a performance drop in a search system because the database performs heavy disk lookups for complex queries. Which strategy resolves this bottleneck?",
+    "options": [
+      "Migrating columns into single, huge tables to remove join parameters",
+      "Extracting search data into an external inverted index search engine (like Elasticsearch) and updating it asynchronously via a change data capture (CDC) pipeline",
+      "Disabling application layer rate limiting logic during high traffic hours",
+      "Converting string attributes into binary representations inside the main data tables"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Relational databases aren't optimized for full-text search or complex fuzzy filtering. Offloading text queries to an inverted-index search engine (Elasticsearch) via CDC pipelines speeds up search response times and reduces database CPU utilization."
+  },
+  {
+    "id": "sd-h-024",
+    "difficulty": "hard",
+    "q": "A billing platform must update separate account balances across three independent database instances as part of a single user transaction. Which protocol guarantees all three update tasks complete successfully or roll back completely?",
+    "options": [
+      "Asynchronous publish-subscribe messaging pipeline logic",
+      "Two-Phase Commit (2PC) Protocol or a Saga Orchestration Pattern",
+      "Consistent Hashing Ring distribution routines",
+      "Optimistic concurrency variation matching via ETag tracking headers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Enforcing atomic transactions across decoupled databases requires distributed consensus. The Two-Phase Commit protocol uses a coordinator to manage voting and execution phases, while the Saga pattern executes a chain of local transactions with compensating rollback steps if a failure occurs."
+  },
+  {
+    "id": "sd-h-025",
+    "difficulty": "hard",
+    "q": "What problem does the Gossip Protocol solve within large-scale distributed cloud architectures, such as a Cassandra cluster with hundreds of nodes?",
+    "options": [
+      "It serializes text schemas into binary storage configurations",
+      "It serves as a decentralized peer-to-peer communication mechanism that lets nodes share cluster state and node health metrics quickly without a single point of failure",
+      "It converts API query routing keys into localized alternative languages dynamically",
+      "It manages cross-origin resource sharing authorization policies within browser client engines"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Centralized cluster tracking nodes can become single points of failure. The Gossip Protocol operates as a decentralized communication model where nodes periodically exchange status data with random peers, allowing node health updates to ripple across the entire cluster."
+  }
+]
