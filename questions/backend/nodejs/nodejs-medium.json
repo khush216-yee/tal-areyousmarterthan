@@ -1,0 +1,352 @@
+[
+{
+"id": "node-m-001",
+"difficulty": "medium",
+"q": "You are optimizing a high-concurrency web server and notice memory usage spikes when multiple clients request massive video assets simultaneously. How should you fix this bottleneck?",
+"options": [
+"Read the asset files into memory using fs.readFileSync",
+"Stream the assets incrementally using fs.createReadStream",
+"Allocate large temporary storage spaces using Buffer.alloc",
+"Fork separate child processes for every incoming media connection"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Using fs.createReadStream streams files in small, sequential chunks. This avoids loading entire large files into RAM all at once and keeps memory usage stable."
+},
+{
+"id": "node-m-002",
+"difficulty": "medium",
+"q": "You are building a real-time analytics hub and want to define and trigger custom application events across separate asynchronous modules. Which native class handles this?",
+"options": [
+"EventEmitter",
+"Stream",
+"Process",
+"Cluster"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The EventEmitter class from the events module allows you to implement custom pub/sub patterns by binding callback handlers to distinct event names."
+},
+{
+"id": "node-m-003",
+"difficulty": "medium",
+"q": "You are integrating an enterprise REST API where routing requirements, validation, and request pipelines are growing too fast for a raw http module server. What framework should you adopt?",
+"options": [
+"libuv",
+"Express",
+"Connect",
+"Crypto"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "Express abstracts raw HTTP server implementations into an organized, middleware-driven framework that simplifies routing, header parsing, and request handling."
+},
+{
+"id": "node-m-004",
+"difficulty": "medium",
+"q": "You are writing a pipeline script that parses a log file and must instantly stop future reads if a specific error message appears in a chunk. What stream method halts execution?",
+"options": [
+"stream.destroy()",
+"stream.close()",
+"stream.pause()",
+"stream.end()"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "The stream.destroy() method immediately closes the underlying stream and frees resource descriptors, preventing any further data chunks from being emitted."
+},
+{
+"id": "node-m-005",
+"difficulty": "medium",
+"q": "You are refactoring a deeply nested chain of asynchronous callbacks that has become unreadable and hard to maintain. Which approach cleans up this callback hell without external libraries?",
+"options": [
+"Convert your asynchronous code blocks to use async/await",
+"Isolate variables using the global process context",
+"Batch asynchronous operations using synchronous nextTick utilities",
+"Split your business logic into separate EventEmitter instances"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "Refactoring asynchronous operations to use Promises with async/await replaces nested callbacks with clean, linear code that reads like synchronous logic."
+},
+{
+"id": "node-m-006",
+"difficulty": "medium",
+"q": "You are developing a secure authentication service and want to separate your network server logic from your main Express application router setup. Why is this separation beneficial?",
+"options": [
+"It allows you to test route logic without making actual network calls",
+"It guarantees complete thread isolation within the V8 engine",
+"It prevents cross-site scripting vulnerabilities in template engines",
+"It bypasses the single-threaded event loop architecture entirely"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "Separating your Express app from the network server setup allows you to pass the app instance to testing utilities, executing functional tests in-process without spinning up TCP ports."
+},
+{
+"id": "node-m-007",
+"difficulty": "medium",
+"q": "You are writing an authentication guard that needs to execute validation logic, update headers, and conditionally halt incoming HTTP requests before they reach your final endpoints. What should you write?",
+"options": [
+"A custom customRef hook module",
+"An Express middleware function wrapper",
+"An asynchronous event listener on process",
+"A child process worker thread script"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "Express middleware functions have access to the request, response, and the next middleware in line. They can execute code, modify payloads, or end requests early."
+},
+{
+"id": "node-m-008",
+"difficulty": "medium",
+"q": "You need to allocate a raw binary storage buffer of a fixed size, ensuring that any residual data in memory is completely wiped before use. Which constructor method is safe?",
+"options": [
+"Buffer.allocUnsafe(size)",
+"new Buffer(size)",
+"Buffer.alloc(size)",
+"Buffer.from(size)"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "Buffer.alloc(size) initializes a new buffer of the specified size and fills it with zeros, which prevents sensitive leftover data from leaking out of raw memory."
+},
+{
+"id": "node-m-009",
+"difficulty": "medium",
+"q": "An interactive command-line interface tool built on Node.js crashes with an uncaught error. You want to intercept this crash globally to log diagnostic details before exiting. What listener handles this?",
+"options": [
+"process.on('uncaughtException')",
+"process.on('exit')",
+"process.on('SIGTERM')",
+"process.on('rejectionHandled')"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The uncaughtException event on the process object intercepts errors that slip through try/catch blocks, giving you a chance to log system diagnostics before shutting down."
+},
+{
+"id": "node-m-010",
+"difficulty": "medium",
+"q": "You want to scale a real-time web application to utilize all 8 CPU cores on a host server, allowing worker instances to share the same inbound port. Which built-in module solves this?",
+"options": [
+"child_process",
+"cluster",
+"worker_threads",
+"net"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "The cluster module spawns worker processes that share a master server port, using internal routing logic to automatically distribute incoming network load."
+},
+{
+"id": "node-m-011",
+"difficulty": "medium",
+"q": "You are writing an automated deployment tool that needs to trigger an external shell command and buffer its complete text output in memory upon termination. Which method is most appropriate?",
+"options": [
+"child_process.spawn",
+"child_process.exec",
+"child_process.fork",
+"child_process.link"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The child_process.exec method runs a command within an operating system shell and buffers its entire stdout/stderr output before passing it to a callback function upon completion."
+},
+{
+"id": "node-m-012",
+"difficulty": "medium",
+"q": "You are processing large batches of structured log entries and need to modify the data payload format on the fly as it moves from a read stream to a write stream. What type of stream do you need?",
+"options": [
+"Readable Stream",
+"Writable Stream",
+"Transform Stream",
+"Duplex Stream"
+],
+"correct": 2,
+"wrongPick": 3,
+"explain": "A Transform stream is a specialized Duplex stream that takes input chunks, applies custom modifications, and passes the updated results to an attached downstream target."
+},
+{
+"id": "node-m-013",
+"difficulty": "medium",
+"q": "You need to create a secure hashing routine for user passwords using standard OpenSSL implementations. Which native core module provides this functionality?",
+"options": [
+"assert",
+"crypto",
+"net",
+"tls"
+],
+"correct": 1,
+"wrongPick": 3,
+"explain": "The crypto module provides cryptographic tools that wrap OpenSSL functionalities like hmac, sign, cipher, and secure hashing algorithms."
+},
+{
+"id": "node-m-014",
+"difficulty": "medium",
+"q": "You need to build a raw TCP chat server that manages persistent sockets and handles incoming binary text frames cleanly. Which native core module provides these networking tools?",
+"options": [
+"http",
+"url",
+"net",
+"os"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The net core module provides an asynchronous network API to construct stream-based TCP or IPC connections, making it ideal for building raw socket utilities."
+},
+{
+"id": "node-m-015",
+"difficulty": "medium",
+"q": "Your file processing script uses an asynchronous loop. You need to verify internal file metrics and throw immediate assertions if data validations fail. Which core validation module should you use?",
+"options": [
+"util",
+"assert",
+"crypto",
+"async_hooks"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The assert module provides assertion testing functions that evaluate expression assumptions, throwing errors if invariants are violated."
+},
+{
+"id": "node-m-016",
+"difficulty": "medium",
+"q": "You are writing a service utility and need to inspect the current environment paths to distinguish if your script is executing on a Windows platform or a Unix environment. Which property tells you this?",
+"options": [
+"process.platform",
+"os.type()",
+"process.title",
+"os.release()"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The process.platform string returns a tag identifier identifying the host OS environment, such as 'darwin', 'freebsd', 'linux', or 'win32'."
+},
+{
+"id": "node-m-017",
+"difficulty": "medium",
+"q": "You are integrating an asynchronous job control tracking array. You need to structure a worker queue that accepts a concurrency constraint integer along with a task handler. Which package provides this?",
+"options": [
+"async",
+"cluster",
+"child_process",
+"events"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The async control flow library provides utility functions like async.queue to build asynchronous task queues with strict concurrency limits."
+},
+{
+"id": "node-m-018",
+"difficulty": "medium",
+"q": "You are developing a background file watcher and want to defer an execution step so that it runs right after active I/O polling operations conclude, without starving the event loop. What should you use?",
+"options": [
+"process.nextTick",
+"setImmediate",
+"setTimeout",
+"queueMicrotask"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The setImmediate timer queues callbacks to run during the check phase of the event loop, immediately after I/O polling completes. This prevents I/O starvation."
+},
+{
+"id": "node-m-019",
+"difficulty": "medium",
+"q": "You have a single-threaded server script that executes a heavy data operation, blocking all incoming API requests for 5 seconds. What is the best classification for this operation?",
+"options": [
+"A non-blocking microtask execution",
+"A blocking CPU-bound operation",
+"An asynchronous event emitter process",
+"An unbuffered memory stream collision"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "CPU-bound calculations execute synchronously on Node's main thread. This stalls the single-threaded event loop and blocks incoming network I/O operations until the task completes."
+},
+{
+"id": "node-m-020",
+"difficulty": "medium",
+"q": "You want to read input straight from a terminal prompt, process it as a JavaScript command statement, and print the results back to the screen in a continuous loop. What environment does this describe?",
+"options": [
+"An Express middleware pipeline stack",
+"A Read-Eval-Print Loop terminal instance",
+"A streamed cluster orchestration process",
+"An unbuffered cryptography hash verify loop"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "A REPL (Read-Eval-Print Loop) environment accepts user inputs, evaluates expressions, prints the computed results, and loops until explicitly closed."
+},
+{
+"id": "node-m-021",
+"difficulty": "medium",
+"q": "You are creating a command-line script and need to intercept a termination event like Ctrl+C to run cleanups before exiting. Which signal event listener should you register?",
+"options": [
+"process.on('SIGTERM')",
+"process.on('SIGINT')",
+"process.on('exit')",
+"process.on('disconnect')"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The SIGINT signal is sent by terminal environments when a user interrupts a process with Ctrl+C. Listening for this allows you to run cleanups before exiting."
+},
+{
+"id": "node-m-022",
+"difficulty": "medium",
+"q": "You are writing a system installation script and need to retrieve the home directory path of the active user across different target operating systems. Which utility function resolves this?",
+"options": [
+"os.homedir()",
+"process.cwd()",
+"os.tmpdir()",
+"path.resolve('~')"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The os.homedir() method looks up environmental settings to return the absolute path to the active user's home directory across both Unix and Windows systems."
+},
+{
+"id": "node-m-023",
+"difficulty": "medium",
+"q": "Your team is running a high-throughput video streaming service. They want to ensure data chunks are pushed to users immediately without being accumulated in internal framework buffers. What feature represents this?",
+"options": [
+"Memory Allocation limits",
+"No Buffering streaming policy",
+"Asynchronous Worker threads",
+"Cryptographic digest parameters"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "Node's streaming architecture processes data chunks sequentially as they arrive. This avoids buffering delays and ensures fast delivery to downstream clients."
+},
+{
+"id": "node-m-024",
+"difficulty": "medium",
+"q": "You are building a custom monitoring tool and want to trace the life cycle of asynchronous operations across network requests. Which experimental core module exposes hooks for this?",
+"options": [
+"util",
+"async_hooks",
+"perf_hooks",
+"assert"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "The async_hooks core module provides an API to track the lifetime of asynchronous resources created within your application."
+},
+{
+"id": "node-m-025",
+"difficulty": "medium",
+"q": "You want to implement custom routing logic within a basic HTTP server, inspecting inbound path segments natively without using third-party frameworks. Which strategy do you execute?",
+"options": [
+"Evaluate the req.url parameter within createServer",
+"Inject custom actions using the cluster module",
+"Map distinct ports to separate asset utilities",
+"Register individual listeners on EventEmitter targets"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "The req.url property provides the incoming request path string. You can parse this string inside your createServer callback to implement basic routing rules."
+}
+]
