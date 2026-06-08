@@ -1,0 +1,352 @@
+[
+{
+"id": "node-h-001",
+"difficulty": "hard",
+"q": "Your application needs to execute heavy, CPU-bound image filtering tasks without blocking the main event loop or spinning up completely separate operating system processes. Which approach is ideal?",
+"options": [
+"Offload the work using child_process.spawn",
+"Run the tasks inside worker_threads instances",
+"Schedule computations using repetitive process.nextTick loops",
+"Isolate execution using the cluster module architecture"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The worker_threads module runs CPU-heavy JavaScript tasks on separate threads within the same process, sharing memory resources without blocking the main event loop thread."
+},
+{
+"id": "node-h-002",
+"difficulty": "hard",
+"q": "You are configuring an asynchronous pipeline and need to run a callback immediately at the end of the current event loop phase, before the microtask queue flushes. Which method handles this?",
+"options": [
+"setImmediate",
+"process.nextTick",
+"setTimeout",
+"queueMicrotask"
+],
+"correct": 1,
+"wrongPick": 3,
+"explain": "Callbacks scheduled with process.nextTick are processed immediately after the current operation finishes, resolving before the event loop advances or microtasks flush."
+},
+{
+"id": "node-h-003",
+"difficulty": "hard",
+"q": "You are writing a database driver wrapper and want to capture file system I/O updates asynchronously without blocking execution. Which C++ backing library manages this thread pool?",
+"options": [
+"V8",
+"libuv",
+"OpenSSL",
+"Connect"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Libuv is Node's multi-platform backing library. It manages the internal event loop, file system operations, and the asynchronous thread pool."
+},
+{
+"id": "node-h-004",
+"difficulty": "hard",
+"q": "You are building a specialized real-time metrics channel and want to spawn an isolated sub-process that runs a dedicated V8 engine instance to establish an IPC communication path. Which method handles this?",
+"options": [
+"child_process.spawn",
+"child_process.fork",
+"child_process.exec",
+"child_process.execFile"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The child_process.fork method is a specialized variation of spawn that instantiates a new V8 engine instance alongside a built-in IPC channel for message passing between processes."
+},
+{
+"id": "node-h-005",
+"difficulty": "hard",
+"q": "You are monitoring a high-throughput stream parser and notice that the source pipeline is emitting data chunks much faster than the destination target can write them. What state condition has occurred?",
+"options": [
+"Unbuffered memory overflow condition",
+"Backpressure accumulation on the stream",
+"Event emitter drop context collision",
+"Libuv worker thread pool exhaustion"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Backpressure occurs when a writable stream writes data slower than an attached readable stream emits it, causing data chunks to pile up in memory buffers."
+},
+{
+"id": "node-h-006",
+"difficulty": "hard",
+"q": "You are debugging a performance bottleneck and notice that allocations created by Buffer.allocUnsafe are leaking structural application data to other sessions. Why does this happen?",
+"options": [
+"It skips zero-filling the allocated memory block",
+"It binds objects straight to the V8 heap",
+"It forces synchronous processing on the event loop",
+"It triggers garbage collection cycles prematurely"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Buffer.allocUnsafe allocates memory outside the V8 heap without zero-filling it. This makes it faster but means it can contain sensitive leftover data from old allocations."
+},
+{
+"id": "node-h-007",
+"difficulty": "hard",
+"q": "You are optimizing a memory-critical file synchronization tool and need to determine where raw Node.js Buffer instances allocate their binary data blocks. Where are they located?",
+"options": [
+"Directly inside the active V8 heap space",
+"Outside the V8 heap in raw RAM",
+"Inside the CPU's primary L2 cache register",
+"Within the libuv worker thread array context"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Buffer instances allocate raw memory chunks outside the V8 heap. This allocation strategy allows large binary data arrays to bypass JavaScript garbage collection tracking."
+},
+{
+"id": "node-h-008",
+"difficulty": "hard",
+"q": "You are deploying an advanced analytical calculation utility that must run compiled C++ logic directly within your Node.js application process. What extension pattern should you adopt?",
+"options": [
+"Native C++ Addons with Node-API",
+"Asynchronous child_process.exec shell commands",
+"Isolated multi-core worker_threads scripts",
+"Custom EventEmitter communication pipelines"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Native C++ Addons compiled via Node-API bridge JavaScript code with compiled C/C++ libraries, running binary logic directly within the application process context."
+},
+{
+"id": "node-h-009",
+"difficulty": "hard",
+"q": "You are implementing a large-scale data stream interface and need to handle data inputs manually by implementing a custom stream class. Which method must your class override?",
+"options": [
+"stream._write",
+"stream._read",
+"stream._transform",
+"stream._push"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "When subclassing a Readable stream, you must implement the internal _read method to fetch data from your underlying source and push it to the stream queue."
+},
+{
+"id": "node-h-010",
+"difficulty": "hard",
+"q": "You are load-testing a backend service and notice that when the default libuv thread pool limit is reached, file operations start to block. How do you scale this pool limit?",
+"options": [
+"Configure cluster.isMaster core allocation arrays",
+"Set the UV_THREADPOOL_SIZE environment variable",
+"Pass concurrency parameters into process.nextTick",
+"Modify default memory allocation options on Buffer"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Setting the UV_THREADPOOL_SIZE environment variable scales the libuv thread pool size, which defaults to 4 threads, up to a maximum limit of 1024."
+},
+{
+"id": "node-h-011",
+"difficulty": "hard",
+"q": "You are writing a pipeline script and notice that an unhandled promise rejection crashes your server process in production. Which environment event listener should you use to catch these early?",
+"options": [
+"process.on('unhandledRejection')",
+"process.on('uncaughtException')",
+"process.on('SIGTERM')",
+"process.on('exit')"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The unhandledRejection event on the process object intercepts rejected promises that lack an attached .catch() handler, letting you log errors before they crash the process."
+},
+{
+"id": "node-h-012",
+"difficulty": "hard",
+"q": "You have a streaming architecture that relies on passing structural object payloads rather than raw binary data strings down the pipeline. What stream mode should you activate?",
+"options": [
+"Transform stream conversion layout",
+"objectMode property set to true",
+"Raw allocation buffering stream mode",
+"Asynchronous libuv IPC channel mode"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Setting objectMode to true on a stream allows it to accept and emit generic JavaScript objects instead of being limited to raw Buffer or string payloads."
+},
+{
+"id": "node-h-013",
+"difficulty": "hard",
+"q": "An engineer notices an application script exit abruptly with an error code of 1. What does this standard exit status imply?",
+"options": [
+"The process encountered an Uncaught Fatal Exception",
+"The system performed an Internal JavaScript Evaluation Failure",
+"The runtime suffered a Fatal Error memory crash",
+"The script invoked an internal exception handler failure"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "An exit code of 1 indicates that the process terminated due to an uncaught fatal exception, showing that an error slipped through without being handled."
+},
+{
+"id": "node-h-014",
+"difficulty": "hard",
+"q": "You are analyzing an Express service layer and want to optimize how the engine delegates incoming socket connections across clustered worker processes. Which internal method executes this distribution?",
+"options": [
+"Round-Robin scheduling algorithm via master process",
+"Direct OS level kernel socket distribution",
+"Asynchronous file stream chunk pipeline mapping",
+"Cryptographic token validation task loop assignment"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The master cluster process uses a Round-Robin scheduling algorithm by default to distribute incoming connection sockets across available child worker processes."
+},
+{
+"id": "node-h-015",
+"difficulty": "hard",
+"q": "You are building a security verification tool and need to compare two cryptographic tokens while preventing information leaks through timing attacks. Which native method should you use?",
+"options": [
+"crypto.timingSafeEqual(bufA, bufB)",
+"crypto.createHash('sha256').update(bufA)",
+"assert.deepStrictEqual(bufA, bufB)",
+"Buffer.compare(bufA, bufB)"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "The crypto.timingSafeEqual method uses a constant-time algorithm to compare two buffers, preventing attackers from using timing variations to guess token details."
+},
+{
+"id": "node-h-016",
+"difficulty": "hard",
+"q": "You have an EventEmitter instance that is leaking memory because temporary connection callbacks are being added repeatedly without being cleaned up. What method registers a single-use listener?",
+"options": [
+"emitter.on()",
+"emitter.once()",
+"emitter.addListener()",
+"emitter.prependListener()"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The emitter.once() method registers a single-use listener callback that automatically unbinds itself the first time the target event fires."
+},
+{
+"id": "node-h-017",
+"difficulty": "hard",
+"q": "You are designing an optimized data synchronization gateway and want to spawn a shell process synchronously, intentionally blocking the event loop until it exits. Which function should you execute?",
+"options": [
+"child_process.spawn",
+"child_process.spawnSync",
+"child_process.exec",
+"child_process.fork"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The child_process.spawnSync method executes an external process synchronously, blocking the main event loop thread until the spawned process completely exits."
+},
+{
+"id": "node-h-018",
+"difficulty": "hard",
+"q": "You are diagnosing an memory leak in an API gateway and need to check heap memory allocations from within the running application code. Which native method outputs these metrics?",
+"options": [
+"os.totalmem()",
+"process.memoryUsage()",
+"os.freemem()",
+"process.cpuUsage()"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The process.memoryUsage() method returns an object containing detailed internal memory metrics, including rss, heapTotal, heapUsed, and external allocations."
+},
+{
+"id": "node-h-019",
+"difficulty": "hard",
+"q": "You need to convert a legacy module function that accepts an error-first callback signature into a modern Promise-returning structure. Which built-in utility handles this translation?",
+"options": [
+"util.promisify",
+"util.inherits",
+"assert.doesNotReject",
+"async_hooks.createHook"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "The util.promisify method wraps standard error-first callback functions, converting them into clean utilities that return native JavaScript Promises."
+},
+{
+"id": "node-h-020",
+"difficulty": "hard",
+"q": "You notice that an infrastructure script crashes because a target event emitter fires an error event when no active listeners are registered. What is Node's default behavior here?",
+"options": [
+"It prints a warning log to standard output",
+"It crashes the process and prints a stack trace",
+"It skips the execution step and drops the error",
+"It schedules a fallback microtask queue retry loop"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "If an EventEmitter instance triggers an 'error' event while no listeners are registered, the runtime throws an unhandled exception and prints a stack trace before crashing the process."
+},
+{
+"id": "node-h-021",
+"difficulty": "hard",
+"q": "You are configuring a file monitoring tool and want to verify if an incoming file descriptor is a symbolic link rather than a real file on disk. Which method should you call?",
+"options": [
+"fs.stat()",
+"fs.lstat()",
+"fs.fstat()",
+"fs.access()"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The fs.lstat() method inspects file targets without dereferencing symbolic links, allowing you to identify if the path target is a symlink itself."
+},
+{
+"id": "node-h-022",
+"difficulty": "hard",
+"q": "You are load-testing a high-frequency socket server. You need to ensure that execution callbacks are prioritized to run ahead of any scheduled timer phases in the next event loop tick. What should you use?",
+"options": [
+"setImmediate",
+"process.nextTick",
+"setTimeout",
+"queueMicrotask"
+],
+"correct": 1,
+"wrongPick": 3,
+"explain": "The process.nextTick queue is processed immediately after the current operation concludes, running ahead of scheduled event loop timers or I/O phases."
+},
+{
+"id": "node-h-023",
+"difficulty": "hard",
+"q": "You want to dynamically read data segments from a target stream while preserving a strict internal buffer threshold limit of 64KB. Which configuration option should you set?",
+"options": [
+"highWaterMark",
+"objectMode",
+"bufferSize",
+"maxBuffer"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "The highWaterMark configuration parameter determines the threshold limit in bytes that a stream manages internally before pausing reads and applying backpressure."
+},
+{
+"id": "node-h-024",
+"difficulty": "hard",
+"q": "You are optimizing an API gateway and want to pipe inbound network request payloads straight to a secondary internal compression algorithm instance. What type of stream class implements this combination?",
+"options": [
+"Readable Stream",
+"Duplex Stream",
+"Writable Stream",
+"Static Buffer Stream"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "A Duplex stream implements both Readable and Writable interfaces independently, making it ideal for managing bidirectional network pipelines or proxies."
+},
+{
+"id": "node-h-025",
+"difficulty": "hard",
+"q": "You are refactoring an enterprise microservice to adopt ECMAScript Modules (ESM) syntax globally. You notice that __dirname crashes. What is the modern way to get the current directory path?",
+"options": [
+"process.cwd()",
+"import.meta.dirname",
+"path.resolve(__dirname)",
+"process.env.PWD"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "In ECMAScript Modules (ESM), legacy globals like __dirname are unavailable. Modern versions of Node supply import.meta.dirname and import.meta.filename as built-in replacements."
+}
+]
