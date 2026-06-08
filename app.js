@@ -57,6 +57,55 @@ const QUESTION_FILES = {
     medium: 'questions/frontend/css/css-medium.json',
     hard:   'questions/frontend/css/css-hard.json',
   },
+  html: {
+    easy:   'questions/frontend/html/html-easy.json',
+    medium: 'questions/frontend/html/html-medium.json',
+    hard:   'questions/frontend/html/html-hard.json',
+  },
+  vue: {
+    easy:   'questions/frontend/vue/vue-easy.json',
+    medium: 'questions/frontend/vue/vue-medium.json',
+    hard:   'questions/frontend/vue/vue-hard.json',
+  },
+  nodejs: {
+    easy:   'questions/backend/nodejs/nodejs-easy.json',
+    medium: 'questions/backend/nodejs/nodejs-medium.json',
+    hard:   'questions/backend/nodejs/nodejs-hard.json',
+  },
+  database: {
+    easy:   'questions/backend/database/database-easy.json',
+    medium: 'questions/backend/database/database-medium.json',
+    hard:   'questions/backend/database/database-hard.json',
+  },
+  'apis-security': {
+    easy:   'questions/backend/APIs%20%26%20Security/API-Security-easy.json',
+    medium: 'questions/backend/APIs%20%26%20Security/API-Security-medium.json',
+    hard:   'questions/backend/APIs%20%26%20Security/API-Security-hard.json',
+  },
+  'system-design': {
+    easy:   'questions/backend/System%20Design/SystemDesign-easy.json',
+    medium: 'questions/backend/System%20Design/SystemDesign-medium.json',
+    hard:   'questions/backend/System%20Design/SystemDesign-hard.json',
+  },
+};
+
+// ─── Track definitions per category ─────────────────
+const TRACK_CONFIG = {
+  frontend: [
+    { track: 'javascript', iconText: 'JS',   mono: true,  name: 'JavaScript' },
+    { track: 'react',      icon: '&#10006;',              name: 'React' },
+    { track: 'css',        iconText: '#',    mono: true,  name: 'CSS' },
+    { track: 'html',       iconText: '&lt;/&gt;', mono: true,  name: 'HTML' },
+    { track: 'vue',        iconText: 'V',    mono: true,  name: 'Vue' },
+    { track: 'all', icon: '&#8734;', name: 'All Tracks', sub: 'JS + React + CSS + HTML + Vue', isAll: true },
+  ],
+  backend: [
+    { track: 'nodejs',        iconText: 'Node', mono: true, name: 'Node.js' },
+    { track: 'database',      icon: '&#128440;',            name: 'Databases' },
+    { track: 'apis-security', icon: '&#128274;',            name: 'APIs &amp; Security' },
+    { track: 'system-design', icon: '&#9881;',              name: 'System Design' },
+    { track: 'all', icon: '&#8734;', name: 'All Tracks', sub: 'All 4 Backend Tracks', isAll: true },
+  ],
 };
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D'];
@@ -83,8 +132,9 @@ function bindEvents() {
   document.querySelectorAll('.category-card').forEach(card => {
     card.addEventListener('click', () => {
       const cat = card.dataset.category;
-      if (cat === 'frontend') {
+      if (cat === 'frontend' || cat === 'backend') {
         state.category = cat;
+        renderTrackScreen(cat);
         showScreen('track');
       } else {
         showToast('Questions coming soon');
@@ -92,20 +142,8 @@ function bindEvents() {
     });
   });
 
-  // --- Track cards ---
+  // --- Track back button ---
   $('back-from-track').addEventListener('click', () => showScreen('landing'));
-
-  document.querySelectorAll('.track-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const track = card.dataset.track;
-      if (['javascript', 'react', 'css', 'all'].includes(track)) {
-        state.track = track;
-        showScreen('difficulty');
-      } else {
-        showToast('Questions coming soon');
-      }
-    });
-  });
 
   // --- Difficulty ---
   $('back-from-difficulty').addEventListener('click', () => showScreen('track'));
@@ -163,11 +201,46 @@ function showToast(msg) {
 }
 
 // ═══════════════════════════════════════════════════
+//  TRACK SCREEN RENDERER
+// ═══════════════════════════════════════════════════
+function renderTrackScreen(category) {
+  const tracks = TRACK_CONFIG[category] || [];
+  const grid   = $('track-grid');
+  grid.innerHTML = '';
+
+  tracks.forEach(cfg => {
+    const card = document.createElement('div');
+    const classes = ['track-card', 'available'];
+    if (cfg.isAll) classes.push('track-card--all');
+    card.className = classes.join(' ');
+    card.dataset.track = cfg.track;
+
+    const iconClass   = cfg.mono ? 'track-icon track-icon--text' : 'track-icon';
+    const iconContent = cfg.iconText != null ? cfg.iconText : (cfg.icon || '');
+
+    let inner = `<span class="${iconClass}">${iconContent}</span><span class="track-name">${cfg.name}</span>`;
+    if (cfg.sub) inner += `<span class="track-sub">${cfg.sub}</span>`;
+    card.innerHTML = inner;
+
+    card.addEventListener('click', () => {
+      state.track = cfg.track;
+      showScreen('difficulty');
+    });
+
+    grid.appendChild(card);
+  });
+}
+
+// ═══════════════════════════════════════════════════
 //  LOAD QUESTIONS
 // ═══════════════════════════════════════════════════
 async function loadQuestions() {
   if (state.track === 'all') {
-    const tracks = ['javascript', 'react', 'css'];
+    const allTrackMap = {
+      frontend: ['javascript', 'react', 'css', 'html', 'vue'],
+      backend:  ['nodejs', 'database', 'apis-security', 'system-design'],
+    };
+    const tracks   = allTrackMap[state.category] || [];
     const combined = [];
     for (const t of tracks) {
       try {
