@@ -1,0 +1,352 @@
+[
+{
+"id": "html-e-001",
+"difficulty": "easy",
+"q": "You want a small phrase inside a paragraph to have a red background without breaking to a new line.",
+"options": [
+"Use a span tag",
+"Use a div tag",
+"Use a section tag",
+"Use a p tag"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Span is an inline element that does not force a new line layout break. Div is a block element that naturally starts on its own line."
+},
+{
+"id": "html-e-002",
+"difficulty": "easy",
+"q": "Your CSS layout displays perfectly in Chrome but completely breaks in an older version of Internet Explorer.",
+"options": [
+"Change charset to UTF-8",
+"Wrap everything in body",
+"Add a top doctype declaration",
+"Remove all layout comments"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "A missing doctype triggers quirks mode in older browsers, causing layout styles to render inconsistently. Adding it forces modern standards mode."
+},
+{
+"id": "html-e-003",
+"difficulty": "easy",
+"q": "You add three consecutive link tags, but they all appear side-by-side instead of on new lines.",
+"options": [
+"Wrap each in another anchor",
+"Convert them to block elements",
+"Add unique identifier attributes",
+"Modify the document doctype"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Anchor tags are inline elements by default and sit next to each other. Converting them to block elements forces them to start on new lines."
+},
+{
+"id": "html-e-004",
+"difficulty": "easy",
+"q": "A blind user reports that their screen reader cannot find the primary navigation area on your homepage.",
+"options": [
+"Add unique link identifiers",
+"Convert links into buttons",
+"Place links inside divs",
+"Wrap links in nav tags"
+],
+"correct": 3,
+"wrongPick": 2,
+"explain": "The semantic nav tag inherently announces its landmark role to assistive technologies. Generic tags like div provide no structural meaning to screen readers."
+},
+{
+"id": "html-e-005",
+"difficulty": "easy",
+"q": "Your JavaScript click handler only works on the first button because you assigned the exact same identifier to multiple buttons.",
+"options": [
+"Switch identifier to a class",
+"Change buttons to divs",
+"Add a name attribute",
+"Move buttons inside forms"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "The id attribute must be completely unique within a page, causing JavaScript selectors to grab only the first match. Classes are designed for multiple items."
+},
+{
+"id": "html-e-006",
+"difficulty": "easy",
+"q": "A broken image link displays a blank box on your site instead of describing what was missing.",
+"options": [
+"Include a title attribute",
+"Add a descriptive alt attribute",
+"Wrap image in a figure",
+"Specify exact width dimensions"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The alt attribute serves as a fallback description when an image fails to load. Title attributes only provide hover tooltips."
+},
+{
+"id": "html-e-007",
+"difficulty": "easy",
+"q": "Your webpage looks incredibly tiny and zoomed out when opened on a smartphone screen.",
+"options": [
+"Increase body font size",
+"Add the viewport meta tag",
+"Convert divs into sections",
+"Add a CSS media query"
+],
+"correct": 1,
+"wrongPick": 3,
+"explain": "Mobile devices render desktop-sized pages and scale them down unless explicit viewport parameters are given. The viewport meta tag fixes this display behavior."
+},
+{
+"id": "html-e-008",
+"difficulty": "easy",
+"q": "You want users to click a text phrase to open a contact page, but the page does not redirect.",
+"options": [
+"Use a link tag",
+"Use a meta tag",
+"Use a span tag",
+"Use an anchor tag"
+],
+"correct": 3,
+"wrongPick": 0,
+"explain": "Anchor tags create clickable text hyperlinks for user navigation. Link tags specify external document relationships and belong strictly inside the head section."
+},
+{
+"id": "html-e-009",
+"difficulty": "easy",
+"q": "Your bulleted list items are rendering without any indentation or bullet points on the screen.",
+"options": [
+"Wrap items in a ul",
+"Change items to spans",
+"Add classes to items",
+"Use paragraph text containers"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "List items must be enclosed within a parent ul or ol container to format correctly. Without it, the browser fails to render standard list styling."
+},
+{
+"id": "html-e-010",
+"difficulty": "easy",
+"q": "You want a link to open an external article in a completely new browser tab.",
+"options": [
+"Set rel to external",
+"Set target to _blank",
+"Use a link tag",
+"Add an open property"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The target attribute set to _blank instructs the browser to spawn a fresh window context. Rel properties handle relationship metadata instead."
+},
+{
+"id": "html-e-011",
+"difficulty": "easy",
+"q": "A screen reader ignores the visual importance of text you made bold using a simple styling tag.",
+"options": [
+"Wrap text in span",
+"Add unique text identifiers",
+"Swap b with strong",
+"Place text in code tags"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The strong tag gives content structural semantic importance that screen readers emphasize verbally. The b tag only modifies visual weight without semantic meaning."
+},
+{
+"id": "html-e-012",
+"difficulty": "easy",
+"q": "Your data table displays all cells smashed into a single line instead of separating into rows.",
+"options": [
+"Wrap data rows in tr",
+"Wrap individual cells in th",
+"Add a border attribute",
+"Convert table to divs"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Table data cells must be structured horizontally inside table row tags to construct vertical columns. Without row delimiters, layout alignment breaks completely."
+},
+{
+"id": "html-e-013",
+"difficulty": "easy",
+"q": "Users can select multiple radio buttons simultaneously even though they should only choose one option.",
+"options": [
+"Assign identical id attributes",
+"Wrap options in individual forms",
+"Change inputs to checkboxes",
+"Give them identical name attributes"
+],
+"correct": 3,
+"wrongPick": 0,
+"explain": "Radio buttons are grouped together natively by matching their name attributes. This mutual exclusion ensures only one choice remains selected at a time."
+},
+{
+"id": "html-e-014",
+"difficulty": "easy",
+"q": "Your backend server receives an empty payload when a user submits a text input field.",
+"options": [
+"Add a name attribute",
+"Assign a unique id",
+"Wrap input in div",
+"Change type to submit"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Form data keys are generated strictly from the input's name attribute during transmission. Identifying parameters like id are ignored by submission payloads."
+},
+{
+"id": "html-e-015",
+"difficulty": "easy",
+"q": "Your paragraph tag automatically closes prematurely, breaking your custom layout flow in the browser DOM.",
+"options": [
+"Change paragraph to span",
+"Remove block elements from paragraph",
+"Add a closing slash",
+"Assign a class name"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Paragraph tags cannot contain block-level structures like headers or divs according to HTML specifications. Browsers automatically terminate the paragraph early when encountering them."
+},
+{
+"id": "html-e-016",
+"difficulty": "easy",
+"q": "Your hidden form fields are showing up visually on the webpage layout.",
+"options": [
+"Set type to hidden",
+"Set display to none",
+"Remove field name attribute",
+"Place input outside body"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Setting type to hidden secures data inclusion inside forms without exposing visual input fields to layouts. CSS display properties hide elements but do not govern input behavioral frameworks."
+},
+{
+"id": "html-e-017",
+"difficulty": "easy",
+"q": "The browser tab for your new web application displays the raw file path instead of a clean name.",
+"options": [
+"Include a meta description",
+"Add an h1 tag",
+"Define a body name",
+"Add a title tag"
+],
+"correct": 3,
+"wrongPick": 0,
+"explain": "The title tag inside the head section populates the browser tab string text directly. Meta tags handle backend search descriptions or internal configs."
+},
+{
+"id": "html-e-018",
+"difficulty": "easy",
+"q": "Your image breaks when moving files into a subfolder because the asset reference is hardcoded locally.",
+"options": [
+"Update relative src path",
+"Change tag to embed",
+"Add a content attribute",
+"Move the system stylesheet"
+],
+"correct": 0,
+"wrongPick": 3,
+"explain": "Relative asset paths rely directly on the current document directory structure to resolve files. Shifting files requires modifying the folder path pointers."
+},
+{
+"id": "html-e-019",
+"difficulty": "easy",
+"q": "Your background audio track refuses to play automatically when a visitor lands on the page.",
+"options": [
+"Change format to mp3",
+"Add the muted attribute",
+"Wrap audio in main",
+"Increase the base volume"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Modern browsers block automatic media audio playback to protect users from sudden loud noises. Adding the muted attribute bypasses this block safely."
+},
+{
+"id": "html-e-020",
+"difficulty": "easy",
+"q": "Foreign accents and special characters render as broken question mark boxes across your page content.",
+"options": [
+"Add charset meta tag",
+"Change document doctype declaration",
+"Wrap text inside code",
+"Convert blocks into articles"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Browsers require explicit character encoding instructions to map complex symbol definitions properly. Setting UTF-8 handles international languages seamlessly."
+},
+{
+"id": "html-e-021",
+"difficulty": "easy",
+"q": "A user clears an input field and completely forgets what data they were supposed to type there.",
+"options": [
+"Increase placeholder font opacity",
+"Include an input title",
+"Add a linked label element",
+"Set a field default value"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "Placeholder text disappears completely when typing begins, removing context for users. Semantic labels remain visible next to fields constantly."
+},
+{
+"id": "html-e-022",
+"difficulty": "easy",
+"q": "Your dropdown list of countries has fifty options stacked together in one chaotic, unreadable wall of text.",
+"options": [
+"Group options with optgroup tags",
+"Wrap choices in unique spans",
+"Convert dropdown to radio buttons",
+"Add id attributes everywhere"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The optgroup tag structures long drop-down selections into labeled categories with clear visual dividers. This pattern optimizes mobile scanning significantly."
+},
+{
+"id": "html-e-023",
+"difficulty": "easy",
+"q": "You want an entire product feature block to look like a card and link somewhere cleanly.",
+"options": [
+"Add an onclick attribute",
+"Place anchors in paragraphs",
+"Convert section to a list",
+"Wrap the container in anchor"
+],
+"correct": 3,
+"wrongPick": 0,
+"explain": "HTML5 permits wrapping block-level components inside anchor tags to establish large clickable hit targets. Using click handlers relies unnecessarily on JavaScript scripts."
+},
+{
+"id": "html-e-024",
+"difficulty": "easy",
+"q": "A screen reader fails to vocally emphasize a word you wrapped in an italic formatting tag.",
+"options": [
+"Replace i tag with em",
+"Wrap text in span",
+"Change CSS font weight",
+"Add a title attribute"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "The em element marks text with relative semantic emphasis that screen readers articulate with altered tone. The i tag only stylizes visual text slants."
+},
+{
+"id": "html-e-025",
+"difficulty": "easy",
+"q": "You want text layout formatting to preserve literal whitespace strings exactly as typed in your source code.",
+"options": [
+"Enclose words in code tags",
+"Wrap text in pre tags",
+"Separate sentences with br tags",
+"Add multiple spaces inside paragraphs"
+],
+"correct": 1,
+"wrongPick": 2,
+"explain": "Browsers collapse multiple sequential whitespaces into a single empty space by default. The pre tag instructs the parser to keep layout spacing raw."
+}
+]
