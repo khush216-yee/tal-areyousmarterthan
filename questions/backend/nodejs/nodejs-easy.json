@@ -1,352 +1,352 @@
 [
 {
-"id": "vue-e-001",
+"id": "node-e-001",
 "difficulty": "easy",
-"q": "You want to dynamically update a text element whenever a reactive title string changes. Which directive should you use?",
+"q": "You need to access the directory path of the current script dynamically inside an asynchronous file scanner. Which global variable should you use?",
 "options": [
-"v-bind",
-"v-model",
-"v-text",
-"v-html"
+"process.cwd()",
+"__dirname",
+"__filename",
+"process.env.PATH"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The __dirname global variable provides the absolute directory path of the current module file. This is distinct from process.cwd(), which returns the current working directory from which the Node process was launched."
+},
+{
+"id": "node-e-002",
+"difficulty": "easy",
+"q": "You are building a custom logging tool and want to display tabular system metrics in the console layout cleanly. Which native method formats arrays as a visual grid?",
+"options": [
+"console.log",
+"console.dir",
+"console.table",
+"console.group"
 ],
 "correct": 2,
 "wrongPick": 0,
-"explain": "The v-text directive sets the textContent of an element to the reactive value. This updates automatically while automatically escaping HTML characters for safety."
+"explain": "The console.table method automatically formats arrays or objects into a readable visual grid grid in the terminal viewport, parsing inner keys into headers."
 },
 {
-"id": "vue-e-002",
+"id": "node-e-003",
 "difficulty": "easy",
-"q": "You are building a toggle switch that should completely remove or re-insert a heavy sidebar container in the DOM. Which directive achieves this?",
+"q": "You want to completely clear the current terminal viewport before printing a fresh set of server live performance updates. Which method achieves this?",
 "options": [
-"v-show",
-"v-if",
-"v-cloak",
-"v-pre"
+"console.reset()",
+"console.clear()",
+"console.flush()",
+"console.empty()"
 ],
 "correct": 1,
 "wrongPick": 0,
-"explain": "The v-if directive performs real conditional rendering by destroying and recreating the target elements in the DOM structure during toggles."
+"explain": "The console.clear() method clears the active terminal display screen, resetting the viewport position for subsequent log data streams."
 },
 {
-"id": "vue-e-003",
+"id": "node-e-004",
 "difficulty": "easy",
-"q": "You need to attach a standard browser submit event listener to a form element and invoke a submitForm method. Which syntax is valid?",
+"q": "You are verifying system infrastructure specifications and need to detect the total number of CPU cores available on the host machine. Which built-in utility provides this?",
 "options": [
-"v-bind:submit="submitForm"",
-"v-on:submit="submitForm"",
-"v-model:submit="submitForm"",
-"v-route:submit="submitForm""
+"process.cpuUsage()",
+"os.cpus().length",
+"process.arch",
+"os.platform()"
 ],
 "correct": 1,
 "wrongPick": 0,
-"explain": "The v-on directive binds native event listeners to DOM elements. It intercepts events and maps them directly to your specified methods or functions."
+"explain": "The os.cpus() method returns an array of objects containing detailed architecture information for every logical CPU core configured on the machine."
 },
 {
-"id": "vue-e-004",
+"id": "node-e-005",
 "difficulty": "easy",
-"q": "You are passing a live variable named themeColor down to a child component as an HTML attribute. Which shorthand syntax binds it?",
+"q": "Your application needs to parse incoming text strings to extract query parameters and hostnames accurately. Which core utility module handles this splitting logic?",
 "options": [
-"@themeColor="themeColor"",
-"#themeColor="themeColor"",
-":themeColor="themeColor"",
-".themeColor="themeColor""
-],
-"correct": 2,
-"wrongPick": 0,
-"explain": "The colon symbol is the standard framework shorthand for v-bind. It lets you pass dynamic attributes and reactive javascript values directly to tags."
-},
-{
-"id": "vue-e-005",
-"difficulty": "easy",
-"q": "You need to intercept a click event on an anchor tag and prevent the browser from executing its default page refresh. Which modifier works?",
-"options": [
-"@click.stop",
-"@click.prevent",
-"@click.capture",
-"@click.self"
-],
-"correct": 1,
-"wrongPick": 0,
-"explain": "The prevent event modifier automatically invokes event.preventDefault() under the hood. This cancels the native browser behavior like navigating anchor tags."
-},
-{
-"id": "vue-e-006",
-"difficulty": "easy",
-"q": "You are creating a text input element that needs to continuously synchronize its value with a local text variable. Which directive handles this?",
-"options": [
-"v-text",
-"v-bind",
-"v-html",
-"v-model"
-],
-"correct": 3,
-"wrongPick": 1,
-"explain": "The v-model directive provides automated two-way data binding. It updates the state on element inputs and updates the element value on state changes."
-},
-{
-"id": "vue-e-007",
-"difficulty": "easy",
-"q": "You want to render a recurring list of blog items on screen based on an items array in your state. Which loop directive handles this?",
-"options": [
-"v-repeat",
-"v-for",
-"v-each",
-"v-loop"
-],
-"correct": 1,
-"wrongPick": 0,
-"explain": "The v-for directive loops through arrays or iterable objects. It uses a specific alias syntax to dynamically render blocks of HTML markup."
-},
-{
-"id": "vue-e-008",
-"difficulty": "easy",
-"q": "Your product list template uses v-for but your compiler produces warnings about missing tracked elements during list mutations. What attribute fixes this?",
-"options": [
-"id",
-"index",
-"key",
-"ref"
+"http",
+"path",
+"url",
+"net"
 ],
 "correct": 2,
 "wrongPick": 1,
-"explain": "The key attribute provides unique identity hints to the rendering engine. This allows the internal virtual DOM diffing engine to track and optimize item movements safely."
+"explain": "The url core module parses web address strings into structural components like query arguments, protocols, and host paths."
 },
 {
-"id": "vue-e-009",
+"id": "node-e-006",
 "difficulty": "easy",
-"q": "You need to reference an raw HTML string safely inside an empty span tag without displaying raw code to users. Which directive is used?",
+"q": "You are initializing a microservice and need to store project metadata, scripts, and dependency definitions in a central configuration manifest. What file holds this?",
 "options": [
-"v-text",
-"v-content",
-"v-html",
-"v-safe"
+"package.config",
+"node_modules.json",
+"package.json",
+"app.manifest"
 ],
 "correct": 2,
 "wrongPick": 0,
-"explain": "The v-html directive modifies the element innerHTML property with your raw string contents. Use it cautiously to avoid malicious cross-site scripting vulnerabilities."
+"explain": "The package.json file acts as the manifest for Node.js projects, organizing dependency version constraints, environmental run scripts, and project licensing details."
 },
 {
-"id": "vue-e-010",
+"id": "node-e-007",
 "difficulty": "easy",
-"q": "You are updating a numeric value inside a script setup block and want to log a message whenever that state changes. Which native utility handles this?",
+"q": "You want to extract system architecture type tags such as x64 or arm64 within an infrastructure installation script. Which property exposes this value?",
 "options": [
-"watch",
-"computed",
-"ref",
-"reactive"
+"process.arch",
+"os.type()",
+"process.platform",
+"os.release()"
 ],
 "correct": 0,
 "wrongPick": 1,
-"explain": "The watch primitive observes specific reactive dependencies. When changes occur, it triggers an isolated callback function where custom logging or logic can run."
+"explain": "The process.arch property identifies the CPU architecture string for which the active Node.js binary was compiled."
 },
 {
-"id": "vue-e-011",
+"id": "node-e-008",
 "difficulty": "easy",
-"q": "You are declaring a primitive string variable called username inside script setup and need it to maintain reactivity. Which function should wrap it?",
+"q": "You are building a custom text processing script and need to convert a Node.js Buffer instance holding binary text back into a standard JavaScript string. Which method applies?",
 "options": [
-"reactive",
-"computed",
-"ref",
-"state"
-],
-"correct": 2,
-"wrongPick": 0,
-"explain": "The ref function creates an observable reference holding primitive values or complex objects. It wraps your value in a reactive wrapper accessible via value properties."
-},
-{
-"id": "vue-e-012",
-"difficulty": "easy",
-"q": "You need to access a ref variable named count inside the javascript setup function to increment its value. How do you target its inner content?",
-"options": [
-"count",
-"count.value",
-"count.data",
-"count.$val"
+"Buffer.stringify()",
+"buffer.toString()",
+"Buffer.parse()",
+"buffer.toText()"
 ],
 "correct": 1,
 "wrongPick": 0,
-"explain": "In javascript blocks, variables created with ref are reactive objects. You must use the value property to explicitly read or overwrite their wrapped data values."
+"explain": "The buffer.toString() instance method decodes binary data arrays into standard JavaScript strings, defaulting to UTF-8 encoding unless configured otherwise."
 },
 {
-"id": "vue-e-013",
+"id": "node-e-009",
 "difficulty": "easy",
-"q": "You are initializing a structured object representing a form state and prefer not to deal with value properties in javascript. Which utility should wrap it?",
+"q": "You are implementing a script to verify server runtime conditions and need to log the current process identifier integer assigned by the operating system. Where is it stored?",
 "options": [
-"ref",
-"computed",
-"readonly",
-"reactive"
-],
-"correct": 3,
-"wrongPick": 0,
-"explain": "The reactive utility maps proxies onto complex javascript objects directly. This enables tracking property modifications transparently without using an intermediate value wrapper object."
-},
-{
-"id": "vue-e-014",
-"difficulty": "easy",
-"q": "You have a derived product value calculated from a base price and tax percentage that must be cached automatically. Which function should calculate it?",
-"options": [
-"watch",
-"computed",
-"ref",
-"reactive"
+"process.id",
+"process.pid",
+"process.uid",
+"os.pid()"
 ],
 "correct": 1,
 "wrongPick": 0,
-"explain": "Computed values create read-only reactive properties. They analyze their internal dependencies and cache the result, re-running only when referenced values are modified."
+"explain": "The process.pid global property exposes the unique numerical process identifier assigned to the active Node.js execution instance by the host OS."
 },
 {
-"id": "vue-e-015",
+"id": "node-e-010",
 "difficulty": "easy",
-"q": "You need to execute an initial analytics fetch request as soon as your component has completed its real DOM mounting. Which hook handles this?",
+"q": "You need to schedule an asynchronous callback function to execute precisely after a 2-second delay threshold has elapsed. Which global timer should you declare?",
 "options": [
-"onCreated",
-"onMounted",
-"onBeforeMount",
-"onUpdated"
-],
-"correct": 1,
-"wrongPick": 0,
-"explain": "The onMounted hook runs immediately after the component template nodes are instantiated and appended into the real web browser DOM tree."
-},
-{
-"id": "vue-e-016",
-"difficulty": "easy",
-"q": "You need to clean up an active browser interval timer before a component gets completely unmounted and destroyed. Which lifecycle hook is appropriate?",
-"options": [
-"onBeforeUnmount",
-"onUnmounted",
-"onDeactivated",
-"onBeforeUpdate"
-],
-"correct": 1,
-"wrongPick": 0,
-"explain": "The onUnmounted lifecycle hook fires after a component instance is entirely dismantled, making it the secure location to clean up side effects."
-},
-{
-"id": "vue-e-017",
-"difficulty": "easy",
-"q": "You want to transmit a read-only configuration string from a parent down to a nested child element. What component attribute type implements this?",
-"options": [
-"emits",
-"provide",
-"props",
-"slots"
+"setImmediate",
+"setInterval",
+"setTimeout",
+"queueMicrotask"
 ],
 "correct": 2,
 "wrongPick": 1,
-"explain": "Props are custom attributes explicitly declared on components. They allow parents to feed one-way data downstream to children consistently."
+"explain": "The setTimeout global timer schedules single execution callbacks to fire after a specified minimum delay threshold in milliseconds has passed."
 },
 {
-"id": "vue-e-018",
+"id": "node-e-011",
 "difficulty": "easy",
-"q": "Your child modal element needs to notify its immediate parent container that its close button was clicked. Which system handles this?",
+"q": "You want to continuously verify internal database pool connections by executing a validation routine every 30 seconds. Which function schedules this repeating process?",
 "options": [
-"props",
-"inject",
-"emits",
-"refs"
+"setTimeout",
+"setImmediate",
+"setInterval",
+"process.nextTick"
 ],
 "correct": 2,
 "wrongPick": 0,
-"explain": "The emit method allows child components to fire custom events. Parent elements listen to these events in templates to trigger local callback logic."
+"explain": "The setInterval function periodically executes an assigned callback function at a fixed time interval interval specified in milliseconds."
 },
 {
-"id": "vue-e-019",
+"id": "node-e-012",
 "difficulty": "easy",
-"q": "You want to declare a slot fallback element inside a custom button layout that shows up only if a parent component leaves the slot empty. How do you design this?",
+"q": "You need to access an array containing all command-line arguments passed to your backend script during terminal invocation. Where is this list stored?",
 "options": [
-"<slot name="fallback" />",
-"Submit",
-"",
-"Submit"
+"process.argv",
+"process.args",
+"os.arguments",
+"process.env.ARGS"
 ],
-"correct": 1,
-"wrongPick": 0,
-"explain": "Placing child nodes directly inside the slot tags creates default content. The browser displays this default text only if the parent component skips injecting dynamic templates."
-},
-{
-"id": "vue-e-020",
-"difficulty": "easy",
-"q": "You want to ensure that style rules inside your single file component do not bleed out and accidentally color elements in other views. What tag configuration guarantees this?",
-"options": [
-"",
-"",
-"",
-""
-],
-"correct": 2,
+"correct": 0,
 "wrongPick": 1,
-"explain": "The scoped attribute on style blocks instructs the compiler to append unique dataset attributes to internal markup, keeping rules safely confined to the current element."
+"explain": "The process.argv array contains the full command-line arguments list, where index 0 is the Node binary path, index 1 is the script file, and subsequent entries hold your flags."
 },
 {
-"id": "vue-e-021",
+"id": "node-e-013",
 "difficulty": "easy",
-"q": "You are setting up multi-page view paths within an application dashboard using modern routing libraries. Which component acts as the placeholder container?",
+"q": "You want to gracefully terminate a CLI migration tool once all file processing tasks conclude successfully. Which runtime instruction should you invoke?",
 "options": [
-"",
-"",
-"",
-""
+"process.kill()",
+"process.exit(0)",
+"process.stop()",
+"process.close()"
 ],
 "correct": 1,
 "wrongPick": 0,
-"explain": "The RouterView element acts as a dynamic structural placeholder. The routing engine swap-renders matching route path components into this specific section on navigation."
+"explain": "Calling process.exit(0) terminates the active Node.js execution cycle, returning a status code of 0 to indicate a clean exit to the shell environment."
 },
 {
-"id": "vue-e-022",
+"id": "node-e-014",
 "difficulty": "easy",
-"q": "You are creating navigation items in an application head element and need an alternative to standard anchor tags that prevents browser reloads. What should you use?",
+"q": "You need to fetch an environment variable named DATABASE_URL from the host container configuration. How do you access this property?",
 "options": [
-"",
-"",
-"",
-""
+"process.env.DATABASE_URL",
+"os.getenv('DATABASE_URL')",
+"process.variables.DATABASE_URL",
+"global.DATABASE_URL"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The process.env object holds the complete set of system environment variables configured in the host environment or active container shell."
+},
+{
+"id": "node-e-015",
+"difficulty": "easy",
+"q": "You want to isolate helper calculations into an independent file using CommonJS syntax and make a clear sum method importable by other scripts. What should you assign?",
+"options": [
+"exports.sum = sum",
+"module.exports = { sum }",
+"global.sum = sum",
+"process.exports = { sum }"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Assigning objects or functions to module.exports determines the public interface that is exposed when another file includes it via the require() statement."
+},
+{
+"id": "node-e-016",
+"difficulty": "easy",
+"q": "You are configuring a basic web utility and need to print warning logs directly to the standard error stream instead of standard output. Which method handles this?",
+"options": [
+"console.log",
+"console.error",
+"console.warn",
+"console.trace"
 ],
 "correct": 1,
 "wrongPick": 2,
-"explain": "The RouterLink component handles user navigation smoothly. It renders a valid anchor tag under the hood but blocks native reloads to swap views locally."
+"explain": "The console.error method formats messages with a trailing newline and writes the data payload directly to the process's stderr stream."
 },
 {
-"id": "vue-e-023",
+"id": "node-e-017",
 "difficulty": "easy",
-"q": "You want to create a global single source of truth store using Pinia for authentication metrics. Which initialization function defines this container?",
+"q": "You want to measure the total elapsed execution runtime of a complex data migration loop using native console methods. Which matching pair tracks this?",
 "options": [
-"createStore",
-"defineStore",
-"registerStore",
-"makeStore"
+"console.start() and console.end()",
+"console.time() and console.timeEnd()",
+"console.profile() and console.stop()",
+"console.mark() and console.measure()"
 ],
 "correct": 1,
 "wrongPick": 0,
-"explain": "Pinia structures store definitions via the defineStore method. It takes a distinct unique key string along with an configuration object or setup function."
+"explain": "The console.time() and console.timeEnd() method pair tracks duration. It computes and prints the exact duration in milliseconds between the two markers using matching string labels."
 },
 {
-"id": "vue-e-024",
+"id": "node-e-018",
 "difficulty": "easy",
-"q": "You are designing an interactive list where elements must appear or fade out using custom animations when structural toggles occur. What built-in tag wraps them?",
+"q": "You are writing a service utility that must dynamically verify if an absolute path target points to a valid file on disk before executing operations. Which core module provides this?",
 "options": [
-"",
-"",
-"",
-""
+"path",
+"url",
+"fs",
+"os"
 ],
 "correct": 2,
 "wrongPick": 0,
-"explain": "The built-in Transition element applies automated class sequences onto a wrapped element during entering and leaving state shifts."
+"explain": "The fs (File System) module models standard operations for file access, checking existence, reading contents, and writing bytes to disk."
 },
 {
-"id": "vue-e-025",
+"id": "node-e-019",
 "difficulty": "easy",
-"q": "You have thousands of users viewing a flat marketing page that renders static copy which never changes after initial mount. What directive halts updates here?",
+"q": "You want to read a configuration file completely into memory using an asynchronous, non-blocking approach that complies with standard Node.js patterns. Which function should you invoke?",
 "options": [
-"v-memo",
-"v-pre",
-"v-once",
-"v-static"
+"fs.readFileSync",
+"fs.readFile",
+"fs.parseFile",
+"fs.loadFile"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The asynchronous fs.readFile method schedules file read actions on the internal libuv thread pool, returning the result via a callback without blocking the event loop."
+},
+{
+"id": "node-e-020",
+"difficulty": "easy",
+"q": "You need to import an internal file utility located in your project directory using CommonJS module resolution. Which structural syntax resolves this correctly?",
+"options": [
+"import utils from 'utils'",
+"const utils = require('./utils')",
+"const utils = include('utils')",
+"const utils = fetchModule('./utils')"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The require() function is the native CommonJS instruction used to load modules, libraries, or local files by parsing relative paths."
+},
+{
+"id": "node-e-021",
+"difficulty": "easy",
+"q": "You are setting up an API server path handler and want to cleanly concatenate directory names while automatically fixing trailing slash inconsistencies. Which module fixes this?",
+"options": [
+"fs",
+"url",
+"path",
+"os"
+],
+"correct": 2,
+"wrongPick": 1,
+"explain": "The path module contains utilities like path.join() that combine path segments and automatically normalize platform-specific separators."
+},
+{
+"id": "node-e-022",
+"difficulty": "easy",
+"q": "You need to inspect the current global type category of the native system console instance in Node.js. What data category does it return?",
+"options": [
+"function",
+"string",
+"object",
+"undefined"
 ],
 "correct": 2,
 "wrongPick": 0,
-"explain": "The v-once directive tells the compiler to render an element block exactly once and skip all future reactive tracking updates entirely to save processing power."
+"explain": "The console identifier points to a global object instance equipped with built-in prototype logging methods like log, error, and table."
+},
+{
+"id": "node-e-023",
+"difficulty": "easy",
+"q": "You need to fetch the total remaining unallocated memory bytes available on the host operating system. Which utility property outputs this statistic?",
+"options": [
+"os.totalmem()",
+"os.freemem()",
+"process.memoryUsage()",
+"os.unusedmem()"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The os.freemem() method returns an integer representing the total number of bytes of unallocated system memory currently available on the host machine."
+},
+{
+"id": "node-e-024",
+"difficulty": "easy",
+"q": "You want to construct a lightweight web server that handles incoming HTTP connections and responses natively without relying on heavy external frameworks. Which core module do you use?",
+"options": [
+"net",
+"express",
+"http",
+"url"
+],
+"correct": 2,
+"wrongPick": 1,
+"explain": "The http core module provides native networking tools to instantiate servers, parse request headers, and stream content responses back to clients."
+},
+{
+"id": "node-e-025",
+"difficulty": "easy",
+"q": "You have a high-throughput stream of large asset files and want to dynamically stream data chunks straight to a target storage file without overloading memory buffers. What method chains them?",
+"options": [
+"readStream.pipe(writeStream)",
+"readStream.connect(writeStream)",
+"readStream.push(writeStream)",
+"readStream.link(writeStream)"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The pipe() method chains readable streams directly into writable destinations, managing backpressure automatically to throttle data throughput safely."
 }
 ]
