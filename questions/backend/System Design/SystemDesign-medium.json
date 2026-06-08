@@ -1,0 +1,352 @@
+[
+  {
+    "id": "sd-m-001",
+    "difficulty": "medium",
+    "q": "What structural issue arises if an engineering team uses the Strategy Design Pattern inappropriately to model a calculation system with only a single, permanent business rule?",
+    "options": [
+      "The application throws runtime exceptions because strategy interfaces require at least two sub-classes",
+      "It introduces unnecessary complexity and extra classes (over-engineering) for a problem easily handled by a simple method",
+      "The database engine fails to generate correct primary keys for tracking data models",
+      "The memory usage metrics increase exponentially, crashing the server node instance"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Applying complex design patterns to trivial, static use cases adds unnecessary boilerplate and indirection. Patterns should be introduced when requirements show a clear need for extensibility."
+  },
+  {
+    "id": "sd-m-002",
+    "difficulty": "medium",
+    "q": "What is the structural difference between Composition and Aggregation in Object-Oriented Design?",
+    "options": [
+      "Composition indicates a weak association; Aggregation forces absolute runtime variable encapsulation",
+      "Composition represents strong ownership where child lifecycles depend strictly on the parent; Aggregation represents a weaker relationship where children can exist independently",
+      "Composition is configured at runtime; Aggregation can only be achieved via static compile-time interfaces",
+      "Composition applies exclusively to data classes; Aggregation only tracks application service classes"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Both model a 'has-a' relationship. In Composition, the child is bound to the parent's lifecycle (e.g., a House containing Rooms). In Aggregation, the child exists on its own (e.g., a Department containing Employees)."
+  },
+  {
+    "id": "sd-m-003",
+    "difficulty": "medium",
+    "q": "How does the structural approach of the Abstract Factory Pattern differ from the Factory Method Pattern?",
+    "options": [
+      "Abstract Factory relies on global variables; Factory Method works via background service processes",
+      "Abstract Factory delivers an interface for creating families of related or dependent objects; Factory Method delegates instantiation of a single product type to subclasses via inheritance",
+      "Abstract Factory handles simple string outputs; Factory Method processes binary file data",
+      "Abstract Factory blocks runtime modifications; Factory Method relies on lazy loading configurations"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Factory Method uses inheritance to let subclasses decide which single product class to instantiate. Abstract Factory uses object composition to produce collections of related products without specifying concrete types."
+  },
+  {
+    "id": "sd-m-004",
+    "difficulty": "medium",
+    "q": "What design drawback can occur when utilizing the Singleton Design Pattern extensively across a complex application architecture?",
+    "options": [
+      "It forces the system compiler to operate on multi-threaded routines exclusively",
+      "It introduces global state, which tightens code coupling, makes unit testing difficult because state persists across runs, and hides hidden dependencies",
+      "It completely blocks application interaction with external SQL database engines",
+      "It automatically converts standard classes into immutable abstract interfaces"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Singletons act much like global variables. They complicate testing because mocking a singleton is difficult, and its persistent state can lead to side effects between separate test cases."
+  },
+  {
+    "id": "sd-m-005",
+    "difficulty": "medium",
+    "q": "What is the operational difference between the Proxy Pattern and the Decorator Pattern?",
+    "options": [
+      "Proxy works with asynchronous queues; Decorator runs exclusively with synchronous database reads",
+      "Proxy focuses on controlling access, lazy instantiation, or security management for an object; Decorator concentrates on dynamically adding new features or behaviors to an object",
+      "Proxy translates data formats into XML; Decorator converts schemas into JSON properties",
+      "Proxy decouples high-level services; Decorator links database tables through foreign keys"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "While both share a similar wrapper structure, their architectural intents differ: a Proxy manages a resource's lifecycle or access control, whereas a Decorator extends an object's behavior at runtime without modifying its signature."
+  },
+  {
+    "id": "sd-m-006",
+    "difficulty": "medium",
+    "q": "How does the Chain of Responsibility Pattern decouple a request sender from its target processing destination?",
+    "options": [
+      "By caching all message payloads inside an in-memory database cluster automatically",
+      "By passing the request along a sequential chain of potential handler objects until one handles it, preventing the sender from needing to know which specific object ran the code",
+      "By converting the request variables into abstract interfaces at compile time",
+      "By executing the operation within single-threaded background queue frameworks"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Chain of Responsibility links handler objects together. Each handler inspects the incoming request and either processes it or passes it down to the next link in the chain."
+  },
+  {
+    "id": "sd-m-007",
+    "difficulty": "medium",
+    "q": "How does the Command Pattern effectively support complex Undo and Redo operations within interactive applications?",
+    "options": [
+      "By maintaining raw database transaction logs directly on local server partitions",
+      "By encapsulating requests as standalone objects containing all information required to execute or reverse an action, allowing them to be tracked in a history stack",
+      "By routing request payloads through alternate proxy channels dynamically",
+      "By forcing all method calls to use immutable global class variables"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "By turning operations into discrete Command objects with an `execute()` and `undo()` interface, an application can log actions into history stacks to move backward and forward through states cleanly."
+  },
+  {
+    "id": "sd-m-008",
+    "difficulty": "medium",
+    "q": "How does the Null Object Pattern streamline code architectures and eliminate repetitive safety checks?",
+    "options": [
+      "By raising standard exceptions instantly when variables are unassigned",
+      "By introducing a non-functional instance that implements the target interface, avoiding verbose `if (object != null)` blocks by safely doing nothing",
+      "By converting null references into blank JSON strings across network transmissions",
+      "By assigning random unique identifiers to uninitialized pointers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Null Object Pattern provides an alternative to returning `null`. By returning a valid object that implements the interface with empty/neutral behavior, callers can safely invoke methods without guards."
+  },
+  {
+    "id": "sd-m-009",
+    "difficulty": "medium",
+    "q": "What differentiates a standard static factory method from the full Factory Design Pattern?",
+    "options": [
+      "Static factory methods operate over asynchronous channels; the pattern works via synchronous blocks",
+      "Static factory methods are simple class methods tied to a concrete class that return objects, lacking structural polymorphism; the Factory Pattern uses abstraction and inheritance for extensibility",
+      "Static factory methods require relational database connections to run successfully",
+      "Static factory methods convert data models into document collections at runtime"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A static factory method is a simple method on a class that instantiates objects (e.g., `LocalTime.now()`). The Factory Pattern uses object-oriented design and polymorphism to allow subclasses to vary the instantiated type."
+  },
+  {
+    "id": "sd-m-010",
+    "difficulty": "medium",
+    "q": "What is the mechanism of Cache Invalidation, and why is it essential in high-throughput architectures?",
+    "options": [
+      "It compresses cache fields to minimize memory footprints inside clusters",
+      "It removes or updates stale, out-of-date entries in the cache when master values change, ensuring clients receive accurate and current data",
+      "It locks data tables to prevent concurrent thread lookups from completing",
+      "It automatically converts relational data layouts into non-relational document blocks"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Data caching risks serving out-of-date data if the underlying database updates. Cache invalidation clears or updates these entries using strategies like TTL, write-through, or write-behind caching."
+  },
+  {
+    "id": "sd-m-011",
+    "difficulty": "medium",
+    "q": "What happens automatically when a cluster node detects that the primary leader node has crashed in a distributed system?",
+    "options": [
+      "The system drops all local data states and halts operations indefinitely",
+      "The surviving nodes trigger a leader election algorithm (like Raft or Paxos) to elect a new coordinator and restore normal operations",
+      "The system converts all transactional operations into read-only files",
+      "The load balancer routes traffic straight to the underlying relational database tables"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "Distributed clusters rely on consensus protocols to maintain high availability. When a leader's heartbeat stops, a follower triggers an election to select a new leader node automatically."
+  },
+  {
+    "id": "sd-m-012",
+    "difficulty": "medium",
+    "q": "How does an automated Auto-Scaling subsystem adjust application resources during sudden changes in user traffic?",
+    "options": [
+      "By changing data variable types between integer structures and text fields dynamically",
+      "By tracking performance metrics (like CPU load or request metrics) against thresholds to spin up or terminate server instances automatically",
+      "By forcing all user request strings to compress into binary data packets",
+      "By scaling database tables vertically into single physical disks"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Auto-scaling dynamically resizes infrastructure. When traffic thresholds are crossed, the cloud infrastructure scales out (adds instances) to handle load, and scales in (removes instances) when demand drops to save costs."
+  },
+  {
+    "id": "sd-m-013",
+    "difficulty": "medium",
+    "q": "What is a 'Sticky Session' configuration within load balancing architecture, and when is it most applicable?",
+    "options": [
+      "A pattern that retains active database locks on data rows permanently",
+      "A mechanism that routes all requests from a specific user to the exact same backend server instance for the duration of their session",
+      "A security standard that encrypts data parameters using static hardware keys",
+      "A mechanism that enforces uniform processing speeds across all distributed worker nodes"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "Sticky sessions (session persistence) are used when application session state is stored locally on individual servers instead of a centralized session store, ensuring users stay connected to the server holding their state."
+  },
+  {
+    "id": "sd-m-014",
+    "difficulty": "medium",
+    "q": "When designing storage layers, what architectural trade-off guides the choice between standard SQL and NoSQL databases?",
+    "options": [
+      "SQL models operate strictly over single-threaded channels; NoSQL scales across multiple CPUs exclusively",
+      "SQL is chosen for structured data, strict schemas, and ACID transaction compliance; NoSQL is chosen for unstructured data, horizontal scalability, and dynamic schemas",
+      "SQL requires advanced encryption keys; NoSQL operates over open text protocols",
+      "SQL is restricted to local storage setups; NoSQL runs exclusively within memory cache layers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Relational databases (SQL) excel at handling structured schemas with transactional guarantees. NoSQL systems trade away some schema rigidity or consistency guarantees to achieve high-throughput horizontal scaling across distributed nodes."
+  },
+  {
+    "id": "sd-m-015",
+    "difficulty": "medium",
+    "q": "What does Database Sharding involve, and how does it optimize database performance?",
+    "options": [
+      "It mirrors entire database instances into identical physical backup machines",
+      "It breaks up a large database table horizontally by row sets, distributing these smaller shards across independent database servers to scale reads and writes",
+      "It converts text-based columns into binary data representations to optimize disk usage",
+      "It maps database properties to abstract object models at compile time"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Sharding is a horizontal partitioning technique. By splitting table rows across different physical database nodes based on a shard key, systems eliminate single-node storage and I/O bottlenecks."
+  },
+  {
+    "id": "sd-m-016",
+    "difficulty": "medium",
+    "q": "What is a database Covering Index, and why is it highly efficient for lookups?",
+    "options": [
+      "An index that encrypts table attributes to protect private user data",
+      "An index that includes all the columns requested by a query, allowing the database engine to return data directly from the index structure without fetching from the main table",
+      "An index that automatically mirrors columns into separate backup instances",
+      "An index that functions exclusively within memory caching layers"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "When an index contains all fields requested by a query, the engine can skip the secondary step of looking up the rest of the row in the table heap (skipping disk I/O), which speeds up performance."
+  },
+  {
+    "id": "sd-m-017",
+    "difficulty": "medium",
+    "q": "What is the core distinction between strong consistency and eventual consistency models in distributed data environments?",
+    "options": [
+      "Strong consistency runs over secure lines; eventual consistency runs over open public channels",
+      "Strong consistency ensures every node reads the latest successful write instantly; eventual consistency allows short-term variations but guarantees data converges across nodes over time",
+      "Strong consistency is restricted to caching tiers; eventual consistency applies purely to file networks",
+      "Strong consistency forces multi-threaded loops; eventual consistency relies on single-threaded execution"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Strong consistency prioritizes absolute correctness at the cost of write/read latency. Eventual consistency prioritizes high availability and performance, accepting that updates take time to replicate across all distributed nodes."
+  },
+  {
+    "id": "sd-m-018",
+    "difficulty": "medium",
+    "q": "Why are asynchronous message queues frequently used to handle compute-heavy background tasks?",
+    "options": [
+      "They convert code logic into simplified object classes at compile time",
+      "They decouple services, absorbing traffic spikes by queueing requests to let worker processes consume messages at their own pace without blocking the main user request thread",
+      "They enforce strict single-threaded execution across application instances",
+      "They replace the need for persistent relational database systems entirely"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "Message queues (like RabbitMQ or Kafka) introduce a buffer between systems. They handle inbound traffic bursts gracefully, allowing background workers to process heavy workloads asynchronously without locking up user-facing APIs."
+  },
+  {
+    "id": "sd-m-019",
+    "difficulty": "medium",
+    "q": "What role does Idempotency play in distributed system interactions?",
+    "options": [
+      "It forces applications to rewrite plain text properties into encrypted file data",
+      "It ensures that executing an operation multiple times produces the exact same side-effects as a single execution, preventing duplicate transactions from retries",
+      "It increases system performance speeds exponentially during automated loop cycles",
+      "It drops cross-origin resource sharing restrictions across web browsers automatically"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "In distributed networks, transient timeouts can cause clients to retry requests. Making an endpoint idempotent ensures that if a server receives a duplicate retry (e.g., a payment request), it won't execute duplicate actions."
+  },
+  {
+    "id": "sd-m-020",
+    "difficulty": "medium",
+    "q": "What is the main difference between horizontal and vertical partitioning in database design?",
+    "options": [
+      "Horizontal partitioning requires memory caching; vertical partitioning works exclusively on physical hard drives",
+      "Horizontal partitioning splits table rows across separate shards; vertical partitioning splits table columns into separate tables or storage structures",
+      "Horizontal partitioning requires complex encryption keys; vertical partitioning operates on open text",
+      "Horizontal partitioning operates on cache structures; vertical partitioning handles network file systems"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Horizontal partitioning (sharding) divides a table by rows (e.g., storing users 1-10000 on node A, 10001+ on node B). Vertical partitioning divides a table by columns (e.g., separating frequently read text fields from rarely used binary data blobs)."
+  },
+  {
+    "id": "sd-m-021",
+    "difficulty": "medium",
+    "q": "When designing a scalable URL Shortener, how should the core identifier generation be designed?",
+    "options": [
+      "By counting the exact number of active columns declared in the database schema",
+      "By converting sequential auto-incremented database IDs into a unique string using Base62 encoding, backed by a cache lookup layer to handle duplicate hits gracefully",
+      "By appending random query parameters onto the target user interface views",
+      "By routing the complete tracking parameters through secure cryptographic hardware tokens"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A scalable URL shortener maps a long link to a short base-62 alphanumeric key (using `a-z`, `A-Z`, and `0-9`). Converting a unique integer ID to Base62 generates compact, short strings suitable for routing keys."
+  },
+  {
+    "id": "sd-m-022",
+    "difficulty": "medium",
+    "q": "What is the distinction between Dependency Injection and standard class object creation?",
+    "options": [
+      "Dependency Injection runs solely within single-threaded local frameworks",
+      "Dependency Injection provides a class's dependencies from the outside rather than forcing the class to instantiate them internally, which improves flexibility and test mocking",
+      "Dependency Injection requires complex cloud container orchestration architectures to run",
+      "Dependency Injection converts data definitions into abstract binary objects automatically"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "By passing dependencies into a constructor or setter rather than hardcoding `new TargetService()`, you decouple classes from concrete dependencies, allowing you to inject mock objects cleanly during testing."
+  },
+  {
+    "id": "sd-m-023",
+    "difficulty": "medium",
+    "q": "What problem do Code Smells highlight within an application's codebase?",
+    "options": [
+      "Immediate compilation syntax errors that prevent code from building",
+      "Indicators of poor design choices or implementation patterns that can make code rigid, hard to maintain, or complex to extend over time",
+      "Direct security buffer overflow exploitation paths inside running binaries",
+      "Network latency drops between decoupled microservices clusters"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Code smells (like deeply nested logic, duplicate code blocks, or bloated classes) are structural red flags. They don't break application execution immediately, but point to technical debt that hurts long-term maintainability."
+  },
+  {
+    "id": "sd-m-024",
+    "difficulty": "medium",
+    "q": "How does an API gateway implement standard Rate Limiting protection?",
+    "options": [
+      "By compressing transmission payload blocks into binary files automatically",
+      "By tracking incoming request volumes using algorithms like Token Bucket or Leaky Bucket against user or IP keys, rejecting traffic that exceeds configured quotas",
+      "By updating database indexing rules during peak application runtime hours",
+      "By modifying interface layout parameters based on user access levels"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Rate limiting protects infrastructure from abusive traffic or DDoS spikes. By using fast in-memory bucket counters (like Redis tracking keys), gateways can block excessive requests before they overload backend systems."
+  },
+  {
+    "id": "sd-m-025",
+    "difficulty": "medium",
+    "q": "When implementing a distributed logging strategy, what is the best approach to trace single user requests as they hop across decoupled microservice platforms?",
+    "options": [
+      "Forcing each downstream microservice to write to separate local plain text files",
+      "Generating and injecting a unique Correlation ID / Trace ID into the request headers at the API gateway, passing it along to ensure logs can be correlated end-to-end",
+      "Re-versioning the core service paths from v1 to v2 to flush out cache metrics",
+      "Converting all request schemas into XML data formats dynamically"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Distributed tracing relies on a unique tracking token passed down through all microservice calls. Centralized log aggregators can then use this token to stitch separate log events into a single timeline."
+  }
+]
