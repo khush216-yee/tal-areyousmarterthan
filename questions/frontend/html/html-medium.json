@@ -1,0 +1,352 @@
+[
+{
+"id": "html-m-001",
+"difficulty": "medium",
+"q": "You want a structural block to group a thematic article overview that needs to contribute to the document outline.",
+"options": [
+"Use a section tag",
+"Use a div tag",
+"Use a span tag",
+"Use a fragment tag"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The section element creates a distinct semantic group that shows up in structural document maps. Divs provide zero outline hierarchy value."
+},
+{
+"id": "html-m-002",
+"difficulty": "medium",
+"q": "A text field built for phone numbers displays a standard alphabetical keyboard on mobile devices instead of numbers.",
+"options": [
+"Set type to number",
+"Add a pattern attribute",
+"Set type to tel",
+"Include an inputmode integer"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "Type tel prompts mobile operating systems to display a phone-optimized number keypad. Type number introduces strict decimal validation that blocks formatting symbols."
+},
+{
+"id": "html-m-003",
+"difficulty": "medium",
+"q": "Your page loading speed scores poorly because below-the-fold images are being requested immediately on page load.",
+"options": [
+"Add loading lazy attribute",
+"Add decoding async attribute",
+"Set display to none",
+"Use smaller source extensions"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The loading lazy attribute defers asset downloads until the user scrolls near them. This preserves initial bandwidth for top-of-page content components."
+},
+{
+"id": "html-m-004",
+"difficulty": "medium",
+"q": "You need to store specific database product IDs directly on HTML nodes for access by a JavaScript event listener.",
+"options": [
+"Store IDs inside classes",
+"Use data-* custom attributes",
+"Append data to id",
+"Inject data into titles"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Data attributes store arbitrary custom metadata neatly accessible via the element dataset API. Using classes or standard IDs causes selection conflicts."
+},
+{
+"id": "html-m-005",
+"difficulty": "medium",
+"q": "A security audit highlights that your external target blank links expose window opener control to untrusted third-party sites.",
+"options": [
+"Add rel noopener attribute",
+"Set rel to external",
+"Add a sandbox attribute",
+"Use cross-origin block options"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "The noopener instruction isolates the browsing context of the new tab, preventing malicious scripts from hijacking the originating window reference."
+},
+{
+"id": "html-m-006",
+"difficulty": "medium",
+"q": "A company logo blurs heavily when users pinch-to-zoom on modern high-density display screens.",
+"options": [
+"Use a Canvas element",
+"Increase image pixel width",
+"Use an SVG file",
+"Set layout rendering properties"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "SVG graphics use vector formulas to scale infinitely without loss of fidelity. Canvas and standard images rely on fixed raster pixels that pixelate."
+},
+{
+"id": "html-m-007",
+"difficulty": "medium",
+"q": "An application form resets and triggers an unwanted browser navigation every time a user clicks a regular button inside it.",
+"options": [
+"Set form novalidate attribute",
+"Set type to button",
+"Remove the action parameter",
+"Change button to summary"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Buttons nested inside form elements default to type submit automatically. Giving them a type of button overrides this default form submission behavior."
+},
+{
+"id": "html-m-008",
+"difficulty": "medium",
+"q": "You are building a reusable blog feed component where individual posts need to be completely standalone and distributable.",
+"options": [
+"Wrap items in article",
+"Wrap items in section",
+"Wrap items in aside",
+"Wrap items in main"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The article element designates self-contained content blocks that could theoretically be syndicated independently. Sections represent sub-chapters of a larger context."
+},
+{
+"id": "html-m-009",
+"difficulty": "medium",
+"q": "A sensitive login form keeps displaying previous users email histories in a dropdown overlay when focused.",
+"options": [
+"Set type to password",
+"Add a novalidate flag",
+"Set autocomplete to off",
+"Clear input value parameters"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "Setting autocomplete off instructs browsers to stop storing or suggesting previously submitted entries for that specific input layout tracking."
+},
+{
+"id": "html-m-010",
+"difficulty": "medium",
+"q": "Your page rendering freezes because a large internal script tag takes several seconds to download and parse.",
+"options": [
+"Add the defer attribute",
+"Add the async attribute",
+"Move script to head",
+"Wrap script in template"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The defer attribute enables asynchronous asset loading without pausing the main HTML parser thread. Parsing continues uninterrupted until the document finishes."
+},
+{
+"id": "html-m-011",
+"difficulty": "medium",
+"q": "A form contains related address fields that look unstructured and confuse screen readers traversing the interface.",
+"options": [
+"Separate fields with divs",
+"Apply distinct unique classes",
+"Group fields with fieldset",
+"Use horizontal rule lines"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The fieldset tag groups related form controls and provides accessible context when paired with a legend text descriptor element."
+},
+{
+"id": "html-m-012",
+"difficulty": "medium",
+"q": "Your content page features a sidebar with related reading links that distracts from the core article outline path.",
+"options": [
+"Wrap layout in aside",
+"Wrap layout in section",
+"Wrap layout in article",
+"Wrap layout in div"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "Aside elements represent tangential content secondary to the primary document block. This helps search engine crawlers filter central semantic text data."
+},
+{
+"id": "html-m-013",
+"difficulty": "medium",
+"q": "A pop-up modal component renders hidden in the DOM layout but remains fully discoverable by tab keys and screen readers.",
+"options": [
+"Set opacity to zero",
+"Add the hidden attribute",
+"Apply a low z-index",
+"Move layout off screen"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The native HTML hidden attribute removes elements both visually and from accessibility tree mappings completely. CSS visual hiding alone fails screen readers."
+},
+{
+"id": "html-m-014",
+"difficulty": "medium",
+"q": "You want to capture multi-line paragraphs of user feedback within a form, but input text clips horizontally.",
+"options": [
+"Use text input types",
+"Increase width dimensions natively",
+"Use a textarea tag",
+"Apply a continuous break"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "Textarea tags natively support multi-line data entries with wrapping configurations. Standard text inputs are hardcoded to a single continuous text string line."
+},
+{
+"id": "html-m-015",
+"difficulty": "medium",
+"q": "A search engine results snippet displays random layout header links instead of a concise description of your service page.",
+"options": [
+"Add a description meta",
+"Include an h1 title",
+"Add structured JSON data",
+"Set document canonical links"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The description meta tag provides a dedicated copy blurb explicitly for search engine results pages to summarize content indexes accurately."
+},
+{
+"id": "html-m-016",
+"difficulty": "medium",
+"q": "You need a toggleable accordion component that handles open and closed states natively without writing JavaScript state managers.",
+"options": [
+"Use details and summary",
+"Use section and header",
+"Use fieldset and legend",
+"Use dialog and button"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The details and summary elements manage interactive disclosure toggles natively via internal browser states. No custom scripts are required to expand content blocks."
+},
+{
+"id": "html-m-017",
+"difficulty": "medium",
+"q": "A user needs to select a highly specific date from a calendar interface without installing large third-party framework plugins.",
+"options": [
+"Set type to text",
+"Set type to date",
+"Include a pattern validation",
+"Use custom range parameters"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "Setting type date prompts browsers to load their native graphical calendar picking widget. This avoids bloating downloads with heavy custom date script packages."
+},
+{
+"id": "html-m-018",
+"difficulty": "medium",
+"q": "You want to link relative paths across different pages but your relative subfolder paths break when nested deep inside directories.",
+"options": [
+"Use absolute server roots",
+"Define a base tag",
+"Convert pathways to protocols",
+"Apply unique canonical references"
+],
+"correct": 1,
+"wrongPick": 0,
+"explain": "The base tag inside document heads dictates the reference starting point for all relative links across an entire page frame context."
+},
+{
+"id": "html-m-019",
+"difficulty": "medium",
+"q": "A form file upload target needs to accept only PDF documents but accepts images and spreadsheets instead.",
+"options": [
+"Add an accept attribute",
+"Set type to file",
+"Include a pattern filter",
+"Apply a required parameter"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The accept attribute filters local file selection menus to specified mime types or extension formats. Type file alone permits any file type selection."
+},
+{
+"id": "html-m-020",
+"difficulty": "medium",
+"q": "You want a custom button to prompt a user to select multiple choices from a pre-defined list that filters values dynamically.",
+"options": [
+"Connect input to select",
+"Wrap input inside optgroup",
+"Link input with datalist",
+"Apply multiple checkbox values"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The datalist element provides automated autocomplete dropdown options for standard inputs while still permitting custom text data inputs."
+},
+{
+"id": "html-m-021",
+"difficulty": "medium",
+"q": "A mathematical application requires showing the immediate evaluated solution of a dynamic calculation on screen cleanly.",
+"options": [
+"Use the output element",
+"Use a generic span",
+"Place solution in input",
+"Display calculation in code"
+],
+"correct": 0,
+"wrongPick": 1,
+"explain": "The output element explicitly identifies calculation results semantically, allowing assistive technologies to monitor live value recalculations automatically."
+},
+{
+"id": "html-m-022",
+"difficulty": "medium",
+"q": "A form validation check must ensure an alphanumeric code matches an exact format structure before sending data.",
+"options": [
+"Set type to text",
+"Include minlength restrictions directly",
+"Add a pattern attribute",
+"Apply custom validation triggers"
+],
+"correct": 2,
+"wrongPick": 0,
+"explain": "The pattern attribute accepts a regular expression string that browsers evaluate natively before permitting data submissions to execute."
+},
+{
+"id": "html-m-023",
+"difficulty": "medium",
+"q": "An interactive page needs to block background layout activity using an overlay dialog frame context completely natively.",
+"options": [
+"Call dialog show method",
+"Toggle the open attribute",
+"Set display to block",
+"Call dialog showModal method"
+],
+"correct": 3,
+"wrongPick": 0,
+"explain": "The showModal() JavaScript method opens an HTML dialog element as a top-layer overlay with automatic background interaction trapping. The standard show method lacks trapping behavior."
+},
+{
+"id": "html-m-024",
+"difficulty": "medium",
+"q": "Your document structure contains multiple header layout instances across articles, causing automated syntax checker alerts.",
+"options": [
+"Limit main to one",
+"Convert headers to sections",
+"Remove nested header blocks",
+"Use unique id classes"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "While elements like header can repeat across subsections, the main element must exist exactly once per document block to isolate primary content boundaries."
+},
+{
+"id": "html-m-025",
+"difficulty": "medium",
+"q": "A search engine crawler skips parsing a calendar event date because the textual sentence layout is too conversational.",
+"options": [
+"Wrap string in time",
+"Convert sentence to metrics",
+"Inject metadata schema objects",
+"Use custom data parameters"
+],
+"correct": 0,
+"wrongPick": 2,
+"explain": "The time tag converts human text into structured datetime attributes that scrapers and calendar utilities parse with total absolute certainty."
+}
+]
