@@ -1,0 +1,352 @@
+[
+  {
+    "id": "sd-e-001",
+    "difficulty": "easy",
+    "q": "What is the primary objective of Low-Level System Design (LLD) in a software engineering lifecycle?",
+    "options": [
+      "Defining global data center replication pipelines and geographic load placement strategies",
+      "Translating abstract architectural designs into concrete, implementable source modules by mapping out classes, relationships, and internal logical boundaries",
+      "Configuring cluster scaling properties inside cloud hosting platforms",
+      "Writing automated visual cross-browser testing scripts for user interfaces"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Low-Level Design (LLD) focuses on the internal code-level architecture of a system. It details class structures, inheritance, object behaviors, and method contracts to prepare a clear development roadmap."
+  },
+  {
+    "id": "sd-e-002",
+    "difficulty": "easy",
+    "q": "How does database indexing optimize data retrieval performance?",
+    "options": [
+      "By compressing the underlying data table blocks into lightweight files",
+      "By constructing an auxiliary search structure (like a B-Tree) that allows the query engine to pinpoint target records quickly without a full table scan",
+      "By splitting columns across multiple physical server nodes automatically",
+      "By converting text-based SQL queries into dynamic application code"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Database indexes operate similarly to a book's index. They use optimized lookup structures (such as B-Trees or Hash tables) to locate data rows rapidly, shifting execution time from an $O(N)$ table scan to an $O(\\log N)$ lookup."
+  },
+  {
+    "id": "sd-e-003",
+    "difficulty": "easy",
+    "q": "Which core principle of Object-Oriented Programming (OOP) hides an object's internal state and forces all interactions to occur through public methods?",
+    "options": [
+      "Inheritance",
+      "Polymorphism",
+      "Encapsulation",
+      "Abstraction"
+    ],
+    "correct": 2,
+    "wrongPick": 3,
+    "explain": "Encapsulation bundles data (variables) and behavior (methods) into a single object, shielding internal state from direct outer modification and enforcing controlled access."
+  },
+  {
+    "id": "sd-e-004",
+    "difficulty": "easy",
+    "q": "What risk does concurrency control mitigate in multi-threaded application systems?",
+    "options": [
+      "High data network propagation latencies between global datacenters",
+      "Data corruption and race conditions caused by multiple processing threads modifying shared resources simultaneously",
+      "Incorrect translation of query parameters into frontend views",
+      "Sudden exhaustion of localized hardware disk space limits"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Concurrency control systems (using tools like locks, semaphores, or monitors) ensure that parallel threads safely access shared memory states without interleaving operations destructively."
+  },
+  {
+    "id": "sd-e-005",
+    "difficulty": "easy",
+    "q": "What is the primary function of a UML Sequence Diagram in software architecture?",
+    "options": [
+      "To display static layout definitions and structural data classes within a package",
+      "To chart the time-ordered step-by-step sequence of message interactions flowing between distinct system components",
+      "To evaluate physical deployment server hardware node mappings",
+      "To run code compilation tracking rules across staging clusters"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A UML Sequence Diagram is a behavioral diagram that maps execution flows over time, illustrating exactly how objects or systems pass requests and responses back and forth."
+  },
+  {
+    "id": "sd-e-006",
+    "difficulty": "easy",
+    "q": "When modeling system lifecycles—such as an e-commerce order shifting from 'Pending' to 'Completed'—which UML behavioral model is best suited?",
+    "options": [
+      "Class Diagram",
+      "State Diagram",
+      "Component Diagram",
+      "Deployment Diagram"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "UML State Diagrams track an object's lifecycle states and the specific event transitions that trigger mutations from one operational condition to another."
+  },
+  {
+    "id": "sd-e-007",
+    "difficulty": "easy",
+    "q": "Which data structure is typically preferred to implement an application caching system requiring near $O(1)$ fast lookups?",
+    "options": [
+      "Singly Linked List",
+      "Binary Search Tree",
+      "HashMap / Hash Table",
+      "Priority Queue"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "HashMaps leverage hashing algorithms to map lookup keys directly to index slots, enabling highly efficient $O(1)$ constant-time data retrieval for cache lookups."
+  },
+  {
+    "id": "sd-e-008",
+    "difficulty": "easy",
+    "q": "What is a primary benefit of standard database schema normalization up to Third Normal Form (3NF)?",
+    "options": [
+      "It combines columns into huge tables to maximize read speeds",
+      "It eliminates data redundancy and prevents modification anomalies by decoupling independent entities",
+      "It removes the need to declare data type restrictions on column variables",
+      "It ensures data encrypts instantly when traveling over networks"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Normalization organizes data properties systematically into related tables, reducing duplicate values and ensuring modifications occur cleanly without introducing logical contradictions."
+  },
+  {
+    "id": "sd-e-009",
+    "difficulty": "easy",
+    "q": "What problem does tight coupling introduce into object-oriented code architectures?",
+    "options": [
+      "It makes code execute too rapidly for database tracking systems to register handles",
+      "It leaves classes deeply dependent on each other's inner implementations, making changes complex and harming maintainability",
+      "It forces applications to run exclusively within cloud container environments",
+      "It prevents developers from leveraging basic variable data types"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Tight coupling means changes to one class force a cascading wave of modifications across its dependent classes. Loose coupling avoids this by using abstractions and interfaces."
+  },
+  {
+    "id": "sd-e-010",
+    "difficulty": "easy",
+    "q": "How does the Factory Design Pattern achieve loose coupling in object creation logic?",
+    "options": [
+      "By forcing all data classes to serialize into JSON configurations automatically",
+      "By centralizing object instantiation into a dedicated module, shielding clients from the exact concrete classes being generated",
+      "By transforming application processes into multi-threaded tasks",
+      "By executing direct connections to data tables at runtime"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Factory Pattern delegates the creation logic of an object family to a specialized class, ensuring the caller interacts purely with a clean interface rather than concrete implementations."
+  },
+  {
+    "id": "sd-e-011",
+    "difficulty": "easy",
+    "q": "What are the core characteristics of the Singleton Design Pattern?",
+    "options": [
+      "It allows structural elements to copy themselves dynamically across processing routines",
+      "It guarantees a class has exactly one global instance and provides a single centralized access point to it",
+      "It splits class tasks across multiple background thread workers",
+      "It automatically terminates unused server background processes"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A Singleton restricts class instantiation to a single object, typically achieved by making the constructor private and exposing a synchronized tracking method."
+  },
+  {
+    "id": "sd-e-012",
+    "difficulty": "easy",
+    "q": "What behavioral mechanism characterizes the Observer Design Pattern?",
+    "options": [
+      "Objects pass operational data packets through sequential handlers down a pipeline",
+      "A subject object maintains a list of dependent observers and automatically alerts them of state changes",
+      "A manager intercepts all method executions to verify data security clear levels",
+      "Classes swap out operational algorithms dynamically at runtime boundaries"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "The Observer Pattern structures a one-to-many relationship where shifts in the subject's properties automatically broadcast updates to all registered observer components."
+  },
+  {
+    "id": "sd-e-013",
+    "difficulty": "easy",
+    "q": "What structural role do interfaces play in object-oriented system design?",
+    "options": [
+      "They manage database configuration connection strings directly",
+      "They define an abstract operational contract that classes must fulfill, letting components communicate via abstraction",
+      "They compile source structures into binary machine formats",
+      "They allocate physical host memory space variables dynamically"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Interfaces decouple definitions from actual execution logic, allowing developers to program against abstract behaviors and swap implementations seamlessly."
+  },
+  {
+    "id": "sd-e-014",
+    "difficulty": "easy",
+    "q": "How does modular design benefit large engineering software projects?",
+    "options": [
+      "It converts multi-tier programs into single executable scripts",
+      "It isolates systems into independent, single-responsibility modules, simplifying debugging, testing, and scaling",
+      "It removes the requirement to implement strict integration security policies",
+      "It enables applications to bypass local operating system constraints"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Modular architecture breaks a large system into clean pieces with distinct boundaries, enabling engineering squads to build and maintain separate features in parallel."
+  },
+  {
+    "id": "sd-e-015",
+    "difficulty": "easy",
+    "q": "Which design principle is explicitly broken if a single class manages user session authorization, processes credit card charges, and formats PDF invoices?",
+    "options": [
+      "Open-Closed Principle (OCP)",
+      "Single Responsibility Principle (SRP)",
+      "Liskov Substitution Principle (LSP)",
+      "Interface Segregation Principle (ISP)"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Single Responsibility Principle (SRP) states a module should focus on one reason to change. Packing authentication, payment handling, and document generation into one class introduces high risk and maintenance overhead."
+  },
+  {
+    "id": "sd-e-016",
+    "difficulty": "easy",
+    "q": "What pattern should be used to provide a clean, simplified interface to a complex subsystem of many interconnected classes?",
+    "options": [
+      "Proxy Pattern",
+      "Facade Pattern",
+      "Strategy Pattern",
+      "Flyweight Pattern"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The Facade pattern provides a high-level wrapper that simplifies interactions with complex underlying subsystems, shielding the client from internal intricate operations."
+  },
+  {
+    "id": "sd-e-017",
+    "difficulty": "easy",
+    "q": "What is the primary definition of the DRY (Don't Repeat Yourself) design principle?",
+    "options": [
+      "Code should run to completion without requiring continuous data writes",
+      "Every piece of logic or data must have a single, unambiguous representation within a system",
+      "Applications must operate across local data memory setups exclusively",
+      "Database schema tables should never implement indexing structures"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "DRY focuses on reducing duplication. Extracting repetitive logic into reusable functions or classes simplifies updates and helps keep system logic consistent."
+  },
+  {
+    "id": "sd-e-018",
+    "difficulty": "easy",
+    "q": "What is the core philosophy of the KISS (Keep It Simple, Stupid) design principle?",
+    "options": [
+      "Systems operate best if they are kept simple rather than made complex; avoid unnecessary abstractions",
+      "Code must minimize memory resource metrics by reducing variable name character lengths",
+      "Applications must enforce single-threaded operational lifecycles exclusively",
+      "Architectures must prioritize graphical interfaces over database durability constraints"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "KISS urges engineers to favor simple, clear solutions over highly complex designs that introduce unnecessary layers, making systems easier to read, debug, and maintain."
+  },
+  {
+    "id": "sd-e-019",
+    "difficulty": "easy",
+    "q": "What does the YAGNI (You Aren't Gonna Need It) principle advise developers against doing?",
+    "options": [
+      "Writing unit test cases for core registration pathways",
+      "Implementing speculative code, features, or abstractions before they are actually needed",
+      "Configuring secure encryption keys for production profiles",
+      "Linking distinct database structures together using foreign keys"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "YAGNI cautions against implementing speculative features based on future predictions, keeping the codebase focused and free of unused, complex code paths."
+  },
+  {
+    "id": "sd-e-020",
+    "difficulty": "easy",
+    "q": "What is the key architectural difference between Horizontal and Vertical scaling?",
+    "options": [
+      "Vertical scaling splits row values across databases; Horizontal scaling partitions data by column sets",
+      "Vertical scaling increases resources (CPU/RAM) on a single server machine; Horizontal scaling adds more independent server machines to the pool",
+      "Vertical scaling relies on open HTTP lines; Horizontal scaling requires encrypted tunnels",
+      "Vertical scaling applies to caching; Horizontal scaling is restricted to file stores"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Vertical scaling (scaling up) boosts a single machine's capacity but hits a hard hardware ceiling. Horizontal scaling (scaling out) scales past this by adding more machines to a distributed cluster."
+  },
+  {
+    "id": "sd-e-021",
+    "difficulty": "easy",
+    "q": "What is the primary responsibility of a software Load Balancer?",
+    "options": [
+      "To compress network payload bytes before they hit local tracking structures",
+      "To act as a traffic cop, distributing incoming requests across a pool of backend servers to optimize resource use and prevent overloads",
+      "To compile development code blocks into executable cloud runtime profiles",
+      "To execute regular background backups of central data systems"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A load balancer distributes user traffic evenly across available backend instances, preventing single servers from bottlenecking and improving overall system availability."
+  },
+  {
+    "id": "sd-e-022",
+    "difficulty": "easy",
+    "q": "What does the 'Consistency' metric imply within the context of the CAP Theorem?",
+    "options": [
+      "The system guarantees that write data transfers onto multiple disks instantly",
+      "Every read request receives either the most recent write or an error across all nodes",
+      "The system remains fast and accessible regardless of data layout issues",
+      "Network connections persist without any internal request packet drops"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "In the CAP Theorem, Consistency (linearizability) means all nodes see the exact same data state simultaneously, so clients always read the latest successful write regardless of which node they query."
+  },
+  {
+    "id": "sd-e-023",
+    "difficulty": "easy",
+    "q": "What occurs immediately when a software application triggers a standard 'Cache Miss' condition?",
+    "options": [
+      "The program terminates operations because it can no longer find internal code modules",
+      "The system fails to find the requested data in the cache, forcing it to fetch the item from slower primary databases or downstream APIs",
+      "The proxy gateway drops all subsequent incoming user data packets",
+      "The database drops its active indexes to free up disk space"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A cache miss requires the application to retrieve data from the primary system of record, which increases latency for that request before caching the result for future lookups."
+  },
+  {
+    "id": "sd-e-024",
+    "difficulty": "easy",
+    "q": "How does a load balancer track whether an individual backend node has crashed?",
+    "options": [
+      "By parsing the application's source code files continuously",
+      "By regularly issuing small test queries called health checks or heartbeats to evaluate node responsiveness",
+      "By counting the number of columns declared inside database instances",
+      "By forcing users to re-enter authorization credentials on every click path"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Load balancers use automated health checks (like periodic ping requests or HTTP calls) to detect failed backend instances and route traffic away from them until they recover."
+  },
+  {
+    "id": "sd-e-025",
+    "difficulty": "easy",
+    "q": "What is the primary role of a Content Delivery Network (CDN) in global web architectures?",
+    "options": [
+      "To process database transactions across data centers",
+      "To cache and serve static assets from edge servers located closer to users, reducing network latency",
+      "To run automated unit test collection scripts for development environments",
+      "To convert SQL tables into non-relational document models"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "CDNs store copies of static content (images, JS, CSS, video) at geographically distributed edge proxy locations, reducing round-trip latency and offloading traffic from origin servers."
+  }
+]
