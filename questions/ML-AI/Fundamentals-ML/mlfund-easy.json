@@ -1,0 +1,352 @@
+[
+  {
+    "id": "ml-f-e-001",
+    "difficulty": "easy",
+    "q": "What is the core definition of Machine Learning (ML)?",
+    "options": [
+      "A rule-based programming approach where developers explicitly hardcode every single logic path and conditional statement into a software application.",
+      "A subfield of artificial intelligence that gives computers the ability to automatically learn and improve from experience without being explicitly programmed for every specific scenario.",
+      "A database indexing pattern designed to compress text files into binary blobs for fast network transmissions.",
+      "A specialized network protocol optimized for transferring large graphic files across distinct web clients."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Machine Learning shifts the paradigm from traditional software engineering (where rules are hardcoded) to data-driven engineering, allowing models to extract patterns from data and generalize to unseen instances."
+  },
+  {
+    "id": "ml-f-e-002",
+    "difficulty": "easy",
+    "q": "What is the primary defining characteristic of Supervised Learning?",
+    "options": [
+      "The algorithm processes data points that have no predefined labels or ground truth outcomes attached to them.",
+      "The algorithm is trained on a labeled dataset, meaning each training example is paired with its correct target output label.",
+      "The model learns purely through a trial-and-error reward mechanism managed by an external physical environment.",
+      "The data must be processed using a single-threaded execution loop without any mathematical scaling inputs."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Supervised learning relies on pairs of input features and explicit target outputs (labels). The model learns to map inputs to outputs based on these historical examples."
+  },
+  {
+    "id": "ml-f-e-003",
+    "difficulty": "easy",
+    "q": "How does a Classification task differ fundamentally from a Regression task?",
+    "options": [
+      "Classification predictions are continuous numerical values, whereas Regression predictions are discrete categorical labels.",
+      "Classification maps inputs to discrete categorical labels, whereas Regression maps inputs to continuous numerical values.",
+      "Classification runs exclusively on unstructured text data, while Regression is restricted to tabular image matrices.",
+      "Classification avoids using loss metrics entirely, while Regression requires multiple optimization algorithms."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Classification handles problems where the output is a category (e.g., spam vs. non-spam, or a discrete class index). Regression predicts a continuous quantity (e.g., house prices or temperature metrics)."
+  },
+  {
+    "id": "ml-f-e-004",
+    "difficulty": "easy",
+    "q": "In the training lifecycle of a neural network, what does a single 'Epoch' represent?",
+    "options": [
+      "The time it takes to compute a single forward pass of one individual data point through the model layers.",
+      "One complete pass of the entire training dataset through the neural network during both the forward and backward propagation phases.",
+      "The structural layout of a single hidden layer inside a deep learning network architecture.",
+      "The extraction process used to turn raw unformatted text fields into high-density vector representations."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "An epoch indicates that every training example has had an opportunity to update the model parameters exactly once. Models typically require many epochs to converge on a solution."
+  },
+  {
+    "id": "ml-f-e-005",
+    "difficulty": "easy",
+    "q": "What is meant by the term 'Batch Size' in machine learning training pipelines?",
+    "options": [
+      "The total memory size in gigabytes occupied by the model parameters on a hardware accelerator disk.",
+      "The number of training examples processed together in a single forward and backward pass before the model updates its internal weights.",
+      "The cumulative count of hidden layers running inside an optimized multi-layer perceptron.",
+      "The number of times the validation split is evaluated against testing parameters during a loop."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Instead of passing the entire dataset at once (Batch Gradient Descent) or one sample at a time (Stochastic Gradient Descent), developers split data into mini-batches. The batch size dictates how many samples are grouped together per gradient update."
+  },
+  {
+    "id": "ml-f-e-006",
+    "difficulty": "easy",
+    "q": "If a training dataset contains 1,000 total samples and the Batch Size is configured to 200, how many 'Iterations' occur within a single Epoch?",
+    "options": [
+      "200 iterations",
+      "1,000 iterations",
+      "5 iterations",
+      "50,000 iterations"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "An iteration (or step) is a single weight update. The number of iterations per epoch is calculated as $\\text{Total Samples} / \\text{Batch Size}$. Thus, $1000 / 200 = 5$ iterations."
+  },
+  {
+    "id": "ml-f-e-007",
+    "difficulty": "easy",
+    "q": "What does a high 'Bias' error typically indicate about a machine learning model's behavioral pattern?",
+    "options": [
+      "The model has overfitted the training data perfectly and is capturing high-frequency noise details.",
+      "The model has underfitted the data, making simplistic structural assumptions that fail to capture the true underlying relationships.",
+      "The model requires an immediate change from continuous to discrete variables to function.",
+      "The system is executing optimization updates too quickly for the parameter weights to stabilize."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Bias represents the error introduced by approximating real-world problems with overly simplistic models. High bias is synonymous with underfitting, where the model performs poorly on both training and test sets."
+  },
+  {
+    "id": "ml-f-e-008",
+    "difficulty": "easy",
+    "q": "Which scenario best illustrates an 'Overfitting' condition in model development?",
+    "options": [
+      "The model exhibits high training error and equally high testing error metrics.",
+      "The model achieves exceptionally low error on the training dataset but performs poorly with high error rates on unseen test data.",
+      "The model achieves perfect accuracy metrics on both training and validation splits over consecutive runs.",
+      "The model parameters remain uninitialized because the dataset lacks numeric target columns."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Overfitting occurs when a model memorizes the training data, including its random noise and outliers, instead of learning the general trend. This results in high training accuracy but terrible generalization to new test data."
+  },
+  {
+    "id": "ml-f-e-009",
+    "difficulty": "easy",
+    "q": "What is the primary conceptual difference between a Loss Function and a Cost Function?",
+    "options": [
+      "Loss functions determine network latency, whereas Cost functions scale storage disk blocks.",
+      "A Loss function computes the error for a single training example, whereas a Cost function aggregates the error across the entire dataset or mini-batch.",
+      "A Loss function maps structural layers together, while a Cost function handles output category arrays.",
+      "Loss functions apply to unsupervised cluster groups exclusively, while Cost functions track regression variables."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "While often used interchangeably, 'loss' evaluates performance on an individual sample level, whereas 'cost' is the average or sum of losses over the entire dataset or batch, serving as the objective function minimized during optimization."
+  },
+  {
+    "id": "ml-f-e-010",
+    "difficulty": "easy",
+    "q": "What is a Perceptron in the context of neural network history?",
+    "options": [
+      "An advanced layer architecture designed to handle complex sequence-to-sequence audio transformations.",
+      "The simplest type of feedforward neural network, consisting of a single neuron that takes a linear combination of inputs, applies a step activation, and outputs a binary classification.",
+      "A specialized cloud database engine built to store high-density vector representations.",
+      "An automatic regularization strategy that randomly zeroes out model weight vectors during updates."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Invented by Frank Rosenblatt, the Perceptron is a fundamental building block of neural networks. It computes a weighted sum of inputs plus a bias and applies a step function to generate a binary $0$ or $1$ output."
+  },
+  {
+    "id": "ml-f-e-011",
+    "difficulty": "easy",
+    "q": "What are 'Embeddings' in modern Machine Learning workflows?",
+    "options": [
+      "Hardcoded security encryption keys that prevent training parameters from leaking over network backbones.",
+      "Low-dimensional, continuous vector representations that map high-dimensional categorical or textual data into a continuous vector space where semantic similarities are preserved.",
+      "Backup database tables that preserve raw text files in their original character formats.",
+      "Hardware optimization scripts designed to speed up calculation loops on specialized chips."
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Embeddings transform discrete tokens (like words or categorical item IDs) into dense numerical vectors. This placement ensures that contextually or semantically related entities reside close to one another in the geometric space."
+  },
+  {
+    "id": "ml-f-e-012",
+    "difficulty": "easy",
+    "q": "What is the core framework of Reinforcement Learning (RL)?",
+    "options": [
+      "An approach where a human supervisor sits and annotates every single action trace before an algorithm compiles.",
+      "An agent interacts with an environment by taking actions and receives feedback in the form of rewards or penalties, learning to maximize cumulative rewards over time.",
+      "A clustering pattern that separates unlabelled image vectors into discrete structural storage pools.",
+      "A validation routine that splits training data matrices into five identical sub-blocks."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Reinforcement Learning is distinct from supervised/unsupervised learning. It relies on a behavioral dynamic where an autonomous agent navigates states, acts, and optimizes its behavior based on environmental rewards."
+  },
+  {
+    "id": "ml-f-e-013",
+    "difficulty": "easy",
+    "q": "What is the primary purpose of applying the Softmax activation function to a neural network's final output layer?",
+    "options": [
+      "To clamp all parameter outputs between exactly $-1$ and $+1$ linearly.",
+      "To convert a vector of raw, unnormalized score values (logits) into a valid probability distribution that sums to exactly $1.0$.",
+      "To introduce deep sparsity by forcing exactly $50\\%$ of the structural weights to zero values.",
+      "To scale down multi-threaded compilation constraints within host systems."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Softmax squashes an $N$-dimensional vector of real numbers into a vector of the same dimension where each coordinate lies between $(0, 1)$ and all coordinates sum to $1$, making it ideal for multi-class classification probabilities."
+  },
+  {
+    "id": "ml-f-e-014",
+    "difficulty": "easy",
+    "q": "How is the 'Precision' metric defined in a standard binary classification evaluation?",
+    "options": [
+      "The ratio of correctly predicted positive observations to the total actual positive observations in the dataset.",
+      "The ratio of correctly predicted positive observations to the total predicted positive observations, reflecting the accuracy of positive predictions.",
+      "The total count of true negative samples divided by the cumulative sum of all true and false positive instances.",
+      "The mathematical difference between the training error metric and the final testing error trace."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Precision answers the question: 'Out of all examples the model predicted as positive, how many were actually positive?' It is mathematically defined as $\\text{True Positives} / (\\text{True Positives} + \\text{False Positives})$."
+  },
+  {
+    "id": "ml-f-e-015",
+    "difficulty": "easy",
+    "q": "How is the 'Recall' (Sensitivity) metric defined in classification tasks?",
+    "options": [
+      "The ratio of correctly predicted positive observations to all observations that actually belonged to the positive class.",
+      "The total number of samples that the model classified incorrectly as negative divided by the total dataset length.",
+      "The absolute geometric mean of precision added directly to the structural bias error metric.",
+      "The speed at which a trained model can pull data from an in-memory caching tier."
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Recall answers the question: 'Out of all actual positive examples in the data, how many did the model find?' It is formulated as $\\text{True Positives} / (\\text{True Positives} + \\text{False Negatives})$."
+  },
+  {
+    "id": "ml-f-e-016",
+    "difficulty": "easy",
+    "q": "What is the F1-Score in classification model evaluation?",
+    "options": [
+      "The simple arithmetic average of the model's accuracy score and its loss optimization value.",
+      "The harmonic mean of Precision and Recall, providing a balanced single metric when dealing with uneven or imbalanced class distributions.",
+      "The geometric subtraction of the total false positive metrics from false negative vectors.",
+      "The variance coefficient calculated across five distinct validation data splits."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "F1-score balances precision and recall into a single metric. The harmonic mean punishes extreme imbalances, meaning a model with a precision of $1.0$ but a recall of $0.0$ will receive an F1-score of $0.0$."
+  },
+  {
+    "id": "ml-f-e-017",
+    "difficulty": "easy",
+    "q": "What is the primary objective of Anomaly Detection algorithms?",
+    "options": [
+      "To identify the most frequent, standard, and highly repeated structural data items in a collection.",
+      "To identify rare, unusual, or atypical data points that deviate significantly from the established normal behavior of the dataset.",
+      "To automatically apply a continuous target classification label onto multi-class categorical arrays.",
+      "To enforce strict linear separation configurations across multi-layer neural networks."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Anomaly detection isolates outliers, rare occurrences, or suspicious data points (e.g., credit card fraud, equipment failures) that present characteristics distinctly different from typical observations."
+  },
+  {
+    "id": "ml-f-e-018",
+    "difficulty": "easy",
+    "q": "What does a basic 'Dropout' layer do when integrated into a deep neural network during its training phase?",
+    "options": [
+      "It completely deletes the entire weight matrix configuration file from the disk to clean up storage paths.",
+      "It randomly deactivates (sets to zero) a specified fraction of neurons in the layer at each training step, forcing the network to avoid relying too heavily on specific nodes.",
+      "It converts multi-class categorization vectors back into raw unnormalized text properties.",
+      "It forces the network model to drop the continuous regression parameters and switch to a clustering pattern."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Dropout is a powerful regularization technique. By randomly masking out activations during training, it disrupts co-adaptation, forcing the network to learn redundant representations and robust, generalized features."
+  },
+  {
+    "id": "ml-f-e-019",
+    "difficulty": "easy",
+    "q": "What are 'Logits' in machine learning classification architectures?",
+    "options": [
+      "The final structured accuracy metrics printed out at the conclusion of model evaluation routines.",
+      "The raw, unnormalized vector of scores output by the final layer of a neural network before an activation function like Softmax is applied.",
+      "The historical audit tracking logs created by data engineering storage pipelines.",
+      "The structural error derivatives passed down through backward propagation paths."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Logits represent the raw numerical values generated by a model's final linear layer. These unbounded numbers ($-\\infty$ to $+\\infty$) are subsequently passed into normalizers like Sigmoid or Softmax to turn them into valid probability scales."
+  },
+  {
+    "id": "ml-f-e-020",
+    "difficulty": "easy",
+    "q": "What is the primary reason engineers employ Cross-Validation during model validation?",
+    "options": [
+      "To accelerate the absolute training speed of optimization algorithms on local hardware setups.",
+      "To get a more stable, reliable estimate of model generalization performance by partitioning data into multiple rotating train/test splits, minimizing evaluation bias.",
+      "To convert categorical target labels into continuous float parameters automatically.",
+      "To eliminate the need to configure structural optimization metrics entirely."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Relying on a single train/test split can produce skewed evaluation metrics due to random partitioning luck. Cross-validation averages scores across multiple distinct folds, providing a realistic view of how a model generalizes."
+  },
+  {
+    "id": "ml-f-e-021",
+    "difficulty": "easy",
+    "q": "Which task serves as a typical example of Unsupervised Learning?",
+    "options": [
+      "Predicting house sales valuations based on known historical prices.",
+      "Clustering a customer base into separate anonymous behavioral segments based on transaction history without prior class assignments.",
+      "Classifying emails directly into explicit 'Spam' or 'Inbox' categories using historical labels.",
+      "Detecting cancerous tissue using target images annotated precisely by board physicians."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Clustering operates on data without explicit target answers (labels). The algorithm seeks to identify inherent statistical groupings based purely on feature geometric similarities or distributions."
+  },
+  {
+    "id": "ml-f-e-022",
+    "difficulty": "easy",
+    "q": "What does a model with high 'Variance' indicate regarding its data fit?",
+    "options": [
+      "The model is overly rigid and fails to discover patterns even within the core training data collection.",
+      "The model is highly sensitive to small fluctuations in the training set, capturing noise and failing to generalize well to new validation data (Overfitting).",
+      "The model has completely zeroed out all its internal parameters due to a regularizer constraint.",
+      "The system is running on too few computational processing instances to converge."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "High variance means the model's learned boundaries change drastically depending on the specific training sample it sees. This sensitivity leads to overfitting, where it performs well on training data but poorly on test data."
+  },
+  {
+    "id": "ml-f-e-023",
+    "difficulty": "easy",
+    "q": "Which evaluation metric is commonly leveraged to optimize a continuous Regression model?",
+    "options": [
+      "F1-Score Matrix",
+      "Mean Squared Error (MSE)",
+      "Categorical Cross-Entropy",
+      "Precision Threshold Curve"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Mean Squared Error (MSE) measures the average of the squares of the errors—that is, the average squared difference between the estimated continuous values and the actual target ground truth."
+  },
+  {
+    "id": "ml-f-e-024",
+    "difficulty": "easy",
+    "q": "Why are non-linear activation functions necessary inside multilayer neural networks?",
+    "options": [
+      "They compress the structural text inputs into binary layouts to match hardware requirements.",
+      "Without them, no matter how many layers a neural network has, it would behave exactly like a simple linear combination, failing to learn complex non-linear patterns.",
+      "They guarantee that the model updates its internal weight vectors using single-threaded routines.",
+      "They prevent the application from requiring a centralized training validation fold loop."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A composition of linear operations remains strictly linear. Non-linear activations (like ReLU, Sigmoid, or Tanh) allow networks to warp coordinate spaces, empowering deep architectures to approximate arbitrary complex mathematical functions."
+  },
+  {
+    "id": "ml-f-e-025",
+    "difficulty": "easy",
+    "q": "What does an underfitting model exhibit during training and testing evaluations?",
+    "options": [
+      "Near-perfect accuracy on the training data and very poor performance on validation sets.",
+      "Poor performance and high error rates on both the training dataset and the testing validation split.",
+      "Flawless convergence patterns that achieve zero error metrics over minimal iterations.",
+      "An automated shift in variables from discrete structures to continuous floating vectors."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Underfitting is the result of an overly simple model structure or insufficient training. The model fails to capture the underlying mapping pattern, leading to high error across all data splits."
+  }
+]
