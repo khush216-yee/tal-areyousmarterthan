@@ -1,0 +1,352 @@
+[
+  {
+    "id": "dlnn-m-001",
+    "difficulty": "medium",
+    "q": "Why are Sigmoid and Tanh activations generally avoided in the deep hidden layers of a feedforward network?",
+    "options": [
+      "They are entirely discontinuous functions",
+      "They cause vanishing gradient problems",
+      "They force all parameter weights to zero",
+      "They lack mathematical derivatives"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Sigmoid and Tanh functions saturate at extreme inputs, flattening their derivatives. This causes gradients to shrink exponentially during backpropagation."
+  },
+  {
+    "id": "dlnn-m-002",
+    "difficulty": "medium",
+    "q": "How does adding a dropout layer during training help prevent overfitting in deep neural networks?",
+    "options": [
+      "It scales down large outlier features",
+      "It breaks up co-adaptations between neurons",
+      "It locks parameter weights to zero",
+      "It forces the network to become linear"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "By randomly deactivating neurons, dropout forces the network to learn redundant representations rather than relying on brittle, co-adapted node relationships."
+  },
+  {
+    "id": "dlnn-m-003",
+    "difficulty": "medium",
+    "q": "You change your model regularizer from L2 weight decay to L1 regularization. What direct impact do you expect on the weights?",
+    "options": [
+      "Weights will grow exponentially larger",
+      "Unimportant weights become exactly zero",
+      "All weights will scale uniformly",
+      "Weights will oscillate around zero"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "L1 regularization uses an absolute value penalty that drives less predictive weights to exactly zero, creating a sparse model matrix."
+  },
+  {
+    "id": "dlnn-m-004",
+    "difficulty": "medium",
+    "q": "Why does batch normalization stabilize and speed up the training of deep neural networks?",
+    "options": [
+      "It completely eliminates the loss function",
+      "It reduces internal covariate shift",
+      "It forces all weights to match",
+      "It deactivates negative activations"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Batch normalization standardizes the inputs to each layer across a batch. This mitigates internal covariate shift, allowing higher learning rates."
+  },
+  {
+    "id": "dlnn-m-005",
+    "difficulty": "medium",
+    "q": "Which parameters does a batch normalization layer learn and optimize dynamically during training?",
+    "options": [
+      "The batch mean and batch variance",
+      "The scale gamma and shift beta",
+      "The dropout rate and keep rate",
+      "The filter weights and stride steps"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "While mean and variance are computed statistics, gamma (scale) and beta (shift) are backpropagation-trainable parameters that restore representation power."
+  },
+  {
+    "id": "dlnn-m-006",
+    "difficulty": "medium",
+    "q": "How do Convolutional Neural Networks achieve parameter sharing across an entire input image?",
+    "options": [
+      "By using identical weights at every layer",
+      "By applying the same filter across patches",
+      "By keeping latent vector values static",
+      "By sharing biases across multiple batches"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "CNNs use parameter sharing by sweeping the same filter across all spatial regions, allowing them to detect a feature regardless of its location."
+  },
+  {
+    "id": "dlnn-m-007",
+    "difficulty": "medium",
+    "q": "You want to design an unsupervised system that automatically extracts semantic features without manual engineering. What field is this?",
+    "options": [
+      "Rule-based programming",
+      "Representation learning",
+      "Tabular classification",
+      "Linear regression analysis"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Representation learning automatically discovers the underlying variations and structural features needed for tasks directly from raw input data."
+  },
+  {
+    "id": "dlnn-m-008",
+    "difficulty": "medium",
+    "q": "What core difference separates a generative model from a traditional discriminative model?",
+    "options": [
+      "Generative models only support continuous labels",
+      "Generative models model the joint probability",
+      "Generative models require labeled target splits",
+      "Generative models maximize classification accuracy"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Generative models learn the joint probability distribution P(x, y) to capture data traits, while discriminative models learn conditional probability P(y|x) for boundaries."
+  },
+  {
+    "id": "dlnn-m-009",
+    "difficulty": "medium",
+    "q": "Why does a Variational Autoencoder include a Kullback-Leibler (KL) divergence term in its loss function?",
+    "options": [
+      "To maximize structural reconstruction error",
+      "To force the latent distribution toward a prior",
+      "To eliminate the encoder network completely",
+      "To scale parameter weights to zero"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The KL divergence term forces the learned latent distribution to match a standard Gaussian prior, ensuring a continuous, smoothly samplable latent space."
+  },
+  {
+    "id": "dlnn-m-010",
+    "difficulty": "medium",
+    "q": "Your GAN generator keeps producing the exact same realistic output image regardless of the random input noise vector. What issue is this?",
+    "options": [
+      "Vanishing gradients",
+      "Mode collapse",
+      "Internal covariate shift",
+      "Overfitting under-recovery"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Mode collapse occurs when the generator finds a single output that consistently fools the discriminator, causing it to stop generating diverse samples."
+  },
+  {
+    "id": "dlnn-m-011",
+    "difficulty": "medium",
+    "q": "Why do traditional Recurrent Neural Networks struggle to maintain long-term dependencies across text paragraphs?",
+    "options": [
+      "They lack recurrent connection weights",
+      "Gradients vanish or explode over time",
+      "They cannot process character strings",
+      "They scale sequence lengths to zero"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Because RNNs repeatedly multiply gradients across time steps, the backpropagated signal vanishes or explodes when dealing with long context sequences."
+  },
+  {
+    "id": "dlnn-m-012",
+    "difficulty": "medium",
+    "q": "How do LSTMs successfully preserve historical data across hundreds of steps without vanishing gradients?",
+    "options": [
+      "By removing activation layers entirely",
+      "By using a linear cell state with gates",
+      "By resetting parameters at each sequence",
+      "By processing words in parallel matrices"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "LSTMs use a continuous linear cell state regulated by forget, input, and output gates, allowing long-term historical gradients to flow unimpeded."
+  },
+  {
+    "id": "dlnn-m-013",
+    "difficulty": "medium",
+    "q": "What is the primary architectural advantage of a Transformer network over a Recurrent Neural Network?",
+    "options": [
+      "Transformers process sequences in a loop",
+      "Transformers process entire sequences in parallel",
+      "Transformers use fewer parameter layers",
+      "Transformers require zero activation functions"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Transformers replace loops with self-attention, processing whole sequences in parallel. This significantly accelerates hardware acceleration and training speed."
+  },
+  {
+    "id": "dlnn-m-014",
+    "difficulty": "medium",
+    "q": "Why do Diffusion Models generally produce more stable synthesis results than Generative Adversarial Networks?",
+    "options": [
+      "They use a simple linear classification loss",
+      "They train via stable iterative step objectives",
+      "They eliminate the neural network encoder",
+      "They ignore noise distribution parameters"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "GANs rely on a volatile minimax game that is prone to instability. Diffusion models train on a stable mean-squared error objective to reverse incremental noise."
+  },
+  {
+    "id": "dlnn-m-015",
+    "difficulty": "medium",
+    "q": "You are building a model to handle audio waveforms and text tokens simultaneously. How does a multimodal network merge these streams?",
+    "options": [
+      "By converting text into raw wave audio",
+      "By projecting embeddings into a shared space",
+      "By removing attention heads from text",
+      "By using separate linear classification heads"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Multimodal models project different inputs into a shared geometric embedding space, allowing the network to compute attention across text and audio features."
+  },
+  {
+    "id": "dlnn-m-016",
+    "difficulty": "medium",
+    "q": "How does an LSTM forget gate determine what historical information to discard from the running cell state?",
+    "options": [
+      "By setting all positive weights to zero",
+      "By passing inputs through a sigmoid layer",
+      "By flattening the sequence across channels",
+      "By subtracting validation loss statistics"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The forget gate applies a sigmoid function to output values between 0 (discard completely) and 1 (keep entirely) for the cell state components."
+  },
+  {
+    "id": "dlnn-m-017",
+    "difficulty": "medium",
+    "q": "Your network validation loss drops during training, but your training outputs show highly unstable, fluctuating updates. What issue are you spotting?",
+    "options": [
+      "Vanishing structural dependencies",
+      "Exploding gradients in backpropagation",
+      "A learning rate that is too low",
+      "Mode collapse inside the autoencoder"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Exploding gradients cause massive parameter updates, making weights jump erratically. This manifests as highly volatile training loss curves."
+  },
+  {
+    "id": "dlnn-m-018",
+    "difficulty": "medium",
+    "q": "Why does a diffusion model perform better than an auto-regressive model when synthesizing highly detailed large image matrices?",
+    "options": [
+      "It scales context length exponentially",
+      "It generates images via non-causal parallel steps",
+      "It eliminates the need for any decoder",
+      "It operates exclusively on low-dimension text"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Auto-regressive models must generate images pixel-by-pixel, which is slow and memory-intensive. Diffusion models generate all pixels in parallel over denoising steps."
+  },
+  {
+    "id": "dlnn-m-019",
+    "difficulty": "medium",
+    "q": "You notice your model's early convolutional filters are extracting identical primitive edge features across two different tasks. What justifies this trait?",
+    "options": [
+      "The network has reached structural saturation",
+      "Low-level visual representations generalize widely",
+      "The optimizer is trapped in a local minimum",
+      "The dropout rate is scaling parameters"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Early layers in computer vision extract generic feature primitives like edges and textures. This makes them highly reusable across different tasks via transfer learning."
+  },
+  {
+    "id": "dlnn-m-020",
+    "difficulty": "medium",
+    "q": "Your autoencoder reconstructs clean images perfectly, but selecting random points from the latent space yields nonsense shapes. What is missing?",
+    "options": [
+      "A larger convolutional filter grid",
+      "Probabilistic structure on the latent space",
+      "Additional fully connected layer blocks",
+      "A higher learning rate configuration"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Standard autoencoders leave gaps in the latent space. Variational Autoencoders solve this by enforcing a continuous, probabilistic Gaussian distribution."
+  },
+  {
+    "id": "dlnn-m-021",
+    "difficulty": "medium",
+    "q": "What happens mathematically when you configure a convolutional stride length equal to the filter width size?",
+    "options": [
+      "The receptive fields overlap by half",
+      "The adjacent receptive fields do not overlap",
+      "The output dimension expands exponentially",
+      "The boundary padding blocks are skipped"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "When the stride equals the filter width, the window moves exactly to the edge of the previous patch, processing adjacent sections without overlap."
+  },
+  {
+    "id": "dlnn-m-022",
+    "difficulty": "medium",
+    "q": "How does a Gated Recurrent Unit (GRU) structurally simplify the multi-gate processing framework found in standard LSTMs?",
+    "options": [
+      "It completely removes the hidden state layer",
+      "It combines cell and hidden states into one",
+      "It utilizes parallel self-attention matrices",
+      "It completely avoids backpropagation steps"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "GRUs combine the cell state and hidden state, using only update and reset gates. This simplifies the architecture and speeds up computation."
+  },
+  {
+    "id": "dlnn-m-023",
+    "difficulty": "medium",
+    "q": "Why does a self-attention mechanism scale its calculation complexity quadratically relative to the input sequence length?",
+    "options": [
+      "It maps tokens to multiple spatial channels",
+      "Every token computes a score against every other token",
+      "It requires a loop across multiple layers",
+      "It expands feature vector size per step"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Self-attention creates an N x N matrix where every token matches against every other token in the sequence, making its complexity $O(N^2)$."
+  },
+  {
+    "id": "dlnn-m-024",
+    "difficulty": "medium",
+    "q": "You want your network output to match continuous targets while penalizing large errors heavily without dropping smaller noise. Which loss fits?",
+    "options": [
+      "Categorical cross-entropy validation loss",
+      "Mean Squared Error loss",
+      "Softmax distribution cross-entropy",
+      "Binary classification step functions"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Mean Squared Error squares residuals, penalizing large discrepancies heavily. This makes it ideal for standard continuous regression tasks."
+  },
+  {
+    "id": "dlnn-m-025",
+    "difficulty": "medium",
+    "q": "Your deep network updates parameter values successfully in late layers, but early layer weight metrics remain completely static. What is happening?",
+    "options": [
+      "Exploding gradients inside layers",
+      "Vanishing gradients during backpropagation",
+      "Optimal parameter convergence states",
+      "Asymmetric weight distribution traps"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "As gradients travel backward through many layers, repeated multiplication can cause them to shrink to near zero. This leaves early layer weights unadjusted."
+  }
+]
