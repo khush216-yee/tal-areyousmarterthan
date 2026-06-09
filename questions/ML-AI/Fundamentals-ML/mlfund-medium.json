@@ -1,0 +1,352 @@
+[
+  {
+    "id": "ml-f-m-001",
+    "difficulty": "medium",
+    "q": "What is the primary operational distinction between L1 Regularization (Lasso) and L2 Regularization (Ridge)?",
+    "options": [
+      "L1 penalizes parameters using squared values, whereas L2 uses absolute coefficient values.",
+      "L1 adds a penalty proportional to the absolute values of the weights, driving many coefficients to exactly zero and producing sparse models; L2 adds a penalty proportional to the squared weights, shrinking parameters uniformly without making them zero.",
+      "L1 is used exclusively in unsupervised clustering tasks, while L2 applies entirely to multi-class neural classification pipelines.",
+      "L1 eliminates the requirement for continuous parameters, whereas L2 scales output categorization probabilities."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "L1 regularization relies on the absolute norm, which geometrically tends to intersect optimization contours at the axes, driving some parameter weights to absolute zero. This serves as a built-in feature selection tool. L2 penalizes large weights more heavily due to squaring, resulting in small, distributed parameter values."
+  },
+  {
+    "id": "ml-f-m-002",
+    "difficulty": "medium",
+    "q": "How does Dropout fundamentally mitigate the risk of overfitting during the training of deep multi-layer neural networks?",
+    "options": [
+      "By forcing all gradient step updates to operate over a single-threaded execution framework.",
+      "By breaking up complex, highly interdependent co-adaptations of neurons, forcing the model to learn robust, redundant representations that generalise far better.",
+      "By mapping the categorical output vectors directly into high-dimensional continuous array boundaries.",
+      "By automatically increasing the numeric values of model bias variables across active layers."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "When neurons co-adapt, they rely on the presence of specific other neurons to fix representation errors. By randomly masking activations at each training step, dropout forces each neuron to learn features that are robust and useful independent of its neighbors."
+  },
+  {
+    "id": "ml-f-m-003",
+    "difficulty": "medium",
+    "q": "Why is Stratified K-Fold cross-validation preferred over standard K-Fold cross-validation when evaluating classification models on highly imbalanced datasets?",
+    "options": [
+      "Stratified K-Fold accelerates calculation velocities by stripping out non-linear activations.",
+      "Stratified K-Fold ensures that each individual data fold contains approximately the same percentage of samples for each target class as the complete training set, preventing skewed evaluations.",
+      "Stratified K-Fold converts continuous target labels into multi-class document categories.",
+      "Stratified K-Fold maps features into a low-dimensional continuous vector space automatically."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "On highly skewed datasets (e.g., $99\\%$ negative, $1\\\%$ positive), standard random partitioning can leave some folds with zero positive instances. Stratification forces the class proportions to stay uniform across all validation folds, maintaining evaluation integrity."
+  },
+  {
+    "id": "ml-f-m-004",
+    "difficulty": "medium",
+    "q": "Which mathematical property explains why the Softmax activation function is highly suitable for multi-class classification cost calculations when coupled with Cross-Entropy loss?",
+    "options": [
+      "It transforms unbounded values linearly into symmetric coordinates around an absolute zero axis.",
+      "It applies an exponential function that amplifies maximum logits relative to others, and normalizes them into a valid probability distribution where individual outputs are conditionally dependent.",
+      "It forces exactly half of the output hidden parameters to drop to absolute zero values.",
+      "It minimizes computational latency by bypassing derivative calculations during backward updates."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Softmax utilizes Euler's number $e^{z_i}$ to ensure all outputs are strictly positive. Dividing by the sum of exponentials creates a normalized probability distribution. When paired with cross-entropy, the combination yields clean, elegant derivatives during backpropagation."
+  },
+  {
+    "id": "ml-f-m-005",
+    "difficulty": "medium",
+    "q": "In Reinforcement Learning, what core challenge is addressed by the Exploration vs. Exploitation trade-off?",
+    "options": [
+      "Configuring the data transformation pipelines to map textual tokens into embedded continuous float metrics.",
+      "Balancing the choice between picking known actions that have yielded high rewards historically (exploit) versus trying unfamiliar actions to discover potentially superior strategies (explore).",
+      "Maximizing the number of multi-threaded computing instances available to an application cluster.",
+      "Converting value-based reward policies into supervised classification label setups."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "An RL agent must find a balance. If it only exploits, it risks getting stuck in local optima (suboptimal behaviors discovered early). If it only explores, it wastes actions collecting random environmental observations without maximizing its long-term reward."
+  },
+  {
+    "id": "ml-f-m-006",
+    "difficulty": "medium",
+    "q": "What is an explicit geometric consequence of the Curse of Dimensionality when evaluating distance-based models like K-Nearest Neighbors (KNN) in high-dimensional feature spaces?",
+    "options": [
+      "The spatial data nodes converge to a single identical point location index.",
+      "As the number of dimensions increases, the volume of space grows exponentially, causing data points to become highly isolated and making the distances between points nearly equidistant and indistinguishable.",
+      "The dataset automatically drops its categorical classifications to convert into simple linear charts.",
+      "The time complexity drops to $O(1)$ constant steps due to expanded coordinate properties."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "In high-dimensional spaces, data points become extremely sparse. Geometrically, the difference between the distance to the nearest neighbor and the distance to the farthest neighbor approaches zero as dimensionality grows, rendering standard Euclidean distance calculations ineffective."
+  },
+  {
+    "id": "ml-f-m-007",
+    "difficulty": "medium",
+    "q": "What type of reinforcement learning algorithm is Q-Learning classified as?",
+    "options": [
+      "A supervised policy-gradient model that requires continuous human trajectory inputs.",
+      "A model-free, value-based, off-policy reinforcement learning algorithm that seeks to learn the optimal action-value function independently of the agent's current behavioral choices.",
+      "An unsupervised model-based structural clustering routine that operates on tabular image matrices.",
+      "A linear step activation system restricted to processing single-threaded binary classes."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Q-learning is 'model-free' because it doesn't map environmental transition dynamics. It is 'off-policy' because it updates its target Q-value estimations using greedy assumptions (the maximum possible future reward) regardless of what action the exploratory policy actually chose."
+  },
+  {
+    "id": "ml-f-m-008",
+    "difficulty": "medium",
+    "q": "What is the primary difference between Policy-Based methods and Value-Based methods in Reinforcement Learning?",
+    "options": [
+      "Policy-based methods handle regression metrics; Value-based methods operate on classification logic.",
+      "Policy-based methods directly optimize the action strategy configuration ($\pi(a|s)$) without needing an explicit value function; Value-based methods optimize an intermediary value or action-value function to infer actions.",
+      "Policy-based methods require human supervision, whereas Value-based methods are entirely unsupervised.",
+      "Policy-based methods eliminate the exploration parameter, whereas Value-based methods require it."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Value-based methods (like Q-learning) assign expected returns to state-action pairs and pick actions with highest values. Policy-based methods parameterize the action distribution policy directly and optimize its weights using policy gradients (e.g., REINFORCE)."
+  },
+  {
+    "id": "ml-f-m-009",
+    "difficulty": "medium",
+    "q": "What architectural capability does a Multilayer Perceptron (MLP) possess that a single-layer Perceptron lacks?",
+    "options": [
+      "The ability to parse text strings without requiring numerical feature transformations.",
+      "The ability to learn non-linear decision boundaries and solve complex, non-linearly separable problems like the XOR logic gate, thanks to its hidden layers and non-linear activations.",
+      "The capacity to operate across distributed hardware clusters without declaring learning rates.",
+      "The automatic elimination of validation split routines within the processing cycle."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A single-layer Perceptron can only separate classes with a straight linear hyper-plane (failing at basic problems like XOR). By stacking hidden layers and passing signals through non-linear functions, MLPs can warp coordinate configurations to model complex, highly irregular decision boundaries."
+  },
+  {
+    "id": "ml-f-m-010",
+    "difficulty": "medium",
+    "q": "How does Cross-Entropy loss penalize a classification model's incorrect predictions?",
+    "options": [
+      "By applying a linear multiplier that increases proportionally with true positive counts.",
+      "By computing the negative logarithm of the predicted probability for the correct class, resulting in exponential penalty scale spikes as the model's confidence in a wrong answer nears $100\\%$.",
+      "By adding a static cost premium onto the L1 absolute regularization parameter vector.",
+      "By automatically zeroing out the error gradient vectors when answers deviate from labels."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Cross-entropy loss tracks $-\\log(p)$. If the true label is $1$ and the model predicts a probability of $0.99$, the loss is negligible. If the model confidently predicts $0.01$ for that true class, $-\\log(0.01)$ yields a high cost, aggressively forcing the optimization path to adjust model parameters."
+  },
+  {
+    "id": "ml-f-m-011",
+    "difficulty": "medium",
+    "q": "In terms of mathematical robustness, why is L1 Loss (Mean Absolute Error) less sensitive to outlier data points than L2 Loss (Mean Squared Error)?",
+    "options": [
+      "L1 loss utilizes exponential calculations that scale down high-frequency parameter errors.",
+      "L1 loss calculates linear error variations based on absolute differences, whereas L2 loss squares the errors, disproportionately amplifying the cost impact of large deviations (outliers).",
+      "L1 loss converts continuous outputs into binary step evaluations automatically.",
+      "L1 loss operates over multi-threaded validation structures to isolate bad data blocks."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Because L2 squares the residual terms, an extreme outlier sample distant from the regression line creates an enormous error value that heavily biases the entire optimization curve. L1 scales linearly with distance, making it far more robust to extreme variance noise."
+  },
+  {
+    "id": "ml-f-m-012",
+    "difficulty": "medium",
+    "q": "What is the core learning objective when training a model using Contrastive Learning mechanisms?",
+    "options": [
+      "To compare continuous target regression graphs against standard classification trends.",
+      "To map data points into an embedding space where similar or related pairs (positives) are pulled close together, while distinct or unrelated pairs (negatives) are pushed far apart.",
+      "To force exactly half of the active weight values to convert into sparse zero arrays.",
+      "To pass input vectors through single-threaded step activation models exclusively."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Contrastive learning is a self-supervised approach. It uses data augmentations (e.g., cropping/flipping the same image) to create positive pairs and treats other images as negative examples, teaching models to learn semantic representations without manual labels."
+  },
+  {
+    "id": "ml-f-m-013",
+    "difficulty": "medium",
+    "q": "How does an Isolation Forest algorithm locate anomalies within a dataset?",
+    "options": [
+      "By calculating the exact global probability distribution curve across tabular matrices.",
+      "By recursively partitioning features via random trees; because anomalies require fewer structural splits to isolate from the rest of the data, they appear at noticeably shorter path lengths near the roots.",
+      "By applying an inverted cross-entropy penalty metric across deep multi-layer networks.",
+      "By converting discrete categorical features into dense embedding float arrays."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Normal data clusters require many recursive geometric cuts to separate individually. Anomalies, being distant and unique, are easily isolated in early tree splits. Shorter average tree depths across the forest directly correlate with higher anomaly scores."
+  },
+  {
+    "id": "ml-f-m-014",
+    "difficulty": "medium",
+    "q": "What structural trade-off occurs when you lower the classification probability threshold of a binary model from $0.5$ down to $0.3$?",
+    "options": [
+      "Precision increases, while Recall drops significantly.",
+      "Recall increases because the model flags more items as positive, but Precision typically drops as the number of False Positives expands.",
+      "Both Precision and Recall scale up uniformly to near-perfect accuracy scales.",
+      "The system drops all gradient updates and switches to an unsupervised layout model."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Lowering the classification threshold makes the model more eager to predict the positive class. This captures more true positives (increasing recall), but it also misclassifies more negative instances as positive (increasing false positives, which decreases precision)."
+  },
+  {
+    "id": "ml-f-m-015",
+    "difficulty": "medium",
+    "q": "Why is feature scaling (normalization or standardization) mandatory before training distance-based models like Support Vector Machines (SVM) or K-Means?",
+    "options": [
+      "It transforms multi-class text fields into binary categorical variables automatically.",
+      "Without scaling, features with large numerical magnitudes will completely dominate the distance calculations, rendering features with smaller numeric scales irrelevant regardless of importance.",
+      "It introduces non-linear activations into the core mathematical modeling parameters.",
+      "It permits the model to optimize its configuration without using loss calculations."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Distance algorithms rely on geometric distance metrics (like Euclidean distance). If feature A scales from $0$ to $1$ (e.g., salary coefficient ratios) and feature B scales from $0$ to $10,000$ (e.g., annual production units), changes in feature B will drive the distance calculations, rendering feature A useless."
+  },
+  {
+    "id": "ml-f-m-016",
+    "difficulty": "medium",
+    "q": "What is the core premise of the Bias-Variance decomposition when evaluating generalization error?",
+    "options": [
+      "Total model error is determined by multiplying structural activation values by network compilation metrics.",
+      "Generalization error can be decomposed into the sum of the squared bias (systematic underfitting error), the variance (sensitivity to training noise), and the irreducible error (inherent noise).",
+      "Bias tracks the horizontal dimensions of data tables, while Variance maps the vertical row counts.",
+      "Optimizing regularizers eliminates both bias metrics and variance constraints simultaneously."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The bias-variance tradeoff is a fundamental machine learning reality. Minimizing bias often increases variance by making the model more complex. Conversely, minimizing variance dampens model complexity, which can increase bias."
+  },
+  {
+    "id": "ml-f-m-017",
+    "difficulty": "medium",
+    "q": "If an ML model is experiencing significant Underfitting, which strategy is appropriate to resolve the issue?",
+    "options": [
+      "Increase L1/L2 regularization penalties to constrain parameter weight changes.",
+      "Increase model capacity by adding features, engineering interaction terms, or moving to a more complex algorithm or architecture.",
+      "Implement aggressive dropout layers to zero out a larger fraction of active neurons.",
+      "Halt the training loop early and downscale the length of the dataset collection."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Underfitting indicates the model lacks the capacity to map the data's underlying trend. Resolving it requires expanding model flexibility—either by feeding it more informative features, decreasing regularization constraints, or using a more expressive model."
+  },
+  {
+    "id": "ml-f-m-018",
+    "difficulty": "medium",
+    "q": "Which action represents a valid countermeasure against an Overfitting problem?",
+    "options": [
+      "Removing regularization constraints and disabling early stopping functions entirely.",
+      "Applying L2 weight decay, introducing dropout layers, pruning decision trees, or gathering more training data to improve generalization.",
+      "Increasing the complexity of neural models by adding multiple wide hidden layers without regularizers.",
+      "Converting continuous target metrics into unnormalized multi-class logit tables."
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Overfitting calls for constraining the model's complexity so it focuses on general trends rather than memorizing noise. This can be achieved through regularization (L1/L2), structural constraints (dropout, tree pruning), or exposing it to more data samples."
+  },
+  {
+    "id": "ml-f-m-019",
+    "difficulty": "medium",
+    "q": "When processing high-cardinality categorical attributes, why are dense Embeddings typically preferred over standard One-Hot Encoding?",
+    "options": [
+      "One-Hot encoding requires high computational processing latencies due to non-linear activations.",
+      "One-Hot encoding produces massive, ultra-sparse vectors that suffer from the curse of dimensionality and waste memory; dense embeddings represent features compactly while capturing statistical relationships.",
+      "Dense embeddings force the data target elements to switch to a linear regression model.",
+      "Dense embeddings eliminate the need to run backward propagation loops during training steps."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "For a category with 1,000,000 unique values (e.g., user IDs), one-hot encoding builds a vector of length 1,000,000 for every single row, containing a single $1$ and the rest zeros. Dense embeddings compress this into a compact vector (e.g., size 128 or 256) filled with descriptive, continuous numbers."
+  },
+  {
+    "id": "ml-f-m-020",
+    "difficulty": "medium",
+    "q": "What mathematical characteristic of the L1 regularization penalty's absolute-value derivative ($|w|$) explains its ability to yield sparse model parameters?",
+    "options": [
+      "Its derivative scales exponentially with the square of the parameter size.",
+      "The derivative of the absolute value is a constant step function ($\\pm 1$) regardless of parameter magnitude, providing a steady force that pushes small weights all the way to absolute zero.",
+      "It forces the derivative to approach infinity as parameter metrics diminish.",
+      "It matches the contours of multi-class log-loss formulas symmetrically."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Unlike L2 regularization whose gradient shrinks to zero as the weight shrinks ($2w$), the L1 penalty maintains a constant gradient force ($\\pm \\lambda$) pushing on the weight. If a weight is small, this constant force pushes it all the way to exactly $0.0$, eliminating that feature from the model."
+  },
+  {
+    "id": "ml-f-m-021",
+    "difficulty": "medium",
+    "q": "What is the primary cause of the Vanishing Gradient problem during backpropagation through very deep neural network architectures?",
+    "options": [
+      "Using optimization algorithms that enforce excessively high learning rates.",
+      "Multiplying many small derivatives together across numerous layers when using saturating activation functions (like Sigmoid or Tanh), causing the gradient to shrink exponentially as it travels backward.",
+      "Converting continuous variable attributes into discrete multi-class target arrays.",
+      "A complete failure of host physical memory disks to write parameter logs."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Sigmoid and Tanh activations squash inputs into narrow ranges, leaving broad tail areas with near-zero derivatives. During backpropagation, the chain rule multiplies these fractional derivatives across layers. By the time the gradient reaches early layers, it has shrunk exponentially, halting their learning process."
+  },
+  {
+    "id": "ml-f-m-022",
+    "difficulty": "medium",
+    "q": "How does Stochastic Gradient Descent (SGD) differ conceptually from traditional Batch Gradient Descent?",
+    "options": [
+      "SGD calculates loss parameters over the entire dataset before adjusting model parameters.",
+      "SGD updates the model's parameters using the gradient calculated from a single randomly chosen training example (or a tiny mini-batch) per step, making updates faster and noisy but highly dynamic.",
+      "SGD requires single-threaded linear step activation paths to achieve model convergence.",
+      "SGD operates exclusively within unsupervised spatial clustering environments."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Batch Gradient Descent processes the entire dataset before making one single parameter adjustment, which is computationally expensive on large data. SGD makes weight adjustments after seeing a single sample (or mini-batch), introducing stochastic noise that can help the optimizer skip out of shallow local minima."
+  },
+  {
+    "id": "ml-f-m-023",
+    "difficulty": "medium",
+    "q": "In a binary classification confusion matrix, how is the Specificity (True Negative Rate) calculated?",
+    "options": [
+      "True Negatives divided by the sum of True Negatives and False Positives.",
+      "True Positives divided by the sum of True Positives and False Negatives.",
+      "True Negatives divided by the total sum of all matrix blocks added together.",
+      "False Positives subtracted directly from true precision coefficients."
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Specificity measures the model's ability to correctly identify actual negative instances. It is calculated as $\\text{True Negatives} / (\\text{True Negatives} + \\text{False Positives})$, mapping the inverse characteristic of the False Positive Rate."
+  },
+  {
+    "id": "ml-f-m-024",
+    "difficulty": "medium",
+    "q": "What problem does Empirical Risk Minimization (ERM) face, and how does Structural Risk Minimization (SRM) address it?",
+    "options": [
+      "ERM causes memory leaks; SRM rewrites processing logic into lower-level assembly scripts.",
+      "ERM optimizes strictly on the observed training data and risks overfitting; SRM introduces a regularization or complexity penalty to balance training error against model capacity.",
+      "ERM requires multi-class text formats; SRM works exclusively on binary float fields.",
+      "ERM excludes continuous parameters, while SRM builds automated cluster profiles."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Empirical Risk is simply the error measured on your training data. Minimizing it blindly can lead to overfitting on noise. Structural Risk Minimization introduces a penalty for model complexity (based on VC-dimension or regularizers) to optimize generalizable error bounds."
+  },
+  {
+    "id": "ml-f-m-025",
+    "difficulty": "medium",
+    "q": "When using a Validation Set alongside a Training Set, what primary risk are you mitigating?",
+    "options": [
+      "The risk of compiling applications across multi-threaded architecture pools incorrectly.",
+      "The risk of overfitting your hyperparameter selections to the training data, ensuring you tune parameters against data the model hasn't learned from directly.",
+      "The automatic conversion of discrete category properties into raw unformatted text vectors.",
+      "The necessity to scale distance-based attributes prior to initiating an operational run."
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "If you tune hyperparameters (like learning rate or model depth) directly on your training data, you will choose options that overfit the training data. A separate validation split acts as a proxy for test data, letting you evaluate hyperparameter choices objectively."
+  }
+]
