@@ -1,0 +1,352 @@
+[
+  {
+    "id": "dlnn-e-001",
+    "difficulty": "easy",
+    "q": "You are explaining a network where data flows strictly from input to output without loops. What architecture is this?",
+    "options": [
+      "Recurrent Neural Network",
+      "Feedforward Neural Network",
+      "Generative Adversarial Network",
+      "Autoencoder Network"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Feedforward networks pass information in one direction without cycles. Recurrent networks pass data through feedback loops."
+  },
+  {
+    "id": "dlnn-e-002",
+    "difficulty": "easy",
+    "q": "Your traditional ML model plateaus despite adding millions of new rows. Why are you switching to deep learning?",
+    "options": [
+      "Deep learning requires no parameters",
+      "Deep learning performance scales with data",
+      "Deep learning eliminates training steps",
+      "Deep learning uses less memory"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Deep learning models scale in performance as data volume grows. Traditional machine learning models often plateau early."
+  },
+  {
+    "id": "dlnn-e-003",
+    "difficulty": "easy",
+    "q": "You want your network to learn complex, non-linear boundaries instead of simple straight lines. What must you include?",
+    "options": [
+      "More linear layers",
+      "Activation functions",
+      "Larger batch sizes",
+      "Weight initializers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Activation functions introduce non-linearity into hidden layers. Without them, stacked linear layers collapse into a single linear function."
+  },
+  {
+    "id": "dlnn-e-004",
+    "difficulty": "easy",
+    "q": "You want an activation function that maps inputs to a strict probability range between 0 and 1. Which do you pick?",
+    "options": [
+      "ReLU function",
+      "Sigmoid function",
+      "Tanh function",
+      "Leaky ReLU"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Sigmoid compresses inputs into a (0, 1) range, making it ideal for probabilities. Tanh outputs values from -1 to 1."
+  },
+  {
+    "id": "dlnn-e-005",
+    "difficulty": "easy",
+    "q": "Your network hidden units keep outputting exactly zero for all negative values, stalling half your nodes. What activation is this?",
+    "options": [
+      "Sigmoid activation",
+      "Tanh activation",
+      "ReLU activation",
+      "Softmax activation"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "ReLU outputs zero for any negative input value. This can cause neurons to become permanently inactive during training."
+  },
+  {
+    "id": "dlnn-e-006",
+    "difficulty": "easy",
+    "q": "You are passing an image dataset to a network to extract spatial patterns using moving local windows. What architecture is this?",
+    "options": [
+      "Recurrent Neural Network",
+      "Convolutional Neural Network",
+      "Transformer Network",
+      "Generative Adversarial Network"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Convolutional Neural Networks excel at extracting spatial features using localized sliding filters. RNNs are built for sequential data."
+  },
+  {
+    "id": "dlnn-e-007",
+    "difficulty": "easy",
+    "q": "You need to reduce the spatial size of feature maps in your CNN to lower parameters and memory. What layer do you add?",
+    "options": [
+      "A convolutional filter",
+      "A pooling layer",
+      "A fully connected layer",
+      "An activation function"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Pooling layers downsample feature maps by extracting maximum or average values. This reduces spatial dimensions and computation."
+  },
+  {
+    "id": "dlnn-e-008",
+    "difficulty": "easy",
+    "q": "You are dealing with natural language sentences where words depend on previous words. Which traditional architecture fits this sequential data?",
+    "options": [
+      "Convolutional Neural Network",
+      "Recurrent Neural Network",
+      "Variational Autoencoder",
+      "Generative Adversarial Network"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Recurrent Neural Networks process sequential data step-by-step by maintaining an internal memory state across time steps."
+  },
+  {
+    "id": "dlnn-e-009",
+    "difficulty": "easy",
+    "q": "You are using a pre-trained model on a new, small dataset instead of training from scratch. What is this strategy called?",
+    "options": [
+      "Representation learning",
+      "Transfer learning",
+      "Unsupervised clustering",
+      "Mode normalization"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Transfer learning reuses feature patterns learned on a large dataset to jumpstart training on a new task."
+  },
+  {
+    "id": "dlnn-e-010",
+    "difficulty": "easy",
+    "q": "You want to compress an input image into a low-dimensional bottle-neck vector and then reconstruct it. What network do you use?",
+    "options": [
+      "Generative Adversarial Network",
+      "Autoencoder",
+      "Transformer",
+      "Recurrent Network"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Autoencoders pass data through an encoder bottleneck to compress features, then use a decoder to reconstruct the original input."
+  },
+  {
+    "id": "dlnn-e-011",
+    "difficulty": "easy",
+    "q": "You want to build a system that takes both an image and a text prompt to produce a caption. What domain is this?",
+    "options": [
+      "Unimodal AI",
+      "Multimodal AI",
+      "Reinforcement Learning",
+      "Tabular Regression"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Multimodal AI models process and connect information from different data types, such as text, images, and audio."
+  },
+  {
+    "id": "dlnn-e-012",
+    "difficulty": "easy",
+    "q": "Your network is processing inputs row-by-row to compute activations and generate predictions. What phase is this?",
+    "options": [
+      "Backward propagation",
+      "Forward propagation",
+      "Weight initialization",
+      "Hyperparameter tuning"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Forward propagation passes inputs through network layers to generate an output prediction. Backward propagation runs errors backward."
+  },
+  {
+    "id": "dlnn-e-013",
+    "difficulty": "easy",
+    "q": "You need to update your network weights by calculating gradients of the loss function. What algorithm does this?",
+    "options": [
+      "Forward propagation",
+      "Backpropagation",
+      "Feature scaling",
+      "Latent sampling"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Backpropagation computes gradients of the loss function using the chain rule. These gradients dictate how weights are modified."
+  },
+  {
+    "id": "dlnn-e-014",
+    "difficulty": "easy",
+    "q": "You want a model that learns the underlying data distribution to generate brand new realistic sample faces. What class of model do you need?",
+    "options": [
+      "Discriminative model",
+      "Generative model",
+      "Regression model",
+      "Classification model"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Generative models learn data distributions to synthesize new data samples. Discriminative models focus on predicting boundaries between classes."
+  },
+  {
+    "id": "dlnn-e-015",
+    "difficulty": "easy",
+    "q": "You are sliding a 3x3 grid over an image matrix to calculate element-wise products. What is this grid called?",
+    "options": [
+      "A stride vector",
+      "A filter or kernel",
+      "A latent variable",
+      "A pooling layer"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "A filter (or kernel) is a small matrix of weights that slides across an input to extract localized spatial features."
+  },
+  {
+    "id": "dlnn-e-016",
+    "difficulty": "easy",
+    "q": "You configure your CNN filter to skip two pixels at every step across the image. What hyperparameter are you adjusting?",
+    "options": [
+      "Padding size",
+      "Stride length",
+      "Filter count",
+      "Layer depth"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Stride determines the step size a filter moves across an input matrix. A larger stride reduces output feature dimensions."
+  },
+  {
+    "id": "dlnn-e-017",
+    "difficulty": "easy",
+    "q": "Your feature map shrinks too fast at the border pixels, causing edge info loss. What technique solves this?",
+    "options": [
+      "Pooling",
+      "Padding",
+      "Dropout",
+      "Quantization"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Padding adds extra perimeter rows and columns (usually zeros) around inputs. This preserves dimensions and retains edge information."
+  },
+  {
+    "id": "dlnn-e-018",
+    "difficulty": "easy",
+    "q": "You need to flatten your 2D feature maps into a 1D vector to feed into a classification output head. What layer do you use?",
+    "options": [
+      "Convolutional layer",
+      "Fully connected layer",
+      "Pooling layer",
+      "Residual link"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Fully connected layers map every single input node to every output node. This is standard for final classification heads."
+  },
+  {
+    "id": "dlnn-e-019",
+    "difficulty": "easy",
+    "q": "You want to look up the mathematical layer space where an autoencoder groups similar compressed features together. What is this space called?",
+    "options": [
+      "Residual space",
+      "Latent space",
+      "Validation space",
+      "Attention space"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Latent space is the hidden intermediate vector space where compressed representations of input properties are stored."
+  },
+  {
+    "id": "dlnn-e-020",
+    "difficulty": "easy",
+    "q": "Your network parameters are suddenly updating to NaN during training because gradients doubled at every single layer. What occurred?",
+    "options": [
+      "Vanishing gradients",
+      "Exploding gradients",
+      "Mode collapse",
+      "Underfitting"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Exploding gradients happen when derivatives compound into massive numbers during backpropagation. This breaks weights, causing NaN errors."
+  },
+  {
+    "id": "dlnn-e-021",
+    "difficulty": "easy",
+    "q": "You want an activation function that fixes the completely dead negative side of ReLU by adding a tiny slope. Which do you pick?",
+    "options": [
+      "Sigmoid function",
+      "Leaky ReLU",
+      "Tanh function",
+      "Softmax function"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Leaky ReLU allows a small, non-zero gradient when input is negative. This prevents neurons from dying completely."
+  },
+  {
+    "id": "dlnn-e-022",
+    "difficulty": "easy",
+    "q": "You are optimizing configurations like learning rate, batch size, and dropout rate before training starts. What are these metrics called?",
+    "options": [
+      "Parameter weights",
+      "Hyperparameters",
+      "Latent variables",
+      "Loss gradients"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Hyperparameters are settings configured by the developer before training. Model parameters (like weights) are learned during training."
+  },
+  {
+    "id": "dlnn-e-023",
+    "difficulty": "easy",
+    "q": "You notice your model training slows down drastically at test time because you added a complex step. What layer hurts inference speed?",
+    "options": [
+      "Linear projections",
+      "Heavy pooling layers",
+      "Attention heads",
+      "Inference-time dropout"
+    ],
+    "correct": 3,
+    "wrongPick": 2,
+    "explain": "Dropout should be disabled during inference. Running active dropout masks at test time adds unnecessary random variance and computing overhead."
+  },
+  {
+    "id": "dlnn-e-024",
+    "difficulty": "easy",
+    "q": "You want to normalize the activations of an intermediate layer across each mini-batch during a training step. What technique is this?",
+    "options": [
+      "Layer normalization",
+      "Batch normalization",
+      "Weight regularizing",
+      "Gradient clipping"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Batch normalization standardizes intermediate layer outputs using the mean and variance calculated across the current training mini-batch."
+  },
+  {
+    "id": "dlnn-e-025",
+    "difficulty": "easy",
+    "q": "You are implementing a neural network to sort input images into one of 10 completely mutually exclusive classes. Which final activation do you use?",
+    "options": [
+      "Sigmoid function",
+      "ReLU function",
+      "Softmax function",
+      "Tanh function"
+    ],
+    "correct": 2,
+    "wrongPick": 0,
+    "explain": "Softmax normalizes the final layer outputs into a mutually exclusive probability distribution that sums to exactly one."
+  }
+]
