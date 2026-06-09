@@ -1,0 +1,352 @@
+[
+  {
+    "id": "dlnn-h-001",
+    "difficulty": "hard",
+    "q": "During backpropagation, what specific mathematical operation causes the vanishing gradient problem when using Sigmoid activations in deep layers?",
+    "options": [
+      "The addition of bias terms at each step",
+      "Repeated multiplication of derivatives bounded below 0.25",
+      "The division of error vectors by layer width",
+      "The matrix inversion of high-dimensional weights"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The derivative of the Sigmoid function maxes out at 0.25. Multiplying these small fractions across many layers using the chain rule drives gradients to zero."
+  },
+  {
+    "id": "dlnn-h-002",
+    "difficulty": "hard",
+    "q": "How does inverted dropout preserve the expected value of activations during inference without changing model weights?",
+    "options": [
+      "By copying dropout masks to validation passes",
+      "By scaling training activations by 1/(1-p)",
+      "By running multiple stochastic validation steps",
+      "By forcing validation activations to match zero"
+    ],
+    "correct": 1,
+    "wrongPick": 1,
+    "explain": "Inverted dropout divides active node outputs by $(1-p)$ during training. This keeps the scale consistent, avoiding the need for activation adjustments during inference."
+  },
+  {
+    "id": "dlnn-h-003",
+    "difficulty": "hard",
+    "q": "Why does Batch Normalization introduce a representative dependency that can degrade performance when deploying models to real-time streaming pipelines?",
+    "options": [
+      "It requires calculating the full training dataset mean",
+      "Inference metrics rely on training running statistics",
+      "It limits model throughput to specific hardware",
+      "It forces sequential dependencies on parallel inputs"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Batch normalization uses running averages for single-instance inference. If real-time stream distributions diverge from training statistics, model accuracy drops."
+  },
+  {
+    "id": "dlnn-h-004",
+    "difficulty": "hard",
+    "q": "What mathematical constraint does a Variational Autoencoder optimize to ensure the generated latent space matches a continuous Gaussian distribution?",
+    "options": [
+      "The empirical classification boundary limit",
+      "The Evidence Lower Bound objective",
+      "The maximum likelihood parameter estimation",
+      "The structural risk minimization bound"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "VAEs optimize the Evidence Lower Bound (ELBO), balancing reconstruction accuracy against the KL divergence of the latent distribution from a standard Gaussian prior."
+  },
+  {
+    "id": "dlnn-h-005",
+    "difficulty": "hard",
+    "q": "Your GAN training fails because the discriminator learns to distinguish real from fake samples perfectly in early epochs. What gradient issue occurs?",
+    "options": [
+      "Generator gradients explode exponentially",
+      "Generator gradients vanish completely",
+      "The loss function encounters a local minimum",
+      "Parameter weights collapse to zero"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "When the discriminator is perfect, its loss approaches zero and its derivative goes flat. This leaves the generator with no gradients to guide its learning."
+  },
+  {
+    "id": "dlnn-h-006",
+    "difficulty": "hard",
+    "q": "How do modern architectures like Wasserstein GANs (WGAN) mathematically eliminate mode collapse and gradient vanishing anomalies?",
+    "options": [
+      "By replacing neural layers with linear projections",
+      "By measuring Earth Mover Distance via 1-Lipschitz functions",
+      "By running multi-batch cross-validation loops",
+      "By forcing generator layers to use dropout masks"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "WGANs use the Earth Mover Distance (Wasserstein-1 metric) enforced via weight clipping or gradient penalties to provide continuous, informative gradients everywhere."
+  },
+  {
+    "id": "dlnn-h-007",
+    "difficulty": "hard",
+    "q": "Why do modern Transformer networks use scaled dot-product attention instead of standard unscaled dot-product attention?",
+    "options": [
+      "To bound parameter matrix updates to one",
+      "To prevent Softmax gradients from vanishing at large dimensions",
+      "To avoid quadratic complexity scaling behaviors",
+      "To enforce strict spatial pooling dimensions"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "For large hidden dimensions, dot products grow large, pushing the Softmax function into flat, low-gradient regions. Scaling by $\\sqrt{d_k}$ preserves stable gradients."
+  },
+  {
+    "id": "dlnn-h-008",
+    "difficulty": "hard",
+    "q": "During training, a model's weights remain small, but the activations shift and saturate at extreme values in deeper layers. What phenomenon is this?",
+    "options": [
+      "Uncontrolled weight variance explosions",
+      "Internal covariate shift",
+      "Saddle point optimization traps",
+      "Rademacher complexity saturation"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Internal covariate shift occurs when the distribution of a layer's inputs changes during training due to updates in previous layers, slowing down convergence."
+  },
+  {
+    "id": "dlnn-h-009",
+    "difficulty": "hard",
+    "q": "You want to implement an image-to-image translation task where paired training examples do not exist. Which architecture adapts to this constraint?",
+    "options": [
+      "Standard vanilla Autoencoder frameworks",
+      "Cycle-Consistent Adversarial Networks",
+      "Variational Autoencoders with absolute priors",
+      "Deep Feedforward neural networks"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "CycleGANs use cycle-consistency loss ($G(F(X)) \\approx X$) to learn mappings between unpaired image domains without needing direct one-to-one training pairs."
+  },
+  {
+    "id": "dlnn-h-010",
+    "difficulty": "hard",
+    "q": "What is the role of the reparameterization trick in the training loop of a Variational Autoencoder?",
+    "options": [
+      "It limits latent dimensions to save memory",
+      "It allows backpropagation through stochastic nodes",
+      "It maps classification layers to logits",
+      "It scales reconstruction errors linearly"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "You cannot backpropagate through a random sampling step. The trick separates the deterministic parameters (mean, variance) from the random noise vector."
+  },
+  {
+    "id": "dlnn-h-011",
+    "difficulty": "hard",
+    "q": "Why does a single dead ReLU neuron permanently stop updating even if large error gradients pass through its layer?",
+    "options": [
+      "Its weight parameters grow to infinity",
+      "Its gradient is zero for negative inputs",
+      "It forces the entire batch mean to zero",
+      "It shifts bias constants to negative infinity"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "If a ReLU unit's input stays negative, it outputs zero with a gradient of zero. No gradient can flow backward to update its weights, leaving it permanently dead."
+  },
+  {
+    "id": "dlnn-h-012",
+    "difficulty": "hard",
+    "q": "How does the forward pass of a Diffusion Model differ fundamentally from its reverse denoising generative generation pass?",
+    "options": [
+      "The forward pass requires a neural network prediction",
+      "The forward pass adds deterministic Gaussian noise analytically",
+      "The forward pass updates parameter weights step-by-step",
+      "The forward pass handles discrete categorical token maps"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The forward pass iteratively adds noise via a closed-form analytical calculation. The reverse pass requires a trained neural network to estimate and remove that noise step-by-step."
+  },
+  {
+    "id": "dlnn-h-013",
+    "difficulty": "hard",
+    "q": "Your network optimization path encounters a flat valley where one direction slopes up and the other slopes down. How do you describe this point?",
+    "options": [
+      "An isolated global minimum pocket",
+      "A non-convex saddle point configuration",
+      "A discontinuous step activation threshold",
+      "An orthogonal coordinate alignment trap"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "High-dimensional landscapes are dominated by saddle points. Their flat gradients slow down optimization, requiring momentum-based methods to escape."
+  },
+  {
+    "id": "dlnn-h-014",
+    "difficulty": "hard",
+    "q": "Why does Layer Normalization perform better than Batch Normalization when training large Autoregressive Transformer language models?",
+    "options": [
+      "It normalizes features across individual tokens independently",
+      "It matches features across different sequences in a batch",
+      "It eliminates the need for sequence padding blocks",
+      "It reduces self-attention matrix complexity"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Layer normalization normalizes across features within a single sequence token. This avoids the batch-dimension dependencies that struggle with variable sequence lengths."
+  },
+  {
+    "id": "dlnn-h-015",
+    "difficulty": "hard",
+    "q": "You are differentiating cross-entropy loss coupled with a final Softmax activation layer. What elegant property prevents gradient saturation?",
+    "options": [
+      "The derivatives cancel into a linear error term",
+      "The parameters scale to absolute sparse bounds",
+      "The denominator values approach infinity",
+      "The calculation decouples into coordinate weights"
+    ],
+    "correct": 0,
+    "wrongPick": 2,
+    "explain": "The derivative simplifies to $p_i - y_i$ (predicted minus target probability). This linear term avoids exponential saturation, ensuring stable gradient flow."
+  },
+  {
+    "id": "dlnn-h-016",
+    "difficulty": "hard",
+    "q": "What design strategy allows Cross-Attention layers in an Encoder-Decoder Transformer to align different modalities?",
+    "options": [
+      "Queries come from decoder, Keys and Values from encoder",
+      "Queries come from encoder, Keys and Values from decoder",
+      "All vectors originate from the raw text inputs",
+      "Attention matrices are masked via causal filters"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "In cross-attention, the target sequence (decoder) provides the Queries, while the source sequence (encoder) provides the Keys and Values to align the context."
+  },
+  {
+    "id": "dlnn-h-017",
+    "difficulty": "hard",
+    "q": "Why do deep networks initialized with identical constant weight values across all nodes fail to learn complex features?",
+    "options": [
+      "The learning rate drops instantly to zero",
+      "Symmetric neurons compute identical gradients during backpropagation",
+      "The loss function encounters an immediate minimum",
+      "The activation functions saturate at zero values"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Identical initial weights mean every hidden unit computes the same forward activations and backward gradients. This symmetry prevents neurons from learning distinct features."
+  },
+  {
+    "id": "dlnn-h-018",
+    "difficulty": "hard",
+    "q": "Your network architecture exhibits low training error and low testing error, yet its predictions are highly uncalibrated and overconfident. What fix helps?",
+    "options": [
+      "Increase hidden layer dimension widths",
+      "Apply temperature scaling to the output logits",
+      "Remove dropout regularization parameters",
+      "Switch loss functions to mean absolute error"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Temperature scaling divides raw logits by a factor $T$ before the Softmax step. This calibrates confidence probabilities without changing classification accuracy."
+  },
+  {
+    "id": "dlnn-h-019",
+    "difficulty": "hard",
+    "q": "What occurs mathematically to the gradients of an LSTM cell state when its forget gate output is exactly equal to one?",
+    "options": [
+      "Gradients vanish exponentially over time steps",
+      "Gradients flow backward without structural decay",
+      "Gradients scale to positive infinity values",
+      "Gradients decouple into independent layers"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "When the forget gate is 1, historical cell states are preserved linearly. This allows error gradients to propagate backward through time without exponential decay."
+  },
+  {
+    "id": "dlnn-h-020",
+    "difficulty": "hard",
+    "q": "Why does a Convolutional layer require fewer parameters than a Fully Connected layer over the same input dimensions?",
+    "options": [
+      "It skips processing border perimeter coordinates",
+      "It leverages weight sharing and local connectivity constraints",
+      "It uses linear activation layers exclusively",
+      "It normalizes activations across batch splits"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "CNN filters use local connectivity (receptive fields) and weight sharing (reusing the same filter across the input), reducing parameter counts compared to dense layers."
+  },
+  {
+    "id": "dlnn-h-021",
+    "difficulty": "hard",
+    "q": "You are optimizing a self-supervised contrastive model. What hazard happens if you completely remove negative pairing samples from your objective?",
+    "options": [
+      "Gradients vanish across convolutional steps",
+      "The embedding representations collapse to a constant vector",
+      "The model capacity drops to a linear line",
+      "The loss function updates parameters to infinity"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Without negative pairs to push distinct samples apart, contrastive models can experience representation collapse, where the encoder maps all inputs to a single constant vector."
+  },
+  {
+    "id": "dlnn-h-022",
+    "difficulty": "hard",
+    "q": "What structural feature allows Residual Networks (ResNets) to train thousands of layers without vanishing gradients?",
+    "options": [
+      "They eliminate non-linear activation functions",
+      "Identity shortcut connections pass uninhibited gradients backward",
+      "They dynamically alter stride configurations per step",
+      "They force parameter matrices to remain sparse"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Skip connections allow gradients to bypass layer transformations and flow directly backward, preventing the gradient signal from vanishing through deep paths."
+  },
+  {
+    "id": "dlnn-h-023",
+    "difficulty": "hard",
+    "q": "How does the mathematical definition of Leaky ReLU prevent the 'dying ReLU' issue in deep feedforward networks?",
+    "options": [
+      "It restricts output activations to positive constants",
+      "It maintains a small constant derivative for negative inputs",
+      "It uses an exponential curve to smooth functions",
+      "It bounds final layer outputs to a strict range"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Leaky ReLU retains a small slope (e.g., 0.01) for negative inputs. This ensures a non-zero gradient flows back during optimization, keeping neurons active."
+  },
+  {
+    "id": "dlnn-h-024",
+    "difficulty": "hard",
+    "q": "You configure an F-beta evaluation metric where penalizing false negatives is prioritized over false positives. How do you set beta?",
+    "options": [
+      "Set beta equal to exactly zero",
+      "Set beta strictly greater than one",
+      "Set beta strictly less than one",
+      "Set beta to a negative value"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Setting $\\beta > 1$ (e.g., $\\beta = 2$) weights recall more heavily than precision in the harmonic mean, emphasizing the cost of missed true cases."
+  },
+  {
+    "id": "dlnn-h-025",
+    "difficulty": "hard",
+    "q": "Why does standard SGD optimization struggle in regions with high anisotropic curvature, where the loss surface slopes steeply in one direction and gently in another?",
+    "options": [
+      "It locks parameter updates to exactly zero",
+      "It oscillates wildly across the slopes while making slow progress",
+      "It automatically scales learning rates to infinity",
+      "It forces activation functions to collapse"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "SGD lacks context on path direction. It bounces back and forth across the steep canyon walls instead of moving along the gentle valley floor, which requires momentum to fix."
+  }
+]
