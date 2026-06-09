@@ -1,1 +1,352 @@
-.
+[
+  {
+    "id": "mlai-h-001",
+    "difficulty": "hard",
+    "q": "Your one-stage object detector fails because massive quantities of easy background examples swamp loss gradients during training. Which loss function resolves this?",
+    "options": [
+      "Categorical cross-entropy loss",
+      "Focal loss optimization",
+      "Mean absolute error loss",
+      "Huber loss functions"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Focal loss introduces a dynamic modulating factor that scales down the weight of easy, well-classified examples, focusing gradients entirely on hard classes."
+  },
+  {
+    "id": "mlai-h-002",
+    "difficulty": "hard",
+    "q": "Your self-supervised contrastive model collapses by mapping all inputs to an identical constant embedding vector. What loss setup prevents this without negative pairs?",
+    "options": [
+      "Standard InfoNCE loss functions",
+      "Asymmetric online-target networks with EMA",
+      "L1 regularized absolute risk",
+      "Softmax balanced cross-entropy"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Architectures like BYOL use an asymmetric online network predicting an exponential moving average target network, breaking representation collapse symmetry without explicit negative sampling."
+  },
+  {
+    "id": "mlai-h-003",
+    "difficulty": "hard",
+    "q": "You are training a joint multi-task network, but one dominant task loss completely washes out gradients for shared layers. How do you balance them?",
+    "options": [
+      "Apply uniform parameter scaling",
+      "Implement dynamic Gradient Blending",
+      "Enforce strict L1 sparse boundaries",
+      "Convert targets to classification logits"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Gradient Blending or GradNorm adaptively scales individual task losses based on training variance or uncertainty, preventing single task gradients from overrunning shared weights."
+  },
+  {
+    "id": "mlai-h-004",
+    "difficulty": "hard",
+    "q": "From a geometric perspective, why does L1 regularization create sparse model parameters while L2 regularization does not?",
+    "options": [
+      "L1 contours form smooth hyperspheres",
+      "L1 constraint boundaries possess sharp vertices",
+      "L1 increases derivatives toward infinity",
+      "L1 relies on multi-threaded verification"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The L1 norm forms diamond polytopes with sharp corners touching the axes. Expanding empirical loss contours typically hit these vertices first, driving coordinates to exactly zero."
+  },
+  {
+    "id": "mlai-h-005",
+    "difficulty": "hard",
+    "q": "Your policy gradient model exhibits extreme variance in return estimations, rendering training highly unstable. What architectural paradigm solves this?",
+    "options": [
+      "Tabular Q-learning systems",
+      "Actor-Critic architectures",
+      "Pure Monte Carlo simulation",
+      "Model-free value iteration"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Actor-Critic setups reduce variance by using a baseline state-value function (the Critic) to evaluate choices made by the policy network (the Actor)."
+  },
+  {
+    "id": "mlai-h-006",
+    "difficulty": "hard",
+    "q": "Your standard DQN agent overestimates action-values due to noise maximization loops. How do you decouple action selection from action evaluation?",
+    "options": [
+      "Increase the experience replay length",
+      "Implement Double DQN networks",
+      "Apply spectral layer normalization",
+      "Lower the exploratory discount factor"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Double DQN leverages online network weights to select the greedy action index, but evaluates that action using separate target network weights to eliminate maximization bias."
+  },
+  {
+    "id": "mlai-h-007",
+    "difficulty": "hard",
+    "q": "You notice your neural network outputs are highly overconfident compared to empirical validation accuracy. What post-processing calibration technique addresses this?",
+    "options": [
+      "Applying L1 diamond penalties",
+      "Implementing Temperature Scaling",
+      "Increasing batch normalization size",
+      "Adding asymmetric hidden layers"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Temperature scaling divides raw logits by a scaling factor $T$ before running Softmax. This smooths confidence probabilities without altering argmax predictions."
+  },
+  {
+    "id": "mlai-h-008",
+    "difficulty": "hard",
+    "q": "Your value iteration loop converges perfectly every time regardless of state weight initializations. What mathematical concept guarantees this unique convergence?",
+    "options": [
+      "Banach Fixed-Point contraction mapping",
+      "Empirical risk minimizer optimization",
+      "Rademacher capacity bound theorem",
+      "Saturating coordinate derivative limits"
+    ],
+    "correct": 0,
+    "wrongPick": 2,
+    "explain": "The Bellman optimality backup behaves as a contraction mapping under the infinity norm. This satisfies Banach theorem parameters, ensuring convergence to a unique fixed point."
+  },
+  {
+    "id": "mlai-h-009",
+    "difficulty": "hard",
+    "q": "You want to evaluate model capacity dynamically based on its ability to fit random noise distributions over your specific feature layout. What metric do you analyze?",
+    "options": [
+      "Static VC Dimension capacity",
+      "Rademacher Complexity",
+      "Shannon Entropy divergence",
+      "Kullback-Leibler bounds"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Unlike VC dimension which is data-independent, Rademacher Complexity measures capacity dynamically by checking how well a hypothesis space aligns with random noise over the actual dataset."
+  },
+  {
+    "id": "mlai-h-010",
+    "difficulty": "hard",
+    "q": "Your final layer logit weights are expanding toward infinity during training, causing severe overconfidence. What regularizer directly mitigates this?",
+    "options": [
+      "Label Smoothing regularization",
+      "Feature standardization loops",
+      "Sigmoid boundary thresholds",
+      "Deterministic data upsampling"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Label smoothing softens hard binary vectors ($0$ or $1$) into fractional distributions. This restrains raw logits from scaling infinitely to reach absolute confidence limits."
+  },
+  {
+    "id": "mlai-h-011",
+    "difficulty": "hard",
+    "q": "You need to minimize the informational distance between your predicted probability distribution and ground truth targets. What mathematical decomposition represents this optimization path?",
+    "options": [
+      "Minimizing the Kullback-Leibler Divergence",
+      "Maximizing the Shannon Entropy parameter",
+      "Balancing empirical risk normalization bounds",
+      "Reducing Lipschitz continuity coefficients"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Cross-entropy loss equals true Shannon entropy plus KL divergence. Minimizing cross-entropy directly minimizes the KL divergence between predicted and actual distributions."
+  },
+  {
+    "id": "mlai-h-012",
+    "difficulty": "hard",
+    "q": "Your production model accuracy decays because the true statistical relationship between feature inputs and target labels has shifted over time. What anomaly is this?",
+    "options": [
+      "Covariate shift distribution error",
+      "Concept drift anomaly patterns",
+      "Data leakage validation bias",
+      "Vanishing feature variance trends"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Concept drift happens when the mapping function $P(y|x)$ changes. Covariate shift involves changes only in the input distribution $P(x)$ while patterns stay static."
+  },
+  {
+    "id": "mlai-h-013",
+    "difficulty": "hard",
+    "q": "Your deep GAN discriminator experiences uncontrolled gradient explosions, ruining generator updates. How do you restrict its Lipschitz constant to stable limits?",
+    "options": [
+      "Apply absolute L1 penalties",
+      "Implement Spectral Normalization",
+      "Enforce rigid label smoothing",
+      "Switch to continuous MAE"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Spectral Normalization divides weights by their maximum singular values, bounding the network Lipschitz constant to preserve smooth, informative gradients."
+  },
+  {
+    "id": "mlai-h-014",
+    "difficulty": "hard",
+    "q": "Your deep neural network optimization stalls entirely because weights get trapped in flat regions where some dimensions slope up and others slope down. What geometric feature is this?",
+    "options": [
+      "Isolated local minima pockets",
+      "Saddle points",
+      "Symmetric hyper-plane loops",
+      "Discontinuous cliff boundaries"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "High-dimensional non-convex landscapes are dominated by saddle points rather than local minima. Their flat gradients stall standard optimizers, requiring momentum-based adjustments."
+  },
+  {
+    "id": "mlai-h-015",
+    "difficulty": "hard",
+    "q": "A neuron in your deep network permanently ceases learning because its inputs are negative across your whole dataset, locking its derivative to zero. What is this?",
+    "options": [
+      "Saturating activation problem",
+      "Dead ReLU problem",
+      "Vanishing gradient phenomenon",
+      "Polytope vertex collapse"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "If a ReLU input remains negative, it outputs a constant zero value with a zero derivative. No gradient can flow backward, leaving the neuron permanently inactive."
+  },
+  {
+    "id": "mlai-h-016",
+    "difficulty": "hard",
+    "q": "You combine bootstrapping, function approximation, and off-policy learning in an RL agent, causing values to diverge violently. What did you trigger?",
+    "options": [
+      "The deadly triad instability",
+      "Contraction mapping boundary limits",
+      "Exploding reward function bias",
+      "Saddle point optimization stalls"
+    ],
+    "correct": 0,
+    "wrongPick": 2,
+    "explain": "Combining value function approximation, off-policy updates, and bootstrapping creates a dangerous moving-target feedback loop that frequently forces models to diverge."
+  },
+  {
+    "id": "mlai-h-017",
+    "difficulty": "hard",
+    "q": "You want to find the absolute maximum number of arbitrary data points your binary classifier can split completely into all possible label groups. What are you calculating?",
+    "options": [
+      "Rademacher asset complexity",
+      "Vapnik-Chervonenkis (VC) Dimension",
+      "Banach space fixed boundaries",
+      "Shannon entropy allocation limits"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "VC Dimension measures model capacity by determining the maximum number of data points a hypothesis space can shatter into all possible label variations."
+  },
+  {
+    "id": "mlai-h-018",
+    "difficulty": "hard",
+    "q": "You notice your standard dropout model scales activations excessively during inference when all nodes are suddenly unmasked. What correction must occur?",
+    "options": [
+      "Zero out inference bias terms",
+      "Multiply validation weights by 1-p",
+      "Double the learning rate step",
+      "Enforce strict sparse L1 constraints"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Standard non-inverted dropout requires scaling inference parameters down by multiplying them by the retention probability $(1-p)$ to match the training signal scales."
+  },
+  {
+    "id": "mlai-h-019",
+    "difficulty": "hard",
+    "q": "You want to mathematically prove that combining cross-entropy loss with a softmax layer prevents early optimization saturation. What specific derivative property do you check?",
+    "options": [
+      "The exponential decay multiplier loops",
+      "The clean linear difference vector p-y",
+      "The diamond polytope axis coordinates",
+      "The singular value decomposition norms"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Differentiating cross-entropy with respect to raw logits yields the simple linear term $p_i - y_i$. The complex non-linear denominator details cancel out completely."
+  },
+  {
+    "id": "mlai-h-020",
+    "difficulty": "hard",
+    "q": "Your network validation loss increases steadily while training loss falls, but you are already using L2 decay. What hyperparameter adjustment should you test next?",
+    "options": [
+      "Increase the model capacity",
+      "Increase the regularizer penalty strength",
+      "Disable validation early stopping",
+      "Expand hidden layer feature dimensions"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Diverging data splits indicate overfitting is continuing despite basic L2 rules. Increasing regularizer penalty strength restricts capacity further to arrest validation decay."
+  },
+  {
+    "id": "mlai-h-021",
+    "difficulty": "hard",
+    "q": "You are optimizing a self-supervised model using the InfoNCE objective function. What information-theoretic metric are you directly maximizing?",
+    "options": [
+      "The Shannon entropy variance bounds",
+      "The lower bound on mutual information",
+      "The structural risk approximation errors",
+      "The absolute Lipschitz continuity bounds"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The InfoNCE loss acts as a multi-class classification metric that maximizes the lower bound on mutual information between matching positive data views."
+  },
+  {
+    "id": "mlai-h-022",
+    "difficulty": "hard",
+    "q": "You want to evaluate how an inscribed $D$-dimensional hypersphere volume distribution shifts relative to its bounding hypercube as dimensions approach infinity. What occurs?",
+    "options": [
+      "The sphere volume ratio approaches one",
+      "The sphere volume ratio approaches zero",
+      "The distribution scales symmetrically across axes",
+      "The boundary coordinates lock into linear lines"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Geometrically, as dimensions climb, the volume fraction of an inscribed sphere drops to zero. Nearly all volume concentrates in the hypercube corners, creating extreme sparsity."
+  },
+  {
+    "id": "mlai-h-023",
+    "difficulty": "hard",
+    "q": "Your deep multi-layer neural network experiences saturated gradients at its extreme outer layer parameters. Which design choice is the root cause?",
+    "options": [
+      "Using non-saturating ReLU activations",
+      "Using saturating Sigmoid activation functions",
+      "Applying dynamic label smoothing steps",
+      "Implementing spectral layer normalization steps"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Sigmoid or Tanh activations approach horizontal plateaus at extreme values. Their mathematical derivatives limit toward zero, causing optimization gradients to saturate and freeze learning."
+  },
+  {
+    "id": "mlai-h-024",
+    "difficulty": "hard",
+    "q": "You configure an F-beta evaluation metric where missing a true target case is exponentially more dangerous than flagging a false positive. How do you configure beta?",
+    "options": [
+      "Set beta equal to exactly zero",
+      "Set beta strictly greater than one",
+      "Set beta strictly less than one",
+      "Set beta to a negative index"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Setting beta greater than one (e.g., $\\beta = 2$) places a higher mathematical weight on recall within the generalized harmonic mean, prioritizing catching true cases over precision."
+  },
+  {
+    "id": "mlai-h-025",
+    "difficulty": "hard",
+    "q": "You notice your model optimization path gets completely lost inside a broad, flat valley region where parameters drift aimlessly. What geometric hazard is this?",
+    "options": [
+      "A sharp isolated local minimum",
+      "A flat plateau near a saddle point",
+      "A discontinuous step activation cliff",
+      "An orthogonal diamond polytope boundary"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Flat plateau structures near saddle points have gradient values approaching zero. First-order gradient descent steps become minuscule, causing parameter tracking to stall or drift."
+  }
+]
