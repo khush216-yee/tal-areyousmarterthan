@@ -1,0 +1,352 @@
+[
+  {
+    "id": "llmpe-h-001",
+    "difficulty": "hard",
+    "q": "During token selection, how does the mathematical application of the temperature parameter alter the raw logit scores before the Softmax function is computed?",
+    "options": [
+      "It subtracts a fixed scaling constant from all negative candidate logits",
+      "It divides the raw logit vector elements by the scalar temperature value T",
+      "It applies a non-linear matrix inversion step to the top-k vocabulary vector",
+      "It clips all logit values to a binary range between zero and one boundaries"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Temperature scales logits by dividing them ($z_i / T$). When $T < 1$, it stretches the gap between high and low scores, making the probability distribution peak around the top choices after Softmax."
+  },
+  {
+    "id": "llmpe-h-002",
+    "difficulty": "hard",
+    "q": "Why can an adversarial user exploit structural prompt injection attacks to bypass restrictive system-level safety guidelines?",
+    "options": [
+      "User payloads and system instructions share the same basic token space and attention context window",
+      "The Softmax function prioritizes text that arrives late in the data stream",
+      "Dynamic placeholder variables wipe out the underlying parameters of the model layers",
+      "System prompt architectures are restricted to processing hardcoded binary files"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "LLMs process instructions and user input within the same unified context window. Without native architectural separation, clever user input can trick the model into treating malicious text as an official system override."
+  },
+  {
+    "id": "llmpe-h-003",
+    "difficulty": "hard",
+    "q": "What mechanism explains why a language model's accuracy dips when key instructions are positioned in the middle of an expansive prompt context window?",
+    "options": [
+      "The tokenizer strips away punctuation coordinates located near the data center",
+      "U-shaped attention distributions cause the model to focus on the beginning and end of sequences",
+      "The learning rate decays lineally across the token positions during forward passes",
+      "Middle positions trigger a forced reduction in frequency penalty parameters"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Decoder-only attention models show a 'lost-in-the-middle' effect. They excel at retrieving context from the absolute start and end of their input window, while attention weights tend to sag across middle tokens."
+  },
+  {
+    "id": "llmpe-h-004",
+    "difficulty": "hard",
+    "q": "How do Structured Output constraints (like JSON schema enforcement modes) alter the decoding loop to guarantee syntactic compliance?",
+    "options": [
+      "By masking out or dropping invalid token logit values based on grammar rules at each step",
+      "By re-training attention layer weights dynamically during the generation pass",
+      "By limiting the context window window to specific character lengths",
+      "By forcing the generation loop temperature parameter down to negative infinity"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "JSON or schema execution engines parse the generated text tokens dynamically. They use strict grammar state machines to set logits of syntax-breaking tokens to $-\\infty$, guaranteeing a valid output format."
+  },
+  {
+    "id": "llmpe-h-005",
+    "difficulty": "hard",
+    "q": "Why does few-shot prompting sometimes degrade performance in small, distillation-tuned language models on nuanced classification tasks?",
+    "options": [
+      "Few-shot text triggers systemic code failures inside the attention matrix layers",
+      "The small model may latch onto format noise and pattern copy instead of generalizing instructions",
+      "Distilled frameworks are mathematically barred from parsing variable placeholders",
+      "Examples compress the validation metrics of local embedding algorithms"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Smaller or highly distilled models often lack the reasoning depth to separate the abstract classification task from the concrete wording of the examples, leading them to copy patterns blindly."
+  },
+  {
+    "id": "llmpe-h-006",
+    "difficulty": "hard",
+    "q": "You are building a multi-agent routing node using semantic routing. What failure point can cause a prompt loop to spin out of control?",
+    "options": [
+      "Setting frequency penalty bounds to values lower than absolute zero parameters",
+      "Ambiguous agent roles that allow routing criteria to overlap and ping-pong between agents",
+      "Passing structured JSON payloads between microservices inside API structures",
+      "Utilizing system prompt blocks that contain explicit variable placeholders"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "If adjacent routing agents have overlapping or poorly defined responsibilities, a prompt can get stuck in an endless loop, bounce back and forth, and rack up massive token costs."
+  },
+  {
+    "id": "llmpe-h-007",
+    "difficulty": "hard",
+    "q": "What optimization trade-off occurs when choosing between a model-driven automated prompt optimizer (like DSPy) and manual prompt engineering?",
+    "options": [
+      "Automated tools optimize prompts systematically across datasets but require high token overhead for evaluation",
+      "Automated tools rewrite underlying model weights, altering the base engine architecture",
+      "Manual prompt adjustments scale linearly with millions of raw user entries",
+      "Manual prompting eliminates token usage during production inference steps"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Frameworks like DSPy automate prompt design by testing and scoring candidate prompts against datasets. While this improves accuracy and reliability, running those evaluation loops consumes significant token volume during development."
+  },
+  {
+    "id": "llmpe-h-008",
+    "difficulty": "hard",
+    "q": "Why does cross-attention in an encoder-decoder framework handle complex programmatic formatting instructions differently than a pure decoder-only model?",
+    "options": [
+      "Encoder-decoder networks completely ignore system role prompt allocations",
+      "Cross-attention processes the source instructions separately from the growing output text history",
+      "Pure decoders process tokens by executing linear coordinate classification vectors",
+      "Decoder-only networks restrict token selection pools to single character strings"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "In an encoder-decoder setup, instruction data is processed separately by the encoder, allowing cross-attention layers to review the entire source text evenly without competing for attention space in the decoder's token history."
+  },
+  {
+    "id": "llmpe-h-009",
+    "difficulty": "hard",
+    "q": "Your RAG application's source text contains subtle formatting contradictions that cause the model to fail consistently. Which advanced strategy resolves this?",
+    "options": [
+      "Increasing the token extraction temperature coefficient toward maximum limits",
+      "Implementing a multi-step verification prompt that evaluates source quality before extraction",
+      "Stripping all formatting schema tags from the base system instructions",
+      "Reducing the max output tokens boundary down to a single character"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Using a two-stage prompt workflow—where the model first audits and flags inconsistencies in the source documents before processing the data—prevents mixed messages from ruining the final answer."
+  },
+  {
+    "id": "llmpe-h-010",
+    "difficulty": "hard",
+    "q": "How does context window caching (Prompt Caching) affect how you should structure your prompt assembly code loops?",
+    "options": [
+      "You should keep your static system rules and steady data at the very front of the text payload",
+      "You should mix dynamic variables evenly throughout your system messages",
+      "You must randomize the ordering of context fragments at every single call step",
+      "You must remove prefix tags to keep the text block completely flat"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Prompt caching saves computing costs by reusing matching prefix blocks. To get the most out of it, place your unshifting, static instructions at the very front and keep fast-changing user variables at the end."
+  },
+  {
+    "id": "llmpe-h-011",
+    "difficulty": "hard",
+    "q": "Why can an automated token-level optimization tool (like text gradient descent) yield brittle prompts that break across minor engine upgrades?",
+    "options": [
+      "They change the physical dimensions of the input token vector space",
+      "They optimize for specific token sub-strings tailored to the current model's exact weight values",
+      "They force the generation loops to bypass local software API connections",
+      "They restrict output characters to specific hardcoded system sequences"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Token-level optimization picks specific phrasing that exploits the current model's raw probability map. When backend weights change or drift during updates, those precise shortcuts often stop working."
+  },
+  {
+    "id": "llmpe-h-012",
+    "difficulty": "hard",
+    "q": "What hidden problem can occur when using a secondary LLM to compress reference documents down for a production prompt pipeline?",
+    "options": [
+      "The summary model can introduce its own hallucinations or accidentally strip out subtle details",
+      "The primary model will reject the compressed text because it lacks standard headers",
+      "Compression forces the generation temperature of the next layer down to absolute zero",
+      "The operation increases the text character count inside the primary context window"
+    ],
+    "correct": 0,
+    "wrongPick": 3,
+    "explain": "While compression shortens prompts, it runs the risk of a two-model phone game: the first model might omit critical nuances or misinterpret data, passing flawed context down to the primary application."
+  },
+  {
+    "id": "llmpe-h-013",
+    "difficulty": "hard",
+    "q": "Why does a Chain-of-Thought prompt loop achieve higher accuracy on math problems than simply asking for the final answer?",
+    "options": [
+      "Generating intermediate tokens lets the model compute subsequent steps based on its own intermediate work",
+      "CoT steps change the underlying architecture of the self-attention heads",
+      "The intermediate text blocks force the selection temperature parameter to drop to zero",
+      "The step-by-step approach eliminates the need for any positional embedding vectors"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Autoregressive models predict tokens sequentially. By writing out intermediate math steps, the model places its own calculations into its context history, using that grounding to compute the final answer more reliably."
+  },
+  {
+    "id": "llmpe-h-014",
+    "difficulty": "hard",
+    "q": "You are auditing a pipeline where an LLM judges and ranks its own generated outputs. What bias trait must your audit look for?",
+    "options": [
+      "The model tends to rate its own generations or early candidate positions higher regardless of quality",
+      "The system automatically drops presence penalty values down to zero indices",
+      "Self-evaluation forces output schemas to convert straight into raw text strings",
+      "The model prioritizes tokens that contain complex non-linear mathematical code"
+    ],
+    "correct": 0,
+    "wrongPick": 3,
+    "explain": "LLM judges exhibit distinct biases, including egocentric bias (favoring text generated by the same model architecture) and position bias (favoring options listed first in the prompt context)."
+  },
+  {
+    "id": "llmpe-h-015",
+    "difficulty": "hard",
+    "q": "What problem can occur when you apply extreme presence and frequency penalty settings to an extraction pipeline prompt?",
+    "options": [
+      "The model may mess up correct entity spelling or syntax tags just to avoid repeating words",
+      "The model will refuse to output any token that matches the system instructions format",
+      "The context window window expands and overflows the underlying hardware parameters",
+      "The optimization logic completely disables the Softmax activation layer"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Over-tuning penalties can backfire during data extraction. If the model is heavily penalized for repeating tokens, it may intentionally corrupt duplicate proper nouns, code variables, or structure tags to avoid the penalty."
+  },
+  {
+    "id": "llmpe-h-016",
+    "difficulty": "hard",
+    "q": "Why should enterprise workflows choose logit bias adjustments over conversational prompt engineering to block specific words?",
+    "options": [
+      "Logit bias guarantees the targeted tokens are mathematically blocked before generation occurs",
+      "Logit bias alters the base network parameter matrix over time",
+      "Logit bias extends the model context window parameters by thousands of elements",
+      "Logit bias forces text generations to run inside a separate local code environment"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Conversational instructions can be ignored or bypassed. Logit bias alters token selection directly at the decoding level: setting a token's bias to $-100$ drops its probability to zero, blocking it entirely."
+  },
+  {
+    "id": "llmpe-h-017",
+    "difficulty": "hard",
+    "q": "What issue happens when you use few-shot examples with high-temperature sampling in a structured entity extraction pipeline?",
+    "options": [
+      "The model can hallucinate key variations, drift away from the example format, and break parsing code",
+      "The API rejects the incoming text arrays due to schema validation locks",
+      "The system context blocks are overwritten by raw text tokens",
+      "The model's token selection mechanics switch to deterministic patterns"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Few-shot examples suggest a format, but high temperatures invite token randomness. This can cause the model to drift from the schema, output invalid keys, and break downstream parsers."
+  },
+  {
+    "id": "llmpe-h-018",
+    "difficulty": "hard",
+    "q": "How does the mathematical definition of BLEU score affect its reliability when grading prompt revisions for creative copywriting?",
+    "options": [
+      "BLEU relies on precision n-gram matching, heavily penalizing high-quality, creative phrasing updates",
+      "BLEU calculates structural risk boundaries using complex linear code variables",
+      "BLEU measures token latency across hardware deployment nodes",
+      "BLEU forces generation options to comply with strict system schemas"
+    ],
+    "correct": 0,
+    "wrongPick": 2,
+    "explain": "BLEU measures direct n-gram overlaps with reference texts. It penalizes variations heavily, making it poor for creative copywriting evaluations where a completely rewritten sentence could be vastly superior."
+  },
+  {
+    "id": "llmpe-h-019",
+    "difficulty": "hard",
+    "q": "Why does adding a negative constraint (e.g., 'Do not include customer names') occasionally cause an LLM to violate that exact rule?",
+    "options": [
+      "Negative phrases add heavy token tracking overhead to hardware networks",
+      "The mention of the concept increases its token attention weights within the context history",
+      "Negative rules automatically drop the generation temperature down to absolute zero",
+      "The model's tokenizer converts negative terms directly into random placeholder strings"
+    ],
+    "correct": 1,
+    "wrongPick": 3,
+    "explain": "Mentioning a concept injects those tokens into the model's history, raising their attention weights. In complex tasks, the model can catch the keyword but lose track of the negative modifier, leading to a rule violation."
+  },
+  {
+    "id": "llmpe-h-020",
+    "difficulty": "hard",
+    "q": "You are managing prompt logic in a pipeline using a model that uses speculative decoding. What consideration should guide your prompt construction?",
+    "options": [
+      "Highly structured and predictable prompt structures speed up draft-model confirmation loops",
+      "Speculative decoding requires removing all system role prompt markers",
+      "Prompts must use unique character encodings to avoid local API exceptions",
+      "Speculative structures require locking the output length boundary to single tokens"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Speculative decoding uses a fast, small model to draft tokens that a larger model verifies. Writing clean, highly predictable prompt templates raises the small model's guess accuracy, accelerating overall generation speed."
+  },
+  {
+    "id": "llmpe-h-021",
+    "difficulty": "hard",
+    "q": "How can an engineer track down hidden context dilution issues in an automated, multi-document enterprise RAG system?",
+    "options": [
+      "By testing retrieval with a 'needle-in-a-haystack' diagnostic to see if information is missed in the middle of long contexts",
+      "By measuring variations in API data encryption latency metrics",
+      "By checking whether system instructions contain variable placeholder brackets",
+      "By forcing the token execution loop to run at maximum creative temperatures"
+    ],
+    "correct": 0,
+    "wrongPick": 2,
+    "explain": "A 'needle-in-a-haystack' test places a specific, isolated fact at various points inside a massive text block. This helps developers map exactly where the model's retrieval and attention performance sags."
+  },
+  {
+    "id": "llmpe-h-022",
+    "difficulty": "hard",
+    "q": "Why should developers use structured context delimiters (like xml tags or markdown blocks) when building complex prompt templates?",
+    "options": [
+      "Delimiters prevent the API code from truncating long prose inputs",
+      "Clear structural barriers help the model separate base system commands from untrusted user text",
+      "Delimiters reduce the overall cost of parsing input vocabulary elements",
+      "Delimiters force the internal layer weights to synchronize across model choices"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Using clear tags (like `<user_input>` or `### Document Context`) creates distinctive structural boundaries, preventing untrusted text from bleeding into and hijacking system commands."
+  },
+  {
+    "id": "llmpe-h-023",
+    "difficulty": "hard",
+    "q": "What optimization hazard occurs when fine-tuning a model solely on synthetic data generated by an explicit, rigid few-shot prompt?",
+    "options": [
+      "The fine-tuned model's output distribution can collapse into a repetitive copy of that specific template's quirks",
+      "The model's native context window parameters permanently shrink by half",
+      "The fine-tuning framework automatically disables the generation top-p parameter",
+      "The data engine forces all output strings into single-character classifications"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Training exclusively on monolithic synthetic data risks model collapse. The fine-tuned model absorbs the narrow style biases and quirks of the generator prompt, losing its natural language flexibility."
+  },
+  {
+    "id": "llmpe-h-024",
+    "difficulty": "hard",
+    "q": "You want to design an advanced multi-turn agent that safely handles transactional database operations. What structural rule is vital for its tool-calling prompt?",
+    "options": [
+      "Enforcing an explicit two-stage confirmation loop before committing any destructive data actions",
+      "Setting token selection seeds to vary wildly across individual chat turns",
+      "Removing all error handling observation fields from the intermediate API payload loops",
+      "Structuring the tool calls to run exclusively within unformatted text descriptions"
+    ],
+    "correct": 0,
+    "wrongPick": 2,
+    "explain": "To prevent autonomous mistakes, tool-calling prompts for transactional backends should mandate an intermediate confirmation step (e.g., plan, propose, and wait for human-in-the-loop validation) before running irreversible database commits."
+  },
+  {
+    "id": "llmpe-h-025",
+    "difficulty": "hard",
+    "q": "Why do classic alignment techniques (like RLHF) alter how a model responds to role prompts compared to its base, raw pre-trained version?",
+    "options": [
+      "RLHF strips out the positional embedding arrays from the model architecture",
+      "RLHF biases the model toward safe, helpful, and accommodating answers, making it resist staying in dark or adversarial roles",
+      "RLHF locks token selection logic to use static, unweighted vocabulary definitions",
+      "RLHF forces the generation loop to execute only within single sentence boundaries"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Base models focus purely on word prediction, allowing them to adapt to any persona. RLHF-aligned models are tuned to be safe and cooperative, meaning they will fight or drop a persona if a role prompt crosses their behavioral boundaries."
+  }
+]
