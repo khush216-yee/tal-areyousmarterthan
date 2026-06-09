@@ -1,0 +1,352 @@
+[
+  {
+    "id": "llmpe-e-001",
+    "difficulty": "easy",
+    "q": "You want an LLM to categorize a piece of text, but you do not provide any example pairs in your input. What prompting technique is this?",
+    "options": [
+      "Few-shot prompting",
+      "Zero-shot prompting",
+      "Chain of Thought prompting",
+      "Meta-prompting"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Zero-shot prompting provides a task instruction directly to the model without giving any explicit training examples or demonstrations."
+  },
+  {
+    "id": "llmpe-e-002",
+    "difficulty": "easy",
+    "q": "You want your LLM to generate highly deterministic, factual, and repeatable responses for data extraction. How should you set the temperature parameter?",
+    "options": [
+      "Set it close to 1.0",
+      "Set it close to 0.0",
+      "Set it to exactly 2.0",
+      "Disable the temperature parameter completely"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "A low temperature (close to 0.0) makes token selection deterministic by focusing on the highest-probability choices, reducing randomness."
+  },
+  {
+    "id": "llmpe-e-003",
+    "difficulty": "easy",
+    "q": "You are passing three explicit pairs of customer comments and their corresponding target sentiment labels before your final input. What technique are you executing?",
+    "options": [
+      "Zero-shot prompting",
+      "Few-shot prompting",
+      "System prompt framing",
+      "Instruction-less prompting"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Few-shot prompting feeds explicit input-output examples into the context window to demonstrate the desired pattern before asking for the final prediction."
+  },
+  {
+    "id": "llmpe-e-004",
+    "difficulty": "easy",
+    "q": "You want your chatbot to adapt its vocabulary and tone to sound like a senior corporate legal advisor. Which prompting strategy directly implements this?",
+    "options": [
+      "Contextual truncation",
+      "Role prompting",
+      "Negative constraint tracking",
+      "Top-k sampling scaling"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Role prompting instructs the model to assume a specific persona or professional identity to shape its vocabulary, tone, and perspective."
+  },
+  {
+    "id": "llmpe-e-005",
+    "difficulty": "easy",
+    "q": "You add the text phrase 'Let's think step by step' to your math problem prompt to force the model to display its intermediate calculations. What is this method called?",
+    "options": [
+      "Tree of Thoughts prompting",
+      "Chain of Thought prompting",
+      "Automatic Prompt Engineering",
+      "System role assignment"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Chain of Thought (CoT) prompting encourages large language models to decompose complex reasoning tasks into explicit, sequential intermediate steps."
+  },
+  {
+    "id": "llmpe-e-006",
+    "difficulty": "easy",
+    "q": "You are writing a prompt instruction that defines the overarching behavioral guardrails and output formatting rules for an entire multi-turn user session. Where should this be placed?",
+    "options": [
+      "In the user message payload",
+      "In the system prompt block",
+      "In the few-shot demonstration keys",
+      "In the dynamic placeholder variable"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "System prompts set the foundational behavior, operational constraints, and style patterns that guide the model consistently across an entire interaction session."
+  },
+  {
+    "id": "llmpe-e-007",
+    "difficulty": "easy",
+    "q": "You are processing text data through an API platform. What does a single 'token' processed by a large language model typically represent?",
+    "options": [
+      "An entire text paragraph",
+      "A complete single sentence",
+      "A word or a sub-word text fragment",
+      "A single pixel value"
+    ],
+    "correct": 2,
+    "wrongPick": 1,
+    "explain": "LLM tokenizers split text into numeric IDs corresponding to common characters, sub-words, or whole words rather than parsing whole sentences directly."
+  },
+  {
+    "id": "llmpe-e-008",
+    "difficulty": "easy",
+    "q": "Your customer support chatbot generates an explanation detailing an internal company policy that actually does not exist. What is this phenomenon called?",
+    "options": [
+      "Token drift",
+      "Hallucination",
+      "Over-tokenization",
+      "Context compression"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Hallucinations occur when an LLM generates plausible-sounding but factually incorrect, ungrounded, or completely invented information."
+  },
+  {
+    "id": "llmpe-e-009",
+    "difficulty": "easy",
+    "q": "You need your production application script to inject custom user query strings into a static prompt template dynamically. What structural element do you use?",
+    "options": [
+      "Static system text constraints",
+      "Placeholders or template variables",
+      "Hardcoded token parameters",
+      "Stop sequences parameters"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Variables or placeholders (such as `{user_input}`) allow developers to separate static template instructions from dynamic, real-time runtime data."
+  },
+  {
+    "id": "llmpe-e-010",
+    "difficulty": "easy",
+    "q": "You notice your model's outputs get cut off mid-sentence because the input text context was extremely long. What parameter or limit was reached?",
+    "options": [
+      "The minimum top-p target",
+      "The model context window length",
+      "The temperature floor variable",
+      "The few-shot sample cap"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "The context window defines the maximum total tokens (input plus output) an LLM can process in a single execution step before truncation occurs."
+  },
+  {
+    "id": "llmpe-e-011",
+    "difficulty": "easy",
+    "q": "You want an LLM to process a text prompt along with a photograph to answer a question about the image details. What type of model is required?",
+    "options": [
+      "A unimodal text parser",
+      "A multimodal model",
+      "An automated embedding regressor",
+      "A generative adversarial autoencoder"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Multimodal models accept multiple native data types—such as processing text tokens and images simultaneously—within a single context frame."
+  },
+  {
+    "id": "llmpe-e-012",
+    "difficulty": "easy",
+    "q": "You want to evaluate how closely a model's generated text summary matches a collection of human reference summaries by calculating n-gram text overlaps. What metric fits this?",
+    "options": [
+      "F1 score metrics",
+      "ROUGE score metrics",
+      "Inference latency tracking",
+      "Token count consumption"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "ROUGE (Recall-Oriented Understudy for Gisting Evaluation) measures n-gram overlap between generated text summaries and ground-truth references."
+  },
+  {
+    "id": "llmpe-e-013",
+    "difficulty": "easy",
+    "q": "You want to configure an LLM API to immediately cease generating any further text characters the moment it types a specific closing tag character. What property do you use?",
+    "options": [
+      "Top-k constraint boundaries",
+      "Stop sequences",
+      "System prompt indicators",
+      "Temperature coefficients"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Stop sequences are token patterns that instruct the model's generation loop to immediately halt text production when encountered."
+  },
+  {
+    "id": "llmpe-e-014",
+    "difficulty": "easy",
+    "q": "You want an LLM to restructure an arbitrary email block into an automated machine-readable data string. Which target format is ideal for standard API pipelines?",
+    "options": [
+      "Raw unformatted prose text",
+      "JSON formatted payload strings",
+      "A narrative markdown script",
+      "Creative poetic lines"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "JSON formatting provides structured, key-value data syntax that software applications can easily parse and validate automatically."
+  },
+  {
+    "id": "llmpe-e-015",
+    "difficulty": "easy",
+    "q": "Your application prompts the LLM to write a summary, but you want to ensure the response remains strictly factual. Which strategy should you avoid?",
+    "options": [
+      "Instructing the model to use direct document citations",
+      "Setting the generation temperature to 1.5",
+      "Using few-shot examples demonstrating grounded facts",
+      "Supplying relevant source documents inside the context prompt"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Setting high temperatures increases generation randomness and token diversity, which directly elevates the risk of imaginative hallucinations."
+  },
+  {
+    "id": "llmpe-e-016",
+    "difficulty": "easy",
+    "q": "You need to update your application code to handle multiple back-and-forth turns of user chat messages. What data pattern should you use?",
+    "options": [
+      "A flat string containing only the single latest query",
+      "An ordered list array containing historical message payloads",
+      "A random sample pool of historical vocabulary tokens",
+      "A completely empty system prompt initialization matrix"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Multi-turn conversations require passing the full ordered chat history array down to the API to maintain contextual continuity across turns."
+  },
+  {
+    "id": "llmpe-e-017",
+    "difficulty": "easy",
+    "q": "You are advising a team on prompt design best practices. Which design pattern generally produces more consistent behavior in an LLM?",
+    "options": [
+      "Vague guidelines that allow the model maximum structural drift",
+      "Clear, explicit positive instructions over a long list of negative exclusions",
+      "Hiding the actual task inside multiple conversational stories",
+      "Exclusively using single-character instructions"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Providing explicit, clear, positive instructions on what the model *should* execute yields better adherence than abstract lists of negative constraints."
+  },
+  {
+    "id": "llmpe-e-018",
+    "difficulty": "easy",
+    "q": "You want a pipeline step that evaluates a series of candidate prompts automatically using another model to generate modifications. What concept is this?",
+    "options": [
+      "Manual prompt curation templates",
+      "Automatic Prompt Engineering",
+      "Context truncation optimization",
+      "Stop sequence extraction"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Automatic Prompt Engineering (APE) uses meta-prompts to direct language models to generate, test, and score prompt variations automatically."
+  },
+  {
+    "id": "llmpe-e-019",
+    "difficulty": "easy",
+    "q": "You want to ensure that a translation model does not invent slang or add personal commentary during localized processing. What parameter combination fits best?",
+    "options": [
+      "High temperature and high top-p parameters",
+      "Low temperature and low top-p parameters",
+      "Zero system instruction markers with random seeds",
+      "Max tokens constrained to a single character"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Combining low temperature and low top-p values restricts token selection to highly predictable choices, ensuring faithful structural translation."
+  },
+  {
+    "id": "llmpe-e-020",
+    "difficulty": "easy",
+    "q": "You find that an LLM fails to output valid JSON keys despite explicit text orders. What practical engineering fix provides the strongest guardrail?",
+    "options": [
+      "Adding more descriptive adjectives to the system message",
+      "Using an API structural enforcement mode like Structured Outputs",
+      "Doubling the temperature configuration parameter",
+      "Removing all variable placeholders from the context prompt"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Enforced schema frameworks (like JSON Mode or Structured Outputs) manipulate vocabulary logit selections to guarantee compliant syntax parsing."
+  },
+  {
+    "id": "llmpe-e-021",
+    "difficulty": "easy",
+    "q": "You want to evaluate prompt revisions using an exact baseline framework. Why do you need to log configurations like model versions and random seeds?",
+    "options": [
+      "Model fine-tuning forces the API to reject legacy strings",
+      "LLM behaviors and token weights drift across backend version releases",
+      "Prompt variables alter the price metrics of storage disks",
+      "System prompts require a static text character layout balance"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Language model iterations change underlying weights. To run valid evaluations across versions, you must track the exact model identifier."
+  },
+  {
+    "id": "llmpe-e-022",
+    "difficulty": "easy",
+    "q": "Your data engineering team is extracting key details from long unstructured financial PDF texts. Which prompting style helps verify the extraction matches?",
+    "options": [
+      "Asking the model to guess the missing numbers creatively",
+      "Instructing the model to include direct source text snippets alongside output fields",
+      "Filtering out the system context block to save processing compute",
+      "Enforcing a random creative storytelling role persona"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "Requesting direct source excerpts allows automated text search checks to confirm the extracted metadata matches the source document."
+  },
+  {
+    "id": "llmpe-e-023",
+    "difficulty": "easy",
+    "q": "You want to control how many total characters an LLM can generate in its response to optimize API billing charges. Which setting do you use?",
+    "options": [
+      "The top-p threshold parameter",
+      "The max_tokens limitation property",
+      "The few-shot example selection loop",
+      "The dynamic text variable placeholder"
+    ],
+    "correct": 1,
+    "wrongPick": 0,
+    "explain": "The `max_tokens` configuration parameter stops the generation loop once the specific token budget is reached, controlling API computing expenses."
+  },
+  {
+    "id": "llmpe-e-024",
+    "difficulty": "easy",
+    "q": "What happens when you increase the top-p sampling parameter from a very low value up toward 1.0?",
+    "options": [
+      "The model considers a wider, more diverse pool of candidate tokens",
+      "The output becomes strictly identical across repetitive runs",
+      "The entire context window size shrinks by half",
+      "The model rejects all system role prompt blocks"
+    ],
+    "correct": 0,
+    "wrongPick": 1,
+    "explain": "Top-p (nucleus sampling) defines the cumulative probability threshold for candidate tokens. Higher values allow less common words into the selection pool."
+  },
+  {
+    "id": "llmpe-e-025",
+    "difficulty": "easy",
+    "q": "You are building a localized multi-lingual user interface system. Why should your base prompt templates avoid colloquial idioms?",
+    "options": [
+      "Idioms are always automatically converted into JSON syntax strings",
+      "Idioms can be misinterpreted or mistranslated across language models",
+      "Idioms reduce the context window capacity of the model",
+      "Idioms force the temperature parameter to drop to zero"
+    ],
+    "correct": 1,
+    "wrongPick": 2,
+    "explain": "Colloquial phrases do not translate reliably between cultural contexts. Clear, precise language yields more predictable translations."
+  }
+]
